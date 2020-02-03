@@ -44,6 +44,7 @@ def checkForEmoji(ID):
 #Returns an emoji object with the passed in ID. 
 def checkLinks(objectName):
     largeDictionary = {
+        "Harrison Ford": "Harrison J. Ford",
         "Drake": "Drake (musician)",
         "Elon Musk": "Elon Musk",
         "Archduke Franz Ferdinand": "Archduke Franz Ferdinand of Austria",
@@ -163,6 +164,9 @@ def checkLinks(objectName):
     print("Correct: " + correct)
     return correct
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 
+def replacePictures(pictureNumber):
+    print("Not functional yet")
+#To be coded: Will replace the picture location with the correct picture in the array. 
 def createPersonEmbed(person):
     print(person)
     person = checkLinks(person)
@@ -396,8 +400,8 @@ async def on_message(message):
     #Unranked match. 
     if message.content.startswith("*ranked") and message.author.id == userID:
         peerFile = open("reep VThe CA Discord.txt", "r")
-        weaponTierFile = open("itemsAndLinks.txt", "r")
-        placesFile = open("randomListPlaces.txt", "r")
+        weaponTierFile = open("weaponTiers.txt", "r")
+        placesFile = open("places.txt", "r")
         peerFull = peerFile.read()
         peer = peerFull.split(";")
         peerFile.close()
@@ -525,7 +529,7 @@ async def on_message(message):
         match1ID = await pollChannel.send(match1)
         match2ID = await pollChannel.send(match2)
         match3ID = await pollChannel.send(match3)
-
+        await pollChannel.send("<@&613144506757283974>")
         peerFile = open("peer.txt", "r")
         
         peerFull = peerFile.read()
@@ -550,13 +554,16 @@ async def on_message(message):
         person5Emoji = checkForEmoji(person5ID)
         person6Emoji = checkForEmoji(person6ID)
 
+        lastInfo = open("lastInfo.txt", "w")
+        stringsList = [person1, person2, person3, person4, person5, person6, weapon1, weapon2, weapon3, weapon4, weapon5, weapon6, place1, place2, place3]
+        for i in stringsList:
+            lastInfo.write(i)
         await match1ID.add_reaction(emoji=person1Emoji)
         await match1ID.add_reaction(emoji=person2Emoji)
         await match2ID.add_reaction(emoji=person3Emoji)
         await match2ID.add_reaction(emoji=person4Emoji)
         await match3ID.add_reaction(emoji=person5Emoji) 
         await match3ID.add_reaction(emoji=person6Emoji)
-
         for person in people:
             embed = createPersonEmbed(person)
             await peopleInfo.send(embed=embed)

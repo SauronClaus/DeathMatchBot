@@ -1,0 +1,25 @@
+I realized that my files are kind of a mess in here so I figured I should outline what each one does. 
+So here we go, in no particular order:
+> People:
+- peer.txt: Contains all the people ever added to the bot, and their emoji ids one line under them. Used in non-ranked match ups and in locating emojis for ranked match ups.
+- reep VThe CA Discord.txt: The current ranked bracket on the bot. It's written with the formula of people's full names seperated by semicolons.
+> The Weapons
+- weaponTiers.txt: The file that actually holds the tiers for the weapons. It's used to determine the different weapon choices for the matches.
+- Tier1.txt: The bottom tier of the bot. All of these are as useless or less useless than just bare fists.
+- sharp.txt: Sharp/bladed non-magical weapons. 
+- bludgeoning.txt: Weapons primarily used to bludgeon. The exceptions are "a wooden baseball bat with nails sticking out of it" because there's already another type of baseball bat in there and "an immovable rod" because it really isn't that magical.
+- Tier2Ranged.txt: Semi-useful ranged weapons. 
+- Tier3Ranged.txt: More useful ranged weapons. Guns and other one-shot kill non-magical weapons are included in here.
+- Tier4Melee.txt: Semi-magical or useful melee weapons. Primarily the ones that washed out of Tier5Melee.txt.
+- Tier5Melee.txt: The magical/super-powerful weapons. These are the ones that are only blockable by another weapon of that tier, or are otherwise super powerful.
+- RangedAndMelee.txt: The Tier5Melee weapons that also have some ranged component. 
+> Places: 
+- places.txt: A list of all the random places in the match. 
+> Misc.
+- token.txt: GitHub can't actually see this, but it has the tokens for Scribe and ScribeTester.
+- legend.txt: This one, of course, outlines what each file does.
+- thing.py: The bot's main code.
+- lastInfo.txt: Saves the relevent "objects" (people, places, things) for each ranked match-up on the CA Discord. Used if one of the wikipedia embeds breaks so I can resend the match's info easier.
+- Log The CA Discord Round 1.txt: The Log from the first match of death match. The format is something like this: person1;person2|winner|winnerScore-loserScore.
+- Log The CA Discord.txt: See above, but for the current round.
+- newPeople.txt: The most recent people added to the match.

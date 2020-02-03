@@ -5,19 +5,15 @@ import wikipedia
 
 client = discord.Client()
 discordEmojiList = ["1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer"]
+#List of servers with the Discord Emojis. 
 
-def generateNum(fileNumber, peopleList):
-    #print("Generating things: " + "fileNumber = " + str(fileNumber))
-    rando = random.randint(1, fileNumber)
-    #print("Rando = " + str(rando))
-    #print("Length: " + str(len(peopleList)))
-    if rando in peopleList or rando % 2 == 0:
-       print("Generation Failed: " + str(rando) + " already in list or even.")
-       return peopleList
-    else:
-        #print (str(rando) + " added to list!")
-        peopleList.append(rando)
-        return peopleList
+tokenFile = open("token.txt", "r")
+tokenString = tokenFile.read()
+tokens = tokenString.split('\n')
+botToken = tokens[1]
+testToken = tokens[0]
+userID = int(tokens[2])
+
 def newGenerateNum(fileNumber, peopleList):
     rando = random.randint(1, fileNumber)
     if rando in peopleList:
@@ -29,18 +25,12 @@ def newGenerateNum(fileNumber, peopleList):
         #print (str(rando) + " added to list!")
         peopleList.append(rando)
         return peopleList
-def generateNumRep(fileNumber, peopleList):
-    #print("Generating things: " + "fileNumber = " + str(fileNumber))
+#Generate the number and makes sure that the person isn't in the list already.
+def generateNumRep(fileNumber, listOfNumbers):
     rando = random.randint(1, fileNumber)
-    #print("Rando = " + str(rando))
-    #print("Length: " + str(len(peopleList)))
-    if rando % 2 != 0:
-       #print("Generation Failed: " + str(rando) + " odd.")
-       return peopleList
-    else:
-        #print (str(rando) + " added to list!")
-        peopleList.append(rando)
-        return peopleList
+    listOfNumbers.append(rando)
+    return listOfNumbers
+#Generates a number but its okay if its repeating something already in the list.
 def checkForEmoji(ID):
     print("ID: " + str(ID))
     for i in client.guilds:
@@ -51,8 +41,8 @@ def checkForEmoji(ID):
                     if str(emoji.id) == ID:
                         return emoji
     print("Failure")
-def checkLinks(personName):
-    
+#Returns an emoji object with the passed in ID. 
+def checkLinks(objectName):
     largeDictionary = {
         "Drake": "Drake (musician)",
         "Elon Musk": "Elon Musk",
@@ -167,11 +157,12 @@ def checkLinks(personName):
         "Sun Tzu": "Sun Wu",
         "John Cena": "John Felix Anthony Cena",
     }
-    correct = personName
-    if personName in largeDictionary:
-        correct = largeDictionary[personName]
+    correct = objectName
+    if objectName in largeDictionary:
+        correct = largeDictionary[objectName]
     print("Correct: " + correct)
     return correct
+#Replaces the passed in object with the correct object if it's an irregular wikipedia article. 
 def createPersonEmbed(person):
     print(person)
     person = checkLinks(person)
@@ -188,6 +179,7 @@ def createPersonEmbed(person):
     embed.add_field(name="Link",value=article.url)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
     return embed
+#Returns an embed object created from the inputed person. 
 def createWeaponEmbed(weapon):
     print(weapon)
     weapon = checkLinks(weapon)
@@ -202,6 +194,7 @@ def createWeaponEmbed(weapon):
     embed.add_field(name="Link",value=article.url)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
     return embed
+#Returns an embed object from the weapon inputed. 
 def createPlaceEmbed(place):
     print(place)
     place = checkLinks(place)
@@ -217,6 +210,7 @@ def createPlaceEmbed(place):
     embed.add_field(name="Link",value=article.url)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
     return embed
+#Returns an embed with the place inputed. 
 def summaryShort(summary):
     summaryPersonal = ""
     if len(list(summary)) > 2040:
@@ -224,6 +218,7 @@ def summaryShort(summary):
     else:
         summaryPersonal = summary
     return summaryPersonal
+#Shortens the summary to 2040 characters if needed. 
 @client.event
 async def on_ready(): 
     print('Logged in as {0.user}'.format(client))
@@ -232,10 +227,10 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content.startswith("*match") and message.author.id == 366709133195476992:
+    if message.content.startswith("*match") and message.author.id == userID:
         peerFile = open("peer.txt", "r")
-        weaponTierFile = open("itemsAndLinks.txt", "r")
-        placesFile = open("randomListPlaces.txt", "r")
+        weaponTierFile = open("weaponTiers.txt", "r")
+        placesFile = open("places.txt", "r")
         peerFull = peerFile.read()
         peer = peerFull.split("\n")
         peopleList = []
@@ -398,7 +393,8 @@ async def on_message(message):
         for place in places:
             embed = createPlaceEmbed(place)
             await placeInfo.send(embed=embed)
-    if message.content.startswith("*ranked") and message.author.id == 366709133195476992:
+    #Unranked match. 
+    if message.content.startswith("*ranked") and message.author.id == userID:
         peerFile = open("reep VThe CA Discord.txt", "r")
         weaponTierFile = open("itemsAndLinks.txt", "r")
         placesFile = open("randomListPlaces.txt", "r")
@@ -570,7 +566,8 @@ async def on_message(message):
         for place in places:
             embed = createPlaceEmbed(place)
             await placeInfo.send(embed=embed)
-    if message.content.startswith("*sendLastMatchInfo"):
+    #Ranked matches for the CA Discord. 
+    if message.content.startswith("*sendLastMatchInfo") and message.author.id == userID:
         infoWrite = open("lastInfo.txt", "r")
         infoFull = infoWrite.read()
         info = infoFull.split("\n")
@@ -619,7 +616,8 @@ async def on_message(message):
         await placeInfo.send(embed=embed)
         embed = createPlaceEmbed(info[14])
         await placeInfo.send(embed=embed)
-    if message.content.startswith("*weapons"):
+    #Send the info in the file "lastInfo.txt"
+    if message.content.startswith("*weapons") and message.author.id == userID:
         weaponTierFile = open("itemsAndLinks.txt", "r")
         weaponTierFull = weaponTierFile.read()
         weaponTierArray = weaponTierFull.split('\n')
@@ -634,8 +632,9 @@ async def on_message(message):
                 if v % 2 == 0:
                     embed = createWeaponEmbed(weaponSet[v])
                     await weaponsInfo.send(embed=embed)
-    if message.content.startswith("*places"):
-        weaponTierFile = open("randomListPlaces.txt", "r")
+    #Send the info on all weapons. 
+    if message.content.startswith("*places") and message.author.id == userID:
+        weaponTierFile = open("places.txt", "r")
         weaponTierFull = weaponTierFile.read()
         weaponTierArray = weaponTierFull.split('\n')
         weaponsInfo = message.channel
@@ -647,6 +646,7 @@ async def on_message(message):
             if v % 2 == 0:
                 embed = createPlaceEmbed(weaponTierArray[v])
                 await weaponsInfo.send(embed=embed)
+    #Send the info on all places. 
     if message.content.startswith("*newPeopleInfo"):
         weaponTierFile = open("newPeople.txt", "r")
         weaponTierFull = weaponTierFile.read()
@@ -660,7 +660,8 @@ async def on_message(message):
             if v % 2 == 0:
                 embed = createPersonEmbed(weaponTierArray[v])
                 await weaponsInfo.send(embed=embed)
-    if message.content.startswith("*SuleimanSpecial"):
+    #Send the info on the new people. 
+    if message.content.startswith("*SuleimanSpecial") and message.author.id == userID:
         sentMessage = await message.channel.send("An equal number of Suleiman to the people in this tier list with scimitars vs everyone else in this tier list with longswords at the gates of Vienna!")
         embed = createPersonEmbed("Suleiman the Magnificent")
         peopleInfo = message.channel
@@ -673,7 +674,8 @@ async def on_message(message):
         SuleimanMoji = checkForEmoji(str(670368394180296744))
         await sentMessage.add_reaction(emoji=SuleimanMoji)
         await sentMessage.add_reaction(emoji=crowdMoji)
-    if message.content.startswith("*SuperBowlSpecial"):
+    #Suleiman Special!
+    if message.content.startswith("*SuperBowlSpecial") and message.author.id == userID:
         sentMessage = await message.channel.send("The Kansas City Chiefs with bows vs the San Francisco 49ers with MAT-49s in a pottery contest!")
         #embed = createWeaponEmbed("MAT-49")
         peopleInfo = message.channel
@@ -686,183 +688,8 @@ async def on_message(message):
         SuleimanMoji = checkForEmoji(str(673616029850664991))
         await sentMessage.add_reaction(emoji=crowdMoji)
         await sentMessage.add_reaction(emoji=SuleimanMoji)
-    if message.content.startswith("*lastMatch"):
-        peerFile = open("reep VThe CA Discord.txt", "r")
-        weaponTierFile = open("itemsAndLinks.txt", "r")
-        placesFile = open("randomListPlaces.txt", "r")
-        peerFull = peerFile.read()
-        peer = peerFull.split(";")
-        peerFile.close()
-        peopleList = []
-        print("Peer: ")
-        for item in peer:
-            print(item)
-        fileNumber = len(peer) - 1
-
-        peopleList.append(0)
-        peopleList.append(1)
-        peopleList.append(2)
-        peopleList.append(3)
-        peopleList.append(4)
-        peopleList.append(5)
-  
-        person1 = peer[peopleList[0]]
-        person2 = peer[peopleList[1]]
-        person3 = peer[peopleList[2]]
-        person4 = peer[peopleList[3]]
-        person5 = peer[peopleList[4]]
-        person6 = peer[peopleList[5]]
-
-        print("People: ")
-        print (person1)
-        print (person2)
-        print (person3)
-        print (person4)
-        print (person5)
-        print (person6)
-        people = [person1, person2, person3, person4, person5, person6]
-        
-        weaponTierFull = weaponTierFile.read()
-        weaponTierArray = weaponTierFull.split('\n')
-
-        weaponTier1Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier2Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier3Num = random.randint(1, len(weaponTierArray) - 1)
-
-        weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
-        weaponTier2Name = weaponTierArray[weaponTier2Num] + ".txt"
-        weaponTier3Name = weaponTierArray[weaponTier3Num] + ".txt"
-
-        weaponFile1 = open(weaponTier1Name, "r")
-        weaponFile2 = open(weaponTier2Name, "r")
-        weaponFile3 = open(weaponTier3Name, "r")
-
-        weaponSet1 = weaponFile1.read().split('\n')
-        weaponSet2 = weaponFile2.read().split('\n')
-        weaponSet3 = weaponFile3.read().split('\n')
-
-        weaponArray1 = []
-        weaponArray2 = []
-        weaponArray3 = []
-
-
-        
-        while (len(weaponArray1) < 2):
-            weaponArray1 = generateNumRep(len(weaponSet1) - 1, weaponArray1)
-        while (len(weaponArray2) < 2):
-            weaponArray2 = generateNumRep(len(weaponSet2) - 1, weaponArray2)
-        while (len(weaponArray3) < 2):
-            weaponArray3 = generateNumRep(len(weaponSet3) - 1, weaponArray3)
-            
-
-
-        weapon1 = weaponSet1[weaponArray1[0]]
-        weapon2 = weaponSet1[weaponArray1[1]]
-        weapon3 = weaponSet2[weaponArray2[0]]
-        weapon4 = weaponSet2[weaponArray2[1]]
-        weapon5 = weaponSet3[weaponArray3[0]]
-        weapon6 = weaponSet3[weaponArray3[1]]
-
-        
-        print("Weapons: ")
-        print(weapon1)
-        print(weapon2)
-        print(weapon3)
-        print(weapon4)
-        print(weapon5)
-        print(weapon6)
-        weapons = [weapon1, weapon2, weapon3, weapon4, weapon5, weapon6]
-
-        places = placesFile.read().split('\n')
-        placeArray = []
-
-        while (len(placeArray) < 3):
-            placeArray = generateNumRep(len(places) - 1, placeArray)
-
-        place1Num = placeArray[0]    
-        place2Num = placeArray[1]
-        place3Num = placeArray[2]
-
-        place1 = places[place1Num]   
-        place2 = places[place2Num]       
-        place3 = places[place3Num]
-
-        print("Places: ")
-        print(place1)      
-        print(place2)       
-        print(place3)
-        places = [place1, place2, place3]
-
-        pollChannel = message.channel
-        peopleInfo = message.channel
-        placeInfo = message.channel
-        weaponsInfo = message.channel
-
-        for channel in message.guild.text_channels:
-            print(channel.name)
-            if channel.name == "historical-death-match-polls":
-                print("found #channel " + channel.name)
-                pollChannel = channel
-            if channel.name == "historical-people-info":
-                print("found #channel " + channel.name)
-                peopleInfo = channel
-            if channel.name == "historical-weapons-info":
-                print("found #channel " + channel.name)
-                weaponsInfo = channel
-            if channel.name == "historical-places-info":
-                print("found #channel " + channel.name)
-                placeInfo = channel
-        
-        print("Poll Channel: #" + pollChannel.name)
-        match1 = person1 + " with " + weapon1 + " vs " + person2 + " with " + weapon2 + " " + place1 + "!"
-        match2 = person3 + " with " + weapon3 + " vs " + person4 + " with " + weapon4 + " " + place2 + "!"
-        match3 = person5 + " with " + weapon5 + " vs " + person6 + " with " + weapon6 + " " + place3 + "!"
-        
-        match1ID = await pollChannel.send(match1)
-        match2ID = await pollChannel.send(match2)
-        match3ID = await pollChannel.send(match3)
-
-        peerFile = open("peer.txt", "r")
-        
-        peerFull = peerFile.read()
-        peer = peerFull.split("\n")
-        peoplePeerIndex = []
-        for person in people:
-            personIndex = peer.index(person)
-            peoplePeerIndex.append(personIndex)
-
-        person1ID = peer[peoplePeerIndex[0] + 1]
-        person2ID = peer[peoplePeerIndex[1] + 1]
-        person3ID = peer[peoplePeerIndex[2] + 1]
-        person4ID = peer[peoplePeerIndex[3] + 1]
-        person5ID = peer[peoplePeerIndex[4] + 1]
-        person6ID = peer[peoplePeerIndex[5] + 1]
-        
-
-        person1Emoji = checkForEmoji(person1ID)
-        person2Emoji = checkForEmoji(person2ID)
-        person3Emoji = checkForEmoji(person3ID)
-        person4Emoji = checkForEmoji(person4ID)
-        person5Emoji = checkForEmoji(person5ID)
-        person6Emoji = checkForEmoji(person6ID)
-
-        await match1ID.add_reaction(emoji=person1Emoji)
-        await match1ID.add_reaction(emoji=person2Emoji)
-        await match2ID.add_reaction(emoji=person3Emoji)
-        await match2ID.add_reaction(emoji=person4Emoji)
-        await match3ID.add_reaction(emoji=person5Emoji) 
-        await match3ID.add_reaction(emoji=person6Emoji)
-
-        for person in people:
-            embed = createPersonEmbed(person)
-            await peopleInfo.send(embed=embed)
-        for weapon in weapons:
-            embed = createWeaponEmbed(weapon)
-            await weaponsInfo.send(embed=embed)
-        for place in places:
-            embed = createPlaceEmbed(place)
-            await placeInfo.send(embed=embed)
-    if message.content.startswith("*resetBracket"):
+    #Super Bowl Special!
+    if message.content.startswith("*resetBracket") and message.author.id == userID:
         logFile = open("Log The CA Discord.txt", "r")
         logFull = logFile.read()
         log = logFull.split("\n")
@@ -877,10 +704,6 @@ async def on_message(message):
         reepFile = open("reep VThe CA Discord.txt", "w")
         reepFile.write(reepFull)
         reepFile.close()
-                    
-tokenFile = open("token.txt", "r")
-tokenString = tokenFile.read()
-tokens = tokenString.split('\n')
-botToken = tokens[1]
-testToken = tokens[0]
+    #Resets the bracket with the matches in "Log The CA Discord.txt"              
+
 client.run(botToken)

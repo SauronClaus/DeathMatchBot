@@ -1,0 +1,40 @@
+a longsword
+https://en.wikipedia.org/wiki/Longsword
+a Claymore
+https://en.wikipedia.org/wiki/Claymore
+a greataxe
+https://www.dndbeyond.com/equipment/greataxe
+a hatchet
+https://en.wikipedia.org/wiki/Hatchet
+a machete
+https://en.wikipedia.org/wiki/Machete
+a glaive
+https://en.wikipedia.org/wiki/Glaive
+a morningstar
+https://en.wikipedia.org/wiki/Morning_star_(weapon)
+a halberd
+https://en.wikipedia.org/wiki/Halberd
+a pike (weapon)
+https://en.wikipedia.org/wiki/Pike_(weapon)
+a bayonet
+https://en.wikipedia.org/wiki/Bayonet
+a warhammer
+https://en.wikipedia.org/wiki/War_hammer
+Steve's Diamond Sword
+https://minecraft.gamepedia.com/Sword
+a chainsaw
+https://www.homedepot.com/b/Outdoors-Outdoor-Power-Equipment-Chainsaws/N-5yc1vZbxam
+Freddy Kruger's Glove
+https://en.wikipedia.org/wiki/Freddy_Krueger#Bladed_glove
+5x shurikens
+https://en.wikipedia.org/wiki/Shuriken
+their bear hands (replacing original hands)
+https://simple.wikipedia.org/wiki/Bear
+Joyeuse (not magical)
+https://en.wikipedia.org/wiki/Joyeuse
+a falchion
+https://en.wikipedia.org/wiki/Falchion
+a katana
+https://en.wikipedia.org/wiki/Katana
+a guandao
+https://en.wikipedia.org/wiki/Guandao

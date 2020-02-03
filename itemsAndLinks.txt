@@ -1,0 +1,7 @@
+Tier1Melee
+Tier1Ranged
+Tier1.5Melee
+Tier2Melee
+Tier2Ranged
+Tier3Melee
+Tier4

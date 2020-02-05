@@ -167,6 +167,8 @@ def checkLinks(objectName):
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 
 def createPersonEmbed(person):
     print(person)
+    personEmoji = getEmoji(person)
+    personUnEdit = person
     person = checkLinks(person)
     print("Person: " + person)
     article = wikipedia.page(person)
@@ -176,7 +178,6 @@ def createPersonEmbed(person):
     print(summary[0])
     summaryPersonal = summaryShort(str(summary[0]))
     embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
-    personEmoji = getEmoji(person)
     print(personEmoji.name)
     personURL = str(personEmoji.url)
     embed.set_image(url=personURL)
@@ -584,7 +585,7 @@ async def on_message(message):
         lastInfo = open("lastInfo.txt", "w")
         stringsList = [person1, person2, person3, person4, person5, person6, weapon1, weapon2, weapon3, weapon4, weapon5, weapon6, place1, place2, place3]
         for i in stringsList:
-            lastInfo.write(i)
+            lastInfo.write(i + "\n")
         await match1ID.add_reaction(emoji=person1Emoji)
         await match1ID.add_reaction(emoji=person2Emoji)
         await match2ID.add_reaction(emoji=person3Emoji)
@@ -784,6 +785,7 @@ async def on_message(message):
                     await message.channel.send(file=discord.File("Pictures\\" + person + '.jpg'))
                 else:
                     await message.channel.send("<@366709133195476992> : " + person + " does not exist.")
+    #Sends all the pictures of the people in the match. 
     if message.content.startswith("*lincoln"):
         person = "Abraham Lincoln"
         jpg = "Pictures\\" + person + ".jpg"
@@ -792,4 +794,5 @@ async def on_message(message):
             await message.channel.send(file=discord.File(jpg))
         else:
             await message.channel.send("Not found. '" + str(jpg) + "'.")
+    #Get a picture of Abraham Lincoln. Not sure why you want this, but it's good to have options.
 client.run(botToken)

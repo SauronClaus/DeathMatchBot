@@ -2,6 +2,7 @@ import discord
 from discord.utils import get
 import random
 import wikipedia
+import os.path
 
 client = discord.Client()
 discordEmojiList = ["1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer"]
@@ -133,7 +134,7 @@ def checkLinks(objectName):
         "Freddy Kruger's Glove": "Freddy Krueger",
         "their bear hands (replacing original hands)": "Bears",
         "Spider-Man's Right Webshooter": "Spider-Man",
-        "a candlestick": "Candlestick",
+        "a candlestick": "chamberstick",
         "an oversized Whac-A-Mole mallet": "Whac-A-Mole",
         "a mace": "Mace (weapon)", 
         "an immovable rod": "Magic item (Dungeons & Dragons)", 
@@ -164,9 +165,6 @@ def checkLinks(objectName):
     print("Correct: " + correct)
     return correct
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 
-def replacePictures(pictureNumber):
-    print("Not functional yet")
-#To be coded: Will replace the picture location with the correct picture in the array. 
 def createPersonEmbed(person):
     print(person)
     person = checkLinks(person)
@@ -178,8 +176,10 @@ def createPersonEmbed(person):
     print(summary[0])
     summaryPersonal = summaryShort(str(summary[0]))
     embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
-    if len(article.images) > 0:
-        embed.set_image(url=article.images[0])
+    personEmoji = getEmoji(person)
+    print(personEmoji.name)
+    personURL = str(personEmoji.url)
+    embed.set_image(url=personURL)
     embed.add_field(name="Link",value=article.url)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
     return embed
@@ -223,6 +223,36 @@ def summaryShort(summary):
         summaryPersonal = summary
     return summaryPersonal
 #Shortens the summary to 2040 characters if needed. 
+def findPersonPic(person):
+    if os.path.exists("Pictures\\" + person.strip() + ".png"):
+        return discord.File("Pictures\\" + person + '.png')
+    else:
+        if os.path.exists("Pictures\\" + person.strip() + ".jpg"):
+            return discord.File("Pictures\\" + person + '.jpg')
+#Finds the Picture of a person
+def findPeerIndex(personName):
+    peerFile = open("peer.txt", "r")
+    peerFull = peerFile.read()
+    peer = peerFull.split("\n")
+    peoplePeerIndex = []
+    personIndex = peer.index(personName)
+    return personIndex
+#Gets the peer file's index of the person's name
+def findEmojiID(personName):
+    peerFile = open("peer.txt", "r")
+    peerFull = peerFile.read()
+    peer = peerFull.split("\n")
+    peoplePeerIndex = []
+    personIndex = peer.index(personName)
+    emojiID = peer[personIndex + 1]
+    return emojiID
+#Return the emoji ID from the person's name
+def getEmoji(personName):
+    emojiID = findEmojiID(personName)
+    print(personName + "(" + str(emojiID) + ")")
+    emoji = checkForEmoji(emojiID)
+    return emoji
+#Combines checkForEmoji() and findEmojiID()
 @client.event
 async def on_ready(): 
     print('Logged in as {0.user}'.format(client))
@@ -530,21 +560,18 @@ async def on_message(message):
         match2ID = await pollChannel.send(match2)
         match3ID = await pollChannel.send(match3)
         await pollChannel.send("<@&613144506757283974>")
-        peerFile = open("peer.txt", "r")
         
-        peerFull = peerFile.read()
-        peer = peerFull.split("\n")
-        peoplePeerIndex = []
-        for person in people:
-            personIndex = peer.index(person)
-            peoplePeerIndex.append(personIndex)
+        personIDList = []
+        for i in people:
+            personID = findEmojiID(i)
+            personIDList.append(personID)
 
-        person1ID = peer[peoplePeerIndex[0] + 1]
-        person2ID = peer[peoplePeerIndex[1] + 1]
-        person3ID = peer[peoplePeerIndex[2] + 1]
-        person4ID = peer[peoplePeerIndex[3] + 1]
-        person5ID = peer[peoplePeerIndex[4] + 1]
-        person6ID = peer[peoplePeerIndex[5] + 1]
+        person1ID = personIDList[0]
+        person2ID = personIDList[1]
+        person3ID = personIDList[2]
+        person4ID = personIDList[3]
+        person5ID = personIDList[4]
+        person6ID = personIDList[5]
         
 
         person1Emoji = checkForEmoji(person1ID)
@@ -711,6 +738,58 @@ async def on_message(message):
         reepFile = open("reep VThe CA Discord.txt", "w")
         reepFile.write(reepFull)
         reepFile.close()
-    #Resets the bracket with the matches in "Log The CA Discord.txt"              
-
+    #Resets the bracket with the matches in "Log The CA Discord.txt"           
+    if message.content.startswith("*personInfo"):
+        messageArray = message.content.split("|")
+        weaponName = messageArray[1]
+        weaponName = checkLinks(weaponName)   
+        infoChannel = message.channel
+        for channel in message.guild.text_channels:
+            if channel.name == "historical-people-info":
+                infoChannel = channel
+        embed = createPersonEmbed(weaponName)
+        await infoChannel.send(embed=embed)
+    #Get info on a specific figure
+    if message.content.startswith("*weaponInfo"):
+        messageArray = message.content.split("|")
+        weaponName = messageArray[1]
+        weaponName = checkLinks(weaponName)   
+        infoChannel = message.channel
+        for channel in message.guild.text_channels:
+            if channel.name == "historical-weapons-info":
+                infoChannel = channel
+        embed = createWeaponEmbed(weaponName)
+        await infoChannel.send(embed=embed)
+    #Get info on a specific weapon
+    if message.content.startswith("*placeInfo"):
+        messageArray = message.content.split("|")
+        placeName = messageArray[1]
+        placeName = checkLinks(placeName)   
+        infoChannel = message.channel
+        for channel in message.guild.text_channels:
+            if channel.name == "historical-people-info":
+                infoChannel = channel
+        embed = createPersonEmbed(placeName)
+        await infoChannel.send(embed=embed)
+    #Get info on a specific place
+    if message.content.startswith("*peoplePics") and message.author.id == userID:
+        peopleFile = open("people.txt", "r")
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+        for person in peopleArray:
+            if os.path.exists("Pictures\\" + person.strip() + ".png"):
+                await message.channel.send(file=discord.File("Pictures\\" + person + '.png'))
+            else:
+                if os.path.exists("Pictures\\" + person.strip() + ".jpg"):
+                    await message.channel.send(file=discord.File("Pictures\\" + person + '.jpg'))
+                else:
+                    await message.channel.send("<@366709133195476992> : " + person + " does not exist.")
+    if message.content.startswith("*lincoln"):
+        person = "Abraham Lincoln"
+        jpg = "Pictures\\" + person + ".jpg"
+        png = person + ".png"
+        if os.path.exists(jpg):
+            await message.channel.send(file=discord.File(jpg))
+        else:
+            await message.channel.send("Not found. '" + str(jpg) + "'.")
 client.run(botToken)

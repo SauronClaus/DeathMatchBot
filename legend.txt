@@ -19,7 +19,9 @@ So here we go, in no particular order:
 - token.txt: GitHub can't actually see this, but it has the tokens for Scribe and ScribeTester.
 - legend.txt: This one, of course, outlines what each file does.
 - thing.py: The bot's main code.
+- sortPeer.py: Sorts peer.txt alphabetically. 
 - lastInfo.txt: Saves the relevent "objects" (people, places, things) for each ranked match-up on the CA Discord. Used if one of the wikipedia embeds breaks so I can resend the match's info easier.
 - Log The CA Discord Round 1.txt: The Log from the first match of death match. The format is something like this: person1;person2|winner|winnerScore-loserScore.
 - Log The CA Discord.txt: See above, but for the current round.
 - newPeople.txt: The most recent people added to the match.
+- people.txt: Only people, no emojis. 

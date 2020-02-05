@@ -16,7 +16,7 @@ testToken = tokens[0]
 userID = int(tokens[2])
 
 def newGenerateNum(fileNumber, peopleList):
-    rando = random.randint(1, fileNumber)
+    rando = random.randint(0, fileNumber)
     if rando in peopleList:
         print("Generation Failed: " + str(rando) + " already in list")
         for i in peopleList:
@@ -28,7 +28,7 @@ def newGenerateNum(fileNumber, peopleList):
         return peopleList
 #Generate the number and makes sure that the person isn't in the list already.
 def generateNumRep(fileNumber, listOfNumbers):
-    rando = random.randint(1, fileNumber)
+    rando = random.randint(0, fileNumber)
     listOfNumbers.append(rando)
     return listOfNumbers
 #Generates a number but its okay if its repeating something already in the list.
@@ -254,6 +254,39 @@ def getEmoji(personName):
     emoji = checkForEmoji(emojiID)
     return emoji
 #Combines checkForEmoji() and findEmojiID()
+def generatePerson():
+    peerFile = open("peer.txt", "r")
+    peerArray = peerFile.split("\n")
+    personFile = open("people.txt", "r")
+    personArray = personFile.split("\n")
+    fileNum = len(personArray)
+    randomNum = random.randint(0, fileNum)
+    person = personArray[randomNum]
+    indexOfID = peerArray.index(person) + 1
+    personInfo = [person, getEmoji(person), peer[indexOfID]]
+    return personInfo
+#Returns a list with the person, emoji object, and the person's emoji id. 
+def generateWeapon():
+    weaponTierFile = open("weaponTiers.txt", "r")
+    weaponTierFull = weaponTierFile.read()
+    weaponTierArray = weaponTierFull.split('\n')
+    weaponTier1Num = random.randint(1, len(weaponTierArray) - 1)
+    weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
+    weaponFile1 = open(weaponTier1Name, "r")
+    weaponSet1 = weaponFile1.read().split('\n')
+    randomNum = random.randint(0, len(weaponSet1))
+    weapon = weaponSet1[randomNum]
+    return weapon
+#Returns a random weapon
+def generatePlace():
+    places = "placesName.txt"
+    placesFile = open(places, "r")
+    placeArray = placesFile.read().split('\n')
+    randomNum = random.randint(0, len(placeArray))
+    place = placeArray[randomNum]
+    return place
+#Returns a random place
+
 @client.event
 async def on_ready(): 
     print('Logged in as {0.user}'.format(client))
@@ -795,4 +828,13 @@ async def on_message(message):
         else:
             await message.channel.send("Not found. '" + str(jpg) + "'.")
     #Get a picture of Abraham Lincoln. Not sure why you want this, but it's good to have options.
+    if message.content.startswith("*placeMe"):
+        place = generatePlace()
+        await message.channel.send(place)
+    if message.content.startswith("*weaponMe"):
+        weapon = generateWeapon()
+        await message.channel.send(place)
+    if message.content.startswith("*personMe"):
+        person = generatePerson()
+        await message.channel.send(person)
 client.run(botToken)

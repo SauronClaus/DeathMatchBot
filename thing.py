@@ -784,28 +784,6 @@ async def on_message(message):
         embed = createPersonEmbed(weaponName)
         await infoChannel.send(embed=embed)
     #Get info on a specific figure
-    if message.content.startswith("*weaponInfo"):
-        messageArray = message.content.split("|")
-        weaponName = messageArray[1]
-        weaponName = checkLinks(weaponName)   
-        infoChannel = message.channel
-        for channel in message.guild.text_channels:
-            if channel.name == "historical-weapons-info":
-                infoChannel = channel
-        embed = createWeaponEmbed(weaponName)
-        await infoChannel.send(embed=embed)
-    #Get info on a specific weapon
-    if message.content.startswith("*placeInfo"):
-        messageArray = message.content.split("|")
-        placeName = messageArray[1]
-        placeName = checkLinks(placeName)   
-        infoChannel = message.channel
-        for channel in message.guild.text_channels:
-            if channel.name == "historical-people-info":
-                infoChannel = channel
-        embed = createPersonEmbed(placeName)
-        await infoChannel.send(embed=embed)
-    #Get info on a specific place
     if message.content.startswith("*peoplePics") and message.author.id == userID:
         peopleFile = open("people.txt", "r")
         peopleFull = peopleFile.read()
@@ -831,10 +809,25 @@ async def on_message(message):
     if message.content.startswith("*placeMe"):
         place = generatePlace()
         await message.channel.send(place)
+    #Generate a place.
     if message.content.startswith("*weaponMe"):
         weapon = generateWeapon()
         await message.channel.send(place)
+    #Generate a weapon. 
     if message.content.startswith("*personMe"):
         person = generatePerson()
         await message.channel.send(person)
+    #Generate a person. 
+    if message.content.startswith("*help"):
+        me = message.guild.get_member(557273350414794772)
+        color = me.color
+        embed = discord.Embed(title="Help", description="", color=color)
+        embed.add_field(name="*newPeopleInfo", value="Get the scoop on the newest additions to Death Match Bot!", inline=False)
+        embed.add_field(name="*lincoln", value="Get a photo of the 16th president of the USA. There's only one photo for him though.", inline=False)
+        embed.add_field(name="*personInfo", value="Get info on a person. Use the command and then the person name followed with a '|'.", inline=False)        
+        embed.add_field(name="*placeMe", value="Get a random place!", inline=False)
+        embed.add_field(name="*weaponMe", value="Get a random weapon!", inline=False)
+        embed.add_field(name="*personMe", value="Get a random person!", inline=False)        
+        embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
+        await message.channel.send(embed=embed)
 client.run(botToken)

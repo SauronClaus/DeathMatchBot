@@ -256,14 +256,14 @@ def getEmoji(personName):
 #Combines checkForEmoji() and findEmojiID()
 def generatePerson():
     peerFile = open("peer.txt", "r")
-    peerArray = peerFile.split("\n")
+    peerArray = peerFile.read().split("\n")
     personFile = open("people.txt", "r")
-    personArray = personFile.split("\n")
+    personArray = personFile.read().split("\n")
     fileNum = len(personArray)
-    randomNum = random.randint(0, fileNum)
+    randomNum = random.randint(1, fileNum)
     person = personArray[randomNum]
     indexOfID = peerArray.index(person) + 1
-    personInfo = [person, getEmoji(person), peer[indexOfID]]
+    personInfo = [person, getEmoji(person), peerArray[indexOfID]]
     return personInfo
 #Returns a list with the person, emoji object, and the person's emoji id. 
 def generateWeapon():
@@ -274,7 +274,7 @@ def generateWeapon():
     weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
     weaponFile1 = open(weaponTier1Name, "r")
     weaponSet1 = weaponFile1.read().split('\n')
-    randomNum = random.randint(0, len(weaponSet1))
+    randomNum = random.randint(1, len(weaponSet1))
     weapon = weaponSet1[randomNum]
     return weapon
 #Returns a random weapon
@@ -282,7 +282,7 @@ def generatePlace():
     places = "placesName.txt"
     placesFile = open(places, "r")
     placeArray = placesFile.read().split('\n')
-    randomNum = random.randint(0, len(placeArray))
+    randomNum = random.randint(1, len(placeArray))
     place = placeArray[randomNum]
     return place
 #Returns a random place
@@ -295,173 +295,6 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content.startswith("*match") and message.author.id == userID:
-        peerFile = open("peer.txt", "r")
-        weaponTierFile = open("weaponTiers.txt", "r")
-        placesFile = open("places.txt", "r")
-        peerFull = peerFile.read()
-        peer = peerFull.split("\n")
-        peopleList = []
-        print("Peer: ")
-        for item in peer:
-            print(item)
-        fileNumber = len(peer) - 1
-
-        while (len(peopleList) < 6):
-            peopleList = generateNum(fileNumber, peopleList)
-            
-        person1 = peer[peopleList[0]]
-        person2 = peer[peopleList[1]]
-        person3 = peer[peopleList[2]]
-        person4 = peer[peopleList[3]]
-        person5 = peer[peopleList[4]]
-        person6 = peer[peopleList[5]]
-
-        print("People: ")
-        print (person1)
-        print (person2)
-        print (person3)
-        print (person4)
-        print (person5)
-        print (person6)
-
-        
-        weaponTierFull = weaponTierFile.read()
-        weaponTierArray = weaponTierFull.split('\n')
-
-        weaponTier1Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier2Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier3Num = random.randint(1, len(weaponTierArray) - 1)
-
-        weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
-        weaponTier2Name = weaponTierArray[weaponTier2Num] + ".txt"
-        weaponTier3Name = weaponTierArray[weaponTier3Num] + ".txt"
-
-        weaponFile1 = open(weaponTier1Name, "r")
-        weaponFile2 = open(weaponTier2Name, "r")
-        weaponFile3 = open(weaponTier3Name, "r")
-
-        weaponSet1 = weaponFile1.read().split('\n')
-        weaponSet2 = weaponFile2.read().split('\n')
-        weaponSet3 = weaponFile3.read().split('\n')
-
-        weaponArray1 = []
-        weaponArray2 = []
-        weaponArray3 = []
-
-
-        
-        while (len(weaponArray1) < 2):
-            weaponArray1 = generateNumRep(len(weaponSet1) - 1, weaponArray1)
-        while (len(weaponArray2) < 2):
-            weaponArray2 = generateNumRep(len(weaponSet2) - 1, weaponArray2)
-        while (len(weaponArray3) < 2):
-            weaponArray3 = generateNumRep(len(weaponSet3) - 1, weaponArray3)
-            
-
-
-        weapon1 = weaponSet1[weaponArray1[0]]
-        weapon2 = weaponSet1[weaponArray1[1]]
-        weapon3 = weaponSet2[weaponArray2[0]]
-        weapon4 = weaponSet2[weaponArray2[1]]
-        weapon5 = weaponSet3[weaponArray3[0]]
-        weapon6 = weaponSet3[weaponArray3[1]]
-
-        
-        print("Weapons: ")
-        print(weapon1)
-        print(weapon2)
-        print(weapon3)
-        print(weapon4)
-        print(weapon5)
-        print(weapon6)
-
-        places = placesFile.read().split('\n')
-        placeArray = []
-
-        while (len(placeArray) < 3):
-            placeArray = generateNumRep(len(places) - 1, placeArray)
-
-        place1Num = placeArray[0]    
-        place2Num = placeArray[1]
-        place3Num = placeArray[2]
-
-        place1 = places[place1Num]   
-        place2 = places[place2Num]       
-        place3 = places[place3Num]
-
-        print("Places: ")
-        print(place1)      
-        print(place2)       
-        print(place3)
-        
-        pollChannel = message.channel
-        peopleInfo = message.channel
-        placeInfo = message.channel
-        weaponsInfo = message.channel
-
-        for channel in message.guild.text_channels:
-            print(channel.name)
-            if channel.name == "historical-death-match-polls":
-                print("found #channel " + channel.name)
-                pollChannel = channel
-            if channel.name == "historical-people-info":
-                print("found #channel " + channel.name)
-                peopleInfo = channel
-            if channel.name == "historical-weapons-info":
-                print("found #channel " + channel.name)
-                weaponsInfo = channel
-            if channel.name == "historical-places-info":
-                print("found #channel " + channel.name)
-                placeInfo = channel
-        
-        print("Poll Channel: #" + pollChannel.name)
-        match1 = person1 + " with " + weapon1 + " vs " + person2 + " with " + weapon2 + " " + place1 + "!"
-        match2 = person3 + " with " + weapon3 + " vs " + person4 + " with " + weapon4 + " " + place2 + "!"
-        match3 = person5 + " with " + weapon5 + " vs " + person6 + " with " + weapon6 + " " + place3 + "!"
-        
-        match1ID = await pollChannel.send(match1)
-        match2ID = await pollChannel.send(match2)
-        match3ID = await pollChannel.send(match3)
-
-        person1ID = peer[peopleList[0] + 1]
-        person2ID = peer[peopleList[1] + 1]
-        person3ID = peer[peopleList[2] + 1]
-        person4ID = peer[peopleList[3] + 1]
-        person5ID = peer[peopleList[4] + 1]
-        person6ID = peer[peopleList[5] + 1]        
-
-        person1Emoji = checkForEmoji(person1ID)
-        person2Emoji = checkForEmoji(person2ID)
-        person3Emoji = checkForEmoji(person3ID)
-        person4Emoji = checkForEmoji(person4ID)
-        person5Emoji = checkForEmoji(person5ID)
-        person6Emoji = checkForEmoji(person6ID)
-
-        
-
-
-        await match1ID.add_reaction(emoji=person1Emoji)
-        await match1ID.add_reaction(emoji=person2Emoji)
-        await match2ID.add_reaction(emoji=person3Emoji)
-        await match2ID.add_reaction(emoji=person4Emoji)
-        await match3ID.add_reaction(emoji=person5Emoji) 
-        await match3ID.add_reaction(emoji=person6Emoji)
-
-        people = [person1, person2, person3, person4, person5, person6]
-        weapons = [weapon1, weapon2, weapon3, weapon4, weapon5, weapon6]
-        places = [place1, place2, place3]
-
-        for person in people:
-            embed = createPersonEmbed(person)
-            await peopleInfo.send(embed=embed)
-        for weapon in weapons:
-            embed = createWeaponEmbed(weapon)
-            await weaponsInfo.send(embed=embed)
-        for place in places:
-            embed = createPlaceEmbed(place)
-            await placeInfo.send(embed=embed)
-    #Unranked match. 
     if message.content.startswith("*ranked") and message.author.id == userID:
         peerFile = open("reep VThe CA Discord.txt", "r")
         weaponTierFile = open("weaponTiers.txt", "r")
@@ -808,15 +641,15 @@ async def on_message(message):
     #Get a picture of Abraham Lincoln. Not sure why you want this, but it's good to have options.
     if message.content.startswith("*placeMe"):
         place = generatePlace()
-        await message.channel.send(place)
+        await message.channel.send(place.strip() + "!")
     #Generate a place.
     if message.content.startswith("*weaponMe"):
         weapon = generateWeapon()
-        await message.channel.send(place)
+        await message.channel.send(weapon.strip() + "!")
     #Generate a weapon. 
     if message.content.startswith("*personMe"):
         person = generatePerson()
-        await message.channel.send(person)
+        await message.channel.send(person[0] + "!")
     #Generate a person. 
     if message.content.startswith("*help"):
         me = message.guild.get_member(557273350414794772)
@@ -827,7 +660,21 @@ async def on_message(message):
         embed.add_field(name="*personInfo", value="Get info on a person. Use the command and then the person name followed with a '|'.", inline=False)        
         embed.add_field(name="*placeMe", value="Get a random place!", inline=False)
         embed.add_field(name="*weaponMe", value="Get a random weapon!", inline=False)
-        embed.add_field(name="*personMe", value="Get a random person!", inline=False)        
+        embed.add_field(name="*personMe", value="Get a random person!", inline=False) 
+        embed.add_field(name="*match", value="Created your very own death match, with two combatants, each armed, and a location!", inline=False)
         embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
         await message.channel.send(embed=embed)
+    #The help command
+    if message.content.startswith("*match"):
+        person1 = generatePerson()
+        person2 = generatePerson()
+        weapon1 = generateWeapon()
+        weapon2 = generateWeapon()
+        place = generatePlace()
+        match = person1[0] + " with " + weapon1 + " vs " + person2[0] + " with " + weapon2 + " " + place
+        matchID = await message.channel.send(match)
+        await matchID.add_reaction(emoji=person1[1])
+        await matchID.add_reaction(emoji=person2[1])
+    #Single match for everyone to use.
+
 client.run(botToken)

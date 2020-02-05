@@ -606,17 +606,6 @@ async def on_message(message):
         reepFile.write(reepFull)
         reepFile.close()
     #Resets the bracket with the matches in "Log The CA Discord.txt"           
-    if message.content.startswith("*personInfo"):
-        messageArray = message.content.split("|")
-        weaponName = messageArray[1]
-        weaponName = checkLinks(weaponName)   
-        infoChannel = message.channel
-        for channel in message.guild.text_channels:
-            if channel.name == "historical-people-info":
-                infoChannel = channel
-        embed = createPersonEmbed(weaponName)
-        await infoChannel.send(embed=embed)
-    #Get info on a specific figure
     if message.content.startswith("*peoplePics") and message.author.id == userID:
         peopleFile = open("people.txt", "r")
         peopleFull = peopleFile.read()
@@ -657,7 +646,6 @@ async def on_message(message):
         embed = discord.Embed(title="Help", description="", color=color)
         embed.add_field(name="*newPeopleInfo", value="Get the scoop on the newest additions to Death Match Bot!", inline=False)
         embed.add_field(name="*lincoln", value="Get a photo of the 16th president of the USA. There's only one photo for him though.", inline=False)
-        embed.add_field(name="*personInfo", value="Get info on a person. Use the command and then the person name followed with a '|'.", inline=False)        
         embed.add_field(name="*placeMe", value="Get a random place!", inline=False)
         embed.add_field(name="*weaponMe", value="Get a random weapon!", inline=False)
         embed.add_field(name="*personMe", value="Get a random person!", inline=False) 

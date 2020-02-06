@@ -436,6 +436,7 @@ async def on_message(message):
         embed.add_field(name="*personMe", value="Get a random person!", inline=False) 
         embed.add_field(name="*match", value="Created your very own death match, with two combatants, each armed, and a location!", inline=False)
         embed.add_field(name="*react", value="React with people emojis! The syntax is '*react MESSAGEID CHANNELID EMOJIFIRSTNAME EMOJILASTNAME`.", inline=False)
+        embed.add_field(name="*purgeDeathMatch", value="Purge Death Match: Clear all commands used by Death Match bot in this channel!", inline=False)
         embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
         await message.channel.send(embed=embed)
     #The help command
@@ -468,4 +469,13 @@ async def on_message(message):
             print(name)
             await message.delete()
             await msg.add_reaction(emoji)
+    if message.content.startswith("*purgeDeathMatch"):
+        async for message in message.channel.history(limit=100):
+            messageArray = message.content.split(" ")
+            commandPossible = messageArray[0]
+            commandList = ["*ranked", "*sendLastMatchInfo", "*weapons", "*places", "*newPeopleInfo", "*SuleimanSpecial", "*SuperBowlSpecial", "*resetBracket", "*resetBracket", "*peoplePics", "*lincoln", "*placeMe", "*weaponMe", "*personMe", "*help", "*react"]
+            if commandPossible in commandList:
+                await message.delete()
+        await message.delete()
+
 client.run(botToken)

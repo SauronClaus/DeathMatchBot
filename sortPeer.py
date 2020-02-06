@@ -1,3 +1,4 @@
+#Alphabetizes peer.txt again and saves it under new.txt
 def findEmojiID(personName):
     peerFile = open("peer.txt", "r")
     peerFull = peerFile.read()

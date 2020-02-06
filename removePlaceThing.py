@@ -1,3 +1,5 @@
+#This file sorts up places.txt into a list without the "in"s and "on"s, and saves it in new.txt. 
+
 placeFile = open("places.txt", "r")
 placeArray = placeFile.read().split("\n")
 remakeString = ""

@@ -8,7 +8,6 @@ import os.path
 from generateNumbers import generateNumRep
 from generateNumbers import newGenerateNum
 
-from embeds import createPersonEmbed
 from embeds import createPlaceEmbed
 from embeds import createWeaponEmbed
 from embeds import summaryShort
@@ -49,12 +48,10 @@ def checkForEmoji(ID):
     print("ID: " + str(ID))
     for i in client.guilds:
             if i.name in discordEmojiList:
-                #print(i.name)
                 for emoji in i.emojis:
-                    #print ("Emoji: " + emoji.name + "/" + str(emoji.id))
                     if str(emoji.id) == ID:
                         return emoji
-    print("Failure")
+    print("Failure: Emoji Object Not Found")
 #Returns an emoji object with the passed in ID. 
 def findEmojiID(personName):
     peerFile = open("peer.txt", "r")
@@ -67,10 +64,26 @@ def findEmojiID(personName):
 #Return the emoji ID from the person's name
 def getEmoji(personName):
     emojiID = findEmojiID(personName)
-    print(personName + "(" + str(emojiID) + ")")
+    print(personName + " (" + str(emojiID) + ")")
     emoji = checkForEmoji(emojiID)
     return emoji
 #Combines checkForEmoji() and findEmojiID()
+def createPersonEmbed(person):
+    personEmoji = getEmoji(person)
+    personUnEdit = person
+    person = checkLinks(person)
+    article = wikipedia.page(person)
+    summary = article.summary.split('\n')
+    summaryPersonal = summaryShort(str(summary[0]))
+    embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
+    print("Emoji Name: " + personEmoji.name)
+    print(summary[0])
+    personURL = str(personEmoji.url)
+    embed.set_image(url=personURL)
+    embed.add_field(name="Link",value=article.url)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
+    return embed
+#Returns an embed object created from the inputed person.
 
 @client.event
 async def on_ready(): 
@@ -88,9 +101,6 @@ async def on_message(message):
         peer = peerFull.split(";")
         peerFile.close()
         peopleList = []
-        print("Peer: ")
-        for item in peer:
-            print(item)
         fileNumber = len(peer) - 1
 
         while (len(peopleList) < 6):
@@ -189,18 +199,17 @@ async def on_message(message):
         weaponsInfo = message.channel
 
         for channel in message.guild.text_channels:
-            print(channel.name)
             if channel.name == "historical-death-match-polls":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 pollChannel = channel
             if channel.name == "historical-people-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 peopleInfo = channel
             if channel.name == "historical-weapons-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 weaponsInfo = channel
             if channel.name == "historical-places-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 placeInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
@@ -237,12 +246,31 @@ async def on_message(message):
         stringsList = [person1, person2, person3, person4, person5, person6, weapon1, weapon2, weapon3, weapon4, weapon5, weapon6, place1, place2, place3]
         for i in stringsList:
             lastInfo.write(i + "\n")
+        
+        peer.remove(person1)
+        peer.remove(person2)
+        peer.remove(person3)
+        peer.remove(person4)
+        peer.remove(person5)
+        peer.remove(person6)
+
+        peerFile.close()
+        peerFile = open("reep VThe CA Discord.txt", "w")
+        peerString = ""
+        for name in peer:
+            peerString = peerString + name + ";"
+        stringPeer = peerString[:len(peerString)-1]
+        peerFile.write(stringPeer)
+        peerFile.close()
+
+
         await match1ID.add_reaction(emoji=person1Emoji)
         await match1ID.add_reaction(emoji=person2Emoji)
         await match2ID.add_reaction(emoji=person3Emoji)
         await match2ID.add_reaction(emoji=person4Emoji)
         await match3ID.add_reaction(emoji=person5Emoji) 
         await match3ID.add_reaction(emoji=person6Emoji)
+
         for person in people:
             embed = createPersonEmbed(person)
             await peopleInfo.send(embed=embed)
@@ -259,18 +287,17 @@ async def on_message(message):
         info = infoFull.split("\n")
 
         for channel in message.guild.text_channels:
-            print(channel.name)
             if channel.name == "historical-death-match-polls":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 pollChannel = channel
             if channel.name == "historical-people-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 peopleInfo = channel
             if channel.name == "historical-weapons-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 weaponsInfo = channel
             if channel.name == "historical-places-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 placeInfo = channel
         embed = createPersonEmbed(info[0])
         await peopleInfo.send(embed=embed)
@@ -309,7 +336,7 @@ async def on_message(message):
         weaponTierArray = weaponTierFull.split('\n')
         for channel in message.guild.text_channels:
             if channel.name == "historical-weapons-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 weaponsInfo = channel
         for weaponFileName in weaponTierArray:
             weaponFile = open(weaponFileName + ".txt", "r")
@@ -326,7 +353,7 @@ async def on_message(message):
         weaponsInfo = message.channel
         for channel in message.guild.text_channels:
             if channel.name == "historical-places-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 weaponsInfo = channel
         for v in range(len(weaponTierArray)):
             if v % 2 == 0:
@@ -340,7 +367,7 @@ async def on_message(message):
         weaponsInfo = message.channel
         for channel in message.guild.text_channels:
             if channel.name == "historical-people-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 weaponsInfo = channel
         for v in range(len(weaponTierArray)):
             if v % 2 == 0:
@@ -353,7 +380,7 @@ async def on_message(message):
         peopleInfo = message.channel
         for channel in message.guild.text_channels:
             if channel.name == "historical-people-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 peopleInfo = channel
         await peopleInfo.send(embed=embed)
         crowdMoji = checkForEmoji(str(670378517585723443))
@@ -367,7 +394,7 @@ async def on_message(message):
         peopleInfo = message.channel
         for channel in message.guild.text_channels:
             if channel.name == "historical-weapons-info":
-                print("found #channel " + channel.name)
+                print("found #" + channel.name)
                 peopleInfo = channel
         #await peopleInfo.send(embed=embed)
         crowdMoji = checkForEmoji(str(673616029485891612))
@@ -466,7 +493,7 @@ async def on_message(message):
                 name = name + item + " "
             name = name.strip()
             emoji = getEmoji(name)
-            print(name)
+            print("Person: " + name)
             await message.delete()
             await msg.add_reaction(emoji)
     if message.content.startswith("*purgeDeathMatch"):

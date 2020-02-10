@@ -4,29 +4,9 @@ from discord.utils import get
 import random
 import wikipedia
 import os.path
-
-def createPersonEmbed(person):
-    print(person)
-    personEmoji = getEmoji(person)
-    personUnEdit = person
-    person = checkLinks(person)
-    print("Person: " + person)
-    article = wikipedia.page(person)
-    #for i in article.images:
-        #await peopleInfo.send(str(i))
-    summary = article.summary.split('\n')
-    print(summary[0])
-    summaryPersonal = summaryShort(str(summary[0]))
-    embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
-    print(personEmoji.name)
-    personURL = str(personEmoji.url)
-    embed.set_image(url=personURL)
-    embed.add_field(name="Link",value=article.url)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
-    return embed
-#Returns an embed object created from the inputed person. 
+ 
 def createWeaponEmbed(weapon):
-    print(weapon)
+    print("Weapon: " + weapon)
     weapon = checkLinks(weapon)
     article = wikipedia.page(weapon)
     #for i in article.images:
@@ -41,7 +21,7 @@ def createWeaponEmbed(weapon):
     return embed
 #Returns an embed object from the weapon inputed. 
 def createPlaceEmbed(place):
-    print(place)
+    print("Place: " + place)
     place = checkLinks(place)
     article = wikipedia.page(place)
     #for i in article.images:
@@ -66,6 +46,7 @@ def summaryShort(summary):
 #Shortens the summary to 2040 characters if needed. 
 def checkLinks(objectName):
     largeDictionary = {
+        "petriefied Knuckles the Echidna": "Sonic the Hedgehog",
         "Harrison Ford": "Harrison J. Ford",
         "Drake": "Drake (musician)",
         "Elon Musk": "Elon Musk",
@@ -100,7 +81,7 @@ def checkLinks(objectName):
         "Rene Descartes": "René Descartes",
         "Stefan Karl Stefansson": "Stefán Karl Stefánsson",
         "Evariste Galois": "Évariste Galois",
-        "Tom Holland": "Tom Holland (actor)",
+        "Tom Holland": "Thomas Stanley Holland",
         "inside a moving train": "Train",
         "a yardstick": "Meterstick",
         "Iron Man's right glove": "Iron Man",
@@ -183,6 +164,6 @@ def checkLinks(objectName):
     correct = objectName
     if objectName in largeDictionary:
         correct = largeDictionary[objectName]
-    print("Correct: " + correct)
+    print("Correct Name: " + correct)
     return correct
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 

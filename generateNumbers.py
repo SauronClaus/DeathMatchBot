@@ -12,7 +12,6 @@ def newGenerateNum(fileNumber, peopleList):
            print("List: " + str(i))
         return peopleList
     else:
-        #print (str(rando) + " added to list!")
         peopleList.append(rando)
         return peopleList
 #Generate the number and makes sure that the person isn't in the list already.

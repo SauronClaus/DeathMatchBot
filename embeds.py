@@ -46,6 +46,7 @@ def summaryShort(summary):
 #Shortens the summary to 2040 characters if needed. 
 def checkLinks(objectName):
     largeDictionary = {
+        "Malcolm X": "Malcolm Little",
         "petriefied Knuckles the Echidna": "Sonic the Hedgehog",
         "Harrison Ford": "Harrison J. Ford",
         "Drake": "Drake (musician)",

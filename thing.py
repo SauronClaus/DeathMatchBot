@@ -496,6 +496,7 @@ async def on_message(message):
             print("Person: " + name)
             await message.delete()
             await msg.add_reaction(emoji)
+    #React with an emoji; uses the syntax `*react [messageID] [channelID] [Emoji Name]`
     if message.content.startswith("*purgeDeathMatch"):
         async for message in message.channel.history(limit=100):
             messageArray = message.content.split(" ")
@@ -504,5 +505,6 @@ async def on_message(message):
             if commandPossible in commandList:
                 await message.delete()
         await message.delete()
+    #Purges all death match commands.      
 
 client.run(botToken)

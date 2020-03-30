@@ -1,4 +1,4 @@
-Abraham Lincoln
+﻿Abraham Lincoln
 558662670245560330
 Adam Sandler
 558662671336079371
@@ -139,7 +139,7 @@ Daniel Bernoulli
 David Hilbert
 559078832527638560
 Diego Rivera
-559078832192094208	
+559078832192094208
 Donald Trump
 559078831584051216
 Douglas MacArthur

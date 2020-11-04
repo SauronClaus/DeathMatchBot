@@ -1,8 +1,0 @@
-Jackie Robinson;John Cena|John Cena|5-3
-Mikhail Gorbachev;Harrison Ford|Harrison Ford|5-3
-Florence Nightingale;Arnold Schwarzenegger|Arnold Schwarzenegger|7-1
-Jackie Chan;Niels Bohr|Jackie Chan|8-0
-Sun Tzu;David Snively|Sun Tzu|4-2
-Hugh Jackman;Antonio Stradivari|Hugh Jackman|8-0
-Dwight Eisenhower;George Swinnerton Parker|Dwight Eisenhower|4-2
-Edward Norton;Clovis I|Clovis I|6-0

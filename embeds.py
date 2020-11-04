@@ -161,10 +161,11 @@ def checkLinks(objectName):
         "the toy knife from Undertale": "knife",
         "Sun Tzu": "Sun Wu",
         "John Cena": "John Felix Anthony Cena",
+        "Avicii": "Tim Bergling"
     }
     correct = objectName
     if objectName in largeDictionary:
         correct = largeDictionary[objectName]
-    print("Correct Name: " + correct)
+    print("Correct Name: \"" + correct + "\"")
     return correct
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 

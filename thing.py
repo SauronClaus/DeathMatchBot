@@ -16,9 +16,12 @@ from embeds import checkLinks
 from generation import generatePerson
 from generation import generateWeapon
 from generation import generatePlace
+from generation import generatePlaceAdverb
 
 
-client = discord.Client()
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
+
 discordEmojiList = ["1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer"]
 #List of servers with the Discord Emojis. 
 
@@ -47,10 +50,10 @@ def findPeerIndex(personName):
 def checkForEmoji(ID):
     print("ID: " + str(ID))
     for i in client.guilds:
-            if i.name in discordEmojiList:
-                for emoji in i.emojis:
-                    if str(emoji.id) == ID:
-                        return emoji
+        if i.name in discordEmojiList:
+            for emoji in i.emojis:
+                if str(emoji.id) == ID:
+                    return emoji
     print("Failure: Emoji Object Not Found")
 #Returns an emoji object with the passed in ID. 
 def findEmojiID(personName):
@@ -72,6 +75,7 @@ def createPersonEmbed(person):
     personEmoji = getEmoji(person)
     personUnEdit = person
     person = checkLinks(person)
+    print("Test: \"" + person + "\"")
     article = wikipedia.page(person)
     summary = article.summary.split('\n')
     summaryPersonal = summaryShort(str(summary[0]))
@@ -94,24 +98,25 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith("*ranked") and message.author.id == userID:
-        peerFile = open("reep VThe CA Discord.txt", "r")
+        peopleFile = open("CABracket.txt", "r")
         weaponTierFile = open("weaponTiers.txt", "r")
         placesFile = open("places.txt", "r")
-        peerFull = peerFile.read()
-        peer = peerFull.split(";")
-        peerFile.close()
+
+        peopleFull = peopleFile.read()
+        people = peopleFull.split("\n")
+        peopleFile.close()
         peopleList = []
-        fileNumber = len(peer) - 1
+        fileNumber = len(people) - 1
 
         while (len(peopleList) < 6):
             peopleList = newGenerateNum(fileNumber, peopleList)
   
-        person1 = peer[peopleList[0]]
-        person2 = peer[peopleList[1]]
-        person3 = peer[peopleList[2]]
-        person4 = peer[peopleList[3]]
-        person5 = peer[peopleList[4]]
-        person6 = peer[peopleList[5]]
+        person1 = people[peopleList[0]]
+        person2 = people[peopleList[1]]
+        person3 = people[peopleList[2]]
+        person4 = people[peopleList[3]]
+        person5 = people[peopleList[4]]
+        person6 = people[peopleList[5]]
 
         print("People: ")
         print (person1)
@@ -247,21 +252,21 @@ async def on_message(message):
         for i in stringsList:
             lastInfo.write(i + "\n")
         
-        peer.remove(person1)
-        peer.remove(person2)
-        peer.remove(person3)
-        peer.remove(person4)
-        peer.remove(person5)
-        peer.remove(person6)
+        people.remove(person1)
+        people.remove(person2)
+        people.remove(person3)
+        people.remove(person4)
+        people.remove(person5)
+        people.remove(person6)
 
-        peerFile.close()
-        peerFile = open("reep VThe CA Discord.txt", "w")
+        peopleFile.close()
+        peopleFile = open("CABracket.txt", "w")
         peerString = ""
-        for name in peer:
-            peerString = peerString + name + ";"
-        stringPeer = peerString[:len(peerString)-1]
-        peerFile.write(stringPeer)
-        peerFile.close()
+        for name in people:
+            peerString = peerString + "\n" + name
+        stringPeer = peerString[1:len(peerString)]
+        peopleFile.write(stringPeer)
+        peopleFile.close()
 
 
         await match1ID.add_reaction(emoji=person1Emoji)
@@ -330,36 +335,6 @@ async def on_message(message):
         embed = createPlaceEmbed(info[14])
         await placeInfo.send(embed=embed)
     #Send the info in the file "lastInfo.txt"
-    if message.content.startswith("*weapons") and message.author.id == userID:
-        weaponTierFile = open("itemsAndLinks.txt", "r")
-        weaponTierFull = weaponTierFile.read()
-        weaponTierArray = weaponTierFull.split('\n')
-        for channel in message.guild.text_channels:
-            if channel.name == "historical-weapons-info":
-                print("found #" + channel.name)
-                weaponsInfo = channel
-        for weaponFileName in weaponTierArray:
-            weaponFile = open(weaponFileName + ".txt", "r")
-            weaponSet = weaponFile.read().split('\n')
-            for v in range(len(weaponSet)):
-                if v % 2 == 0:
-                    embed = createWeaponEmbed(weaponSet[v])
-                    await weaponsInfo.send(embed=embed)
-    #Send the info on all weapons. 
-    if message.content.startswith("*places") and message.author.id == userID:
-        weaponTierFile = open("places.txt", "r")
-        weaponTierFull = weaponTierFile.read()
-        weaponTierArray = weaponTierFull.split('\n')
-        weaponsInfo = message.channel
-        for channel in message.guild.text_channels:
-            if channel.name == "historical-places-info":
-                print("found #" + channel.name)
-                weaponsInfo = channel
-        for v in range(len(weaponTierArray)):
-            if v % 2 == 0:
-                embed = createPlaceEmbed(weaponTierArray[v])
-                await weaponsInfo.send(embed=embed)
-    #Send the info on all places. 
     if message.content.startswith("*newPeopleInfo"):
         weaponTierFile = open("newPeople.txt", "r")
         weaponTierFull = weaponTierFile.read()
@@ -441,7 +416,7 @@ async def on_message(message):
             await message.channel.send("Not found. '" + str(jpg) + "'.")
     #Get a picture of Abraham Lincoln. Not sure why you want this, but it's good to have options.
     if message.content.startswith("*placeMe"):
-        place = generatePlace()
+        place = generatePlaceAdverb()
         await message.channel.send(place.strip() + "!")
     #Generate a place.
     if message.content.startswith("*weaponMe"):
@@ -453,7 +428,7 @@ async def on_message(message):
         await message.channel.send(person[0] + "!")
     #Generate a person. 
     if message.content.startswith("*help"):
-        me = message.guild.get_member(557273350414794772)
+        me = message.guild.get_member(int(557273350414794772))
         color = me.color
         embed = discord.Embed(title="Help", description="", color=color)
         embed.add_field(name="*newPeopleInfo", value="Get the scoop on the newest additions to Death Match Bot!", inline=False)
@@ -464,7 +439,7 @@ async def on_message(message):
         embed.add_field(name="*match", value="Created your very own death match, with two combatants, each armed, and a location!", inline=False)
         embed.add_field(name="*react", value="React with people emojis! The syntax is '*react MESSAGEID CHANNELID EMOJIFIRSTNAME EMOJILASTNAME`.", inline=False)
         embed.add_field(name="*purgeDeathMatch", value="Purge Death Match: Clear all commands used by Death Match bot in this channel!", inline=False)
-        embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
+        embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
         await message.channel.send(embed=embed)
     #The help command
     if message.content.startswith("*match"):
@@ -473,10 +448,12 @@ async def on_message(message):
         weapon1 = generateWeapon()
         weapon2 = generateWeapon()
         place = generatePlace()
-        match = person1[0] + " with " + weapon1 + " vs " + person2[0] + " with " + weapon2 + " " + place
+        match = person1[0] + " with " + weapon1 + " vs " + person2[0] + " with " + weapon2 + " " + place + "!"
         matchID = await message.channel.send(match)
-        await matchID.add_reaction(emoji=person1[1])
-        await matchID.add_reaction(emoji=person2[1])
+        emoji1 = getEmoji(person1[0])
+        emoji2 = getEmoji(person2[0])
+        await matchID.add_reaction(emoji1)
+        await matchID.add_reaction(emoji2)
     #Single match for everyone to use.
     if message.content.startswith("*react"):
         messageArray = message.content.split(" ")
@@ -506,5 +483,61 @@ async def on_message(message):
                 await message.delete()
         await message.delete()
     #Purges all death match commands.      
+    if message.content.startswith("*beginCADiscordMatches") and message.author.id == userID:
+        peopleFile = open("peer.txt", "r")
+        peopleFull = peopleFile.read()
+        people = peopleFull.split("\n")
+        CABracket = []
+        for i in range(len(people)):
+            if i % 2 == 0 and (people[i] != "A" and people[i] != "B"):
+                CABracket.append(people[i])
+                print(str(people[i]) + " added.")
+        CABracketFile = open("CABracket.txt", "w")
+        for person in CABracket:
+            CABracketFile.write("\n" + person)
+        CABracketFile.close()
+        peopleFile.close()
+    #Resets the bracket for the CA Discord. 
+    if message.content.startswith("*everyInfoEver") and message.author.id == userID:
+        for channel in message.guild.text_channels:
+            if channel.name == "historical-people-info":
+                print("found #" + channel.name)
+                peopleInfo = channel
+            if channel.name == "historical-weapons-info":
+                print("found #" + channel.name)
+                weaponsInfo = channel
+            if channel.name == "historical-places-info":
+                print("found #" + channel.name)
+                placeInfo = channel
 
-client.run(botToken)
+        peopleFile = open("peer.txt", "r")
+        peopleFull = peopleFile.read()
+        people = peopleFull.split("\n")
+        peopleFile.close()
+        for i in range(len(people)):
+            if i % 2 == 0 and (people[i] != "A" and people[i] != "B"):
+                embed = createPersonEmbed(people[i])
+                await peopleInfo.send(embed=embed)
+
+
+        weaponTiersFiles = open("weaponTiers.txt", "r")
+        weaponTiersFull = weaponTiersFiles.read()
+        weaponTiers = weaponTiersFull.split("\n")
+        weaponTiersFiles.close()
+        for weaponTier in weaponTiers:
+            weaponFile = open(weaponTier + ".txt", "r")
+            weaponFull = weaponFile.read()
+            weapons = weaponFull.split("\n")
+            weaponFile.close()
+            for weapon in weapons: 
+                embed = createWeaponEmbed(weapon)
+                await weaponInfo.send(embed=embed)
+
+        placesFile = open("places.txt", "r")
+        placesFull = placesFile.read()
+        places = placesFull.split("\n")
+        for place in places:
+            embed = createPlaceEmbed(place)
+            await placeInfo.send(embed=embed)
+    #sends all of the info for all people, weapons, and places. 
+client.run(testToken)

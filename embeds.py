@@ -9,8 +9,6 @@ def createWeaponEmbed(weapon):
     print("Weapon: " + weapon)
     weapon = checkLinks(weapon)
     article = wikipedia.page(weapon)
-    #for i in article.images:
-        #await weaponInfo.send(str(i))
     summary = article.summary.split('\n')
     summaryPersonal = summaryShort(str(summary[0]))
     embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
@@ -133,7 +131,7 @@ def checkLinks(objectName):
         "San's Gaster Blaster": "Undertale",
         "a morningstar": "Morning star (weapon)",
         "a warhammer": "War hammer",
-        "Steve's Diamond Sword": "Minecraft",
+        "Steve's Diamond Sword": "Min4craft",
         "Freddy Kruger's Glove": "Freddy Krueger",
         "their bear hands (replacing original hands)": "Bears",
         "Spider-Man's Right Webshooter": "Spider-Man",
@@ -147,7 +145,7 @@ def checkLinks(objectName):
         "their bare hands (duplicated)": "Hand",
         "Brandon Uri's guitar": "Guitar",
         "a Fortnite Pickaxe": "Fornite",
-        "a pike (fish)": "Northern Pike",
+        "a pike (fish)": "Northern Pike Fish",
         "a Delorean's Car Door": "DeLorean Motor Company",
         "Napoleon Bonaparte's Petrified Body": "Napoleon",
         "a large non-personal Laser Cutter": "Laser cutting",
@@ -155,13 +153,18 @@ def checkLinks(objectName):
         "a dead raven": "Raven",
         'the book "Give Me Liberty" by Eric Forner': "Eric Foner",
         "a very large rock": "Rock (geology)",
-        "a shrunken Costco": "Costco",
+        "a shrunken Costco": "Costco Corporation",
         "Elon Musk": "Elon Reeve Musk",
         "a pair of nunchucks": "Nunchaku",
         "the toy knife from Undertale": "knife",
         "Sun Tzu": "Sun Wu",
         "John Cena": "John Felix Anthony Cena",
-        "Avicii": "Tim Bergling"
+        "ï»¿Abraham Lincoln": "Abraham Lincoln",
+        "Kaiser Wilhelm": "Kaiser Wilhelm II",
+        "a greataxe": "Battle axe",
+        "a Yellow-Finned Tuna": "Yellow Finned Tuna Fish", 
+        "their bear hands (severed)": "Grizzlie Bears", 
+        "Mr. RM's Glasses": "eyeglasses"
     }
     correct = objectName
     if objectName in largeDictionary:

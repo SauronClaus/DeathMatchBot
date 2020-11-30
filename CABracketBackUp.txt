@@ -7,15 +7,18 @@ Alan Rickman
 Alan Turing
 Albert Einstein
 Alec Guinness
+Alexander Graham Bell
 Alexander the Great
 Alfred Hitchcock
 Amelia Earhart
 Andrew Jackson
 Anne Frank
+Antonio Stradivari
 Archduke Franz Ferdinand
 Archimedes
 Aristotle
 Arnold Schwarzenegger
+Attila the Hun
 August Ferdinand Mobius
 Augustin-Louis Cauchy
 Avicii
@@ -79,6 +82,7 @@ Edward Teller
 Edwin Hubble
 Elon Musk
 Elton John
+Elvis Presley
 Emily Dickinson
 Emperor Norton
 Enrico Fermi
@@ -89,12 +93,14 @@ Euclid
 Ewan McGregor
 Edward the Black Prince
 Evariste Galois
+Franklin D. Roosevelt
 Ferdinand Magellan
 Fidel Castro
 Florence Nightingale
 Fluffy (Gabriel Iglesias)
 Frank Sinatra
 Freddie Mercury
+Frederick Douglass
 Frida Kahlo
 Fred Rogers
 Gabe Newell
@@ -133,6 +139,7 @@ Hugh Jackman
 Ivan the Terrible
 Jon Bon Jovi
 J. Robert Oppenheimer
+Jack Black
 Jack Kirby
 Jack Nicholson
 Jack White
@@ -199,6 +206,7 @@ Marcus Licinius Crassus
 Marie Antoinette
 Mark Antony
 Masahiro Sakurai
+Markiplier
 Marie Curie
 Mark Ruffalo
 Markus Persson
@@ -248,7 +256,9 @@ Paul Revere
 Plato
 Phil Swift
 Pierre de Fermat
+Prince Charles
 Ptolemy
+Pythagoras
 Prince (musician)
 PewDiePie
 Pat Sajak

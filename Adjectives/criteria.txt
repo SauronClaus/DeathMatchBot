@@ -1,0 +1,7 @@
+Tier 1: Significant Physical Advantage
+Tier 2: Significant Mental Advantage/Atribute
+Tier 3: Minor Advantage
+Tier 4: No Advantage (Neutral)
+Tier 5: Minor Impairement
+Tier 6: Significant Mental Impairment
+Tier 7: Significant Physical Impairment

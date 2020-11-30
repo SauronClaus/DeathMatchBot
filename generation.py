@@ -26,6 +26,54 @@ def generateWeapon():
     weapon = weaponSet1[randomNum]
     return weapon
 #Returns a random weapon
+def generateWeaponPair():
+    weaponTierFile = open("weaponTiers.txt", "r")
+    weaponTierFull = weaponTierFile.read()
+    weaponTierArray = weaponTierFull.split('\n')
+    weaponTier1Num = random.randint(0, len(weaponTierArray)-1)
+    weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
+    weaponFile1 = open(weaponTier1Name, "r")
+    weaponSet1 = weaponFile1.read().split('\n')
+    randomNum1 = random.randint(0, len(weaponSet1)-1)
+    randomNum2 = random.randint(0, len(weaponSet1)-1)
+    if randomNum1 == randomNum2:
+        while randomNum1 == randomNum2:
+            randomNum2 = random.randint(0, len(weaponSet1)-1)
+    weapon1 = weaponSet1[randomNum1]
+    weapon2 = weaponSet1[randomNum2]
+    weaponPair = [weapon1, weapon2]
+    return weaponPair
+#Generates a tiered pair of weapons. 
+def generateAdjective():
+    adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt", "r")
+    adjectiveTierFull = adjectiveTierFile.read()
+    adjectiveTierArray = adjectiveTierFull.split('\n')
+    adjectiveTier1Num = random.randint(0, len(adjectiveTierArray)-1)
+    adjectiveTier1Name = adjectiveTierArray[adjectiveTier1Num] + ".txt"
+    adjectiveFile1 = open("Adjectives\\" + adjectiveTier1Name, "r")
+    adjectiveSet1 = adjectiveFile1.read().split('\n')
+    randomNum = random.randint(0, len(adjectiveSet1)-1)
+    adjective = adjectiveSet1[randomNum]
+    return adjective
+#Returns a random Adjective
+def generateAdjectivePair():
+    adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt", "r")
+    adjectiveTierFull = adjectiveTierFile.read()
+    adjectiveTierArray = adjectiveTierFull.split('\n')
+    adjectiveTier1Num = random.randint(0, len(adjectiveTierArray)-1)
+    adjectiveTier1Name = adjectiveTierArray[adjectiveTier1Num] + ".txt"
+    adjectiveFile1 = open("Adjectives\\" + adjectiveTier1Name, "r")
+    adjectiveSet1 = adjectiveFile1.read().split('\n')
+    randomNum1 = random.randint(0, len(adjectiveSet1)-1)
+    randomNum2 = random.randint(0, len(adjectiveSet1)-1)
+    if randomNum1 == randomNum2:
+        while randomNum1 == randomNum2:
+            randomNum2 = random.randint(0, len(adjectiveSet1)-1)
+    adjective1 = adjectiveSet1[randomNum1]
+    adjective2 = adjectiveSet1[randomNum2]
+    adjectivePair = [adjective1, adjective2]
+    return adjectivePair
+#Returns a random tiered Adjective pair
 def generatePlace():
     places = "places.txt"
     placesFile = open(places, "r")

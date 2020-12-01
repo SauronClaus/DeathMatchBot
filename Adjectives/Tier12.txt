@@ -1,0 +1,9 @@
+rectangular
+spherical
+hemispheric
+conical
+flattened
+rotated
+extruded
+globular
+flattened

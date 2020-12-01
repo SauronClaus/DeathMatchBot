@@ -1,102 +1,177 @@
-Adjectives that did not make the cut:
-- dead
-- contrived
-- indeterminate
-- interminable
-- insurmountable
-- vascular
-- carrotic
-- carteroid
-- residual
-- hewn
-- necrotizing
-- fatal
-- plummeting
-- vindictive
-- indicative
-- diving
-- driving
-- godlike
-- downloaded
-- uploaded
-- loaded
-- loading
-- off-loaded
-- expressed
-- microscopic
-- modular
-- omniscient
-- module
-- extracurricular
-- intramural
-- adverbial
-- wrapper
-- spackled
-- ballistic
-- canned
-- ravagenly good looking
-- transcontinental
-- correct horse battery stapled
-- interstitial
-- interspatial
-- left
-- nocebo
-- contractual
-- inorganic 
-- hydrogen
-- pedaled
-- pedestrian
-- wheeled
-- kneeled
-- peeled
-- keeled
-- fielded
-- welded
-- smelted
-- pelted
-- dead
-- fried
-- deep-fried
-- pan-fried
-- wok-fried
-- untried
-- boiled
-- flayed
-- french-cut
-- 2-plied
-- not a drill
-- only a drill
-- drillable
-- spiralized
-- sequential
-- noodled
-- filed
-- weakly owned
-- garbage collected
-- whiling
-- whaling
-- bailing
-- tailing
-- jailing
-- ailing
-- slinging
-- winging
-- flinging
-- thinking
-- sinking
-- pinging
-- ponging
-- ballistic
-- mass-murdering
-- serial
-- cereal
-- girded
-- girdled
-- manual
-- aesthetic
-- acetic
-- ascetic
-- aerobic
-- anaerobic
-- allegorical
-- ocular
+PMYMHMMFSWGADed- obscure. 
+domiciled- nonsensical
+hemispheric- nonsensical
+rectified- nonsensical
+domiciled- nonsensical
+subcutaneous- nonsensical
+edificial- nonsensical
+imparted- nonsensical
+parted- nonsensical
+present perfect- nonsensical
+future conditional- nonsensical
+preterite- nonsensical
+past progressive- nonsensical
+subjunctive- nonsensical
+ensconced- nonsensical
+Eaten- nonsensical
+Disemboweled- no instant death
+Depreciated- nonsensical
+structured- nonsensical
+strictured- nonsensical
+defenestrated- action
+decapitated- no instant death
+monke- nonsensical
+microscopic- too difficult for victory
+horse-riding- no verbs
+oscillating- nonsensical
+annealed- nonsensical
+congenital- nonsensical
+detrimental- nonsensical
+monumental- nonsensical
+heterogenous- nonsensical
+homogeneous- nonsensical
+supine- no verbs
+partial- nonsensical
+pathological- nonsensical
+homological- nonsensical
+dead'n- nonsensical
+imperative- nonsensical
+variable- nonsensical
+adjectival- nonsensical
+integral- nonsensical
+derivative- nonsensical
+associative- nonsensical
+commutative- nonsensical 
+vector'd- nonsensical
+quartic- nonsensical
+transcendental- nonsensical
+quadratic- nonsensical
+diagonalizable- nonsensical 
+baroque- nonsensical
+public- nonsensical
+accessible- nonsensical
+fair- nonsensical
+surgical- nonsensical
+comatose- too difficult to achieve victory
+Sleeping- no verbs
+powdered- no instant death
+affine- nonsensical
+crafting- no verbs
+mining- no verbs
+unkillable- too powerful
+indomitable- too powerful
+poggerific- repetitive
+immune- too powerful
+immortal- too powerful
+unbinding- nonsensical
+ecofem- nonsensical
+ecological- nonsensical
+additive- nonsensical
+soulbound- unclear
+flaying- no verbs
+replaying- no verbs
+ocular- nonsensical
+allegorical- nonsensical
+aesthetic- nonsensical
+cereal- nonsensical
+serial- nonsensical
+sinking- no verbs
+thinking- no verbs
+flinging- no verbs
+ponging- no verbs
+pinging- no verbs
+winging- no verbs
+slinging- no verbs
+jailing- no verbs
+depreciating- no verbs
+garbage collected- nonsensical
+weakly owned- nonsensical
+filed- nonsensical
+noodled- nonsensical
+sequential- nonsensical
+spiralized- nonsensical
+only a drill- nonsensical
+french-cut- no instant death
+flayed- nonsensical
+untried- nonsensical
+sesquiannual- nonsensical
+bicentennial- nonsensical
+perennial- nonsensical
+pelted- no verbs
+wielded- nonsensical
+fielded- nonsensical
+keeled- nonsensical
+kneeled- no verbs
+wheeled- nonsensical
+pedaled- nonsensical
+extrahuman- nonsensical
+genetically modified- too vague
+hydrogen- nonsensical
+tailing- no verbs
+bailing- no verbs
+whaling- no verbs
+whiling- no verbs
+metaethical- nonsensical
+contractual- nonsensical
+commanded- nonsensical
+consequentialist- nonsensical
+nocebo- nonsensical
+deontologic- nonsensical
+placebo- nonsensical
+interstitial- nonsensical
+interspatial- nonsensical
+spork-like- nonsensical
+transcontinental- nonsensical 
+correct horse battery stapled- nonsensical
+ballistic- nonsensical
+veal- nonsensical
+bespoken- nonsensical
+heckler- nonsensical
+flapper- nonsensical
+wrapper- nonsensical
+rapatory- nonsensical
+adverbial- nonsensical
+intramural- nonsensical
+impotent- nonsensical
+semipotent- nonsensical
+uniscient- nonsensical
+module- nonsensical
+intersecting- nonsensical
+repressed- nonsensical
+off-loaded- nonsensical
+loading- no verbs
+loaded- nonsensical
+expressed- nonsensical
+uploaded- nonsensical
+downloaded- nonsensical
+concomitant- nonsensical
+deleterious- nonsensical
+gnostic atheistic- nonsensical
+driving- no verbs
+diving- no verbs
+indicative- nonsensical
+vindictive- nonsensical
+plummeting- no verbs
+fatal- nonsensical
+necrotizing- nonsensical
+carteroid- nonsensical
+carrotic- nonsensical
+residual- nonsensical
+necropheliac- just... no. 
+Vascular- nonsensical
+insurmountable- too powerful
+verbose- nonsensical
+interminable- nonsensical
+indeterminate- nonsensical
+obtuse- nonsensical
+reductionist- nonsensical
+zephyr- nonsensical
+mendacious- nonsensical
+lustig- nonsensical
+substantial- nonsensical
+shard-ic- nonsensical
+fiduciary- nonsensical
+contrived- nonsensical
+dead- no instant death
+godlike- too powerful
+indomitable- too powerful

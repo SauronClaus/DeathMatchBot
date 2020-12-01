@@ -1,7 +1,15 @@
-Tier 1: Significant Physical Advantage
-Tier 2: Significant Mental Advantage/Atribute
-Tier 3: Minor Advantage
-Tier 4: No Advantage (Neutral)
-Tier 5: Minor Impairement
-Tier 6: Significant Mental Impairment
-Tier 7: Significant Physical Impairment
+Tier 1: Powerful Adjectives (superhuman abilities) >Odds: 3/35; 8.57%<
+Tier 2: Distinct abilities with low to moderate advantage >Odds: 4/35; 11.43%<
+Tier 3: Possible advantages/possible advantageous beliefs >Odds: 4/35; 11.43%<
+Tier 4: Neutral to no advantages >Odds: 8/35; 22.86%<
+Tier 5: Possible disadvantages/possible disadvantageous beliefs >Odds: 4/35; 11.43%<
+Tier 6: Distinct disadvantages >Odds: 3/35; 8.57%<
+Tier 7: Powerful disadvantages >Odds: 1/35; 2.86%<
+Tier 8: Packaged in some way >Odds: 1/35; 2.86%<
+Tier 9: Created artificially >Odds: 1/35; 2.86%<
+Tier 10: Glowing >Odds: 1/35; 2.86%<
+Tier 11: Extraplanar and extraterrestial origins >Odds: 1/35; 2.86%<
+Tier 12: Reshaped >Odds: 1/35; 2.86%<
+Tier 13: Various materials >Odds: 1/35; 2.86%<
+Tier 14: Slow deaths >Odds: 1/35; 2.86%<
+Tier 15: Various Adjectives for lazy.  >Odds: 1/35; 2.86%<

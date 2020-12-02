@@ -27,7 +27,6 @@ Barack Obama
 Ben Stiller
 Benedict Cumberbatch
 Benjamin Franklin
-Bernhard Riemann
 Bernie Sanders
 Bill Gates
 Bill Murray
@@ -71,7 +70,6 @@ Douglas MacArthur
 Drake
 Dwayne Johnson
 Dwight Eisenhower
-Daniel Radcliffe
 Dr. Seuss
 Edward Norton
 Edgar Allan Poe
@@ -91,7 +89,6 @@ Edward the Black Prince
 Evariste Galois
 Ferdinand Magellan
 Fidel Castro
-Florence Nightingale
 Fluffy (Gabriel Iglesias)
 Frank Sinatra
 Freddie Mercury
@@ -110,7 +107,6 @@ Gordon Ramsay
 Gottfried Wilhelm Leibniz
 Grant Gustin
 Grant Kirkhope
-George Swinnerton Parker
 George R. R. Martin
 Grigori Rasputin
 Hammurabi
@@ -177,7 +173,6 @@ Kublai Khan
 Keanu Reeves
 King Louis XVI of France
 Karl Marx
-King Tutankhamun
 Kaiser Wilhelm
 Ludwig van Beethoven
 Leon Trotsky
@@ -196,11 +191,9 @@ Marco Polo
 Malala Yousafzai
 Mao Zedong
 Marcus Licinius Crassus
-Marie Antoinette
 Mark Antony
 Masahiro Sakurai
 Marie Curie
-Mark Ruffalo
 Markus Persson
 Mark Hamill
 Martin Luther
@@ -218,7 +211,6 @@ Mother Teresa
 Michael Jackson
 Martin Luther King Jr.
 Mark Zuckerberg
-Michael Malloy
 Michael Bay
 Manfred von Richthofen
 Matt Parker
@@ -273,7 +265,6 @@ Sir Isaac Newton
 Sun Tzu
 Satyendra Nath Bose
 Saladin
-Stan Lee
 Stephen Douglas
 Stephen Hawking
 Sir Walter Raleigh
@@ -304,7 +295,6 @@ Ulysses S. Grant
 Vasco da Gama
 Vincent Van Gogh
 Voltaire
-Vladimir Putin
 Valentin Glushko
 Vladimir Lenin
 Vlad the Impaler
@@ -324,3 +314,34 @@ Thom Tillis
 Joe Biden
 Chris Wallace
 Cal Cunningham
+John Adams
+Thomas Jefferson
+James Madison
+James Monroe
+Martin Van Buren
+William Henry Harrison
+John Tyler
+James K. Polk
+Zachary Taylor
+Millard Fillmore
+Franklin Pierce
+James Buchanan
+Andrew Johnson
+Rutherford B. Hayes
+James A. Garfield
+Chester A. Arthur
+Grover Cleveland
+Benjamin Harrison
+William McKinley
+Warren G. Harding
+Calvin Coolidge
+Herbert Hoover
+Harry S. Truman
+Lyndon B. Johnson
+Richard Nixon
+Gerald Ford
+Ronald Reagan
+George H. W. Bush
+Bill Clinton
+George W. Bush
+Eddie Hall

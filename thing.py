@@ -755,6 +755,132 @@ async def on_message(message):
                 suggestionFile.close()
                 await message.channel.send("Added " + person + " to suggestions.")
     #Command to suggest new people!  
+    if message.content.startswith("*checkEmoji") and message.author.id == userID:
+        for emoji in message.guild.emojis:
+            await message.channel.send(emoji.name + "; " + str(emoji.id))
+    #Sends all the emiinojis with ids in the server. Useful for large emoji batches. 
+    if (message.content.startswith("*presidentialBracket") or message.content.startswith("*customMatch")) and message.author.id == userID:
+        peopleMatch1 = ["George H. W. Bush", "Donald Trump"]
+        peopleMatch2 = ["James Monroe", "James Buchanan"]
+        peopleMatch3 = ["William McKinley", "William Henry Harrison"]
+
+        print("People:")
+        print(peopleMatch1[0])
+        print(peopleMatch1[1])
+        print(peopleMatch2[0])
+        print(peopleMatch2[1])
+        print(peopleMatch3[0])
+        print(peopleMatch3[1])
+
+        peopleCurrent = [peopleMatch1[0], peopleMatch1[1], peopleMatch2[0], peopleMatch2[1], peopleMatch3[0], peopleMatch3[1]]
         
+        weaponsMatch1 = generateWeaponPair()
+        weaponsMatch2 = generateWeaponPair()
+        weaponsMatch3 = generateWeaponPair()
+
+        print("Weapons:")
+        print(weaponsMatch1[0])
+        print(weaponsMatch1[1])
+        print(weaponsMatch2[0])
+        print(weaponsMatch2[1])
+        print(weaponsMatch3[0])
+        print(weaponsMatch3[1])
+
+        adjectivesMatch1 = generateAdjectivePair()
+        adjectivesMatch2 = generateAdjectivePair()
+        adjectivesMatch3 = generateAdjectivePair()
+
+        print("Adjectives:")
+        print(adjectivesMatch1[0])
+        print(adjectivesMatch1[1])
+        print(adjectivesMatch2[0])
+        print(adjectivesMatch2[1])
+        print(adjectivesMatch3[0])
+        print(adjectivesMatch3[1])
+
+        placeMatch1 = generatePlace()
+        placeMatch2 = generatePlace()
+        placeMatch3 = generatePlace()
+
+        print("Places:")
+        print(placeMatch1)
+        print(placeMatch2)
+        print(placeMatch3)
+
+        pollChannel = message.channel
+        peopleInfo = message.channel
+        placeInfo = message.channel
+        weaponsInfo = message.channel
+
+        for channel in message.guild.text_channels:
+            if channel.name == "historical-death-match-polls":
+                print("found #" + channel.name)
+                pollChannel = channel
+            if channel.name == "historical-people-info":
+                print("found #" + channel.name)
+                peopleInfo = channel
+            if channel.name == "historical-weapons-info":
+                print("found #" + channel.name)
+                weaponsInfo = channel
+            if channel.name == "historical-places-info":
+                print("found #" + channel.name)
+                placeInfo = channel
+        
+        print("Poll Channel: #" + pollChannel.name)
+        match1 = adjectivesMatch1[0].capitalize() + " " + peopleMatch1[0] + " with " + weaponsMatch1[0] + " vs " + adjectivesMatch1[1].capitalize() + " " + peopleMatch1[1] + " with " + weaponsMatch1[1] + " " + placeMatch1 + "!"
+        match2 = adjectivesMatch2[0].capitalize() + " " + peopleMatch2[0] + " with " + weaponsMatch2[0] + " vs " + adjectivesMatch3[1].capitalize() + " " + peopleMatch2[1] + " with " + weaponsMatch2[1] + " " + placeMatch2 + "!"
+        match3 = adjectivesMatch3[0].capitalize() + " " + peopleMatch3[0] + " with " + weaponsMatch3[0] + " vs " + adjectivesMatch3[1].capitalize() + " " + peopleMatch3[1] + " with " + weaponsMatch3[1] + " " + placeMatch3 + "!"
+        
+        match1ID = await pollChannel.send(match1)
+        match2ID = await pollChannel.send(match2)
+        match3ID = await pollChannel.send(match3)
+
+        if message.channel.guild.id == 620758472451162142:
+            await pollChannel.send("<@&783468826997555261>")
+        else:
+            if message.channel.guild.id == 620964009247768586:
+                await pollChannel.send("Notified!")
+
+        personIDList = []
+        for i in peopleCurrent:
+            personID = findEmojiID(i)
+            personIDList.append(personID)
+
+        person1ID = personIDList[0]
+        person2ID = personIDList[1]
+        person3ID = personIDList[2]
+        person4ID = personIDList[3]
+        person5ID = personIDList[4]
+        person6ID = personIDList[5]        
+
+        person1Emoji = checkForEmoji(person1ID)
+        person2Emoji = checkForEmoji(person2ID)
+        person3Emoji = checkForEmoji(person3ID)
+        person4Emoji = checkForEmoji(person4ID)
+        person5Emoji = checkForEmoji(person5ID)
+        person6Emoji = checkForEmoji(person6ID)
+
+
+        lastInfo = open("lastInfo.txt", "w")
+        stringsList = [peopleMatch1[0], peopleMatch1[1], peopleMatch2[0], peopleMatch2[1], peopleMatch3[0], peopleMatch3[1], weaponsMatch1[0], weaponsMatch1[1], weaponsMatch2[0], weaponsMatch2[1], weaponsMatch3[0], weaponsMatch3[1], placeMatch1, placeMatch2, placeMatch3, adjectivesMatch1[0], adjectivesMatch1[1], adjectivesMatch2[0], adjectivesMatch2[1], adjectivesMatch3[0], adjectivesMatch3[1]]
+        for i in stringsList:
+            lastInfo.write(i + "\n")
+
+        await match1ID.add_reaction(emoji=person1Emoji)
+        await match1ID.add_reaction(emoji=person2Emoji)
+        await match2ID.add_reaction(emoji=person3Emoji)
+        await match2ID.add_reaction(emoji=person4Emoji)
+        await match3ID.add_reaction(emoji=person5Emoji) 
+        await match3ID.add_reaction(emoji=person6Emoji)
+
+        for person in peopleCurrent:
+            embed = createPersonEmbed(person)
+            await peopleInfo.send(embed=embed)
+    #Quick set up for custom matches and brackets- in this case, the presidential bracket. Just throw the people into the code manually and you're good to go!
+
+
+
+
+
 
 client.run(botToken)

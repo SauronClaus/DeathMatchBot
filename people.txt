@@ -330,3 +330,38 @@ Yuri Kondratyuk
 Yang Hui
 Yuri Gagarin
 Zach Callison
+Thom Tillis
+Joe Biden
+Chris Wallace
+Cal Cunningham
+John Adams
+Thomas Jefferson
+James Madison
+James Monroe
+Martin Van Buren
+William Henry Harrison
+John Tyler
+James K. Polk
+Zachary Taylor
+Millard Fillmore
+Franklin Pierce
+James Buchanan
+Andrew Johnson
+Rutherford B. Hayes
+James A. Garfield
+Chester A. Arthur
+Grover Cleveland
+Benjamin Harrison
+William McKinley
+Warren G. Harding
+Calvin Coolidge
+Herbert Hoover
+Harry S. Truman
+Lyndon B. Johnson
+Richard Nixon
+Gerald Ford
+Ronald Reagan
+George H. W. Bush
+Bill Clinton
+George W. Bush
+Eddie Hall

@@ -754,15 +754,16 @@ async def on_message(message):
                 suggestionFile.write("\n" + person)
                 suggestionFile.close()
                 await message.channel.send("Added " + person + " to suggestions.")
+        await message.delete()
     #Command to suggest new people!  
     if message.content.startswith("*checkEmoji") and message.author.id == userID:
         for emoji in message.guild.emojis:
             await message.channel.send(emoji.name + "; " + str(emoji.id))
-    #Sends all the emiinojis with ids in the server. Useful for large emoji batches. 
+    #Sends all the emojis with ids in the server. Useful for large emoji batches. 
     if (message.content.startswith("*presidentialBracket") or message.content.startswith("*customMatch")) and message.author.id == userID:
-        peopleMatch1 = ["George H. W. Bush", "Donald Trump"]
-        peopleMatch2 = ["James Monroe", "James Buchanan"]
-        peopleMatch3 = ["William McKinley", "William Henry Harrison"]
+        peopleMatch1 = ["John Quincy Adams", "Herbert Hoover"]
+        peopleMatch2 = ["Grover Cleveland", "John Tyler"]
+        peopleMatch3 = ["Henry Ford", "Millard Fillmore"]
 
         print("People:")
         print(peopleMatch1[0])
@@ -828,7 +829,7 @@ async def on_message(message):
         
         print("Poll Channel: #" + pollChannel.name)
         match1 = adjectivesMatch1[0].capitalize() + " " + peopleMatch1[0] + " with " + weaponsMatch1[0] + " vs " + adjectivesMatch1[1].capitalize() + " " + peopleMatch1[1] + " with " + weaponsMatch1[1] + " " + placeMatch1 + "!"
-        match2 = adjectivesMatch2[0].capitalize() + " " + peopleMatch2[0] + " with " + weaponsMatch2[0] + " vs " + adjectivesMatch3[1].capitalize() + " " + peopleMatch2[1] + " with " + weaponsMatch2[1] + " " + placeMatch2 + "!"
+        match2 = adjectivesMatch2[0].capitalize() + " " + peopleMatch2[0] + " with " + weaponsMatch2[0] + " vs " + adjectivesMatch2[1].capitalize() + " " + peopleMatch2[1] + " with " + weaponsMatch2[1] + " " + placeMatch2 + "!"
         match3 = adjectivesMatch3[0].capitalize() + " " + peopleMatch3[0] + " with " + weaponsMatch3[0] + " vs " + adjectivesMatch3[1].capitalize() + " " + peopleMatch3[1] + " with " + weaponsMatch3[1] + " " + placeMatch3 + "!"
         
         match1ID = await pollChannel.send(match1)
@@ -877,10 +878,5 @@ async def on_message(message):
             embed = createPersonEmbed(person)
             await peopleInfo.send(embed=embed)
     #Quick set up for custom matches and brackets- in this case, the presidential bracket. Just throw the people into the code manually and you're good to go!
-
-
-
-
-
 
 client.run(botToken)

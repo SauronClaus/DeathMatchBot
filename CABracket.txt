@@ -1,20 +1,14 @@
 Abraham Lincoln
-Adam Sandler
 Adolf Hitler
-Al Capone
 Al Gore
-Alan Rickman
 Alan Turing
 Albert Einstein
 Alec Guinness
-Alexander the Great
 Alfred Hitchcock
 Amelia Earhart
 Andrew Jackson
 Anne Frank
 Archduke Franz Ferdinand
-Archimedes
-Aristotle
 Arnold Schwarzenegger
 August Ferdinand Mobius
 Augustin-Louis Cauchy
@@ -34,20 +28,17 @@ Bill Nye
 Bill Watterson
 Bob Ross
 Bon Scott
-Brad Pitt
 Brutus
 Buster Keaton
 Buzz Aldrin
 Benito Mussolini
 Carl Gauss
-Carl Sagan
 Carrie Fisher
 Catherine the Great
 Charlemagne
 Charles Babbage
 Charles Cornwallis
 Charles Darwin
-Charles de Gaulle
 Charles Dickens
 Charles V of Austria
 Charles X of Sweden
@@ -57,13 +48,10 @@ Chris Pratt
 Christian Goldbach
 Christina Aguilera
 Christopher Columbus
-Chuck Norris
 Cleopatra
 Clovis I
 C. S. Lewis
-Carl Gustav Jacob Jacobi
 Daniel Bernoulli
-David Hilbert
 Diego Rivera
 Donald Trump
 Douglas MacArthur
@@ -76,7 +64,6 @@ Edgar Allan Poe
 Edward Teller
 Edwin Hubble
 Elon Musk
-Elton John
 Emily Dickinson
 Emperor Norton
 Enrico Fermi
@@ -99,13 +86,9 @@ Galileo Galilei
 Gaston Julia
 Genghis Khan
 George Clooney
-George Lucas
 Georg Cantor
 George S. Patton
-George Washington
-Gordon Ramsay
 Gottfried Wilhelm Leibniz
-Grant Gustin
 Grant Kirkhope
 George R. R. Martin
 Grigori Rasputin
@@ -116,13 +99,10 @@ Harrison Ford
 Harry Styles
 Hayden Christensen
 Heinrich Hertz
-Henri Poincare
 Henrietta Lacks
 Henry Ford
 HG Wells
-Hideki Tojo
 Hillary Clinton
-Homer (The Odyssey)
 Horatio Gates
 H. P. Lovecraft
 Hugh Jackman
@@ -133,14 +113,11 @@ Jack Kirby
 Jack Nicholson
 Jack White
 Jackie Chan
-Jackie Robinson
 Jackson Pollock
 Jacob Sartorius
-James Earl Jones
 James Garfield
 John Rockefeller
 Justin Bieber
-Jim Webb
 John Cena
 John Napier
 Jeb Bush
@@ -151,7 +128,6 @@ J. R. R. Tolkien
 John Jay
 Josh Brolin
 Joan of Arc
-Joseph-Louis Lagrange
 John Calvin
 Jimmy Carter
 Josef Mengele
@@ -159,14 +135,10 @@ Jerry Seinfeld
 John Quincy Adams
 Johannes Kepler
 J. K. Rowling
-Jeff Kaplan
 Joseph Fourier
 Joseph Stalin
-Jimmy Fallon
-Jesse Owens
 John Lennon
 John F. Kennedy
-Jim Henson
 John D. Rockefeller
 Jack Churchill
 Kublai Khan
@@ -174,15 +146,10 @@ Keanu Reeves
 King Louis XVI of France
 Karl Marx
 Kaiser Wilhelm
-Ludwig van Beethoven
 Leon Trotsky
-Liu Hui
 Leonhard Euler
-Louis XIII of France
 Lyn Evans
-Lin-Manuel Miranda
 Leonardo da Vinci
-Lance Armstrong
 Leonardo DiCaprio
 Leiv Eiriksson
 Mahatma Gandhi
@@ -190,8 +157,6 @@ Malcolm X
 Marco Polo
 Malala Yousafzai
 Mao Zedong
-Marcus Licinius Crassus
-Mark Antony
 Masahiro Sakurai
 Marie Curie
 Markus Persson
@@ -202,25 +167,18 @@ Mark Twain
 Mikhail Gorbachev
 Max Planck
 Mary Magdalene
-Matthew McConaughey
 Meg White
 Morgan Freeman
-Marilyn Monroe
 Montezuma
-Mother Teresa
 Michael Jackson
 Martin Luther King Jr.
 Mark Zuckerberg
-Michael Bay
 Manfred von Richthofen
-Matt Parker
 Miyamoto Musashi
 Napoleon III
 Nelson Mandela
-Neil deGrasse Tyson
 Neil Armstrong
 Nicolaus Copernicus
-Napoleon Bonaparte
 Ninja (streamer)
 Niels Bohr
 Nicolas Cage
@@ -232,14 +190,11 @@ Orville Wright
 Oscar Wilde
 Owen Wilson
 Oprah Winfrey
-Paul McCartney
 Pablo Picasso
 Paul Dirac
 Peter Higgs
-Paul Revere
 Plato
 Phil Swift
-Pierre de Fermat
 Ptolemy
 Prince (musician)
 PewDiePie
@@ -247,7 +202,6 @@ Pat Sajak
 Queen Victoria
 Quentin Tarantino
 Qin Shi Huang
-Ryan Reynolds
 Robert E. Lee
 Rick Astley
 Raphael
@@ -260,15 +214,12 @@ Ramesses II
 Randall Munroe
 Sir Francis Drake
 Shalom H. Schwartz
-Srinivasa Ramanujan
 Sir Isaac Newton
 Sun Tzu
-Satyendra Nath Bose
 Saladin
 Stephen Douglas
 Stephen Hawking
 Sir Walter Raleigh
-Steve Jobs
 Sir Robert Wadlow
 Stephanie Kwolek
 Stephen King
@@ -278,18 +229,14 @@ Stanislaw Ulam
 Stefan Karl Stefansson
 Stonewall Jackson
 Steven Spielberg
-Simo Hayha
 Suleiman the Magnificent
 Shaka Zulu
 Thales of Miletus
-Thomas Edison
 Tom Hanks
 Toby Fox
-Trajan
 Tom Cruise
 Theodore Roosevelt
 Tom Holland
-Tobey Maguire
 Usain Bolt
 Ulysses S. Grant
 Vasco da Gama
@@ -298,7 +245,6 @@ Voltaire
 Valentin Glushko
 Vladimir Lenin
 Vlad the Impaler
-Will Ferrell
 Winston Duke
 William Shakespeare
 Winston Churchill
@@ -314,17 +260,14 @@ Thom Tillis
 Joe Biden
 Chris Wallace
 Cal Cunningham
-John Adams
 Thomas Jefferson
 James Madison
 James Monroe
 Martin Van Buren
 William Henry Harrison
-John Tyler
 James K. Polk
 Zachary Taylor
 Millard Fillmore
-Franklin Pierce
 James Buchanan
 Andrew Johnson
 Rutherford B. Hayes
@@ -335,13 +278,15 @@ Benjamin Harrison
 William McKinley
 Warren G. Harding
 Calvin Coolidge
-Herbert Hoover
 Harry S. Truman
 Lyndon B. Johnson
 Richard Nixon
 Gerald Ford
 Ronald Reagan
-George H. W. Bush
 Bill Clinton
 George W. Bush
-Eddie Hall
+Bruce Lee
+Michael Jordan
+Muhammad Ali
+Sigmund Freud
+Mike Tyson

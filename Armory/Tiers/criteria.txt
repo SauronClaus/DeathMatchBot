@@ -1,0 +1,8 @@
+Bludgeoning- mostly bludgeoning weapons (such as canes and things). <Odds: 5/26, 19.23%>
+Melee Blockable- Weapons blockable by cover or other weapons in the tier! <Odds: 3/26, 11.54%>
+Melee Unblockable- Weapons pretty much only blockable by the other weapons in this tier (such as lightsabers and magic swords). <Odds: 3/26, 11.54%>
+Pretty Much Useless- The useless ones that maybe hands are more effective (such as babies and severed hands). <Odds: 1/26, 3.85%>
+Ranged and Melee- Weapons that are effective at a distance and up close (such as Mjolnir and Stormbreaker). <Odds: 1/26, 3.85%>
+Ranged Lasers and Guns- Lasers and guns (such as shotguns and DT-29 heavy blaster pistols). <Odds: 5/26, 19.23%>
+Ranged Projectiles- Ranged weapons that shoot deadly things (such as longbows and tasers). <Odds: 3/26, 11.54%>
+Sharp- Sharp weapons and other medieval weaponry (such as machetes and claymores). <Odds: 5/26, 19.23%>

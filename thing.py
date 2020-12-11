@@ -95,7 +95,7 @@ def createPersonEmbed(person):
     personURL = str(personEmoji.url)
     embed.set_image(url=personURL)
     embed.add_field(name="Link",value=article.url)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
     return embed
 #Returns an embed object created from the inputed person.
 
@@ -110,7 +110,7 @@ async def on_message(message):
         return
     if message.content.startswith("*ranked") and message.author.id == userID:
         peopleFile = open("CABracket.txt", "r")
-        weaponTierFile = open("weaponTiers.txt", "r")
+        weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
         placesFile = open("places.txt", "r")
         adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt")
 
@@ -166,11 +166,11 @@ async def on_message(message):
         weaponTier5Name = weaponTierArray[weaponTier5Num] + ".txt"
 
 
-        weaponFile1 = open(weaponTier1Name, "r")
-        weaponFile2 = open(weaponTier2Name, "r")
-        weaponFile3 = open(weaponTier3Name, "r")
-        weaponFile4 = open(weaponTier4Name, "r")
-        weaponFile5 = open(weaponTier5Name, "r")
+        weaponFile1 = open("Armory\\Tiers\\" + weaponTier1Name, "r")
+        weaponFile2 = open("Armory\\Tiers\\" + weaponTier2Name, "r")
+        weaponFile3 = open("Armory\\Tiers\\" + weaponTier3Name, "r")
+        weaponFile4 = open("Armory\\Tiers\\" + weaponTier4Name, "r")
+        weaponFile5 = open("Armory\\Tiers\\" + weaponTier5Name, "r")
 
 
         weaponSet1 = weaponFile1.read().split('\n')
@@ -444,9 +444,9 @@ async def on_message(message):
         for person in peopleCurrent:
             embed = createPersonEmbed(person)
             await peopleInfo.send(embed=embed)
-        #for weapon in weapons:
-            #embed = createWeaponEmbed(weapon)
-            #await weaponsInfo.send(embed=embed)
+        for weapon in weapons:
+            embed = createWeaponEmbed(weapon)
+            await weaponsInfo.send(embed=embed)
         #for place in places:
             #embed = createPlaceEmbed(place)
             #await placeInfo.send(embed=embed)
@@ -455,7 +455,6 @@ async def on_message(message):
         infoWrite = open("lastInfo.txt", "r")
         infoFull = infoWrite.read()
         info = infoFull.split("\n")
-
         for channel in message.guild.text_channels:
             if channel.name == "historical-death-match-polls":
                 print("found #" + channel.name)
@@ -481,18 +480,26 @@ async def on_message(message):
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[5])
         await peopleInfo.send(embed=embed)
-        #embed = createWeaponEmbed(info[6])
-        #await weaponsInfo.send(embed=embed)
-        #embed = createWeaponEmbed(info[7])
-        #await weaponsInfo.send(embed=embed)
-        #embed = createWeaponEmbed(info[8])
-        #await weaponsInfo.send(embed=embed)
-        #embed = createWeaponEmbed(info[9])
-        #await weaponsInfo.send(embed=embed)
-        #embed = createWeaponEmbed(info[10])
-        #await weaponsInfo.send(embed=embed)
-        #embed = createWeaponEmbed(info[11])
-        #await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[6])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[7])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[8])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[9])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[10])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[11])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[12])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[13])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[14])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[15])
+        await weaponsInfo.send(embed=embed)
         #embed = createPlaceEmbed(info[12])
         #await placeInfo.send(embed=embed)
         #embed = createPlaceEmbed(info[13])
@@ -616,7 +623,7 @@ async def on_message(message):
         embed.add_field(name="*adjectiveMe", value="Get a random adjective!", inline=False) 
         embed.add_field(name="*match", value="Created your very own death match, with two combatants, each armed and adjectived, and a location!", inline=False)
         embed.add_field(name="*react", value="React with people emojis! The syntax is '*react MESSAGEID CHANNELID EMOJIFIRSTNAME EMOJILASTNAME`.", inline=False)
-        embed.add_field(name="*register", value="Suggest new people for the bot!", inline=False)
+        embed.add_field(name="*register/*suggest", value="Suggest new people for the bot!", inline=False)
         embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
         await message.channel.send(embed=embed)
     #The help command
@@ -728,7 +735,7 @@ async def on_message(message):
             embed = createPlaceEmbed(place)
             await placeInfo.send(embed=embed)
     #sends all of the info for all people, weapons, and places. 
-    if message.content.startswith("*register"):
+    if message.content.startswith("*register") or message.content.startswith("*suggest"):
         peopleFile = open("peer.txt", "r")
         peopleFull = peopleFile.read()
         peopleID = peopleFull.split("\n")
@@ -878,5 +885,19 @@ async def on_message(message):
             embed = createPersonEmbed(person)
             await peopleInfo.send(embed=embed)
     #Quick set up for custom matches and brackets- in this case, the presidential bracket. Just throw the people into the code manually and you're good to go!
-
+    if message.content.startswith("*WIT") and message.author.id == userID:
+        print("WeaponInfoTesting!")
+        weaponTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+        weaponTiersFull = weaponTiersFile.read()
+        weaponTiersArray = weaponTiersFull.split("\n")
+        for tier in weaponTiersArray:
+            print("Tier: " + tier)
+            tierFile = open("Armory\\Tiers\\" + tier + ".txt", "r")
+            tierFull = tierFile.read()
+            tierArray = tierFull.split("\n")
+            for weapon in tierArray:
+                print(weapon)
+                weaponEmbed = createWeaponEmbed(weapon)
+                await message.channel.send(embed=weaponEmbed)
+    #Sends all the info for each and every weapon.
 client.run(botToken)

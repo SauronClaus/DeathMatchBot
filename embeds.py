@@ -7,15 +7,28 @@ import os.path
  
 def createWeaponEmbed(weapon):
     print("Weapon: " + weapon)
-    weapon = checkLinks(weapon)
-    article = wikipedia.page(weapon)
-    summary = article.summary.split('\n')
-    summaryPersonal = summaryShort(str(summary[0]))
-    embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
-    if len(article.images) > 0:
-        embed.set_image(url=article.images[0])
-    embed.add_field(name="Link",value=article.url)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
+    weaponTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+    weaponTiersFull = weaponTiersFile.read()
+    weaponTiersArray = weaponTiersFull.split("\n")
+    tierName = ""
+    for tier in weaponTiersArray:
+        tierFile = open("Armory\\Tiers\\" + tier + ".txt", "r")
+        tierFull = tierFile.read()
+        tierArray = tierFull.split("\n")
+        for weaponSearch in tierArray:
+            if weaponSearch == weapon:
+                print("Found weapon! " + tier)
+                tierName = tier
+    contentFile = open("Armory\\Descriptions\\" + tierName + "\\" + weapon + ".txt", "r")
+    contentFull = contentFile.read()
+    content = contentFull.split("\n")
+    imagePath = content[1]
+    embed = discord.Embed(title=weapon, description=content[0], color=0xFF9900)
+    embed.add_field(name="Tier",value=tierName, inline=False)
+    if len(content) >= 3:
+        embed.add_field(name="Link", value=content[2], inline=False)
+    embed.set_image(url=imagePath)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
     return embed
 #Returns an embed object from the weapon inputed. 
 def createPlaceEmbed(place):

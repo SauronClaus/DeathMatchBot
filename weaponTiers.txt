@@ -1,8 +1,0 @@
-bludgeoning
-RangedAndMelee
-sharp
-Tier1
-Tier2Ranged
-Tier3Ranged
-Tier4Melee
-Tier5Melee

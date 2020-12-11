@@ -1,0 +1,21 @@
+a longsword
+a Claymore
+a greataxe
+a hatchet
+a machete
+a glaive
+a morningstar
+a halberd
+a pike (weapon)
+a bayonet
+a warhammer
+Steve's Diamond Sword
+a chainsaw
+Freddy Krueger's Glove
+5x shurikens
+their bear hands (replacing original hands)
+Joyeuse (not magical)
+a falchion
+a katana
+a guandao
+a dagger

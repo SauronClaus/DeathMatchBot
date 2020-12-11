@@ -15,11 +15,11 @@ def generatePerson():
     return personInfo
 #Returns a list with the person, emoji object, and the person's emoji id. 
 def generateWeapon():
-    weaponTierFile = open("weaponTiers.txt", "r")
+    weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
     weaponTierFull = weaponTierFile.read()
     weaponTierArray = weaponTierFull.split('\n')
     weaponTier1Num = random.randint(0, len(weaponTierArray)-1)
-    weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
+    weaponTier1Name = "Armory\\Tiers\\" + weaponTierArray[weaponTier1Num] + ".txt"
     weaponFile1 = open(weaponTier1Name, "r")
     weaponSet1 = weaponFile1.read().split('\n')
     randomNum = random.randint(0, len(weaponSet1)-1)
@@ -27,11 +27,11 @@ def generateWeapon():
     return weapon
 #Returns a random weapon
 def generateWeaponPair():
-    weaponTierFile = open("weaponTiers.txt", "r")
+    weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
     weaponTierFull = weaponTierFile.read()
     weaponTierArray = weaponTierFull.split('\n')
     weaponTier1Num = random.randint(0, len(weaponTierArray)-1)
-    weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
+    weaponTier1Name = "Armory\\Tiers\\" + weaponTierArray[weaponTier1Num] + ".txt"
     weaponFile1 = open(weaponTier1Name, "r")
     weaponSet1 = weaponFile1.read().split('\n')
     randomNum1 = random.randint(0, len(weaponSet1)-1)

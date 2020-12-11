@@ -10,7 +10,6 @@ Andrew Jackson
 Anne Frank
 Archduke Franz Ferdinand
 Arnold Schwarzenegger
-August Ferdinand Mobius
 Augustin-Louis Cauchy
 Avicii
 Alexander Hamilton
@@ -25,19 +24,15 @@ Bernie Sanders
 Bill Gates
 Bill Murray
 Bill Nye
-Bill Watterson
 Bob Ross
 Bon Scott
-Brutus
 Buster Keaton
 Buzz Aldrin
-Benito Mussolini
 Carl Gauss
 Carrie Fisher
 Catherine the Great
 Charlemagne
 Charles Babbage
-Charles Cornwallis
 Charles Darwin
 Charles Dickens
 Charles V of Austria
@@ -53,12 +48,10 @@ Clovis I
 C. S. Lewis
 Daniel Bernoulli
 Diego Rivera
-Donald Trump
 Douglas MacArthur
 Drake
 Dwayne Johnson
 Dwight Eisenhower
-Dr. Seuss
 Edward Norton
 Edgar Allan Poe
 Edward Teller
@@ -69,12 +62,10 @@ Emperor Norton
 Enrico Fermi
 Eric Prydz
 Ernest Rutherford
-Erwin Schrodinger
 Euclid
 Ewan McGregor
 Edward the Black Prince
 Evariste Galois
-Ferdinand Magellan
 Fidel Castro
 Fluffy (Gabriel Iglesias)
 Frank Sinatra
@@ -83,11 +74,9 @@ Frida Kahlo
 Fred Rogers
 Gabe Newell
 Galileo Galilei
-Gaston Julia
 Genghis Khan
 George Clooney
 Georg Cantor
-George S. Patton
 Gottfried Wilhelm Leibniz
 Grant Kirkhope
 George R. R. Martin
@@ -107,7 +96,6 @@ Horatio Gates
 H. P. Lovecraft
 Hugh Jackman
 Ivan the Terrible
-Jon Bon Jovi
 J. Robert Oppenheimer
 Jack Kirby
 Jack Nicholson
@@ -118,7 +106,6 @@ Jacob Sartorius
 James Garfield
 John Rockefeller
 Justin Bieber
-John Cena
 John Napier
 Jeb Bush
 Julius Caesar
@@ -147,16 +134,13 @@ King Louis XVI of France
 Karl Marx
 Kaiser Wilhelm
 Leon Trotsky
-Leonhard Euler
 Lyn Evans
-Leonardo da Vinci
 Leonardo DiCaprio
 Leiv Eiriksson
 Mahatma Gandhi
 Malcolm X
 Marco Polo
 Malala Yousafzai
-Mao Zedong
 Masahiro Sakurai
 Marie Curie
 Markus Persson
@@ -167,7 +151,6 @@ Mark Twain
 Mikhail Gorbachev
 Max Planck
 Mary Magdalene
-Meg White
 Morgan Freeman
 Montezuma
 Michael Jackson
@@ -215,10 +198,8 @@ Randall Munroe
 Sir Francis Drake
 Shalom H. Schwartz
 Sir Isaac Newton
-Sun Tzu
 Saladin
 Stephen Douglas
-Stephen Hawking
 Sir Walter Raleigh
 Sir Robert Wadlow
 Stephanie Kwolek
@@ -283,7 +264,6 @@ Lyndon B. Johnson
 Richard Nixon
 Gerald Ford
 Ronald Reagan
-Bill Clinton
 George W. Bush
 Bruce Lee
 Michael Jordan

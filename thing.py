@@ -10,6 +10,7 @@ from generateNumbers import newGenerateNum
 
 from embeds import createPlaceEmbed
 from embeds import createWeaponEmbed
+from embeds import createAdjectiveEmbed
 from embeds import summaryShort
 from embeds import checkLinks
 
@@ -336,10 +337,12 @@ async def on_message(message):
         print(adjective9)
         print(adjective10)
 
+        adjectives = [adjective1, adjective2, adjective3, adjective4, adjective5, adjective6, adjective7, adjective8, adjective9, adjective10]
         pollChannel = message.channel
         peopleInfo = message.channel
         placeInfo = message.channel
         weaponsInfo = message.channel
+        adjectivesInfo = message.channel
 
         for channel in message.guild.text_channels:
             if channel.name == "historical-death-match-polls":
@@ -354,13 +357,16 @@ async def on_message(message):
             if channel.name == "historical-places-info":
                 print("found #" + channel.name)
                 placeInfo = channel
+            if channel.name == "historical-adjectives-info":
+                print("found #" + channel.name)
+                adjectivesInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
-        match1 = adjective1.capitalize() + " " + person1 + " with " + weapon1 + " vs " + adjective2.capitalize() + " " + person2 + " with " + weapon2 + " " + place1 + "!"
-        match2 = adjective3.capitalize() + " " + person3 + " with " + weapon3 + " vs " + adjective4.capitalize() + " " + person4 + " with " + weapon4 + " " + place2 + "!"
-        match3 = adjective5.capitalize() + " " + person5 + " with " + weapon5 + " vs " + adjective6.capitalize() + " " + person6 + " with " + weapon6 + " " + place3 + "!"
-        match4 = adjective7.capitalize() + " " + person7 + " with " + weapon7 + " vs " + adjective8.capitalize() + " " + person8 + " with " + weapon8 + " " + place4 + "!"
-        match5 = adjective9.capitalize() + " " + person9 + " with " + weapon9 + " vs " + adjective10.capitalize() + " " + person10 + " with " + weapon10 + " " + place5 + "!"
+        match1 = adjective1.capitalize() + " " + person1 + " with " + weapon1 + " vs " + adjective2.lower() + " " + person2 + " with " + weapon2 + " " + place1 + "!"
+        match2 = adjective3.capitalize() + " " + person3 + " with " + weapon3 + " vs " + adjective4.lower() + " " + person4 + " with " + weapon4 + " " + place2 + "!"
+        match3 = adjective5.capitalize() + " " + person5 + " with " + weapon5 + " vs " + adjective6.lower() + " " + person6 + " with " + weapon6 + " " + place3 + "!"
+        match4 = adjective7.capitalize() + " " + person7 + " with " + weapon7 + " vs " + adjective8.lower() + " " + person8 + " with " + weapon8 + " " + place4 + "!"
+        match5 = adjective9.capitalize() + " " + person9 + " with " + weapon9 + " vs " + adjective10.lower() + " " + person10 + " with " + weapon10 + " " + place5 + "!"
 
         
         match1ID = await pollChannel.send(match1)
@@ -447,6 +453,9 @@ async def on_message(message):
         for weapon in weapons:
             embed = createWeaponEmbed(weapon)
             await weaponsInfo.send(embed=embed)
+        for adjective in adjectives:
+            embed = createAdjectiveEmbed(adjective)
+            await adjectivesInfo.send(embed=embed)
         #for place in places:
             #embed = createPlaceEmbed(place)
             #await placeInfo.send(embed=embed)
@@ -455,6 +464,11 @@ async def on_message(message):
         infoWrite = open("lastInfo.txt", "r")
         infoFull = infoWrite.read()
         info = infoFull.split("\n")
+        pollChannel = message.channel
+        peopleInfo = message.channel
+        weaponsInfo = message.channel
+        adjectivesInfo = message.channel
+
         for channel in message.guild.text_channels:
             if channel.name == "historical-death-match-polls":
                 print("found #" + channel.name)
@@ -468,6 +482,10 @@ async def on_message(message):
             if channel.name == "historical-places-info":
                 print("found #" + channel.name)
                 placeInfo = channel
+            if channel.name == "historical-adjectives-info":
+                print("found #" + channel.name)
+                adjectivesInfo = channel
+
         embed = createPersonEmbed(info[0])
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[1])
@@ -480,14 +498,14 @@ async def on_message(message):
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[5])
         await peopleInfo.send(embed=embed)
-        embed = createWeaponEmbed(info[6])
-        await weaponsInfo.send(embed=embed)
-        embed = createWeaponEmbed(info[7])
-        await weaponsInfo.send(embed=embed)
-        embed = createWeaponEmbed(info[8])
-        await weaponsInfo.send(embed=embed)
-        embed = createWeaponEmbed(info[9])
-        await weaponsInfo.send(embed=embed)
+        embed = createPersonEmbed(info[6])
+        await peopleInfo.send(embed=embed)
+        embed = createPersonEmbed(info[7])
+        await peopleInfo.send(embed=embed)
+        embed = createPersonEmbed(info[8])
+        await peopleInfo.send(embed=embed)
+        embed = createPersonEmbed(info[9])
+        await peopleInfo.send(embed=embed)
         embed = createWeaponEmbed(info[10])
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[11])
@@ -500,6 +518,34 @@ async def on_message(message):
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[15])
         await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[16])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[17])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[18])
+        await weaponsInfo.send(embed=embed)
+        embed = createWeaponEmbed(info[19])
+        await weaponsInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[25])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[26])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[27])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[28])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[29])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[30])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[31])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[32])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[33])
+        await adjectivesInfo.send(embed=embed)
+        embed = createAdjectiveEmbed(info[34])
+        await adjectivesInfo.send(embed=embed)
         #embed = createPlaceEmbed(info[12])
         #await placeInfo.send(embed=embed)
         #embed = createPlaceEmbed(info[13])
@@ -716,8 +762,8 @@ async def on_message(message):
 
 
         weaponTiersFiles = open("weaponTiers.txt", "r")
-        weaponTiersFull = weaponTiersFiles.read()
-        weaponTiers = weaponTiersFull.split("\n")
+        adjectiveTiersFull = weaponTiersFiles.read()
+        weaponTiers = adjectiveTiersFull.split("\n")
         weaponTiersFiles.close()
         for weaponTier in weaponTiers:
             weaponFile = open(weaponTier + ".txt", "r")
@@ -887,10 +933,10 @@ async def on_message(message):
     #Quick set up for custom matches and brackets- in this case, the presidential bracket. Just throw the people into the code manually and you're good to go!
     if message.content.startswith("*WIT") and message.author.id == userID:
         print("WeaponInfoTesting!")
-        weaponTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
-        weaponTiersFull = weaponTiersFile.read()
-        weaponTiersArray = weaponTiersFull.split("\n")
-        for tier in weaponTiersArray:
+        adjectiveTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+        adjectiveTiersFull = adjectiveTiersFile.read()
+        adjectiveTiersArray = adjectiveTiersFull.split("\n")
+        for tier in adjectiveTiersArray:
             print("Tier: " + tier)
             tierFile = open("Armory\\Tiers\\" + tier + ".txt", "r")
             tierFull = tierFile.read()
@@ -900,4 +946,17 @@ async def on_message(message):
                 weaponEmbed = createWeaponEmbed(weapon)
                 await message.channel.send(embed=weaponEmbed)
     #Sends all the info for each and every weapon.
+    if message.content.startswith("*AIT") and message.author.id == userID:
+        print("adjectivesInfoTesting!")
+        adjectivesQuant = 16
+        for numTier in range(adjectivesQuant):
+            print("Tier: Tier" + str(numTier+1))
+            tierFile = open("Adjectives\\Tier" + str(numTier+1) + ".txt", "r")
+            tierFull = tierFile.read()
+            tierArray = tierFull.split("\n")
+            for adjective in tierArray:
+                print(adjective)
+                adjectiveEmbed = createAdjectiveEmbed(adjective)
+                await message.channel.send(embed=adjectiveEmbed)
+    #Sends all the info for each and every adjective.
 client.run(botToken)

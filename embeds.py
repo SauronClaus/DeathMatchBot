@@ -185,3 +185,25 @@ def checkLinks(objectName):
     print("Correct Name: \"" + correct + "\"")
     return correct
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 
+def createAdjectiveEmbed(adjective):
+    print("Adjective: " + adjective)
+    adjectiveTiersFile = open("Adjectives\\adjectiveTiers.txt", "r")
+    adjectiveTiersFull = adjectiveTiersFile.read()
+    adjectiveTiersArray = adjectiveTiersFull.split("\n")
+    tierName = ""
+    for tier in adjectiveTiersArray:
+        tierFile = open("Adjectives\\" + tier + ".txt", "r")
+        tierFull = tierFile.read()
+        tierArray = tierFull.split("\n")
+        for adjectiveSearch in tierArray:
+            if adjectiveSearch == adjective:
+                print("Found adjective! " + tier)
+                tierName = tier
+    contentFile = open("Adjectives\\Descriptions\\" + tierName + "\\" + adjective + ".txt", "r")
+    contentFull = contentFile.read()
+    content = contentFull.split("\n")
+    embed = discord.Embed(title=adjective.lower(), description=content[0].capitalize(), color=0xFF9900)
+    embed.add_field(name="Tier",value=tierName, inline=False)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
+    return embed
+#Create an adjective embed

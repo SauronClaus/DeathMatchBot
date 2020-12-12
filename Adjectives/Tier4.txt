@@ -47,7 +47,6 @@ capitalized
 mutant
 simian
 Sierra Leonean
-operator
 object-oriented
 functional
 constant

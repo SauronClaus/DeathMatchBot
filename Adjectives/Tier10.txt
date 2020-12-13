@@ -1,6 +1,6 @@
-lucent
-luminous
-radiant
-glowing
-bioluminescent
-fluorescent
+lucent 
+luminous 
+radiant 
+glowing 
+bioluminescent 
+fluorescent 

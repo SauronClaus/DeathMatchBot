@@ -1,33 +1,33 @@
-Tri-armed
-Multi-armed
-parasitic
-giant
-winged
-immutable
-superheated
-Slippery
-volumnous
-tough
-fluffy
-sharpness III
-unbreaking II
-unbreaking
-protective
-sweeping edge
-lubricated
-corrosive
-mending
-radioactive
-2-plied
-slimy
-shrouded
-ephemeral
-translucent
-stormblessed
-Floating
-sneaky
-martial artist
-contagious
-Thick
-long
-necromantic
+tri-armed 
+multi-armed 
+parasitic 
+giant 
+winged 
+immutable 
+superheated 
+slippery 
+volumnous 
+tough 
+fluffy 
+Sharpness III 
+Unbreaking II 
+unbreaking 
+protective 
+Sweeping Edge 
+lubricated 
+corrosive 
+Mending 
+radioactive 
+2-plied 
+slimy 
+shrouded 
+ephemeral 
+translucent 
+stormblessed 
+floating 
+sneaky 
+martial artist 
+contagious 
+thick 
+long 
+necromantic 

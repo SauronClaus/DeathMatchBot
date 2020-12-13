@@ -7,7 +7,7 @@ import os.path
  
 def createWeaponEmbed(weapon):
     print("Weapon: " + weapon)
-    weaponTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+    weaponTiersFile = open("Armory\\Tiers\\weaponTierList.txt", "r")
     weaponTiersFull = weaponTiersFile.read()
     weaponTiersArray = weaponTiersFull.split("\n")
     tierName = ""
@@ -23,6 +23,12 @@ def createWeaponEmbed(weapon):
     contentFull = contentFile.read()
     content = contentFull.split("\n")
     imagePath = content[1]
+    if weapon.split(" ")[0] == "a":
+        weapon = weapon[2::]
+    else:
+        if weapon.split(" ")[0] == "an":
+            weapon = weapon[3::]
+    
     embed = discord.Embed(title=weapon, description=content[0], color=0xFF9900)
     embed.add_field(name="Tier",value=tierName, inline=False)
     if len(content) >= 3:
@@ -187,9 +193,14 @@ def checkLinks(objectName):
 #Replaces the passed in object with the correct object if it's an irregular wikipedia article. 
 def createAdjectiveEmbed(adjective):
     print("Adjective: " + adjective)
-    adjectiveTiersFile = open("Adjectives\\adjectiveTiers.txt", "r")
+    adjectiveTiersFile = open("Adjectives\\TierList.txt", "r")
     adjectiveTiersFull = adjectiveTiersFile.read()
     adjectiveTiersArray = adjectiveTiersFull.split("\n")
+
+    adjectiveTierDescriptionsFile = open("Adjectives\\TierDescriptions.txt", "r")
+    adjectiveTierDescriptionsFull = adjectiveTierDescriptionsFile.read()
+    adjectiveTierDescriptionsArray = adjectiveTierDescriptionsFull.split("\n")
+
     tierName = ""
     for tier in adjectiveTiersArray:
         tierFile = open("Adjectives\\" + tier + ".txt", "r")
@@ -199,11 +210,14 @@ def createAdjectiveEmbed(adjective):
             if adjectiveSearch == adjective:
                 print("Found adjective! " + tier)
                 tierName = tier
-    contentFile = open("Adjectives\\Descriptions\\" + tierName + "\\" + adjective + ".txt", "r")
+    tierDescriptionNum = int(tierName[4::]) - 1
+    tierDescription = adjectiveTierDescriptionsArray[tierDescriptionNum]
+    contentFile = open("Adjectives\\Descriptions\\" + tierName + "\\" + adjective[:len(adjective)-1:] + ".txt", "r")
     contentFull = contentFile.read()
     content = contentFull.split("\n")
-    embed = discord.Embed(title=adjective.lower(), description=content[0].capitalize(), color=0xFF9900)
-    embed.add_field(name="Tier",value=tierName, inline=False)
+    embed = discord.Embed(title=adjective[:1:].capitalize() + adjective[1::], description=content[0].capitalize(), color=0xFF9900)
+    tierName = "Tier " + tierName[4::]
+    embed.add_field(name="Tier",value=tierName + " (" + tierDescription + ")", inline=False)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
     return embed
 #Create an adjective embed

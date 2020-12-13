@@ -1,0 +1,8 @@
+Bludgeoning
+Ranged and Melee
+Sharp
+Pretty Much Useless
+Ranged Projectiles
+Ranged Lasers and Guns
+Melee Blockable
+Melee Unblockable

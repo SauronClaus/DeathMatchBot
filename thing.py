@@ -362,11 +362,11 @@ async def on_message(message):
                 adjectivesInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
-        match1 = adjective1.capitalize() + " " + person1 + " with " + weapon1 + " vs " + adjective2.lower() + " " + person2 + " with " + weapon2 + " " + place1 + "!"
-        match2 = adjective3.capitalize() + " " + person3 + " with " + weapon3 + " vs " + adjective4.lower() + " " + person4 + " with " + weapon4 + " " + place2 + "!"
-        match3 = adjective5.capitalize() + " " + person5 + " with " + weapon5 + " vs " + adjective6.lower() + " " + person6 + " with " + weapon6 + " " + place3 + "!"
-        match4 = adjective7.capitalize() + " " + person7 + " with " + weapon7 + " vs " + adjective8.lower() + " " + person8 + " with " + weapon8 + " " + place4 + "!"
-        match5 = adjective9.capitalize() + " " + person9 + " with " + weapon9 + " vs " + adjective10.lower() + " " + person10 + " with " + weapon10 + " " + place5 + "!"
+        match1 = adjective1.capitalize() + person1 + " with " + weapon1 + " vs " + adjective2 + person2 + " with " + weapon2 + " " + place1 + "!"
+        match2 = adjective3.capitalize() + person3 + " with " + weapon3 + " vs " + adjective4 + person4 + " with " + weapon4 + " " + place2 + "!"
+        match3 = adjective5.capitalize() + person5 + " with " + weapon5 + " vs " + adjective6 + person6 + " with " + weapon6 + " " + place3 + "!"
+        match4 = adjective7.capitalize() + person7 + " with " + weapon7 + " vs " + adjective8 + person8 + " with " + weapon8 + " " + place4 + "!"
+        match5 = adjective9.capitalize() + person9 + " with " + weapon9 + " vs " + adjective10 + person10 + " with " + weapon10 + " " + place5 + "!"
 
         
         match1ID = await pollChannel.send(match1)
@@ -680,7 +680,7 @@ async def on_message(message):
         adjectives = generateAdjectivePair()
 
         place = generatePlace()
-        match = adjectives[0].capitalize() + " " + person1[0] + " with " + weapons[0] + " vs " + adjectives[1].capitalize() + " " + person2[0] + " with " + weapons[0] + " " + place + "!"
+        match = adjectives[0].capitalize() + person1[0] + " with " + weapons[0] + " vs " + adjectives[1] + person2[0] + " with " + weapons[0] + " " + place + "!"
         matchID = await message.channel.send(match)
         emoji1 = getEmoji(person1[0])
         emoji2 = getEmoji(person2[0])
@@ -881,9 +881,9 @@ async def on_message(message):
                 placeInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
-        match1 = adjectivesMatch1[0].capitalize() + " " + peopleMatch1[0] + " with " + weaponsMatch1[0] + " vs " + adjectivesMatch1[1].capitalize() + " " + peopleMatch1[1] + " with " + weaponsMatch1[1] + " " + placeMatch1 + "!"
-        match2 = adjectivesMatch2[0].capitalize() + " " + peopleMatch2[0] + " with " + weaponsMatch2[0] + " vs " + adjectivesMatch2[1].capitalize() + " " + peopleMatch2[1] + " with " + weaponsMatch2[1] + " " + placeMatch2 + "!"
-        match3 = adjectivesMatch3[0].capitalize() + " " + peopleMatch3[0] + " with " + weaponsMatch3[0] + " vs " + adjectivesMatch3[1].capitalize() + " " + peopleMatch3[1] + " with " + weaponsMatch3[1] + " " + placeMatch3 + "!"
+        match1 = adjectivesMatch1[0].capitalize() + peopleMatch1[0] + " with " + weaponsMatch1[0] + " vs " + adjectivesMatch1[1] + peopleMatch1[1] + " with " + weaponsMatch1[1] + " " + placeMatch1 + "!"
+        match2 = adjectivesMatch2[0].capitalize() + peopleMatch2[0] + " with " + weaponsMatch2[0] + " vs " + adjectivesMatch2[1] + peopleMatch2[1] + " with " + weaponsMatch2[1] + " " + placeMatch2 + "!"
+        match3 = adjectivesMatch3[0].capitalize() + peopleMatch3[0] + " with " + weaponsMatch3[0] + " vs " + adjectivesMatch3[1] + peopleMatch3[1] + " with " + weaponsMatch3[1] + " " + placeMatch3 + "!"
         
         match1ID = await pollChannel.send(match1)
         match2ID = await pollChannel.send(match2)
@@ -959,4 +959,66 @@ async def on_message(message):
                 adjectiveEmbed = createAdjectiveEmbed(adjective)
                 await message.channel.send(embed=adjectiveEmbed)
     #Sends all the info for each and every adjective.
+    if message.content.startswith("*info"):
+        messageContent = message.content[6::]
+        
+        peopleFile = open("people.txt", "r")
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+
+        weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r")
+        weaponTierFull = weaponTierFile.read()
+        weaponTierArray = weaponTierFull.split("\n")
+        weaponArray = []
+        weaponMinusFirstWord = []
+        for weaponTier in weaponTierArray:
+            weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r")
+            weaponFull = weaponFile.read()
+            weaponArrayTemp = weaponFull.split("\n")
+            for weapon in weaponArrayTemp:
+                weaponArray.append(weapon)
+                
+        placesFile = open("placesName.txt", "r")
+        placesFull = placesFile.read()
+        placesArray = placesFull.split("\n")
+
+        adjectiveTierFile = open("Adjectives\\TierList.txt", "r")
+        adjectiveTierFull = adjectiveTierFile.read()
+        adjectiveTierArray = adjectiveTierFull.split("\n")
+
+        adjectiveArray = []
+        for adjectiveTier in adjectiveTierArray:
+            adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r")
+            adjectiveFull = adjectiveFile.read()
+            adjectiveArrayTemp = adjectiveFull.split("\n")
+            for adjective in adjectiveArrayTemp:
+                adjectiveArray.append(adjective)
+        
+        print("Item: |" + messageContent + "|")
+
+        if messageContent in peopleArray or messageContent == "Abraham Lincoln":
+            print("Person True")
+            embed = createPersonEmbed(messageContent)
+            await message.channel.send(embed=embed)
+        else:
+            if messageContent in weaponArray or "a " + messageContent in weaponArray or "an " + messageContent in weaponArray:
+                print("Weapon True")
+                if "a " + messageContent in weaponArray:
+                    messageContent = "a " + messageContent
+                if "an " + messageContent in weaponArray:
+                    messageContent = "an " + messageContent
+                embed = createWeaponEmbed(messageContent)
+                await message.channel.send(embed=embed)
+            else:
+                if messageContent in placesArray:
+                    print("Place True")
+                    embed = createPlaceEmbed(messageContent)
+                    #await message.channel.send(embed=embed)
+                else:
+                    if messageContent + " " in adjectiveArray:
+                        print("Adjective True")
+                        embed = createAdjectiveEmbed(messageContent + " ")
+                        await message.channel.send(embed=embed)
+                    else:
+                        await message.channel.send(messageContent + " was not found.")
 client.run(botToken)

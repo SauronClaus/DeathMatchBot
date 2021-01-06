@@ -75,7 +75,7 @@ def generateAdjectivePair():
     return adjectivePair
 #Returns a random tiered Adjective pair
 def generatePlace():
-    places = "places.txt"
+    places = "Atlas\\places.txt"
     placesFile = open(places, "r")
     placeArray = placesFile.read().split('\n')
     randomNum = random.randint(0, len(placeArray)-1)
@@ -83,7 +83,7 @@ def generatePlace():
     return place
 #Returns a random place
 def generatePlaceAdverb():
-    places = "placesName.txt"
+    places = "Atlas\\placesName.txt"
     placesFile = open(places, "r")
     placeArray = placesFile.read().split('\n')
     randomNum = random.randint(0, len(placeArray)-1)

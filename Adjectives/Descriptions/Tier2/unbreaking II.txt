@@ -1,1 +1,2 @@
 Unbreaking is an enchantment in Minecraft that gives a chance for an item's durability not to be reduced when it is used, effectively increasing the item's durability. Unbreaking II has a 33% chance of not consuming durability; on average, tools last 3 times as long.
+https://minecraft.gamepedia.com/Unbreaking

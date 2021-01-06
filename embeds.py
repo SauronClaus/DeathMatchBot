@@ -29,30 +29,55 @@ def createWeaponEmbed(weapon):
         if weapon.split(" ")[0] == "an":
             weapon = weapon[3::]
     
-    embed = discord.Embed(title=weapon, description=content[0], color=0xFF9900)
+    embed = discord.Embed(title=weapon[:1:].capitalize() + weapon[1::], description=content[0], color=0xFF9900)
     embed.add_field(name="Tier",value=tierName, inline=False)
     if len(content) >= 3:
         embed.add_field(name="Link", value=content[2], inline=False)
     embed.set_image(url=imagePath)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object from the weapon inputed. 
+def createPlaceLongEmbed(placeLong):
+    print("Place: " + placeLong)
+    propositions = ["on", "in", "above", "inside", "on", "top", "of"]
+    placeLongArray = placeLong.split(" ")
+    if placeLongArray[0] in propositions:
+        print("removing " + placeLongArray[0])
+        placeLongArray.remove(placeLongArray[0])
+    if placeLongArray[0] in propositions:
+        print("removing " + placeLongArray[0])
+        placeLongArray.remove(placeLongArray[0])
+    if placeLongArray[0] in propositions:
+        print("removing " + placeLongArray[0])
+        placeLongArray.remove(placeLongArray[0])
+    placeLong = ""
+    for item in placeLongArray:
+        placeLong = placeLong + item + " "
+    contentFile = open("Atlas\\Descriptions\\" + placeLong + ".txt", "r")
+    contentFull = contentFile.read()
+    content = contentFull.split("\n")
+    imagePath = content[1]
+
+    embed = discord.Embed(title=placeLong.capitalize()[0:1:] + placeLong[1:len(placeLong)-1:], description=content[0], color=0xFF9900)
+    if len(content) >= 3:
+        embed.add_field(name="Link", value=content[2], inline=False)
+    embed.set_image(url=imagePath)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Returns an embed with the place (with proposition) inputed. 
 def createPlaceEmbed(place):
     print("Place: " + place)
-    place = checkLinks(place)
-    article = wikipedia.page(place)
-    #for i in article.images:
-        #await placeInfo.send(str(i))
-    summary = article.summary.split('\n')
-    summaryOne = summary[0]
-    summaryPersonal = summaryShort(summaryOne)
-    embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
-    if len(article.images) > 0:
-        embed.set_image(url=article.images[0])
-    embed.add_field(name="Link",value=article.url)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/01cb7c2c7f2007d8b060e084ea4eb6fd.png?size=512")
+    contentFile = open("Atlas\\Descriptions\\" + place + ".txt", "r")
+    contentFull = contentFile.read()
+    content = contentFull.split("\n")
+    imagePath = content[1]
+    
+    embed = discord.Embed(title=place.capitalize()[0:1:] + place[1:len(place)-1:], description=content[0], color=0xFF9900)
+    if len(content) >= 3:
+        embed.add_field(name="Link", value=content[2], inline=False)
+    embed.set_image(url=imagePath)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
-#Returns an embed with the place inputed. 
 def summaryShort(summary):
     summaryPersonal = ""
     if len(list(summary)) > 2040:
@@ -212,12 +237,17 @@ def createAdjectiveEmbed(adjective):
                 tierName = tier
     tierDescriptionNum = int(tierName[4::]) - 1
     tierDescription = adjectiveTierDescriptionsArray[tierDescriptionNum]
-    contentFile = open("Adjectives\\Descriptions\\" + tierName + "\\" + adjective[:len(adjective)-1:] + ".txt", "r")
+    if adjective[len(adjective)-1::] != "-":
+        contentFile = open("Adjectives\\Descriptions\\" + tierName + "\\" + adjective[:len(adjective)-1:] + ".txt", "r")
+    else:
+        contentFile = open("Adjectives\\Descriptions\\" + tierName + "\\" + adjective + ".txt", "r")
     contentFull = contentFile.read()
     content = contentFull.split("\n")
-    embed = discord.Embed(title=adjective[:1:].capitalize() + adjective[1::], description=content[0].capitalize(), color=0xFF9900)
+    embed = discord.Embed(title=adjective[:1:].capitalize() + adjective[1::], description=content[0].capitalize()[:1:] + content[0][1::], color=0xFF9900)
     tierName = "Tier " + tierName[4::]
     embed.add_field(name="Tier",value=tierName + " (" + tierDescription + ")", inline=False)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
+    if not(content[1].startswith("https://www.dictionary.com/")):
+        embed.add_field(name="Link",value=content[1], inline=False)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Create an adjective embed

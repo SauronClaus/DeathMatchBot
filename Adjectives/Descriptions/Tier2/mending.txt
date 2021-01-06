@@ -1,1 +1,2 @@
 The mending enchantment in Minecraft allows restortation of items when given XP.
+https://minecraft.gamepedia.com/Mending

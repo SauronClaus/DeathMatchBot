@@ -3,41 +3,32 @@ Adolf Hitler
 Al Gore
 Albert Einstein
 Alec Guinness
-Alfred Hitchcock
 Amelia Earhart
 Andrew Jackson
 Anne Frank
 Archduke Franz Ferdinand
-Arnold Schwarzenegger
 Augustin-Louis Cauchy
 Avicii
 Alexander Hamilton
 Augustus
-Alex Trebeck
 Babe Ruth
 Barack Obama
 Ben Stiller
 Benedict Cumberbatch
 Benjamin Franklin
-Bernie Sanders
-Bill Gates
 Bill Murray
 Bill Nye
 Bob Ross
 Bon Scott
-Buster Keaton
 Buzz Aldrin
 Carl Gauss
 Carrie Fisher
-Catherine the Great
 Charlemagne
 Charles Babbage
 Charles Darwin
 Charles Dickens
 Charles V of Austria
-Charles X of Sweden
 Chris Evans
-Chris Pratt
 Christian Goldbach
 Christina Aguilera
 Christopher Columbus
@@ -50,33 +41,21 @@ Douglas MacArthur
 Drake
 Dwight Eisenhower
 Edward Norton
-Edgar Allan Poe
-Edward Teller
 Edwin Hubble
 Elon Musk
-Emily Dickinson
-Emperor Norton
-Enrico Fermi
 Eric Prydz
 Ernest Rutherford
 Euclid
-Ewan McGregor
 Edward the Black Prince
-Evariste Galois
 Fidel Castro
 Fluffy (Gabriel Iglesias)
 Frida Kahlo
 Fred Rogers
 Gabe Newell
-Galileo Galilei
-Genghis Khan
 George Clooney
-Georg Cantor
 Gottfried Wilhelm Leibniz
 Grant Kirkhope
 George R. R. Martin
-Grigori Rasputin
-Hammurabi
 Hanibal (general)
 Harriet Tubman
 Harrison Ford
@@ -84,56 +63,36 @@ Harry Styles
 Hayden Christensen
 Heinrich Hertz
 Henrietta Lacks
-Henry Ford
 HG Wells
-Hillary Clinton
 Horatio Gates
-H. P. Lovecraft
 Ivan the Terrible
 Jack Kirby
-Jack Nicholson
 Jack White
-Jackie Chan
-Jackson Pollock
 Jacob Sartorius
-James Garfield
 John Rockefeller
 Justin Bieber
 John Napier
 Jeb Bush
 Julius Caesar
-Jens Bergensten
 John Hancock
 J. R. R. Tolkien
-John Jay
 Josh Brolin
 Joan of Arc
 John Calvin
-Jimmy Carter
-Josef Mengele
-Jerry Seinfeld
 John Quincy Adams
 Johannes Kepler
 J. K. Rowling
-Joseph Fourier
 Joseph Stalin
 John Lennon
 John F. Kennedy
 John D. Rockefeller
 Jack Churchill
-Kublai Khan
-King Louis XVI of France
 Karl Marx
-Kaiser Wilhelm
-Leon Trotsky
 Lyn Evans
-Leonardo DiCaprio
 Leiv Eiriksson
 Mahatma Gandhi
 Malcolm X
 Marco Polo
-Malala Yousafzai
-Masahiro Sakurai
 Marie Curie
 Markus Persson
 Mark Hamill
@@ -144,11 +103,9 @@ Mikhail Gorbachev
 Max Planck
 Mary Magdalene
 Morgan Freeman
-Montezuma
 Michael Jackson
 Martin Luther King Jr.
 Mark Zuckerberg
-Manfred von Richthofen
 Miyamoto Musashi
 Napoleon III
 Nelson Mandela
@@ -160,7 +117,6 @@ Nicki Minaj
 Nikola Tesla
 Oda Nobunaga
 Otto von Bismarck
-Orville Wright
 Oscar Wilde
 Owen Wilson
 Oprah Winfrey
@@ -179,18 +135,12 @@ Robert E. Lee
 Rick Astley
 Richard Feynman
 Rosa Parks
-Richard the Lionheart
 Rene Descartes
 Randall Munroe
-Sir Francis Drake
-Shalom H. Schwartz
 Sir Isaac Newton
-Saladin
 Stephen Douglas
-Sir Walter Raleigh
 Sir Robert Wadlow
 Stephen Curry
-Socrates
 Stanislaw Ulam
 Stefan Karl Stefansson
 Stonewall Jackson
@@ -201,7 +151,6 @@ Tom Hanks
 Toby Fox
 Tom Cruise
 Tom Holland
-Usain Bolt
 Ulysses S. Grant
 Vasco da Gama
 Vincent Van Gogh
@@ -212,12 +161,8 @@ Vlad the Impaler
 Winston Duke
 William Shakespeare
 Winston Churchill
-William Howard Taft
-Woodrow Wilson
 Walt Disney
 Yu the Great
-Yuri Kondratyuk
-Yang Hui
 Yuri Gagarin
 Zach Callison
 Thom Tillis
@@ -227,14 +172,11 @@ Thomas Jefferson
 James Madison
 James Monroe
 Martin Van Buren
-William Henry Harrison
 James K. Polk
 Zachary Taylor
-Millard Fillmore
 James Buchanan
 Andrew Johnson
 Rutherford B. Hayes
-James A. Garfield
 Chester A. Arthur
 Grover Cleveland
 Benjamin Harrison
@@ -246,7 +188,5 @@ Gerald Ford
 Ronald Reagan
 George W. Bush
 Bruce Lee
-Michael Jordan
 Muhammad Ali
-Sigmund Freud
 Mike Tyson

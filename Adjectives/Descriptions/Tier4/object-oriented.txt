@@ -1,1 +1,2 @@
 pertaining to or denoting a system, programming language, etc., that supports the use of objects, as an entire image, a routine, or a data structure.
+https://www.dictionary.com/browse/object-oriented

@@ -1,1 +1,2 @@
 The Sharpness enchantment in Minecraft increases damage done by swords or axes. Sharpness III adds 2.0 extra damage.
+https://minecraft.gamepedia.com/Sharpness

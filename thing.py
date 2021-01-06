@@ -10,6 +10,7 @@ from generateNumbers import newGenerateNum
 
 from embeds import createPlaceEmbed
 from embeds import createWeaponEmbed
+from embeds import createPlaceLongEmbed
 from embeds import createAdjectiveEmbed
 from embeds import summaryShort
 from embeds import checkLinks
@@ -86,7 +87,6 @@ def createPersonEmbed(person):
     personEmoji = getEmoji(person)
     personUnEdit = person
     person = checkLinks(person)
-    print("Test: \"" + person + "\"")
     article = wikipedia.page(person, auto_suggest=False)
     summary = article.summary.split('\n')
     summaryPersonal = summaryShort(str(summary[0]))
@@ -96,7 +96,7 @@ def createPersonEmbed(person):
     personURL = str(personEmoji.url)
     embed.set_image(url=personURL)
     embed.add_field(name="Link",value=article.url)
-    embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object created from the inputed person.
 
@@ -110,234 +110,65 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith("*ranked") and message.author.id == userID:
+        numberOfMatches = 5
+        matchesVariables = []
+        guildID = message.guild.id
+        numberOfMatchesFile = open("matchNum.txt", "r")
+        numberOfMatchesTotal = int(numberOfMatchesFile.read())
+
         peopleFile = open("CABracket.txt", "r")
         weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
-        placesFile = open("places.txt", "r")
+        placesFile = open("Atlas\\places.txt", "r")
         adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt")
 
         peopleFull = peopleFile.read()
-        people = peopleFull.split("\n")
+        peopleArray = peopleFull.split("\n")
         peopleFile.close()
         peopleList = []
-        fileNumber = len(people) - 1
+        fileNumber = len(peopleArray) - 1
 
-        while (len(peopleList) < 10):
+        while (len(peopleList) < 2*numberOfMatches):
             peopleList = newGenerateNum(fileNumber, peopleList)
-  
-        person1 = people[peopleList[0]]
-        person2 = people[peopleList[1]]
-        person3 = people[peopleList[2]]
-        person4 = people[peopleList[3]]
-        person5 = people[peopleList[4]]
-        person6 = people[peopleList[5]]
-        person7 = people[peopleList[6]]
-        person8 = people[peopleList[7]]
-        person9 = people[peopleList[8]]
-        person10 = people[peopleList[9]]
-
+        
+        people = []
+        for personIndex in peopleList:
+            people.append(peopleArray[personIndex])
 
         print("People: ")
-        print (person1)
-        print (person2)
-        print (person3)
-        print (person4)
-        print (person5)
-        print (person6)
-        print (person7)
-        print (person8)
-        print (person9)
-        print (person10)
-
-        peopleCurrent = [person1, person2, person3, person4, person5, person6, person7, person8, person9, person10]
+        for person in people:
+            print(person)
         
-        weaponTierFull = weaponTierFile.read()
-        weaponTierArray = weaponTierFull.split('\n')
+        weapons = []
 
-        weaponTier1Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier2Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier3Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier4Num = random.randint(1, len(weaponTierArray) - 1)
-        weaponTier5Num = random.randint(1, len(weaponTierArray) - 1)
+        for match in range(numberOfMatches):
+            weaponSet = generateWeaponPair()
+            weapons.append(weaponSet[0])
+            weapons.append(weaponSet[1])
 
-
-        weaponTier1Name = weaponTierArray[weaponTier1Num] + ".txt"
-        weaponTier2Name = weaponTierArray[weaponTier2Num] + ".txt"
-        weaponTier3Name = weaponTierArray[weaponTier3Num] + ".txt"
-        weaponTier4Name = weaponTierArray[weaponTier4Num] + ".txt"
-        weaponTier5Name = weaponTierArray[weaponTier5Num] + ".txt"
-
-
-        weaponFile1 = open("Armory\\Tiers\\" + weaponTier1Name, "r")
-        weaponFile2 = open("Armory\\Tiers\\" + weaponTier2Name, "r")
-        weaponFile3 = open("Armory\\Tiers\\" + weaponTier3Name, "r")
-        weaponFile4 = open("Armory\\Tiers\\" + weaponTier4Name, "r")
-        weaponFile5 = open("Armory\\Tiers\\" + weaponTier5Name, "r")
-
-
-        weaponSet1 = weaponFile1.read().split('\n')
-        weaponSet2 = weaponFile2.read().split('\n')
-        weaponSet3 = weaponFile3.read().split('\n')
-        weaponSet4 = weaponFile4.read().split('\n')
-        weaponSet5 = weaponFile5.read().split('\n')
-
-
-        weaponArray1 = []
-        weaponArray2 = []
-        weaponArray3 = []
-        weaponArray4 = []
-        weaponArray5 = []
-
-
-
-        
-        while (len(weaponArray1) < 2):
-            weaponArray1 = generateNumRep(len(weaponSet1) - 1, weaponArray1)
-        while (len(weaponArray2) < 2):
-            weaponArray2 = generateNumRep(len(weaponSet2) - 1, weaponArray2)
-        while (len(weaponArray3) < 2):
-            weaponArray3 = generateNumRep(len(weaponSet3) - 1, weaponArray3)
-        while (len(weaponArray4) < 2):
-            weaponArray4= generateNumRep(len(weaponSet4) - 1, weaponArray4)
-        while (len(weaponArray5) < 2):
-            weaponArray5 = generateNumRep(len(weaponSet5) - 1, weaponArray5)
-            
-
-
-        weapon1 = weaponSet1[weaponArray1[0]]
-        weapon2 = weaponSet1[weaponArray1[1]]
-        weapon3 = weaponSet2[weaponArray2[0]]
-        weapon4 = weaponSet2[weaponArray2[1]]
-        weapon5 = weaponSet3[weaponArray3[0]]
-        weapon6 = weaponSet3[weaponArray3[1]]
-        weapon7 = weaponSet4[weaponArray4[0]]
-        weapon8 = weaponSet4[weaponArray4[1]]
-        weapon9 = weaponSet5[weaponArray5[0]]
-        weapon10 = weaponSet5[weaponArray5[1]]
-
-
-        
+ 
         print("Weapons: ")
-        print(weapon1)
-        print(weapon2)
-        print(weapon3)
-        print(weapon4)
-        print(weapon5)
-        print(weapon6)
-        print(weapon7)
-        print(weapon8)
-        print(weapon9)
-        print(weapon10)
+        for weapon in weaponSet:
+            print(weapon)
 
-        weapons = [weapon1, weapon2, weapon3, weapon4, weapon5, weapon6, weapon7, weapon8, weapon9, weapon10]
-
-        places = placesFile.read().split('\n')
-        placeArray = []
-
-        while (len(placeArray) < 5):
-            placeArray = generateNumRep(len(places) - 1, placeArray)
-
-        place1Num = placeArray[0]    
-        place2Num = placeArray[1]
-        place3Num = placeArray[2]
-        place4Num = placeArray[3]
-        place5Num = placeArray[4]
-
-
-        place1 = places[place1Num]   
-        place2 = places[place2Num]       
-        place3 = places[place3Num]
-        place4 = places[place4Num]
-        place5 = places[place5Num]
-
+        places = []
+        for match in range(numberOfMatches):
+            places.append(generatePlace())
 
         print("Places: ")
-        print(place1)      
-        print(place2)       
-        print(place3)
-        print(place4)
-        print(place5)
+        for place in places:
+            print(place)
 
-        places = [place1, place2, place3, place4, place5]
+        adjectives = []
 
-        adjectiveTiersFull = adjectiveTierFile.read()
-        adjectiveTierArray = adjectiveTiersFull.split('\n')
-
-        adjectiveTier1Num = random.randint(1, len(adjectiveTierArray) - 1)
-        adjectiveTier2Num = random.randint(1, len(adjectiveTierArray) - 1)
-        adjectiveTier3Num = random.randint(1, len(adjectiveTierArray) - 1)
-        adjectiveTier4Num = random.randint(1, len(adjectiveTierArray) - 1)
-        adjectiveTier5Num = random.randint(1, len(adjectiveTierArray) - 1)
-
-
-        adjectiveTier1Name = adjectiveTierArray[adjectiveTier1Num] + ".txt"
-        adjectiveTier2Name = adjectiveTierArray[adjectiveTier2Num] + ".txt"
-        adjectiveTier3Name = adjectiveTierArray[adjectiveTier3Num] + ".txt"
-        adjectiveTier4Name = adjectiveTierArray[adjectiveTier4Num] + ".txt"
-        adjectiveTier5Name = adjectiveTierArray[adjectiveTier5Num] + ".txt"
-
-
-        adjectiveFile1 = open("Adjectives\\" + adjectiveTier1Name, "r")
-        adjectiveFile2 = open("Adjectives\\" + adjectiveTier2Name, "r")
-        adjectiveFile3 = open("Adjectives\\" + adjectiveTier3Name, "r")
-        adjectiveFile4 = open("Adjectives\\" + adjectiveTier4Name, "r")
-        adjectiveFile5 = open("Adjectives\\" + adjectiveTier5Name, "r")
-
-
-        adjectiveSet1 = adjectiveFile1.read().split('\n')
-        adjectiveSet2 = adjectiveFile2.read().split('\n')
-        adjectiveSet3 = adjectiveFile3.read().split('\n')
-        adjectiveSet4 = adjectiveFile4.read().split('\n')
-        adjectiveSet5 = adjectiveFile5.read().split('\n')
-
-
-        adjectiveArray1 = []
-        adjectiveArray2 = []
-        adjectiveArray3 = []
-        adjectiveArray4 = []
-        adjectiveArray5 = []
-
-
-
-        
-        while (len(adjectiveArray1) < 2):
-            adjectiveArray1 = generateNumRep(len(adjectiveSet1) - 1, adjectiveArray1)
-        while (len(adjectiveArray2) < 2):
-            adjectiveArray2 = generateNumRep(len(adjectiveSet2) - 1, adjectiveArray2)
-        while (len(adjectiveArray3) < 2):
-            adjectiveArray3 = generateNumRep(len(adjectiveSet3) - 1, adjectiveArray3)
-        while (len(adjectiveArray4) < 2):
-            adjectiveArray4 = generateNumRep(len(adjectiveSet4) - 1, adjectiveArray4)
-        while (len(adjectiveArray5) < 2):
-            adjectiveArray5 = generateNumRep(len(adjectiveSet5) - 1, adjectiveArray5)
-            
-
-
-        adjective1 = adjectiveSet1[adjectiveArray1[0]]
-        adjective2 = adjectiveSet1[adjectiveArray1[1]]
-        adjective3 = adjectiveSet2[adjectiveArray2[0]]
-        adjective4 = adjectiveSet2[adjectiveArray2[1]]
-        adjective5 = adjectiveSet3[adjectiveArray3[0]]
-        adjective6 = adjectiveSet3[adjectiveArray3[1]]
-        adjective7 = adjectiveSet4[adjectiveArray4[0]]
-        adjective8 = adjectiveSet4[adjectiveArray4[1]]
-        adjective9 = adjectiveSet5[adjectiveArray5[0]]
-        adjective10= adjectiveSet5[adjectiveArray5[1]]
-
-
+        for match in range(numberOfMatches):
+            adjectiveSet = generateAdjectivePair()
+            adjectives.append(adjectiveSet[0])
+            adjectives.append(adjectiveSet[1])
         
         print("Adjectives: ")
-        print(adjective1)
-        print(adjective2)
-        print(adjective3)
-        print(adjective4)
-        print(adjective5)
-        print(adjective6)
-        print(adjective7)
-        print(adjective8)
-        print(adjective9)
-        print(adjective10)
+        for adjective in adjectives:
+            print(adjective)
 
-        adjectives = [adjective1, adjective2, adjective3, adjective4, adjective5, adjective6, adjective7, adjective8, adjective9, adjective10]
         pollChannel = message.channel
         peopleInfo = message.channel
         placeInfo = message.channel
@@ -362,103 +193,101 @@ async def on_message(message):
                 adjectivesInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
-        match1 = adjective1.capitalize() + person1 + " with " + weapon1 + " vs " + adjective2 + person2 + " with " + weapon2 + " " + place1 + "!"
-        match2 = adjective3.capitalize() + person3 + " with " + weapon3 + " vs " + adjective4 + person4 + " with " + weapon4 + " " + place2 + "!"
-        match3 = adjective5.capitalize() + person5 + " with " + weapon5 + " vs " + adjective6 + person6 + " with " + weapon6 + " " + place3 + "!"
-        match4 = adjective7.capitalize() + person7 + " with " + weapon7 + " vs " + adjective8 + person8 + " with " + weapon8 + " " + place4 + "!"
-        match5 = adjective9.capitalize() + person9 + " with " + weapon9 + " vs " + adjective10 + person10 + " with " + weapon10 + " " + place5 + "!"
 
+        lastInfo = open("lastInfo.txt", "w")
+        stringsList = [people[0], people[1], people[2], people[3], people[4], people[5], people[6], people[7], people[8], people[9], weapons[0], weapons[1], weapons[2], weapons[3], weapons[4], weapons[5], weapons[6], weapons[7], weapons[8], weapons[9], places[0], places[1], places[2], places[3], places[4], adjectives[0], adjectives[1], adjectives[2], adjectives[3], adjectives[4], adjectives[5], adjectives[6], adjectives[7], adjectives[8], adjectives[9]]
+        for i in stringsList:
+            lastInfo.write(i + "\n")
         
-        match1ID = await pollChannel.send(match1)
-        match2ID = await pollChannel.send(match2)
-        match3ID = await pollChannel.send(match3)
-        match4ID = await pollChannel.send(match4)
-        match5ID = await pollChannel.send(match5)
+        peopleInfoLinks = []
+        weaponInfoLinks = []
+        placeInfoLinks = []
+        adjectiveInfoLinks = []
+
+        for person in people:
+            embed = createPersonEmbed(person)
+            embedInfo = await peopleInfo.send(embed=embed)
+            peopleInfoLinks.append(embedInfo)
+        for weapon in weapons:
+            embed = createWeaponEmbed(weapon)
+            embedInfo = await weaponsInfo.send(embed=embed)
+            weaponInfoLinks.append(embedInfo)
+        for adjective in adjectives:
+            embed = createAdjectiveEmbed(adjective)
+            embedInfo = await adjectivesInfo.send(embed=embed)
+            adjectiveInfoLinks.append(embedInfo)
+        for place in places:
+            embed = createPlaceLongEmbed(place)
+            embedInfo = await placeInfo.send(embed=embed)
+            placeInfoLinks.append(embedInfo)
+        
+        linker = "https://discord.com/channels/" + str(guildID) + "/"
+
+        peopleLinks = []
+        weaponLinks = []
+        adjectiveLinks = []
+        placeLinks = []
+
+        for personNum in range(len(people)):
+            link = linker + str(peopleInfo.id) + "/" + str(peopleInfoLinks[personNum].id)
+            peopleLinks.append(link)
+        for weaponNum in range(len(weapons)):
+            link = linker + str(weaponsInfo.id) + "/" + str(weaponInfoLinks[weaponNum].id)
+            weaponLinks.append(link)
+        for adjectiveNum in range(len(adjectives)):
+            link = linker + str(adjectivesInfo.id) + "/" + str(adjectiveInfoLinks[adjectiveNum].id)
+            adjectiveLinks.append(link)
+        for placeNum in range(len(places)):
+            link = linker + str(placeInfo.id) + "/" + str(placeInfoLinks[placeNum].id)
+            placeLinks.append(link)
+
+        matchMessages = []
+        weaponPersonAdjectiveTicker = 0
+
+        for matchNum in range(numberOfMatches):
+            #match = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::] + people[weaponPersonAdjectiveTicker] + " with " + weapons[weaponPersonAdjectiveTicker] + " vs " + adjectives[weaponPersonAdjectiveTicker+1] + people[weaponPersonAdjectiveTicker+1] + " with " + weapons[weaponPersonAdjectiveTicker+1] + " " + places[matchNum] + "!"
+            adjectiveFirst = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::]
+            print("[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]))
+            embed = discord.Embed(title="Match #" + str(numberOfMatchesTotal + matchNum), description="[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]), color=0xFF9900)
+            matchMessage = await pollChannel.send(embed=embed)
+            matchMessages.append(matchMessage)
+            weaponPersonAdjectiveTicker+=2
+
+        numberOfMatchesFile.close()
+        numberOfMatchesFile = open("matchNum.txt", "w")
+        numberOfMatchesFile.write(str(numberOfMatchesTotal + 5))
+        numberOfMatchesFile.close()
 
         await pollChannel.send("<@&613144506757283974>")
         
         personIDList = []
-        for i in peopleCurrent:
+        for i in people:
             personID = findEmojiID(i)
-            personIDList.append(personID)
+            personIDList.append(personID)       
 
-        person1ID = personIDList[0]
-        person2ID = personIDList[1]
-        person3ID = personIDList[2]
-        person4ID = personIDList[3]
-        person5ID = personIDList[4]
-        person6ID = personIDList[5]
-        person7ID = personIDList[6]
-        person8ID = personIDList[7]
-        person9ID = personIDList[8]
-        person10ID = personIDList[9]
+        personEmojiList = []
+        for personID in personIDList:
+            personEmoji = checkForEmoji(personID)
+            personEmojiList.append(personEmoji)
 
-        
-
-        person1Emoji = checkForEmoji(person1ID)
-        person2Emoji = checkForEmoji(person2ID)
-        person3Emoji = checkForEmoji(person3ID)
-        person4Emoji = checkForEmoji(person4ID)
-        person5Emoji = checkForEmoji(person5ID)
-        person6Emoji = checkForEmoji(person6ID)
-        person7Emoji = checkForEmoji(person7ID)
-        person8Emoji = checkForEmoji(person8ID)
-        person9Emoji = checkForEmoji(person9ID)
-        person10Emoji = checkForEmoji(person10ID)
-
-
-        lastInfo = open("lastInfo.txt", "w")
-        stringsList = [person1, person2, person3, person4, person5, person6, person7, person8, person9, person10, weapon1, weapon2, weapon3, weapon4, weapon5, weapon6, weapon7, weapon8, weapon9, weapon10, place1, place2, place3, place4, place5, adjective1, adjective2, adjective3, adjective4, adjective5, adjective6, adjective7, adjective8, adjective9, adjective10]
-        for i in stringsList:
-            lastInfo.write(i + "\n")
-        
-        people.remove(person1)
-        people.remove(person2)
-        people.remove(person3)
-        people.remove(person4)
-        people.remove(person5)
-        people.remove(person6)
-        people.remove(person7)
-        people.remove(person8)
-        people.remove(person9)
-        people.remove(person10)
-
+        for person in people:
+            peopleArray.remove(person)
 
         peopleFile.close()
         peopleFile = open("CABracket.txt", "w")
         peerString = ""
-        for name in people:
+        for name in peopleArray:
             peerString = peerString + "\n" + name
         stringPeer = peerString[1:len(peerString)]
-        print("Peer String: " + stringPeer)
         peopleFile.write(stringPeer)
         peopleFile.close()
-
-
-        await match1ID.add_reaction(emoji=person1Emoji)
-        await match1ID.add_reaction(emoji=person2Emoji)
-        await match2ID.add_reaction(emoji=person3Emoji)
-        await match2ID.add_reaction(emoji=person4Emoji)
-        await match3ID.add_reaction(emoji=person5Emoji) 
-        await match3ID.add_reaction(emoji=person6Emoji)
-        await match4ID.add_reaction(emoji=person7Emoji)
-        await match4ID.add_reaction(emoji=person8Emoji)
-        await match5ID.add_reaction(emoji=person9Emoji)
-        await match5ID.add_reaction(emoji=person10Emoji)
-
-
-        for person in peopleCurrent:
-            embed = createPersonEmbed(person)
-            await peopleInfo.send(embed=embed)
-        for weapon in weapons:
-            embed = createWeaponEmbed(weapon)
-            await weaponsInfo.send(embed=embed)
-        for adjective in adjectives:
-            embed = createAdjectiveEmbed(adjective)
-            await adjectivesInfo.send(embed=embed)
-        #for place in places:
-            #embed = createPlaceEmbed(place)
-            #await placeInfo.send(embed=embed)
+        
+        emojiTicker = 0
+        for match in matchMessages:
+            await match.add_reaction(emoji=personEmojiList[emojiTicker])
+            await match.add_reaction(emoji=personEmojiList[emojiTicker + 1])
+            emojiTicker+=2
+        print("Completed!")
     #Ranked matches for the CA Discord. 
     if message.content.startswith("*sendLastMatchInfo") and message.author.id == userID:
         infoWrite = open("lastInfo.txt", "r")
@@ -468,7 +297,7 @@ async def on_message(message):
         peopleInfo = message.channel
         weaponsInfo = message.channel
         adjectivesInfo = message.channel
-
+        placesInfo = message.channel
         for channel in message.guild.text_channels:
             if channel.name == "historical-death-match-polls":
                 print("found #" + channel.name)
@@ -526,6 +355,16 @@ async def on_message(message):
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[19])
         await weaponsInfo.send(embed=embed)
+        embed = createPlaceLongEmbed(info[20])
+        await placeInfo.send(embed=embed)
+        embed = createPlaceLongEmbed(info[21])
+        await placeInfo.send(embed=embed)
+        embed = createPlaceLongEmbed(info[22])
+        await placeInfo.send(embed=embed)
+        embed = createPlaceLongEmbed(info[23])
+        await placeInfo.send(embed=embed)
+        embed = createPlaceLongEmbed(info[24])
+        await placeInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[25])
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[26])
@@ -658,7 +497,7 @@ async def on_message(message):
     if message.content.startswith("*help"):
         me = message.guild.get_member(int(557273350414794772))
         color = me.color
-        embed = discord.Embed(title="Help", description="", color=color)
+        embed = discord.Embed(title="Help", description="", color=0xFF9900)
         embed.add_field(name="*newPeopleInfo", value="Get the scoop on the newest additions to Death Match Bot!", inline=False)
         embed.add_field(name="*lincoln", value="Get a photo of the 16th president of the USA. There's now 15 different photos!", inline=False)
         embed.add_field(name="*roosevelt", value="Also gives you photos of Abraham Lincoln, the 16th president of the USA.", inline=False)
@@ -669,8 +508,10 @@ async def on_message(message):
         embed.add_field(name="*adjectiveMe", value="Get a random adjective!", inline=False) 
         embed.add_field(name="*match", value="Created your very own death match, with two combatants, each armed and adjectived, and a location!", inline=False)
         embed.add_field(name="*react", value="React with people emojis! The syntax is '*react MESSAGEID CHANNELID EMOJIFIRSTNAME EMOJILASTNAME`.", inline=False)
-        embed.add_field(name="*register/*suggest", value="Suggest new people for the bot!", inline=False)
-        embed.set_footer(text="Created by The Invisible Man", icon_url="https://cdn.discordapp.com/avatars/366709133195476992/5861378fa49209b3929119cc0b49eee8.png?size=128")
+        embed.add_field(name="*register/suggest", value="Suggest new people for the bot!", inline=False)
+        embed.add_field(name="*info", value="Get an info card about a person, weapon, place, or adjective.", inline=False)
+        embed.add_field(name="*about", value="Get some info on the bot.", inline=False)
+        embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
         await message.channel.send(embed=embed)
     #The help command
     if message.content.startswith("*match"):
@@ -678,14 +519,13 @@ async def on_message(message):
         person2 = generatePerson()
         weapons = generateWeaponPair()
         adjectives = generateAdjectivePair()
-
         place = generatePlace()
-        match = adjectives[0].capitalize() + person1[0] + " with " + weapons[0] + " vs " + adjectives[1] + person2[0] + " with " + weapons[0] + " " + place + "!"
-        matchID = await message.channel.send(match)
+        match = adjectives[0].capitalize()[:1:] + adjectives[0][1::] + person1[0] + " with " + weapons[0] + " vs " + adjectives[1] + person2[0] + " with " + weapons[0] + " " + place + "!"
+        matchMessage = await message.channel.send(match)
         emoji1 = getEmoji(person1[0])
         emoji2 = getEmoji(person2[0])
-        await matchID.add_reaction(emoji1)
-        await matchID.add_reaction(emoji2)
+        await matchMessage.add_reaction(emoji1)
+        await matchMessage.add_reaction(emoji2)
     #Single match for everyone to use.
     if message.content.startswith("*react"):
         messageArray = message.content.split(" ")
@@ -813,58 +653,67 @@ async def on_message(message):
         for emoji in message.guild.emojis:
             await message.channel.send(emoji.name + "; " + str(emoji.id))
     #Sends all the emojis with ids in the server. Useful for large emoji batches. 
-    if (message.content.startswith("*presidentialBracket") or message.content.startswith("*customMatch")) and message.author.id == userID:
-        peopleMatch1 = ["John Quincy Adams", "Herbert Hoover"]
-        peopleMatch2 = ["Grover Cleveland", "John Tyler"]
-        peopleMatch3 = ["Henry Ford", "Millard Fillmore"]
+    if (message.content.startswith("*customMatch") or message.content.startswith("*presidentialBracket")) and message.author.id == userID:
+        peopleMatch3 = ["George Washington", "John Adams"]
 
-        print("People:")
-        print(peopleMatch1[0])
-        print(peopleMatch1[1])
-        print(peopleMatch2[0])
-        print(peopleMatch2[1])
-        print(peopleMatch3[0])
-        print(peopleMatch3[1])
+        peopleMatches = [peopleMatch3]
 
-        peopleCurrent = [peopleMatch1[0], peopleMatch1[1], peopleMatch2[0], peopleMatch2[1], peopleMatch3[0], peopleMatch3[1]]
+        numberOfMatches = len(peopleMatches)
+        matchesVariables = []
+        guildID = message.guild.id
+
+        numofMatches = 0
+
+        weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+        placesFile = open("Atlas\\places.txt", "r")
+        adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt")
         
-        weaponsMatch1 = generateWeaponPair()
-        weaponsMatch2 = generateWeaponPair()
-        weaponsMatch3 = generateWeaponPair()
+        people = []
 
-        print("Weapons:")
-        print(weaponsMatch1[0])
-        print(weaponsMatch1[1])
-        print(weaponsMatch2[0])
-        print(weaponsMatch2[1])
-        print(weaponsMatch3[0])
-        print(weaponsMatch3[1])
+        for match in peopleMatches:
+            for person in match:
+                people.append(person)
 
-        adjectivesMatch1 = generateAdjectivePair()
-        adjectivesMatch2 = generateAdjectivePair()
-        adjectivesMatch3 = generateAdjectivePair()
+        print("People: ")
+        for person in people:
+            print(person)
+        
+        weapons = []
 
-        print("Adjectives:")
-        print(adjectivesMatch1[0])
-        print(adjectivesMatch1[1])
-        print(adjectivesMatch2[0])
-        print(adjectivesMatch2[1])
-        print(adjectivesMatch3[0])
-        print(adjectivesMatch3[1])
+        for match in range(numberOfMatches):
+            weaponSet = generateWeaponPair()
+            weapons.append(weaponSet[0])
+            weapons.append(weaponSet[1])
 
-        placeMatch1 = generatePlace()
-        placeMatch2 = generatePlace()
-        placeMatch3 = generatePlace()
+ 
+        print("Weapons: ")
+        for weapon in weaponSet:
+            print(weapon)
 
-        print("Places:")
-        print(placeMatch1)
-        print(placeMatch2)
-        print(placeMatch3)
+        places = []
+        for match in range(numberOfMatches):
+            places.append(generatePlace())
+
+        print("Places: ")
+        for place in places:
+            print(place)
+
+        adjectives = []
+
+        for match in range(numberOfMatches):
+            adjectiveSet = generateAdjectivePair()
+            adjectives.append(adjectiveSet[0])
+            adjectives.append(adjectiveSet[1])
+        
+        print("Adjectives: ")
+        for adjective in adjectives:
+            print(adjective)
 
         pollChannel = message.channel
         peopleInfo = message.channel
         placeInfo = message.channel
         weaponsInfo = message.channel
+        adjectivesInfo = message.channel
 
         for channel in message.guild.text_channels:
             if channel.name == "historical-death-match-polls":
@@ -879,57 +728,89 @@ async def on_message(message):
             if channel.name == "historical-places-info":
                 print("found #" + channel.name)
                 placeInfo = channel
+            if channel.name == "historical-adjectives-info":
+                print("found #" + channel.name)
+                adjectivesInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
-        match1 = adjectivesMatch1[0].capitalize() + peopleMatch1[0] + " with " + weaponsMatch1[0] + " vs " + adjectivesMatch1[1] + peopleMatch1[1] + " with " + weaponsMatch1[1] + " " + placeMatch1 + "!"
-        match2 = adjectivesMatch2[0].capitalize() + peopleMatch2[0] + " with " + weaponsMatch2[0] + " vs " + adjectivesMatch2[1] + peopleMatch2[1] + " with " + weaponsMatch2[1] + " " + placeMatch2 + "!"
-        match3 = adjectivesMatch3[0].capitalize() + peopleMatch3[0] + " with " + weaponsMatch3[0] + " vs " + adjectivesMatch3[1] + peopleMatch3[1] + " with " + weaponsMatch3[1] + " " + placeMatch3 + "!"
-        
-        match1ID = await pollChannel.send(match1)
-        match2ID = await pollChannel.send(match2)
-        match3ID = await pollChannel.send(match3)
-
-        if message.channel.guild.id == 620758472451162142:
-            await pollChannel.send("<@&783468826997555261>")
-        else:
-            if message.channel.guild.id == 620964009247768586:
-                await pollChannel.send("Notified!")
-
-        personIDList = []
-        for i in peopleCurrent:
-            personID = findEmojiID(i)
-            personIDList.append(personID)
-
-        person1ID = personIDList[0]
-        person2ID = personIDList[1]
-        person3ID = personIDList[2]
-        person4ID = personIDList[3]
-        person5ID = personIDList[4]
-        person6ID = personIDList[5]        
-
-        person1Emoji = checkForEmoji(person1ID)
-        person2Emoji = checkForEmoji(person2ID)
-        person3Emoji = checkForEmoji(person3ID)
-        person4Emoji = checkForEmoji(person4ID)
-        person5Emoji = checkForEmoji(person5ID)
-        person6Emoji = checkForEmoji(person6ID)
-
 
         lastInfo = open("lastInfo.txt", "w")
-        stringsList = [peopleMatch1[0], peopleMatch1[1], peopleMatch2[0], peopleMatch2[1], peopleMatch3[0], peopleMatch3[1], weaponsMatch1[0], weaponsMatch1[1], weaponsMatch2[0], weaponsMatch2[1], weaponsMatch3[0], weaponsMatch3[1], placeMatch1, placeMatch2, placeMatch3, adjectivesMatch1[0], adjectivesMatch1[1], adjectivesMatch2[0], adjectivesMatch2[1], adjectivesMatch3[0], adjectivesMatch3[1]]
+        stringsList = [people[0], people[1], people[2], people[3], people[4], people[5], people[6], people[7], people[8], people[9], weapons[0], weapons[1], weapons[2], weapons[3], weapons[4], weapons[5], weapons[6], weapons[7], weapons[8], weapons[9], places[0], places[1], places[2], places[3], places[4], adjectives[0], adjectives[1], adjectives[2], adjectives[3], adjectives[4], adjectives[5], adjectives[6], adjectives[7], adjectives[8], adjectives[9]]
         for i in stringsList:
             lastInfo.write(i + "\n")
+        
+        peopleInfoLinks = []
+        weaponInfoLinks = []
+        placeInfoLinks = []
+        adjectiveInfoLinks = []
 
-        await match1ID.add_reaction(emoji=person1Emoji)
-        await match1ID.add_reaction(emoji=person2Emoji)
-        await match2ID.add_reaction(emoji=person3Emoji)
-        await match2ID.add_reaction(emoji=person4Emoji)
-        await match3ID.add_reaction(emoji=person5Emoji) 
-        await match3ID.add_reaction(emoji=person6Emoji)
-
-        for person in peopleCurrent:
+        for person in people:
             embed = createPersonEmbed(person)
-            await peopleInfo.send(embed=embed)
+            embedInfo = await peopleInfo.send(embed=embed)
+            peopleInfoLinks.append(embedInfo)
+        for weapon in weapons:
+            embed = createWeaponEmbed(weapon)
+            embedInfo = await weaponsInfo.send(embed=embed)
+            weaponInfoLinks.append(embedInfo)
+        for adjective in adjectives:
+            embed = createAdjectiveEmbed(adjective)
+            embedInfo = await adjectivesInfo.send(embed=embed)
+            adjectiveInfoLinks.append(embedInfo)
+        for place in places:
+            embed = createPlaceLongEmbed(place)
+            embedInfo = await placeInfo.send(embed=embed)
+            placeInfoLinks.append(embedInfo)
+        
+        linker = "https://discord.com/channels/" + str(guildID) + "/"
+
+        peopleLinks = []
+        weaponLinks = []
+        adjectiveLinks = []
+        placeLinks = []
+
+        for personNum in range(len(people)):
+            link = linker + str(peopleInfo.id) + "/" + str(peopleInfoLinks[personNum].id)
+            peopleLinks.append(link)
+        for weaponNum in range(len(weapons)):
+            link = linker + str(weaponsInfo.id) + "/" + str(weaponInfoLinks[weaponNum].id)
+            weaponLinks.append(link)
+        for adjectiveNum in range(len(adjectives)):
+            link = linker + str(adjectivesInfo.id) + "/" + str(adjectiveInfoLinks[adjectiveNum].id)
+            adjectiveLinks.append(link)
+        for placeNum in range(len(places)):
+            link = linker + str(placeInfo.id) + "/" + str(placeInfoLinks[placeNum].id)
+            placeLinks.append(link)
+
+        matchMessages = []
+        weaponPersonAdjectiveTicker = 0
+
+        for matchNum in range(numberOfMatches):
+            #match = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::] + people[weaponPersonAdjectiveTicker] + " with " + weapons[weaponPersonAdjectiveTicker] + " vs " + adjectives[weaponPersonAdjectiveTicker+1] + people[weaponPersonAdjectiveTicker+1] + " with " + weapons[weaponPersonAdjectiveTicker+1] + " " + places[matchNum] + "!"
+            adjectiveFirst = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::]
+            print("[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]))
+            embed = discord.Embed(title="Match #" + str(numofMatches + matchNum), description="[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]), color=0xFF9900)
+            matchMessage = await pollChannel.send(embed=embed)
+            matchMessages.append(matchMessage)
+            weaponPersonAdjectiveTicker+=2
+
+        await pollChannel.send("<@&613144506757283974>")
+        
+        personIDList = []
+        for i in people:
+            personID = findEmojiID(i)
+            personIDList.append(personID)       
+
+        personEmojiList = []
+        for personID in personIDList:
+            personEmoji = checkForEmoji(personID)
+            personEmojiList.append(personEmoji)
+        
+        emojiTicker = 0
+        for match in matchMessages:
+            await match.add_reaction(emoji=personEmojiList[emojiTicker])
+            await match.add_reaction(emoji=personEmojiList[emojiTicker + 1])
+            emojiTicker+=2
+        print("Completed!")
     #Quick set up for custom matches and brackets- in this case, the presidential bracket. Just throw the people into the code manually and you're good to go!
     if message.content.startswith("*WIT") and message.author.id == userID:
         print("WeaponInfoTesting!")
@@ -959,6 +840,15 @@ async def on_message(message):
                 adjectiveEmbed = createAdjectiveEmbed(adjective)
                 await message.channel.send(embed=adjectiveEmbed)
     #Sends all the info for each and every adjective.
+    if message.content.startswith("*ATLAS") and message.author.id == userID:
+        print("Places Info Testing!")
+        placeFile = open("Atlas\\placesName.txt", "r")
+        placeFull = placeFile.read()
+        placeArray = placeFull.split("\n")
+        for place in placeArray:
+            embed = createPlaceEmbed(place)
+            await message.channel.send(embed=embed)
+    #Sends all the info for each and every place.
     if message.content.startswith("*info"):
         messageContent = message.content[6::]
         
@@ -978,7 +868,7 @@ async def on_message(message):
             for weapon in weaponArrayTemp:
                 weaponArray.append(weapon)
                 
-        placesFile = open("placesName.txt", "r")
+        placesFile = open("Atlas\\placesName.txt", "r")
         placesFull = placesFile.read()
         placesArray = placesFull.split("\n")
 
@@ -994,15 +884,16 @@ async def on_message(message):
             for adjective in adjectiveArrayTemp:
                 adjectiveArray.append(adjective)
         
-        print("Item: |" + messageContent + "|")
+        
+        print("Query: |" + messageContent + "|")
 
         if messageContent in peopleArray or messageContent == "Abraham Lincoln":
-            print("Person True")
+            print("Query is Person")
             embed = createPersonEmbed(messageContent)
             await message.channel.send(embed=embed)
         else:
             if messageContent in weaponArray or "a " + messageContent in weaponArray or "an " + messageContent in weaponArray:
-                print("Weapon True")
+                print("Query is Weapon")
                 if "a " + messageContent in weaponArray:
                     messageContent = "a " + messageContent
                 if "an " + messageContent in weaponArray:
@@ -1010,15 +901,90 @@ async def on_message(message):
                 embed = createWeaponEmbed(messageContent)
                 await message.channel.send(embed=embed)
             else:
-                if messageContent in placesArray:
-                    print("Place True")
-                    embed = createPlaceEmbed(messageContent)
-                    #await message.channel.send(embed=embed)
+                if messageContent in placesArray or messageContent + " " in placesArray:
+                    print("Query is Place")
+                    embed = createPlaceEmbed(messageContent + " ")
+                    await message.channel.send(embed=embed)
                 else:
                     if messageContent + " " in adjectiveArray:
-                        print("Adjective True")
+                        print("Query is Adjective")
                         embed = createAdjectiveEmbed(messageContent + " ")
                         await message.channel.send(embed=embed)
                     else:
                         await message.channel.send(messageContent + " was not found.")
-client.run(botToken)
+    #Grab info on a person, weapon, adjective, or place!
+    if message.content.startswith("*about"):
+        embed = discord.Embed(title="About HDM!", description='"though I would' + "'ve bribed people to get stephen hawking to win that one match" + '"\n-Harrison Truscott\nHistorical Death Match (found here https://github.com/fixmeseb/DeathMatchBot) is a Discord bot that started out when I thought, "Hey, you know what' + "'s funny?" + ' Historical figures fighting each other. I could do something with this!" And then I did. Abbreviated to HDM a lot, HDM is currently running it' + "'s third iteration of the bot (with adjectives!) on the CA Discord Server, and otherwise is soon ready to be added to other server- just reach out to me at the below Discord address or at sauronclaus@gmail.com to see if we can work something out!", color=0xFF9900)
+        embed.add_field(name="Lines of Code in Main File", value=1056)
+        embed.add_field(name="People", value=372)
+        embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+        await message.channel.send(embed=embed)
+    #Gives some info about the bot!
+    if message.content.startswith("*messageCreator"):
+        matchNum = 0
+
+        pollChannel = message.channel
+        peopleInfo = message.channel
+        weaponsInfo = message.channel
+        adjectivesInfo = message.channel
+        placesInfo = message.channel
+        for channel in message.guild.text_channels:
+            if channel.name == "historical-death-match-polls":
+                print("found #" + channel.name)
+                pollChannel = channel
+            if channel.name == "historical-people-info":
+                print("found #" + channel.name)
+                peopleInfo = channel
+            if channel.name == "historical-weapons-info":
+                print("found #" + channel.name)
+                weaponsInfo = channel
+            if channel.name == "historical-places-info":
+                print("found #" + channel.name)
+                placeInfo = channel
+            if channel.name == "historical-adjectives-info":
+                print("found #" + channel.name)
+                adjectivesInfo = channel
+
+        person1 = generatePerson()
+        personEmbed1 = createPersonEmbed(person1[0])
+        person2 = generatePerson()
+        personEmbed2 = createPersonEmbed(person2[0])
+        weapons = generateWeaponPair()
+        weaponEmbeds = [createWeaponEmbed(weapons[0]), createWeaponEmbed(weapons[1])]
+        adjectives = generateAdjectivePair()
+        adjectiveEmbeds = [createAdjectiveEmbed(adjectives[0]), createAdjectiveEmbed(adjectives[1])]
+        place = generatePlace()
+        placeEmbed = createPlaceLongEmbed(place)
+        adjective1Text = adjectives[0].capitalize()[:1:] + adjectives[0][1::]
+
+        personEmbed1ID = await peopleInfo.send(embed=personEmbed1)
+        personEmbed2ID = await peopleInfo.send(embed=personEmbed2)
+
+        weaponEmbed1ID = await weaponsInfo.send(embed=weaponEmbeds[0])
+        weaponEmbed2ID = await weaponsInfo.send(embed=weaponEmbeds[1])
+
+        adjectiveEmbed1ID = await adjectivesInfo.send(embed=adjectiveEmbeds[0])
+        adjectiveEmbed2ID = await adjectivesInfo.send(embed=adjectiveEmbeds[1])
+
+        placeEmbedID = await placeInfo.send(embed=placeEmbed)
+
+        guildID = message.guild.id
+        linker = "https://discord.com/channels/" + str(guildID) + "/"
+        
+        adjective1Link = linker + str(adjectivesInfo.id) + "/" + str(adjectiveEmbed1ID.id)
+        person1Link = linker + str(peopleInfo.id) + "/" + str(personEmbed1ID.id)
+        weapons1Link = linker + str(weaponsInfo.id) + "/" + str(weaponEmbed1ID.id)
+        adjective2Link = linker + str(adjectivesInfo.id) + "/" + str(adjectiveEmbed2ID.id)
+        person2Link = linker + str(peopleInfo.id) + "/" + str(personEmbed2ID.id)
+        weapons2Link = linker + str(weaponsInfo.id) + "/" + str(weaponEmbed2ID.id)
+        placeLink = linker + str(placeInfo.id) + "/" + str(placeEmbedID.id)
+
+        embed = discord.Embed(title="Match #" + str(matchNum), description="[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjective1Text, adjective1Link, person1[0], person1Link, weapons[0], weapons1Link, adjectives[1], adjective2Link, person2[0], person2Link, weapons[1], weapons2Link, place, placeLink), color=0xFF9900)
+        matchMessage = await message.channel.send(embed=embed)
+        
+        emoji1 = getEmoji(person1[0])
+        emoji2 = getEmoji(person2[0])
+        await matchMessage.add_reaction(emoji1)
+        await matchMessage.add_reaction(emoji2)
+    #Tests for the new embed messages!
+client.run(testToken)

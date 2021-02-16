@@ -1,26 +1,30 @@
 Bludgeoning
-Ranged and Melee
-Sharp
+Melee Blockable
+Melee Unblockable
 Pretty Much Useless
-Ranged Projectiles
+Artifacts
 Ranged Lasers and Guns
+Ranged Projectiles
+Sharp
+Explosives
+Magic Attacks
+Magical Forces
+Swords
+Bludgeoning
 Melee Blockable
 Melee Unblockable
-Bludgeoning
-Sharp
+Ranged Lasers and Guns
 Ranged Projectiles
+Sharp
+Bludgeoning
 Ranged Lasers and Guns
+Sharp
+Bludgeoning
 Melee Blockable
-Melee Unblockable
-Bludgeoning
+Pretty Much Useless
 Sharp
-Ranged Projectiles
-Ranged Lasers and Guns
-Melee Blockable
-Melee Unblockable
-Bludgeoning
-Sharp
-Ranged Lasers and Guns
-Bludgeoning
-Sharp
-Ranged Lasers and Guns
+Bodily Enhancements
+Creation
+Jars of Emotional Insects
+Rocks
+Swords

@@ -1,0 +1,3 @@
+The players are in a stadium with fake trees and a balloon. They must pump up their balloon as much as they can, but only to the point where it can hold. Any players whose balloon bursts will get placed depending on if other players bursted their balloon, and, if so, when they bursted their balloons. If there's more than one remaining player, the player whose balloon has the largest diameter wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/1/1d/Balloon_Blast_Bash.png/240px-Balloon_Blast_Bash.png

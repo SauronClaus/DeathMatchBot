@@ -1,0 +1,3 @@
+The minigame takes place in a Ghost House. The player has 3 lives and has to avoid being taken by Peepas. If the player gets caught by a Peepa, they will lose a life and the Peepa will carry them upwards. If that player has any lives remaining, they must shake the controller for it to drop them or else they will lose immediately. In order to win, the player must be either the last player standing or the first one to reach the end of the Ghost House.
+Free-for-All
+https://www.mariowiki.com/images/thumb/d/d3/MP10-PeepaPanic.png/240px-MP10-PeepaPanic.png

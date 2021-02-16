@@ -1,0 +1,3 @@
+The players are in a pipe-filled cavern with several Piranha Plants coming out of pipes. The players must shoot at those Piranha Plants until they retreat into the pipes. Piranha Plants are worth one point per shot, while Gold Piranha Plants are worth three, and Swoops are worth five. At the end of the time limit, the player with the most points wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/0/0d/Pipe_Sniper.png/240px-Pipe_Sniper.png

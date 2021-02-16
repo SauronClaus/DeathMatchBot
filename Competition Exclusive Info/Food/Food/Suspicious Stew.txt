@@ -1,0 +1,5 @@
+Suspicious stew is a food item that can give the player a status effect.
+https://minecraft.gamepedia.com/Suspicious_Stew
+1 Red mushroom|1 Brown mushroom|1 Bowl|Any 1 Flower
+|instantaneous|instantaneous
+https://i.imgur.com/vUdnNg2.png

@@ -1,0 +1,3 @@
+In this minigame, ten Bomps are present; half of these act as platforms while the other half act as walls. Players must avoid getting pushed off the edge by any of the upper five Bomps, or by letting the lower five Bomps slip back from under their feet. If a player falls off, they lose. The last player(s) standing when either the time runs out or the one surviving the longest will win the minigame.
+Free-for-All
+https://www.mariowiki.com/images/thumb/0/06/Cliffside_Crisis.png/240px-Cliffside_Crisis.png

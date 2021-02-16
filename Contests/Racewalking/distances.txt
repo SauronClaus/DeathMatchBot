@@ -1,0 +1,12 @@
+0.5 miles
+1 kilometer
+1 mile
+2 miles
+5 kilometers
+10 miles
+25 miles
+30 miles
+50 kilometers
+50 miles
+75 kilometers
+100 kilometers

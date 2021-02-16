@@ -1,0 +1,2 @@
+Each competitor needs to clean the specified area in the shortest possible period of time. Judges specified by the area will impartially judge based upon the cleanliness of the room and time spent cleaning.
+https://en.wikipedia.org/wiki/Cleaning

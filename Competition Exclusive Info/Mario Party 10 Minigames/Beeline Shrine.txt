@@ -1,0 +1,3 @@
+The players are in a forest full of bees. The characters have three hearts each and must dodge the bees, which make formations (like circles) to harm the players. The players lose one heart every time they get hit. If a player does not have at least one heart before thirty seconds have passed, they lose, with the first to lose all of his or her hearts being the loser. After thirty seconds, the bees fly up in the sky, leaving the remaining players. The last player standing or the one with the most hearts left wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/9/96/Beeline_Shrine.png/240px-Beeline_Shrine.png

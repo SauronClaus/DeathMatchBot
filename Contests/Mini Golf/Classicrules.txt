@@ -1,0 +1,3 @@
+The Mini Golf takes place on a mini golf course themed around the location.
+Both competitors know and mut follow the rules of mini golf.
+No interference with opponents is allowed.

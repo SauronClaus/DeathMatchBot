@@ -1,0 +1,5 @@
+Potions are bottled substances. Most of them are brewable items, many of which give the consumer a time-limited effect when drank.
+https://minecraft.gamepedia.com/Potion#Potion_of_Harming
+Bottle of water|1 Nether wart|1 Glistering Melon|1 Fermented Spider Eye|1 Gunpowder or 1 Dragon's Breath (optional)
+|80 sec|80 sec
+https://i.imgur.com/OKroFYV.png

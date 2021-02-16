@@ -1,0 +1,3 @@
+This minigame takes place on in a stretch of water where the players are racing in motorboats on four identical tracks. The objective is to boost speed to get ahead of other racers while avoiding the Urchins. If any player hits an Urchin, they will spin out for one second and lose speed. The first player to make it all the way to the end wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/d/df/Rapid_River_Race.png/240px-Rapid_River_Race.png

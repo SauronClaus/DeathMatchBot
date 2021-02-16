@@ -1,0 +1,3 @@
+The players are near a castle, riding in Lakitu's Clouds. The objective is to reach the top while keeping the cloud from evaporating. Collecting small clouds will add four seconds to the players' cloud, while collecting big clouds will add seven seconds to the players' cloud. Additionally, Fuzzies will ride on lines and deduct three seconds to anyone that gets exposed to them. If a cloud runs out of time, it will evaporate and the player riding it will be eliminated. The first player to make it to the goal or the last player standing wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/a/ad/Fuzzy_Fliers.png/240px-Fuzzy_Fliers.png

@@ -1,0 +1,4 @@
+Interference with opponents is permitted.
+Each competitor must follow all the rules of Chess.
+If the opponent is knocked out or unable to continue, it's a stalemate; victory is only accomplished via checkmate.
+Assume that both competitors magically know and can follow the rules of Chess, but beyond that have no special proficiency in Chess.

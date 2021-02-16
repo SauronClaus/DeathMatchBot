@@ -1,0 +1,3 @@
+The player is on a spinning rope trying to see how many points they can get. Once the player lands on the colored area, they get the number of points shown on that area. The green area is worth 0 points, the blue areas are worth 20, the yellow areas are worth 40, the orange areas are worth 60, the pink areas are worth 80, and the red/magenta area with a flower icon is worth 100 points. After two rounds per player have passed, the player with the most points wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/5/5a/Soar_to_Score.png/240px-Soar_to_Score.png

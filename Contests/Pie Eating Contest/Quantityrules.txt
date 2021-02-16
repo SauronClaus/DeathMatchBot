@@ -1,0 +1,3 @@
+Whoever can eat the most pies in a set amount of time is the winner.
+No interfering with the opponent.
+Pies are also counted by percentage of pies completed- not just whole pies.

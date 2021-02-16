@@ -1,0 +1,9 @@
+a longsword
+a Claymore
+a machete
+a bayonet
+Joyeuse (not magical)
+a falchion
+a katana
+a guandao
+a fencing foil

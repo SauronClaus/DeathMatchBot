@@ -1,0 +1,5 @@
+Runs must start from New Game.
+Timing starts when gaining control of Link.
+Timing ends when the last arrow makes contact with Dark Beast Ganon (first frame of the explosion animation)
+No interference with other competitors.
+Both competitors know the controls to play Legend of Zelda: Breath of the Wild and know how to play.

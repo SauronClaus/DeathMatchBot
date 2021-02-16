@@ -1,0 +1,3 @@
+Players are on a trampoline high in the sky. They must spin frequently; the faster the player is spinning, the farther they will knock players that are not spinning. If a player spins too fast, they will get dizzy and become unable to maneuver for a few seconds, around 4 seconds. Any player that falls off the trampoline gets eliminated, and the last player standing wins.
+Free-for-All
+https://www.mariowiki.com/images/thumb/7/73/Bouncy_Brawl.png/240px-Bouncy_Brawl.png

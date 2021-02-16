@@ -1,0 +1,3 @@
+A command block is a block that can execute commands. Because it cannot be obtained or edited in Survival mode without cheats, it is primarily used on multiplayer servers, in creative worlds, and in custom maps.
+https://i.imgur.com/z1VdbWK.png
+https://minecraft.gamepedia.com/Command_Block

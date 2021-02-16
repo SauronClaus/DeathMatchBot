@@ -1,0 +1,10 @@
+1 minute
+5 minutes
+30 minutes
+1 hour
+2 hours
+5 hours
+10 hours
+24 hours
+48 hours
+1 week

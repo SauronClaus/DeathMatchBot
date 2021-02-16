@@ -14,6 +14,16 @@ from embeds import createPlaceLongEmbed
 from embeds import createAdjectiveEmbed
 from embeds import summaryShort
 from embeds import checkLinks
+from embeds import createSongEmbed
+from embeds import createMarioMinigameEmbed
+from embeds import createSpaceShipEmbed
+from embeds import createJudgeEmbedCooking
+from embeds import createJudgeEmbedCleaning
+from embeds import createFoodEmbed
+from embeds import createPieEmbed
+from embeds import createDrinkEmbed
+from embeds import createContestEmbed
+from embeds import createHDMClassicEmbed
 
 from generation import generatePerson
 from generation import generateWeapon
@@ -22,6 +32,9 @@ from generation import generatePlaceAdverb
 from generation import generateAdjective
 from generation import generateWeaponPair
 from generation import generateAdjectivePair
+
+from contestGeneration import generateContest
+from contestGeneration import generateMatchMessage
 
 presidentalNamesFile = open("Pictures\\Lincoln\\presidentLastNames.txt", "r")
 presidentalNamesFull = presidentalNamesFile.read()
@@ -99,7 +112,44 @@ def createPersonEmbed(person):
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object created from the inputed person.
+def createCard(person, rarity):
+    rarityColors = {
+        "Common":0xa2acc5,
+        "Uncommon":0x58bb6b,
+        "Rare":0x37b8ef,
+        "Epic":0x7a4097,
+        "Legendary":0xf4a24c
+    }
+    AbeLincoln = ["★★☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★☆☆", 15, "Dreamer", "Abraham Lincoln was an American statesman and lawyer who served as the 16th president of the United States from 1861 until his assassination in 1865."]
+    HeinrichHertz = ["★★★☆☆", "★★★☆☆", "★★★★☆", "★★☆☆☆", 10, "Artist", "Heinrich Rudolf Hertz was a German physicist who first conclusively proved the existence of the electromagnetic waves predicted by James Clerk Maxwell's equations of electromagnetism."]
+    RichardNixon = ["★★★☆☆", "★★★☆☆", "★★★★★", "★★★☆☆", 15, "Soldier", "Richard Milhous Nixon was the 37th president of the United States, serving from 1969 until 1974, and is the only president to resign from office following the Watergate Scandal."]
+    JRobertOppenheimer = ["★★★★☆", "★★★★☆", "★★★★★", "★★★☆☆", 15, "Dreamer", "J. Robert Oppenheimer was an American theoretical physicist and professor of physics at the University of California, Berkeley, and the wartime head of the Los Alamos Laboratory, which developed the Manhatten Project and the Atomic Bomb."]
+    OdaNobunaga = ["★★★★★", "★★★★★", "★★★★☆", "★★★★☆", 20, "Soldier", "Oda Nobunaga was a Japanese daimyō and one of the leading figures of the Sengoku period."]
+    article = wikipedia.page(person, auto_suggest=False)
+    dictionaryDefs = {
+        "Abraham Lincoln":AbeLincoln,
+        "Heinrich Hertz":HeinrichHertz,
+        "J. Robert Oppenheimer":JRobertOppenheimer,
+        "Richard Nixon":RichardNixon,
+        "Oda Nobunaga":OdaNobunaga
+    }
+    embed = discord.Embed(title=person, description=dictionaryDefs[person][6], color=rarityColors[rarity])
+    embed.add_field(name="Stats",value="**Strength**: " + dictionaryDefs[person][0] + "\n**Speed**: " + dictionaryDefs[person][1] + "\n**Intelligence**: " + dictionaryDefs[person][2] + "\n**Constitution**: " + dictionaryDefs[person][3], inline=False)
+    embed.add_field(name="Health",value=dictionaryDefs[person][4])
+    embed.add_field(name="Equipment",value=dictionaryDefs[person][5])
 
+    personEmoji = getEmoji(person)
+    personURL = str(personEmoji.url)
+
+    embed.add_field(name="Further Information",value="[Here](" + article.url + ")")
+    embed.set_image(url=personURL)
+
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+
+    return embed
+
+
+#Creates a trading card with the inputed person and rarity. 
 @client.event
 async def on_ready(): 
     print('Logged in as {0.user}'.format(client))
@@ -111,15 +161,15 @@ async def on_message(message):
         return
     if message.content.startswith("*ranked") and message.author.id == userID:
         numberOfMatches = 5
-        matchesVariables = []
         guildID = message.guild.id
         numberOfMatchesFile = open("matchNum.txt", "r")
-        numberOfMatchesTotal = int(numberOfMatchesFile.read())
+        numberOfMatchesFull = numberOfMatchesFile.read()
+        numberOfMatchesInfos = numberOfMatchesFull.split("\n")
+        numberOfMatchesTotal = int(numberOfMatchesInfos[0])
+        numberOfRounds = int(numberOfMatchesInfos[2])
+        numberOfMatchesRound = int(numberOfMatchesInfos[1])
 
         peopleFile = open("CABracket.txt", "r")
-        weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
-        placesFile = open("Atlas\\places.txt", "r")
-        adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt")
 
         peopleFull = peopleFile.read()
         peopleArray = peopleFull.split("\n")
@@ -139,41 +189,65 @@ async def on_message(message):
             print(person)
         
         weapons = []
-
-        for match in range(numberOfMatches):
-            weaponSet = generateWeaponPair()
-            weapons.append(weaponSet[0])
-            weapons.append(weaponSet[1])
-
- 
-        print("Weapons: ")
-        for weapon in weaponSet:
-            print(weapon)
-
-        places = []
-        for match in range(numberOfMatches):
-            places.append(generatePlace())
-
-        print("Places: ")
-        for place in places:
-            print(place)
-
         adjectives = []
+        places = []
+        contests = []
+        specialEmbeds = []
+        specialItems = []
 
-        for match in range(numberOfMatches):
-            adjectiveSet = generateAdjectivePair()
-            adjectives.append(adjectiveSet[0])
-            adjectives.append(adjectiveSet[1])
+        matchesInfo = []
         
-        print("Adjectives: ")
-        for adjective in adjectives:
-            print(adjective)
-
+        ticker = 0
+        for matchNum in range(numberOfMatches):
+            matchInfo = []
+            condenser = {
+                people[ticker]: "",
+                people[ticker+1]: ""
+            }
+            matchInfo.append(condenser)
+            ticker+=2
+            matchesInfo.append(matchInfo)
+        #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+        for matchNumber in range(numberOfMatches):
+            matcherInfo = generateContest()
+            #Returned (in order) adjectivePair, weaponPair, place, specialItems, contestInformation
+            adjectiveDict = {}
+            weaponDict = {}
+            placeDict = {}
+            variant = ""
+            contestDict = {}
+            if matcherInfo != None:
+                for adjective in matcherInfo[0]:
+                    adjectives.append(adjective)
+                    adjectiveDict[adjective] = ""
+            matchesInfo[matchNumber].append(adjectiveDict)
+            if matcherInfo != None:
+                for weapon in matcherInfo[1]:
+                    weapons.append(weapon)
+                    weaponDict[weapon] = ""
+            matchesInfo[matchNumber].append(weaponDict)
+            if matcherInfo != None and matcherInfo != "" and matcherInfo != " ":
+                places.append(matcherInfo[2])
+                placeDict[matcherInfo[2]] = ""
+            matchesInfo[matchNumber].append(placeDict)
+            if matcherInfo != None:
+                for specialItem in matcherInfo[3]:
+                    specialEmbeds.append(specialItem[1])
+                    specialItems.append(specialItem)
+            matchesInfo[matchNumber].append(matcherInfo[3])
+            if matcherInfo != None:      
+                contests.append(matcherInfo[4])
+                contestDict[matcherInfo[4][0]] = ""
+                variant = matcherInfo[4][1]
+            matchesInfo[matchNumber].append(contestDict)
+            matchesInfo[matchNumber].append(variant)
         pollChannel = message.channel
         peopleInfo = message.channel
         placeInfo = message.channel
         weaponsInfo = message.channel
         adjectivesInfo = message.channel
+        contestInfo = message.channel
+        contestItemsInfo = message.channel
 
         for channel in message.guild.text_channels:
             if channel.name == "historical-death-match-polls":
@@ -191,11 +265,26 @@ async def on_message(message):
             if channel.name == "historical-adjectives-info":
                 print("found #" + channel.name)
                 adjectivesInfo = channel
+            if channel.name == "historical-contests-info":
+                print("found #" + channel.name)
+                contestInfo = channel
+            if channel.name == "historical-contest-specific-info":
+                print("found #" + channel.name)
+                contestItemsInfo = channel
         
         print("Poll Channel: #" + pollChannel.name)
 
         lastInfo = open("lastInfo.txt", "w")
-        stringsList = [people[0], people[1], people[2], people[3], people[4], people[5], people[6], people[7], people[8], people[9], weapons[0], weapons[1], weapons[2], weapons[3], weapons[4], weapons[5], weapons[6], weapons[7], weapons[8], weapons[9], places[0], places[1], places[2], places[3], places[4], adjectives[0], adjectives[1], adjectives[2], adjectives[3], adjectives[4], adjectives[5], adjectives[6], adjectives[7], adjectives[8], adjectives[9]]
+        stringsList = []
+        for person in people:
+            stringsList.append(person)
+        for weapon in weapons:
+            stringsList.append(weapon)
+        for adjective in adjectives:
+            stringsList.append(adjective)
+        for place in places:
+            stringsList.append(place)
+
         for i in stringsList:
             lastInfo.write(i + "\n")
         
@@ -203,59 +292,91 @@ async def on_message(message):
         weaponInfoLinks = []
         placeInfoLinks = []
         adjectiveInfoLinks = []
+        specialItemInfoLinks = []
+        contestInfoLinks = []
 
-        for person in people:
-            embed = createPersonEmbed(person)
-            embedInfo = await peopleInfo.send(embed=embed)
-            peopleInfoLinks.append(embedInfo)
-        for weapon in weapons:
-            embed = createWeaponEmbed(weapon)
-            embedInfo = await weaponsInfo.send(embed=embed)
-            weaponInfoLinks.append(embedInfo)
-        for adjective in adjectives:
-            embed = createAdjectiveEmbed(adjective)
-            embedInfo = await adjectivesInfo.send(embed=embed)
-            adjectiveInfoLinks.append(embedInfo)
-        for place in places:
-            embed = createPlaceLongEmbed(place)
-            embedInfo = await placeInfo.send(embed=embed)
-            placeInfoLinks.append(embedInfo)
-        
         linker = "https://discord.com/channels/" + str(guildID) + "/"
+
+        for match in matchesInfo:
+            for person in match[0]:
+                embed = createPersonEmbed(person)
+                embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                embedInfo = await peopleInfo.send(embed=embed)
+                peopleInfoLinks.append(embedInfo.id)
+                match[0][person] = str(embedInfo.id)     
+            for weapon in match[2]:
+                embed = createWeaponEmbed(weapon)
+                embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                embedInfo = await weaponsInfo.send(embed=embed)
+                weaponInfoLinks.append(embedInfo.id)
+                match[2][weapon] = str(embedInfo.id)
+            for adjective in match[1]:
+                embed = createAdjectiveEmbed(adjective)
+                embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                embedInfo = await adjectivesInfo.send(embed=embed)
+                adjectiveInfoLinks.append(embedInfo.id)
+                match[1][adjective] = str(embedInfo.id)
+            for place in match[3]:
+                print("Place (Checking for Null): ~" + place + "~")
+                if place != "":
+                    embed = createPlaceLongEmbed(place)
+                    embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                    embedInfo = await placeInfo.send(embed=embed)
+                    placeInfoLinks.append(embedInfo.id)
+                    match[3][place] = str(embedInfo.id)
+            for specialItem in match[4]:
+                embed = match[4][specialItem]
+                embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                embedInfo = await contestItemsInfo.send(embed=embed)
+                specialItemInfoLinks.append(embedInfo.id)
+                match[4][specialItem] = str(embedInfo.id)
+            for contest in match[5]:
+                if contest != "Death Match Classic":
+                    embed = createContestEmbed(contest, match[6])
+                else:
+                    embed = createHDMClassicEmbed()
+                embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                embedInfo = await contestInfo.send(embed=embed)
+                contestInfoLinks.append(embedInfo.id)
+                match[5][contest] = str(embedInfo.id)
+
 
         peopleLinks = []
         weaponLinks = []
         adjectiveLinks = []
         placeLinks = []
-
-        for personNum in range(len(people)):
-            link = linker + str(peopleInfo.id) + "/" + str(peopleInfoLinks[personNum].id)
-            peopleLinks.append(link)
-        for weaponNum in range(len(weapons)):
-            link = linker + str(weaponsInfo.id) + "/" + str(weaponInfoLinks[weaponNum].id)
-            weaponLinks.append(link)
-        for adjectiveNum in range(len(adjectives)):
-            link = linker + str(adjectivesInfo.id) + "/" + str(adjectiveInfoLinks[adjectiveNum].id)
-            adjectiveLinks.append(link)
-        for placeNum in range(len(places)):
-            link = linker + str(placeInfo.id) + "/" + str(placeInfoLinks[placeNum].id)
-            placeLinks.append(link)
+        itemLinks = []
+        contestLinks = []
+        #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+        for match in matchesInfo:
+            for person in match[0]:
+                match[0][person] = linker + str(peopleInfo.id) + "/" + match[0][person]
+            for adjective in match[1]:
+                match[1][adjective] = linker + str(adjectivesInfo.id) + "/" + match[1][adjective]
+            for weapon in match[2]:
+                match[2][weapon] = linker + str(weaponsInfo.id) + "/" + match[2][weapon]
+            for place in match[3]:
+                if place != "":
+                    match[3][place] = linker + str(placeInfo.id) + "/" + match[3][place]
+            for specialItem in match[4]:
+                match[4][specialItem] = linker + str(contestItemsInfo.id) + "/" + match[4][specialItem]
+            for contest in match[5]:
+                match[5][contest] = linker + str(contestInfo.id) + "/" + match[5][contest]
 
         matchMessages = []
-        weaponPersonAdjectiveTicker = 0
-
-        for matchNum in range(numberOfMatches):
-            #match = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::] + people[weaponPersonAdjectiveTicker] + " with " + weapons[weaponPersonAdjectiveTicker] + " vs " + adjectives[weaponPersonAdjectiveTicker+1] + people[weaponPersonAdjectiveTicker+1] + " with " + weapons[weaponPersonAdjectiveTicker+1] + " " + places[matchNum] + "!"
-            adjectiveFirst = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::]
-            print("[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]))
-            embed = discord.Embed(title="Match #" + str(numberOfMatchesTotal + matchNum), description="[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]), color=0xFF9900)
+        matchNum = 0
+        for match in matchesInfo:
+            matchMessage = generateMatchMessage(match)
+            embed = discord.Embed(title="Round #" + str(numberOfRounds) + " Match #" + str(numberOfMatchesRound + matchNum) + " (Total Match #" + str(numberOfMatchesTotal + matchNum) + ")", description=matchMessage, color=0xFF9900)
             matchMessage = await pollChannel.send(embed=embed)
             matchMessages.append(matchMessage)
-            weaponPersonAdjectiveTicker+=2
+            matchNum+=1
 
         numberOfMatchesFile.close()
         numberOfMatchesFile = open("matchNum.txt", "w")
-        numberOfMatchesFile.write(str(numberOfMatchesTotal + 5))
+        numberOfMatchesFile.write(str(numberOfMatchesTotal + numberOfMatches)+"\n")
+        numberOfMatchesFile.write(str(numberOfMatchesRound + numberOfMatches)+"\n")
+        numberOfMatchesFile.write(str(numberOfRounds))
         numberOfMatchesFile.close()
 
         await pollChannel.send("<@&613144506757283974>")
@@ -316,81 +437,110 @@ async def on_message(message):
                 adjectivesInfo = channel
 
         embed = createPersonEmbed(info[0])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[1])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[2])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[3])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[4])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[5])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[6])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[7])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[8])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createPersonEmbed(info[9])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await peopleInfo.send(embed=embed)
         embed = createWeaponEmbed(info[10])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[11])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[12])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[13])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[14])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[15])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[16])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[17])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[18])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createWeaponEmbed(info[19])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await weaponsInfo.send(embed=embed)
         embed = createPlaceLongEmbed(info[20])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await placeInfo.send(embed=embed)
         embed = createPlaceLongEmbed(info[21])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await placeInfo.send(embed=embed)
         embed = createPlaceLongEmbed(info[22])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await placeInfo.send(embed=embed)
         embed = createPlaceLongEmbed(info[23])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await placeInfo.send(embed=embed)
         embed = createPlaceLongEmbed(info[24])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await placeInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[25])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[26])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[27])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[28])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[29])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[30])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[31])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[32])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[33])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
         embed = createAdjectiveEmbed(info[34])
+        embed.add_field(name="Return to Poll",value="[Here](https://discord.com/channels/523962430179770369/773719674927972424)", inline=False)
         await adjectivesInfo.send(embed=embed)
-        #embed = createPlaceEmbed(info[12])
-        #await placeInfo.send(embed=embed)
-        #embed = createPlaceEmbed(info[13])
-        #await placeInfo.send(embed=embed)
-        #mbed = createPlaceEmbed(info[14])
-        #await placeInfo.send(embed=embed)
     #Send the info in the file "lastInfo.txt"
     if message.content.startswith("*newPeopleInfo"):
         weaponTierFile = open("newPeople.txt", "r")
@@ -520,7 +670,7 @@ async def on_message(message):
         weapons = generateWeaponPair()
         adjectives = generateAdjectivePair()
         place = generatePlace()
-        match = adjectives[0].capitalize()[:1:] + adjectives[0][1::] + person1[0] + " with " + weapons[0] + " vs " + adjectives[1] + person2[0] + " with " + weapons[0] + " " + place + "!"
+        match = adjectives[0].capitalize()[:1:] + adjectives[0][1::] + person1[0] + " with " + weapons[0] + " vs " + adjectives[1] + person2[0] + " with " + weapons[1] + " " + place + "!"
         matchMessage = await message.channel.send(match)
         emoji1 = getEmoji(person1[0])
         emoji2 = getEmoji(person2[0])
@@ -787,8 +937,8 @@ async def on_message(message):
         for matchNum in range(numberOfMatches):
             #match = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::] + people[weaponPersonAdjectiveTicker] + " with " + weapons[weaponPersonAdjectiveTicker] + " vs " + adjectives[weaponPersonAdjectiveTicker+1] + people[weaponPersonAdjectiveTicker+1] + " with " + weapons[weaponPersonAdjectiveTicker+1] + " " + places[matchNum] + "!"
             adjectiveFirst = adjectives[weaponPersonAdjectiveTicker].capitalize()[:1:] + adjectives[weaponPersonAdjectiveTicker][1::]
-            print("[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]))
-            embed = discord.Embed(title="Match #" + str(numofMatches + matchNum), description="[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker], places[matchNum], placeLinks[matchNum]), color=0xFF9900)
+            print("[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker+1], places[matchNum], placeLinks[matchNum]))
+            embed = discord.Embed(title="Match #" + str(numofMatches + matchNum), description= "[%s](%s) [%s](%s) with [%s](%s) vs [%s](%s) [%s](%s) with [%s](%s) [%s](%s)!" % (adjectiveFirst, adjectiveLinks[weaponPersonAdjectiveTicker], people[weaponPersonAdjectiveTicker], peopleLinks[weaponPersonAdjectiveTicker], weapons[weaponPersonAdjectiveTicker], weaponLinks[weaponPersonAdjectiveTicker], adjectives[weaponPersonAdjectiveTicker+1], adjectiveLinks[weaponPersonAdjectiveTicker+1], people[weaponPersonAdjectiveTicker+1], peopleLinks[weaponPersonAdjectiveTicker+1], weapons[weaponPersonAdjectiveTicker+1], weaponLinks[weaponPersonAdjectiveTicker+1], places[matchNum], placeLinks[matchNum]), color=0xFF9900)
             matchMessage = await pollChannel.send(embed=embed)
             matchMessages.append(matchMessage)
             weaponPersonAdjectiveTicker+=2
@@ -885,6 +1035,14 @@ async def on_message(message):
                 adjectiveArray.append(adjective)
         
         
+        songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r")
+        songsFull = songsFile.read()
+        songsArray = songsFull.split("\n")
+
+        minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r")
+        minigamesFull = minigamesFile.read()
+        minigamesArray = minigamesFull.split("\n")
+
         print("Query: |" + messageContent + "|")
 
         if messageContent in peopleArray or messageContent == "Abraham Lincoln":
@@ -911,7 +1069,17 @@ async def on_message(message):
                         embed = createAdjectiveEmbed(messageContent + " ")
                         await message.channel.send(embed=embed)
                     else:
-                        await message.channel.send(messageContent + " was not found.")
+                        if messageContent in songsArray:
+                            print("Query is Song")
+                            embed = createSongEmbed(messageContent)
+                            await message.channel.send(embed=embed)
+                        else:
+                            if messageContent in minigamesArray:
+                                print("Query is Mario Party 10 Minigame")
+                                embed = createMarioMinigameEmbed(messageContent)
+                                await message.channel.send(embed=embed)
+                            else:
+                                await message.channel.send(messageContent + " was not found.")
     #Grab info on a person, weapon, adjective, or place!
     if message.content.startswith("*about"):
         embed = discord.Embed(title="About HDM!", description='"though I would' + "'ve bribed people to get stephen hawking to win that one match" + '"\n-Harrison Truscott\nHistorical Death Match (found here https://github.com/fixmeseb/DeathMatchBot) is a Discord bot that started out when I thought, "Hey, you know what' + "'s funny?" + ' Historical figures fighting each other. I could do something with this!" And then I did. Abbreviated to HDM a lot, HDM is currently running it' + "'s third iteration of the bot (with adjectives!) on the CA Discord Server, and otherwise is soon ready to be added to other server- just reach out to me at the below Discord address or at sauronclaus@gmail.com to see if we can work something out!", color=0xFF9900)
@@ -987,4 +1155,78 @@ async def on_message(message):
         await matchMessage.add_reaction(emoji1)
         await matchMessage.add_reaction(emoji2)
     #Tests for the new embed messages!
-client.run(testToken)
+    if message.content.startswith("*testTradingCards"):
+        card1 = createCard("Abraham Lincoln", "Common")
+        card2 = createCard("Heinrich Hertz", "Uncommon")
+        card3 = createCard("Richard Nixon", "Rare")
+        card4 = createCard("J. Robert Oppenheimer", "Epic")
+        card5 = createCard("Oda Nobunaga", "Legendary")
+        cards = [card1, card2, card3, card4, card5]
+        for card in cards:
+            await message.channel.send(embed=card)
+    #Test message for creating Trading Cards!
+    if message.content.startswith("*allSongs"):        
+        songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r")
+        songsFull = songsFile.read()
+        songs = songsFull.split("\n")
+        songsFile.close()
+        for song in songs:
+            print("Song: " + song)
+            embed = createSongEmbed(song)
+            await message.channel.send(embed=embed)
+    #Test message that sends all songs!
+    if message.content.startswith("*allMinigames"):
+        minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r")
+        minigamesFull = minigamesFile.read()
+        minigames = minigamesFull.split("\n")
+        for minigame in minigames:
+            embed = createMarioMinigameEmbed(minigame)
+            await message.channel.send(embed=embed)
+    #Test message to send all Mario Party Minigames
+    if message.content.startswith("*allJudges"):
+        judgesFile = open("Competition Exclusive Info\\Judges\\Cleaning Competition\\judges.txt", "r")
+        judgesFull = judgesFile.read()
+        judges = judgesFull.split("\n")
+        judgesFile.close()
+        for judgeTrio in judges:
+            judgesIndiv = judgeTrio.split(", ")
+            for judge in judgesIndiv:
+                embed = createJudgeEmbedCleaning(judge, "Cleaning", judgeTrio)
+                await message.channel.send(embed=embed)
+        judgesFile = open("Competition Exclusive Info\\Judges\\Cooking Contest\\judges.txt", "r")
+        judgesFull = judgesFile.read()
+        judges = judgesFull.split("\n")
+        judgesFile.close()
+        for judge in judges:
+            embed = createJudgeEmbedCooking(judge, "Cooking")
+            await message.channel.send(embed=embed)
+    #Test message to send all judges for both Cooking and Cleaning
+    if message.content.startswith("*allFood"):        
+        foodsFile = open("Competition Exclusive Info\\Food\\Food\\dishes.txt", "r")
+        foodsFull = foodsFile.read()
+        foods = foodsFull.split("\n")
+        foodsFile.close()
+        for food in foods:
+            embed = createFoodEmbed(food)
+            await message.channel.send(embed=embed)
+    #Test message to send all food dishes.
+    if message.content.startswith("*allPies"):
+        piesFile = open("Competition Exclusive Info\\Food\\Pies\\pies.txt", "r")
+        piesFull = piesFile.read()
+        pies = piesFull.split("\n")
+        piesFile.close()
+        for pie in pies:
+            embed = createPieEmbed(pie)
+            await message.channel.send(embed=embed)
+    #Test message to send all pies.
+    if message.content.startswith("*drunkardsUnite"):
+        drinksFile = open("Competition Exclusive Info\\Drinks\\drinks.txt", "r")
+        drinksFull = drinksFile.read()
+        drinks = drinksFull.split("\n")
+
+        for drink in drinks:
+            embed = createDrinkEmbed(drink)
+            await message.channel.send(embed=embed)
+    #Test message to send all drinks.
+
+client.run(botToken)

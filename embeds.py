@@ -6,11 +6,12 @@ import wikipedia
 import os.path
  
 def createWeaponEmbed(weapon):
-    print("Weapon: " + weapon)
+    print("Weapon: ~" + weapon + "~")
     weaponTiersFile = open("Armory\\Tiers\\weaponTierList.txt", "r")
     weaponTiersFull = weaponTiersFile.read()
     weaponTiersArray = weaponTiersFull.split("\n")
     tierName = ""
+    tiers = []
     for tier in weaponTiersArray:
         tierFile = open("Armory\\Tiers\\" + tier + ".txt", "r")
         tierFull = tierFile.read()
@@ -19,10 +20,10 @@ def createWeaponEmbed(weapon):
             if weaponSearch == weapon:
                 print("Found weapon! " + tier)
                 tierName = tier
+                tiers.append(tier)
     contentFile = open("Armory\\Descriptions\\" + tierName + "\\" + weapon + ".txt", "r")
     contentFull = contentFile.read()
     content = contentFull.split("\n")
-    imagePath = content[1]
     if weapon.split(" ")[0] == "a":
         weapon = weapon[2::]
     else:
@@ -30,10 +31,19 @@ def createWeaponEmbed(weapon):
             weapon = weapon[3::]
     
     embed = discord.Embed(title=weapon[:1:].capitalize() + weapon[1::], description=content[0], color=0xFF9900)
-    embed.add_field(name="Tier",value=tierName, inline=False)
+    tierR = tiers[0]
+    if len(tiers) <= 1:
+        embed.add_field(name="Tier",value=tierName, inline=False)
+    else:
+        for tier in tiers:
+            if tier != tiers[0]:
+                tierR = tierR + "/" + tier
+        embed.add_field(name="Tiers",value=tierR, inline=False)
     if len(content) >= 3:
         embed.add_field(name="Link", value=content[2], inline=False)
-    embed.set_image(url=imagePath)
+    if len(content) >= 2:
+        imagePath = content[1]
+        embed.set_image(url=imagePath)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object from the weapon inputed. 
@@ -205,6 +215,7 @@ def checkLinks(objectName):
         "John Cena": "John Felix Anthony Cena",
         "ï»¿Abraham Lincoln": "Abraham Lincoln",
         "Kaiser Wilhelm": "Kaiser Wilhelm II",
+        "Charles Long (1st Baron Farnborough)": "Charles Long, 1st Baron Farnborough",
         "a greataxe": "Battle axe",
         "a Yellow-Finned Tuna": "Yellow Finned Tuna Fish", 
         "their bear hands (severed)": "Grizzlie Bears", 
@@ -251,3 +262,194 @@ def createAdjectiveEmbed(adjective):
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Create an adjective embed
+def createSongEmbed(songName):
+    print("Song Title: " + songName)
+
+    songFile = open("Competition Exclusive Info\\Songs\\" + songName + ".txt", "r")
+    songFull = songFile.read()
+    song = songFull.split("\n")
+
+    embed = discord.Embed(title=songName, description="[Link](%s)" % (song[0]), color=0xFF9900)
+    embed.add_field(name="Artist",value=song[1], inline=True)
+    embed.add_field(name="Album",value=song[2], inline=True)
+    embed.add_field(name="Length",value=song[3], inline=True)
+    embed.set_image(url=song[4])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Create a song embed
+def createMarioMinigameEmbed(minigame):
+    print("Minigame: " + minigame)
+    
+    minigameFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\" + minigame + ".txt", "r")
+    minigameFull = minigameFile.read()
+    minigameInfo = minigameFull.split("\n")
+
+    embed = discord.Embed(title=minigame, description=minigameInfo[0], color=0xFF9900)
+    embed.add_field(name="Type",value=minigameInfo[1], inline=True)
+    embed.set_image(url=minigameInfo[2])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Create a Mario Party 10 Minigame embed
+def createSpaceShipEmbed(spaceship):
+    print("Spaceship: " + spaceship)
+
+    spaceShipFile = open("Competition Exclusive Info\\Spaceships\\" + spaceship + ".txt", "r")
+    spaceShipFull = spaceShipFile.read()
+    spaceShipInfo = spaceShipFull.split("\n")
+
+    embed = discord.Embed(title=spaceship, description=spaceShipInfo[0], color=0xFF9900)
+    embed.add_field(name="Link",value=spaceShipInfo[1], inline=True)
+    embed.set_image(url=spaceShipInfo[2])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Creates an embed for Spaceships! (Which is currently only the X-wing)
+def createJudgeEmbedCooking(judge, typeContest):
+    print("Judge: " + judge + "\nType: " + typeContest)
+
+    judgeFile = open("Competition Exclusive Info\\Judges\\Cooking Contest\\" + judge + ".txt", "r")
+    judgeFull = judgeFile.read()
+    judgeInfo = judgeFull.split("\n")
+    if judge == "the Swedish Chef":
+        embed = discord.Embed(title="The Swedish Chef", description=judgeInfo[0], color=0xFF9900)
+    else:
+        embed = discord.Embed(title=judge, description=judgeInfo[0], color=0xFF9900)
+    embed.add_field(name="Link",value=judgeInfo[1], inline=False)
+    embed.add_field(name="Competition Type",value=typeContest, inline=False)
+    embed.set_image(url=judgeInfo[2])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Creates an embed for a Judge for a cooking contest!
+def createJudgeEmbedCleaning(judge, typeContest, judgeTrio):
+    print("Judge: " + judge + "\nType: " + typeContest)
+
+    locationFile = open("Competition Exclusive Info\\Judges\\Cleaning Competition\\locations.txt", "r")
+    locationFull = locationFile.read()
+    locations = locationFull.split("\n")
+
+    judgesFile = open("Competition Exclusive Info\\Judges\\Cleaning Competition\\judges.txt", "r")
+    judgesFull = judgesFile.read()
+    judgesInfo = judgesFull.split("\n")
+
+    indexNumber = judgesInfo.index(judgeTrio)
+    location = locations[indexNumber]
+
+    judgeFile = open("Competition Exclusive Info\\Judges\\Cleaning Competition\\" + judge + ".txt", "r")
+    judgeFull = judgeFile.read()
+    judgeInfo = judgeFull.split("\n")
+
+    embed = discord.Embed(title=judge, description=judgeInfo[0], color=0xFF9900)
+    embed.add_field(name="Link",value=judgeInfo[1], inline=False)
+    embed.add_field(name="Competition Type",value=typeContest, inline=False)
+    embed.add_field(name="Location",value=location, inline=False)
+    embed.set_image(url=judgeInfo[2])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Creates an embed for a Judge for a cleaning competition!
+def createJudgeThreeSet(judgeTrio, typeContest):
+    judgeSplit = judgeTrio.split(", ")
+    judgeEmbeds = {}
+    for judge in judgeSplit:
+        if typeContest == "Cleaning Competition":
+            judgeEmbeds[judge] = createJudgeEmbedCleaning(judge, typeContest, judgeTrio)
+        else:
+            judgeEmbeds[judge] = createJudgeEmbedCooking(judge, typeContest)
+    return judgeEmbeds
+#Returns the embeds for a judge trio
+def createFranchiseEmbed(franchise):
+    print("Franchise: " + franchise)
+
+    franchiseFile = open("Competition Exclusive Info\\Franchise\\" + franchise + ".txt", "r")
+    franchiseFull = franchiseFile.read()
+    franchiseInfo = franchiseFull.split("\n")
+
+    embed = discord.Embed(title=franchise, description=franchiseInfo[0], color=0xFF9900)
+    embed.add_field(name="Link",value=franchiseInfo[1], inline=True)
+    embed.set_image(url=franchiseInfo[2])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Creates an embed for a Franchise!
+def createFoodEmbed(food):
+    print("Food: |" + food + "|")
+
+    foodFile = open("Competition Exclusive Info\\Food\\Food\\" + food + ".txt", "r")
+    foodFull = foodFile.read()
+    foodInfo = foodFull.split("\n")
+    
+    embed = discord.Embed(title=food, description="%s [Link](%s)" % (foodInfo[0], foodInfo[1]), color=0xFF9900)
+    if foodInfo[1] == "":
+        embed = discord.Embed(title=food, description="%s" % (foodInfo[0]), color=0xFF9900)
+    ingredients = foodInfo[2].split("|")
+    ingredientBlock = ""
+    for ingredient in ingredients:
+        ingredientBlock = ingredientBlock + "\n" + ingredient
+    if ingredientBlock != "" and ingredientBlock != "\n":
+        embed.add_field(name="Ingredients",value=ingredientBlock[1::], inline=False)
+    time = foodInfo[3].split("|")
+    if time[0] != "":
+        embed.add_field(name="Prep Time",value=time[0], inline=True)
+    if time[1] != "":
+        embed.add_field(name="Cooking Time",value=time[1], inline=True)
+    if time[2] != "":
+        embed.add_field(name="Total Time",value=time[2], inline=True)
+    embed.set_image(url=foodInfo[4])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Creates an embed for a dish!
+def createPieEmbed(pie):
+    print("Pie: " + pie)
+
+    pieFile = open("Competition Exclusive Info\\Food\\Pies\\" + pie + ".txt", "r")
+    pieFull = pieFile.read()
+    pieInfo = pieFull.split("\n")
+
+    embed = discord.Embed(title=pie[:1:].capitalize() + pie[1::], description="%s [Link](%s)" % (pieInfo[0], pieInfo[1]), color=0xFF9900)
+    embed.add_field(name="Calories",value=pieInfo[2], inline=True)
+    embed.set_image(url=pieInfo[3])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Create a pie embed!
+def createDrinkEmbed(drink):
+    print("Drink: " + drink)
+
+    drinkFile = open("Competition Exclusive Info\\Drinks\\" + drink + ".txt", "r")
+    drinkFull = drinkFile.read()
+    drinkInfo = drinkFull.split("\n")
+
+    embed = discord.Embed(title=drink, description=drinkInfo[0], color=0xFF9900)
+    embed.add_field(name="ABV",value=drinkInfo[1], inline=True)
+    embed.add_field(name="Proof",value=drinkInfo[2], inline=True)
+
+    embed.set_image(url=drinkInfo[3])
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Create a drink embed!
+def createContestEmbed(contest, ruleset):
+    print("Contest: " + contest)
+
+    contestFile = open("Contests\\" + contest + "\\description.txt", "r")
+    contestFull = contestFile.read()
+    contestInfo = contestFull.split("\n")
+
+    rulesFile = open("Contests\\" + contest + "\\" + ruleset + "rules.txt", "r")
+    rulesFull = rulesFile.read()
+    rulesInfo = rulesFull.split("\n")
+    
+    embed = discord.Embed(title=contest, description="%s [Link](%s)" % (contestInfo[0], contestInfo[1]), color=0xFF9900)
+    embed.add_field(name="Ruleset",value=ruleset, inline=False)
+
+    rulesBlock = ""
+    for rule in rulesInfo:
+        rulesBlock = rulesBlock + "\n-" + rule
+    if rulesBlock != "" and rulesBlock != "\n":
+        embed.add_field(name="Rules",value=rulesBlock[1::], inline=False)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Generate Info for a contest!
+def createHDMClassicEmbed():
+    print("HDM Classic")
+    
+    embed = discord.Embed(title="Deathmatch Classic", description="The Deathmatch Classic is the classic 1v1 death match of HDM.", color=0xFF9900)
+    embed.add_field(name="Rules",value="- Both competitors know how to activate their weapons.", inline=False)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Generate Info for an hDM Classic Death Match!

@@ -1,0 +1,2 @@
+Each contestant plays through a round of the gameshow Jeopardy, hosted by Alex Trebeck. The categories chosen are three random categories from a list. The winner is whoever has the highest score after the final round.
+https://en.wikipedia.org/wiki/Jeopardy!

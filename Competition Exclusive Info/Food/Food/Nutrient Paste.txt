@@ -1,0 +1,5 @@
+Nutrient paste is a food from Rimworld. A nutrient paste meal is produced from a nutrient paste dispenser, using raw food ingredients worth 0.3 points of nutrition (ie. the raw nutrition is tripled). When consumed, it gives a -4 mood penalty ("Ate awful meal"). The meals are dispensed on demand, and no cooking skill is required. Nutrient paste meals never cause food poisoning.
+https://rimworldwiki.com/wiki/Nutrient_paste_meal
+Raw food ingredients worth 0.3 points of nutrition
+|36.67 secs|36.67 secs
+https://i.imgur.com/xl0Emow.png

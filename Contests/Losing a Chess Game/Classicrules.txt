@@ -1,0 +1,6 @@
+No interference with other competitiors is allowed.
+Each competitor must follow all the rules of Losing chess.
+Capturing is compulsory.
+When more than one capture is available, the player may choose.
+The king has no royal power and so, may be captured as any other piece (without check or checkmate), can expose itself, there is no castling, and a pawn can promote to king.
+Stalemate is a win for the stalemated player (the player with no legal moves).

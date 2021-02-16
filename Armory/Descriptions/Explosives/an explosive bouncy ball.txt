@@ -1,0 +1,2 @@
+An explosive bouncy ball is a ball that explodes once when bounced off a surface. The ball itself is unharmed by the explosive and maintains it's velocity.
+https://i.imgur.com/CDGlQwX.jpg

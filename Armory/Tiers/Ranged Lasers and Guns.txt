@@ -11,7 +11,6 @@ a Needler
 a M6 Spartan Laser
 R.Y.N.O.
 the Elder Wand
-a thermal detonator
 Widowmaker's Sniper Rifle
 an E-11 Blaster Rifle
 Deadshot's Wrist guns
@@ -20,7 +19,7 @@ a TL-50 heavy repeater
 a pair of WESTAR-34 blasters
 Mac's shotgun with axe from Agents of SHIELD
 Mei's freeze gun
-Green Goblin's grenades (10x)
 San's Gaster Blaster
 a revolver
-a holy hand grenade
+a Lightsaber Rifle
+Mega Man's arm cannon

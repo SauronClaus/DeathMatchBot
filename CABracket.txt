@@ -1,192 +1,174 @@
-Abraham Lincoln
-Adolf Hitler
+Franklin D. Roosevelt
+Pythagoras
+Alexander Graham Bell
+Attila the Hun
+Markiplier
+George Swinnerton Parker
+Vladimir Putin
+Stan Lee
+Mark Ruffalo
+Herbert Hoover
+Jeff Kaplan
+Alan Rickman
+Paul McCartney
+Michael Bay
+Srinivasa Ramanujan
+Henri Poincare
+Hideki Tojo
+John Tyler
+George H. W. Bush
+George Lucas
+Jackie Robinson
+Jesse Owens
+Gordon Ramsay
+Carl Gustav Jacob Jacobi
+Homer (The Odyssey)
+Tobey Maguire
+Matthew McConaughey
+Paul Revere
+George Washington
+Eddie Hall
+Satyendra Nath Bose
+Steve Jobs
+Jimmy Fallon
+Ludwig van Beethoven
+Neil deGrasse Tyson
+Dr. Seuss
+Sun Tzu
+Erwin Schrodinger
+Leonardo da Vinci
+Benito Mussolini
+Mao Zedong
+John Cena
+George S. Patton
+Bill Watterson
+August Ferdinand Mobius
+J. Robert Oppenheimer
+Joe Biden
+Keanu Reeves
+Thales of Miletus
+Dwayne Johnson
+Ramesses II
+Frank Sinatra
+Raphael
+Peter Higgs
+Theodore Roosevelt
+Bill Gates
+Buster Keaton
+William Henry Harrison
+King Louis XVI of France
+Henry Ford
+Arnold Schwarzenegger
+James Garfield
+Alex Trebeck
+Bernie Sanders
+Orville Wright
+Yuri Kondratyuk
+Kublai Khan
+Richard the Lionheart
+Masahiro Sakurai
+Joseph Fourier
+Leon Trotsky
+Jack Nicholson
+Michael Jordan
+Hammurabi
+Shalom H. Schwartz
+H. P. Lovecraft
+Montezuma
+Jackie Chan
+Edgar Allan Poe
+Millard Fillmore
+Edward Teller
+Catherine the Great
+Socrates
+Josef Mengele
+Barack Obama
+Bon Scott
+Napoleon III
+Babe Ruth
+Stefan Karl Stefansson
+Charlemagne
+Tom Holland
+Zach Callison
+Edward the Black Prince
+Buzz Aldrin
+John Quincy Adams
+Mike Tyson
+Michelangelo
+Edward Norton
+Stephen Douglas
+Alexander Hamilton
+Nelson Mandela
+Bill Nye
+Rosa Parks
+Christopher Columbus
+Prince (musician)
+Harry S. Truman
+Douglas MacArthur
+Gottfried Wilhelm Leibniz
+Gerald Ford
+Bill Murray
+Clovis I
+John Napier
 Al Gore
-Albert Einstein
+George W. Bush
+Vlad the Impaler
+Daniel Bernoulli
+Martin Luther King Jr.
+Jack Churchill
+Andrew Johnson
+Morgan Freeman
+Martin Van Buren
+Horatio Gates
+Walt Disney
+Nicolas Cage
+Quentin Tarantino
 Alec Guinness
 Amelia Earhart
-Andrew Jackson
-Anne Frank
-Archduke Franz Ferdinand
-Augustin-Louis Cauchy
-Avicii
-Alexander Hamilton
-Augustus
-Babe Ruth
-Barack Obama
-Ben Stiller
-Benedict Cumberbatch
-Benjamin Franklin
-Bill Murray
-Bill Nye
-Bob Ross
-Bon Scott
-Buzz Aldrin
-Carl Gauss
-Carrie Fisher
-Charlemagne
-Charles Babbage
-Charles Darwin
-Charles Dickens
-Charles V of Austria
-Chris Evans
-Christian Goldbach
-Christina Aguilera
-Christopher Columbus
-Cleopatra
-Clovis I
-C. S. Lewis
-Daniel Bernoulli
-Diego Rivera
-Douglas MacArthur
-Drake
-Dwight Eisenhower
-Edward Norton
-Edwin Hubble
-Elon Musk
-Eric Prydz
-Ernest Rutherford
-Euclid
-Edward the Black Prince
-Fidel Castro
-Fluffy (Gabriel Iglesias)
-Frida Kahlo
-Fred Rogers
-Gabe Newell
-George Clooney
-Gottfried Wilhelm Leibniz
-Grant Kirkhope
-George R. R. Martin
-Hanibal (general)
-Harriet Tubman
-Harrison Ford
-Harry Styles
-Hayden Christensen
-Heinrich Hertz
-Henrietta Lacks
-HG Wells
-Horatio Gates
-Ivan the Terrible
-Jack Kirby
-Jack White
-Jacob Sartorius
-John Rockefeller
-Justin Bieber
-John Napier
-Jeb Bush
-Julius Caesar
-John Hancock
-J. R. R. Tolkien
-Josh Brolin
-Joan of Arc
-John Calvin
-John Quincy Adams
-Johannes Kepler
-J. K. Rowling
-Joseph Stalin
-John Lennon
-John F. Kennedy
-John D. Rockefeller
-Jack Churchill
-Karl Marx
-Lyn Evans
-Leiv Eiriksson
-Mahatma Gandhi
-Malcolm X
-Marco Polo
-Marie Curie
-Markus Persson
-Mark Hamill
-Martin Luther
-Michelangelo
-Mark Twain
-Mikhail Gorbachev
-Max Planck
-Mary Magdalene
-Morgan Freeman
-Michael Jackson
-Martin Luther King Jr.
-Mark Zuckerberg
-Miyamoto Musashi
-Napoleon III
-Nelson Mandela
-Neil Armstrong
-Ninja (streamer)
-Niels Bohr
-Nicolas Cage
-Nicki Minaj
-Nikola Tesla
-Oda Nobunaga
-Otto von Bismarck
-Oscar Wilde
-Owen Wilson
-Oprah Winfrey
-Pablo Picasso
-Paul Dirac
-Plato
-Phil Swift
-Ptolemy
-Prince (musician)
-PewDiePie
-Pat Sajak
-Queen Victoria
-Quentin Tarantino
-Qin Shi Huang
-Robert E. Lee
-Rick Astley
-Richard Feynman
-Rosa Parks
-Rene Descartes
-Randall Munroe
-Sir Isaac Newton
-Stephen Douglas
-Sir Robert Wadlow
-Stephen Curry
-Stanislaw Ulam
-Stefan Karl Stefansson
-Stonewall Jackson
-Steven Spielberg
-Suleiman the Magnificent
-Shaka Zulu
-Tom Hanks
-Toby Fox
-Tom Cruise
-Tom Holland
 Ulysses S. Grant
-Vasco da Gama
-Vincent Van Gogh
-Voltaire
-Valentin Glushko
-Vladimir Lenin
-Vlad the Impaler
-Winston Duke
-William Shakespeare
-Winston Churchill
-Walt Disney
-Yu the Great
+Nicki Minaj
+Stonewall Jackson
+Marco Polo
+Archduke Franz Ferdinand
+Ivan the Terrible
+Abraham Lincoln
+Harrison Ford
+Miyamoto Musashi
+Joseph Stalin
+Gabe Newell
+Shaka Zulu
+John F. Kennedy
+Pat Sajak
+John Hancock
+Otto von Bismarck
+Tom Hanks
 Yuri Gagarin
-Zach Callison
-Thom Tillis
-Chris Wallace
-Cal Cunningham
-Thomas Jefferson
-James Madison
-James Monroe
-Martin Van Buren
-James K. Polk
-Zachary Taylor
-James Buchanan
-Andrew Johnson
-Rutherford B. Hayes
-Chester A. Arthur
-Grover Cleveland
-Benjamin Harrison
-Warren G. Harding
-Calvin Coolidge
-Harry S. Truman
-Lyndon B. Johnson
-Gerald Ford
-Ronald Reagan
-George W. Bush
+Michael Jackson
 Bruce Lee
-Muhammad Ali
-Mike Tyson
+Rick Astley
+Edwin Hubble
+Carl Gauss
+Fluffy (Gabriel Iglesias)
+Malcolm X
+James Buchanan
+Charles Dickens
+Vladimir Lenin
+Ninja (streamer)
+Justin Bieber
+Euclid
+Oda Nobunaga
+Plato
+Hayden Christensen
+John Lennon
+Oprah Winfrey
+Vincent Van Gogh
+Josh Brolin
+Sir Isaac Newton
+Leiv Eiriksson
+Christian Goldbach
+Chris Evans
+William Shakespeare
+James Madison
+Drake
+Martin Luther
+Fred Rogers

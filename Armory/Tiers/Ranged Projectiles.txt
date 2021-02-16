@@ -6,3 +6,4 @@ a slingshot
 a longbow
 a crossbow
 a can of Mace spray
+a spray bottle of Joker venom

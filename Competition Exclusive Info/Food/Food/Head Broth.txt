@@ -1,0 +1,5 @@
+Head Broth is a Sustenance item in Raft.
+https://raft.gamepedia.com/Head_Broth
+1 raw potato|1 raw beet|2 poison-puffer heads|1 bucket of milk
+|3.5 min|3.5 min
+https://i.imgur.com/nwmd5xb.png

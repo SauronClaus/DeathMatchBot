@@ -232,7 +232,7 @@ def generateRegular(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #The regular syntax. Should be used for most contests.
 def generateCleaningCompetition(competitionInfo):
@@ -281,7 +281,7 @@ def generateCleaningCompetition(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating a cleaning contest.
 def generateCookingContest(competitionInfo):
@@ -333,7 +333,7 @@ def generateCookingContest(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s (%s) [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, specialItems, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s (%s) [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, specialItems, place, competitionInfo[3][place])
     return matchMessage
 #Used to generate a cooking competition.
 def generateDrinkingContest(competitionInfo):
@@ -382,7 +382,7 @@ def generateDrinkingContest(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used to generate a drinking contest.
 def generateGetSuedNintendo(competitionInfo):
@@ -431,7 +431,7 @@ def generateGetSuedNintendo(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s to %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s to %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used to generate the Get Sued by Nintendo competition
 def generateJeopardy(competitionInfo):
@@ -481,7 +481,7 @@ def generateJeopardy(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used to generate the Jeopardy competition
 def generateKaraoke(competitionInfo):
@@ -529,7 +529,7 @@ def generateKaraoke(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used to generate a Karaoke competition
 def generateBachelorLong(competitionInfo):
@@ -577,7 +577,7 @@ def generateBachelorLong(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating the Lasting Longer in the Bachelor competition
 def generateBacheloretteLong(competitionInfo):
@@ -625,7 +625,7 @@ def generateBacheloretteLong(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating the Lasting Longer in the Bachelorette competition
 def generateBachelorShort(competitionInfo):
@@ -673,7 +673,7 @@ def generateBachelorShort(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating the Lasting the Shortest in the Bachelor competition
 def generateBacheloretteShort(competitionInfo):
@@ -721,7 +721,7 @@ def generateBacheloretteShort(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating the Lasting the Shortest in the Bachelorette competition
 def generateLifeSpeedrun(competitionInfo):
@@ -769,7 +769,7 @@ def generateLifeSpeedrun(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating the Life Speedrun competition
 def generateMarioParty10(competitionInfo):
@@ -817,7 +817,7 @@ def generateMarioParty10(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating the Mario Party 10 competition
 def generatePieEatingContest(competitionInfo):
@@ -865,7 +865,7 @@ def generatePieEatingContest(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating a pie eating contest
 def generateFirstTo(competitionInfo):
@@ -913,7 +913,7 @@ def generateFirstTo(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s as the %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s as the %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating "First to" contests!
 def generateContestAddition(competitionInfo):
@@ -961,7 +961,7 @@ def generateContestAddition(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating a classic contest, but with a "competition" in the contest name
 def generateContestMatch(competitionInfo):
@@ -1009,7 +1009,7 @@ def generateContestMatch(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating a classic contest, but with a "match" in the contest name
 def generateContestGameOf(competitionInfo):
@@ -1057,7 +1057,7 @@ def generateContestGameOf(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a game of %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a game of %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating a classic contest, but with a "game of" in the contest name
 def generateContestElections(competitionInfo):
@@ -1105,7 +1105,7 @@ def generateContestElections(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     return matchMessage
 #Used for generating a classic contest, but with for elections
 def generateHDMClassic(competitionInfo):
@@ -1153,7 +1153,7 @@ def generateHDMClassic(competitionInfo):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s %s %s vs %s %s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
     print("Match Length: " + str(len(matchMessage)))
     return matchMessage
 #generates an HDM death match

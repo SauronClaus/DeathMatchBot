@@ -4,6 +4,7 @@ from discord.utils import get
 import random
 import wikipedia
 import os.path
+import xlwt
 
 from generateNumbers import generateNumRep
 from generateNumbers import newGenerateNum
@@ -1228,5 +1229,124 @@ async def on_message(message):
             embed = createDrinkEmbed(drink)
             await message.channel.send(embed=embed)
     #Test message to send all drinks.
+    if message.content.startswith("*stats"):
+        channel = client.get_channel(773719674927972424)
+        print("Channel: " + channel.name)
+
+        peopleFile = open("people.txt", "r")
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+
+        weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r")
+        weaponTierFull = weaponTierFile.read()
+        weaponTierArray = weaponTierFull.split("\n")
+        weaponArray = []
+        weaponMinusFirstWord = []
+        for weaponTier in weaponTierArray:
+            weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r")
+            weaponFull = weaponFile.read()
+            weaponArrayTemp = weaponFull.split("\n")
+            for weapon in weaponArrayTemp:
+                weaponArray.append(weapon)
+                
+        placesFile = open("Atlas\\placesName.txt", "r")
+        placesFull = placesFile.read()
+        placesArray = placesFull.split("\n")
+
+        placesNoPropFile = open("Atlas\\places.txt", "r")
+        placesNoPropFull = placesNoPropFile.read()
+        placesNoProps = placesNoPropFull.split("\n")
+
+        adjectiveTierFile = open("Adjectives\\TierList.txt", "r")
+        adjectiveTierFull = adjectiveTierFile.read()
+        adjectiveTierArray = adjectiveTierFull.split("\n")
+
+        adjectiveArray = []
+        for adjectiveTier in adjectiveTierArray:
+            adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r")
+            adjectiveFull = adjectiveFile.read()
+            adjectiveArrayTemp = adjectiveFull.split("\n")
+            for adjective in adjectiveArrayTemp:
+                adjectiveArray.append(adjective)
+        
+        weaponry = {}
+        adjectivry = {}
+        placery = {}
+
+        winWeapon = {}
+        winAdjective = {}
+        winPlace = {}
+
+        for weapon in weaponArray:
+            weaponry[weapon] = 0
+            winWeapon[weapon] = 0
+        for adjective in adjectiveArray:
+            adjectivry[adjective] = 0
+            winAdjective[adjective] = 0
+        for place in placesArray:
+            placery[place] = 0
+            winPlace[place] = 0
+        
+        async for message in channel.history(limit=None):
+            embeds = message.embeds
+            for embed in embeds:
+                if not ("Round #2" in embed.title):
+                    num = 0
+                    print(embed.title + ": " + embed.description)
+                    messageContents = embed.description.split("[")
+                    for spliter in messageContents:
+                        num+=1
+                        bit = spliter.split("]")[0]
+                        print("Bit #" + str(num) + ": ~" + bit + "~")
+                        if bit in weaponArray:
+                            weaponry[bit]+=1
+                        if bit in placesArray:
+                            placery[bit]+=1
+                        if bit in adjectiveArray:
+                            adjectivry[bit]+=1
+            print(message.content)
+            if message.content != "*ranked" and "vs" in message.content.split(" "):
+                print("Found match")
+                placeSplit = message.content.split(" in ")[0].split(" on ")
+                for bob in placeSplit[0].split("vs"):
+                    for person in peopleArray:
+                        if person in bob.strip():
+                            thingSplit = bob.strip().split(person)
+                            print("Split by " + person)
+                            for item in thingSplit:
+                                word = item.strip()
+                                if word in weaponArray:
+                                    weaponry[word]+=1
+                                if word in placesArray:
+                                    placery[word]+=1
+                                if word in adjectiveArray:
+                                    adjectivry[word]+=1
+            
+        wb = xlwt.Workbook()
+        ww = wb.add_sheet("Weapons")
+        wa = wb.add_sheet("Adjectives")
+        wp = wb.add_sheet("Places")
+        row = 0
+
+        for weapon in weaponry:
+            ww.write(row, 0, weapon)
+            ww.write(row, 1, int(weaponry[weapon]))
+            row+=1
+        row = 0
+        for adjective in adjectivry:
+            wa.write(row, 0, adjective[:len(adjective)-2:])
+            wa.write(row, 1, int(adjectivry[adjective]))
+            row+=1
+        row = 0
+        for place in placery:
+            wp.write(row, 0, placesNoProps[placesArray.index(place)])
+            wp.write(row, 1, int(placery[place]))
+            row+=1
+        wb.save("Round 1 results.xls")
+
+
+
+
+        
 
 client.run(botToken)

@@ -1,6 +1,5 @@
 import discord
 from discord.utils import get
-
 import random
 import wikipedia
 import os.path
@@ -92,6 +91,14 @@ def summaryShort(summary):
     summaryPersonal = ""
     if len(list(summary)) > 2040:
         summaryPersonal = str(summary[0:2000]) + "..."
+    else:
+        summaryPersonal = summary
+    return summaryPersonal
+#Shortens the summary to 2040 characters if needed. 
+def summaryShortest(summary):
+    summaryPersonal = ""
+    if len(list(summary)) > 500:
+        summaryPersonal = str(summary[0:500]) + "..."
     else:
         summaryPersonal = summary
     return summaryPersonal

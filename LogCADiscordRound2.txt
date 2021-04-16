@@ -53,3 +53,45 @@ Michael Jackson|Nicki Minaj|6-2|Michael Jackson
 Alex Trebeck|Matthew McConaughey|3-5|Matthew McConaughey
 Ludwig van Beethoven|Steve Jobs|2-6|Steve Jobs
 Paul McCartney|Miyamoto Musashi|2-5|Miyamoto Musashi
+Gabe Newell|Montezuma|2-8|Montezuma
+Oprah Winfrey|William Henry Harrison|8-2|Oprah Winfrey
+Fred Rogers|Dwayne Johnson|1-9|Dwayne Johnson
+Babe Ruth|Kublai Khan|2-8|Kublai Khan
+Arnold Schwarzenegger|John Napier|9-1|Arnold Schwarzenegger
+Hammurabi|Oda Nobunaga|4-4|Tie!
+Daniel Bernoulli|Vladimir Lenin|1-7|Vladimir Lenin
+George Lucas|Martin Van Buren|8-1|George Lucas
+Sir Isaac Newton|Morgan Freeman|5-3|Sir Isaac Newton
+Yuri Gagarin|Peter Higgs|1-6|Peter Higgs
+Christian Goldbach|Gerald Ford|3-5|Gerald Ford
+August Ferdinand Mobius|John Tyler|1-7|John Tyler
+Franklin D. Roosevelt|Ramesses II|5-3|Franklin D. Roosevelt
+Zach Callison|Millard Fillmore|7-1|Zach Callison
+Michael Jordan|Shaka Zulu|6-2|Michael Jordan
+Martin Luther King Jr.|King Louis XVI of France|6-3|Martin Luther King Jr.
+Mike Tyson|Henri Poincare|3-6|Henri Poincare
+George H. W. Bush|Mao Zedong|2-7|Mao Zedong
+Chris Evans|Amelia Earhart|8-1|Chris Evans
+Euclid|Nicolas Cage|7-2|Euclid
+Stan Lee|Catherine the Great|6-2|Stan Lee
+Henry Ford|Christopher Columbus|4-3|Henry Ford
+Napoleon III|George Washington|2-6|George Washington
+Buster Keaton|Jackie Robinson|3-4|Jackie Robinson
+Benito Mussolini|Charlemagne|5-2|Benito Mussolini
+Edwin Hubble|Keanu Reeves|2-6|Keanu Reeves
+Carl Gauss|J. Robert Oppenheimer|1-6|J. Robert Oppenheimer
+Tom Hanks|Pythagoras|6-1|Tom Hanks
+Leiv Eiriksson|Alec Guinness|2-6|Alec Guinness
+Joe Biden|Jimmy Fallon|2-6|Jimmy Fallon
+Charles Dickens|Satyendra Nath Bose|8-1|Charles Dickens
+Gordon Ramsay|Leon Trotsky|7-2|Gordon Ramsay
+Hayden Christensen|Leonardo da Vinci|5-4|Hayden Christensen
+Sun Tzu|Buzz Aldrin|2-7|Buzz Aldrin
+H. P. Lovecraft|Carl Gustav Jacob Jacobi|6-3|H. P. Lovecraft
+George S. Patton|Malcolm X|4-4|Tie!
+John F. Kennedy|Michelangelo|7-1|John F. Kennedy
+Bernie Sanders|Edward the Black Prince|1-7|Edward the Black Prince
+Bill Nye|Markiplier|3-5|Markiplier
+Edgar Allan Poe|Plato|2-6|Plato
+James Madison|Josef Mengele|3-5|Josef Mengele
+Mark Ruffalo|Homer (The Odyssey)|4-4|Tie!

@@ -44,10 +44,14 @@ from tradingCards import grantCard
 from tradingCards import generateStats
 
 from tradingCardPerson import TradingCard
+import time
+    
 presidentalNamesFile = open("Pictures\\Lincoln\\presidentLastNames.txt", "r")
 presidentalNamesFull = presidentalNamesFile.read()
 presidentalNames = presidentalNamesFull.split("\n")
+
 numberOfLincolnPics = 0
+roundNumber = 3
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -139,7 +143,36 @@ def createPersonEmbed(person):
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object created from the inputed person.
-
+def returnResult(matchMessage):
+    channel = client.get_channel(773719674927972424)
+    print("Channel: " + channel.name + " (" + numberMessages + " messages)")
+    messageResults = []
+    embeds = matchMessage.embeds
+    for embed in embeds:
+        if "Round #" + str(roundNumber) in embed.title:
+            num = 0
+            reactions = {}
+            for reaction in matchMessage.reactions:
+                reactions[reaction.emoji.id] = reaction.count
+            for reaction in reactions: 
+                personName = reverseEmojiID(reaction)
+            if reactions[matchMessage.reactions[0].emoji.id] > reactions[matchMessage.reactions[1].emoji.id]:
+                winnerName = reverseEmojiID(matchMessage.reactions[0].emoji.id)
+            else: 
+                if reactions[matchMessage.reactions[1].emoji.id] > reactions[matchMessage.reactions[0].emoji.id]:
+                    winnerName = reverseEmojiID(matchMessage.reactions[1].emoji.id)
+                else:
+                    winnerName = "Tie!"
+            print("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)) 
+            messageResults.append("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName))
+    bracketFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "a")
+    bracketFile.write("\n")
+    messageResults.reverse()
+    for result in messageResults:
+        bracketFile.write(result)
+        bracketFile.write("\n")
+    bracketFile.close()
+    print("Completed!")
 
 @client.event
 async def on_ready(): 
@@ -563,21 +596,30 @@ async def on_message(message):
             await sentMessage.add_reaction(emoji=SuleimanMoji)
         #Super Bowl Special!
         if message.content.startswith("*resetBracket"):
-            logFile = open("Log The CA Discord.txt", "r")
+            logFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "r")
             logFull = logFile.read()
             log = logFull.split("\n")
             logFile.close()
             reepFull = ""
             for matchInfo in log:
                 match = matchInfo.split("|")
-                if match[1] == "Tie":
-                    match[1] = match[0]
-                reepFull = reepFull + match[1] + ";"
-            reepFull = reepFull[:len(reepFull)]
-            reepFile = open("reep VThe CA Discord.txt", "w")
+                if match[3] == "Tie!":
+                    reepFull = reepFull + "\n" + match[0] + "\n" + match[1]
+                else:
+                    scores = match[2].split("-")
+                    if scores[0] > scores[1]:
+                        winner = match[0]
+                    if scores[1] > scores[0]:
+                        winner = match[1]
+                    if winner != match[3]:
+                        print("--Error!--")
+                    else:
+                        reepFull = reepFull + "\n" + match[3]              
+            reepFile = open("CABracket.txt", "w")
             reepFile.write(reepFull)
             reepFile.close()
-        #Resets the bracket with the matches in "Log The CA Discord.txt"           
+            print("Completed!")
+        #Resets the bracket with the matches in "LogCADiscordRoundn.txt", where n is roundNumber        
         if message.content.startswith("*peoplePics"):
             peopleFile = open("people.txt", "r")
             peopleFull = peopleFile.read()
@@ -1135,7 +1177,7 @@ async def on_message(message):
             async for matchMessage in channel.history(limit=int(numberMessages)):
                 embeds = matchMessage.embeds
                 for embed in embeds:
-                    if "Round #2" in embed.title:
+                    if "Round #" + str(roundNumber) in embed.title:
                         num = 0
                         reactions = {}
                         #print(embed.title + ": " + embed.description)
@@ -1152,15 +1194,18 @@ async def on_message(message):
                                 winnerName = "Tie!"
                         print("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)) 
                         messageResults.append("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName))
-            bracketFile = open("LogCADiscordRound2.txt", "a")
+            bracketFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "a")
             bracketFile.write("\n")
             messageResults.reverse()
             for result in messageResults:
                 bracketFile.write(result)
                 bracketFile.write("\n")
             bracketFile.close()
-            await message.channel.send("Completed!")
+            completeMessage = await message.channel.send("Completed!")
             print("Completed!")
+            await message.delete()
+            time.sleep(1)
+            await completeMessage.delete()
         #Read the results of a match and output. 
         if message.content.startswith("*renameEmoji"):
             print("Renaming Emoji: " + message.guild.name)

@@ -1,0 +1,16 @@
+Animal
+The Muppets
+Animal
+
+Animal
+Frank Oz,Eric Jacobson,Ronnie Verrell
+
+Musician
+Muppet
+Neutral
+Supporting Protagonist
+Male
+4|Janice,Floyd Pepper,Zoot,Dr. Teeth
+Musician,Muppet,Electric Mayhem
+Baseline
+High

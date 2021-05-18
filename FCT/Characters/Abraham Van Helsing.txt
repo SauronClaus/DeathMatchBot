@@ -1,0 +1,16 @@
+Abraham Van Helsing
+Dracula
+Abraham
+Van Helsing
+Abraham Van Helsing|Doctor Van Helsing
+Edward Van Sloan|Peter Cushing|Herbert Lom|Anthony Hopkins|Hugh Jackman
+
+Vampire Hunter
+Human
+Good
+Protagonist
+Male
+5|Mina Harker,Jonathan Harker,Arthur Holmwood,Quincey Morris,John Seward
+Vampire Hunter,Wise Old Man,Genius,Books
+Baseline
+Medium

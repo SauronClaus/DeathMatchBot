@@ -1,0 +1,16 @@
+Arwen Undómiel
+Lord of the Rings
+Arwen
+Undómiel
+Arwen Undómiel|Evenstar
+Liv Tyler
+2777|277
+Nobility
+Half-Elf
+Good
+Supporting Protagonist
+Female
+1|Aragorn
+Queen,Royalty,Nobility,Half-Elf,Books,Movies,Romantic Subplot|Aragorn
+Baseline
+Low

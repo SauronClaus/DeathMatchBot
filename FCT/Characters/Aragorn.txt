@@ -1,0 +1,16 @@
+Aragorn II Elessar
+Lord of the Rings
+Aragorn
+Elessar
+Aragorn II Elessar|Elessar|Strider|King Elessar Telcontar
+John Hurt|Viggo Mortensen
+87|8
+Fighter
+Human
+Good
+Supporting Protagonist
+Male
+9|Gandalf,Frodo Baggins,Samwise Gamgee,Aragorn,Legolas,Gimli,Pippin Took,Merry Brandybuck,Boromir
+Fellowship of the Ring,Royalty,King,Nobility,Outcast,Swordsman,Books,Movies
+Baseline
+High

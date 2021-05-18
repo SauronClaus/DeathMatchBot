@@ -1,0 +1,16 @@
+Alice Johnson
+A Nightmare on Elm Street
+Alice
+Johnson
+Alice Johson
+Lisa Wilcox
+17|1
+Dreamer
+Human
+Good
+Protagonist
+Female
+
+Dream Powers,Horror Movie Protagonist,Movies
+Baseline
+Popularity (Low, Medium, High)

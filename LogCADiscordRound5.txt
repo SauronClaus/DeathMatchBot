@@ -1,0 +1,13 @@
+John Hancock|Bill Gates|3-5|Bill Gates
+Alexander Hamilton|Buzz Aldrin|6-2|Alexander Hamilton
+Tom Holland|Yuri Kondratyuk|6-1|Tom Holland
+Josh Brolin|Hayden Christensen|2-5|Hayden Christensen
+Shalom H. Schwartz|Barack Obama|1-6|Barack Obama
+Masahiro Sakurai|Steve Jobs|3-5|Steve Jobs
+Miyamoto Musashi|George Lucas|3-5|George Lucas
+Otto von Bismarck|Eddie Hall|4-4|Tie!
+Al Gore|Malcolm X|4-4|Tie!
+George W. Bush|Phil Swift|1-7|Phil Swift
+Lin-Manuel Miranda|Horatio Gates|5-3|Lin-Manuel Miranda
+Lance Armstrong|Daniel Radcliffe|1-7|Daniel Radcliffe
+Chuck Norris|John Cena|4-4|Tie!

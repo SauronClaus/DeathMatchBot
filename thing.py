@@ -51,7 +51,7 @@ presidentalNamesFull = presidentalNamesFile.read()
 presidentalNames = presidentalNamesFull.split("\n")
 
 numberOfLincolnPics = 0
-roundNumber = 3
+roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -145,7 +145,6 @@ def createPersonEmbed(person):
 #Returns an embed object created from the inputed person.
 def returnResult(matchMessage):
     channel = client.get_channel(773719674927972424)
-    print("Channel: " + channel.name + " (" + numberMessages + " messages)")
     messageResults = []
     embeds = matchMessage.embeds
     for embed in embeds:
@@ -164,20 +163,15 @@ def returnResult(matchMessage):
                 else:
                     winnerName = "Tie!"
             print("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)) 
-            messageResults.append("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName))
-    bracketFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "a")
-    bracketFile.write("\n")
-    messageResults.reverse()
-    for result in messageResults:
-        bracketFile.write(result)
-        bracketFile.write("\n")
-    bracketFile.close()
-    print("Completed!")
+        
+    return "%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)
+    
 
 @client.event
 async def on_ready(): 
     print('Logged in as {0.user}'.format(client))
     numberOfLincolnPics = 0
+    print("Round Number: " + str(roundNumber))
 
 @client.event
 async def on_message(message):
@@ -185,7 +179,27 @@ async def on_message(message):
         return
     if message.author.id == userID: 
         if message.content.startswith("*ranked"):
-            numberOfMatches = 5
+            roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
+            channel = message.channel
+            quantMessages = 0
+            numberOfMatches = 3
+            messageResults = []
+            async for matchMessage in channel.history(limit=numberOfMatches+5):
+                if quantMessages < 5:
+                    for embeds in matchMessage.embeds:
+                        if "Round #" + str(roundNumber) in matchMessage.embeds[0].title:
+                                messageResults.append(returnResult(matchMessage))
+                                quantMessages+=1
+
+            bracketFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "a")
+            bracketFile.write("\n")
+            messageResults.reverse()
+            for result in messageResults:
+                bracketFile.write(result)
+                bracketFile.write("\n")
+            bracketFile.close()
+            print("Completed!")
+            
             guildID = message.guild.id
             numberOfMatchesFile = open("matchNum.txt", "r")
             numberOfMatchesFull = numberOfMatchesFile.read()
@@ -596,6 +610,7 @@ async def on_message(message):
             await sentMessage.add_reaction(emoji=SuleimanMoji)
         #Super Bowl Special!
         if message.content.startswith("*resetBracket"):
+            roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
             logFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "r")
             logFull = logFile.read()
             log = logFull.split("\n")
@@ -619,6 +634,15 @@ async def on_message(message):
             reepFile.write(reepFull)
             reepFile.close()
             print("Completed!")
+            matchNumFile = open("matchNum.txt", "r")
+            matchNumFull = matchNumFile.read().split("\n")
+            matchNumber = matchNumFull[0]
+            roundInMatch = 1
+            roundNumber+=1
+            matchNumFile.close()
+            matchNumFile = open("matchNum.txt", "w")
+            matchNumFile.write(str(matchNumber) + "\n" + str(roundInMatch) + "\n" + str(roundNumber))
+            matchNumFile.close()
         #Resets the bracket with the matches in "LogCADiscordRoundn.txt", where n is roundNumber        
         if message.content.startswith("*peoplePics"):
             peopleFile = open("people.txt", "r")
@@ -1238,6 +1262,18 @@ async def on_message(message):
             file.close()
             await message.delete()
         #Grabs the past messages in a channel.
+        if message.content.startswith("*testFCT"):
+                me = message.guild.get_member(int(557273350414794772))
+                color = me.color
+                embed = discord.Embed(title="Lord of the Rings, but...", description="-Albus Dumbledore as Gandalf\n-She-Ra as Frodo Baggins\n-Catra as Samwise Gamgee\n-Zelda as Aragorn\n-Green Arrow as Legolas\n-Leo Valdez as Gimli\n-Fred Weasley as Pippin\n-George Weasley as Merry\n-Mitch Henderson as Boromir", color=0xFF9900)
+                embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+                messageEmbed = await message.channel.send(embed=embed)
+                await messageEmbed.add_reaction(emoji="✅")
+                await messageEmbed.add_reaction(emoji="🌐")
+                await messageEmbed.add_reaction(emoji="❌")
+
+
+    #The help command
     if message.content.startswith("*info"):
                 messageContent = message.content[6::]
                 

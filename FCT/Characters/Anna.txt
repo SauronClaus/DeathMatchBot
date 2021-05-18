@@ -1,0 +1,16 @@
+Anna
+Frozen
+Anna
+
+Queen Anna of Arendelle|Anna
+Kristen Bell|Elizabeth Lail
+18|1
+Princess
+Human
+Good
+Protagonist
+Female
+4|Else,Olaf,Sven,Kristoff
+Royalty,Cheerful,Musical,Disney Princess,CGI
+Baseline
+High

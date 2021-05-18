@@ -1,0 +1,16 @@
+Adrian Monk
+Monk
+Adrian
+Monk
+Adrian Monk
+Tony Shalhoub
+50|5
+Detective
+Human
+Good
+Protagonist
+Male
+4|Natalie Teeger,Sharona Fleming,Leland Stottlemeyer,Randy Disher
+Genius,Slightly Insane,TV Shows
+Baseline
+Low

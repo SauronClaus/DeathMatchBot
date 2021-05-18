@@ -1,0 +1,16 @@
+Amanda Waller
+Suicide Squad
+Amanda
+Waller
+Amanda Blake Waller
+C. C. H. Pounder|Sheryl Lee Ralph|Pam Grier|Cynthia Addai-Robinson|Vanessa Williams|Angela Bassett
+
+Government Agent
+Human
+Neutral
+Antagonist
+Female
+
+Manipulator,Antihero,Government Agent,Suicide Squad,Superhero Comic
+Baseline
+Low

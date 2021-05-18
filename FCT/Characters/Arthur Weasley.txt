@@ -1,0 +1,16 @@
+Arthur Weasley
+Harry Potter
+Arthur
+Weasley
+Arthur Weasley
+Mark Williams
+41|4
+Wizard
+Human
+Good
+Supporting Protagonist
+Male
+
+Books,Weasely,Order of the Pheonix II,Wizard,Movies
+Baseline
+Medium

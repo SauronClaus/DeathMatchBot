@@ -1,0 +1,16 @@
+Aurora
+Marvel Comics
+Jeanne-Marie
+Beaubier
+Jeanne-Marie Beaubier|Aurora
+
+
+Superhero
+Mutant
+Good
+Protagonist
+Female
+1|Northstar
+Twins|Northstar,Superhero,Split Personality,Speedster,Superhero Comics,Alpha Flight,X-Men
+City
+Low

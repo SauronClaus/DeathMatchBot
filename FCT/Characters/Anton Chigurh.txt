@@ -1,0 +1,16 @@
+Anton Chigurh
+No Country for Old Men
+Anton
+Chigurh
+Anton Chigurh
+Javier Bardem
+30|3
+Hitman
+Human
+Evil
+Antagonist
+Male
+
+Hitman,Evil,Trained,Books,Movies
+Baseline
+Medium

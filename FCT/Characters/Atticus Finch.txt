@@ -1,0 +1,16 @@
+Atticus Finch
+To Kill a Mockingbird
+Atticus
+Finch
+Atticus Finch
+Gregory Peck|Jeff Daniels|Ed Harris|Greg Kinnear|Rhys Ifans|Richard Thomas
+
+Lawyer
+Human
+Good
+Supporting Protagonist
+Male
+2|Scout Finch,Jem Finch
+Lawyer,Books
+Baseline
+Medium

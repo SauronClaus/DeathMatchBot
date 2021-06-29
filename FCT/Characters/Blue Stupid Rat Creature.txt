@@ -1,3 +1,16 @@
 Blue Stupid Rat Creature
 Bone
-Blue
+
+
+Blue Stupid Rat Creature
+
+
+Minion
+Rat Creature
+Evil
+Antagonist
+Male
+1|Brown Stupid Rat Creature
+Graphic Novels,Duo|Brown Stupid Rat Creature,Idiot,Minion
+Modified Human
+Medium

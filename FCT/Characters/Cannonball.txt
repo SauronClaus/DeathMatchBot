@@ -1,3 +1,16 @@
 Cannonball
 Marvel Comics
-Cannonball
+Sam
+Guthrie
+Sam Guthrie|Cannonball|Samuel Zachery "Sam" Guthrie
+Bill Switzer|Charlie Heaton
+
+Superhero
+Mutant
+Good
+Protagonist
+Male
+1|Sunspot
+X-Men,Mutants,New Mutants,USAvengers,Superhero Comics
+City
+Medium

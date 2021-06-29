@@ -1,3 +1,16 @@
 Batman
 DC Comics
-Batman
+Bruce
+Wayne
+Batman|Bruce Wayne
+Ben Affleck|Robert Pattinson|Christen Bale|Adam West|Michael Keaton|George Clooney|Will Arnett
+
+Superhero
+Human
+Good
+Protagonist
+Male
+7|Dick Grayson,Jason Todd,Damian Wayne,Tim Drake,Barbara Gordon,Jim Gordon,Alfred Pennyworth,Superman,Wonder Woman
+Superhero Comics,Bat-Family,Justice League,Trinity,Outsiders,Tech,Genius,Detective
+City
+High

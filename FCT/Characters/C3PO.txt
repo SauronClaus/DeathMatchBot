@@ -1,0 +1,16 @@
+C-3PO
+Star Wars
+C-3PO
+
+C-3PO|Threepio
+
+32|3
+Astromech Droid
+Robot
+Good
+Supporting Protagonist
+Male
+3|Poe Dameron,Finn,Rey
+Movies,Droids,Astromech,Cute,Orange
+Baseline
+High

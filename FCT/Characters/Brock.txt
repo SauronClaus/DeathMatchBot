@@ -1,3 +1,16 @@
 Brock
 Pokemon
 Brock
+
+Brock
+Yuji Ueda|Eric Stuart|Bill Rogers
+15|1
+Pokemon Trainer
+Human
+Good
+Supporting Protagonist
+Male
+3|Ash Ketchum,Misty,Pikachu
+Pokemon Trainer,Kanto,Video Games,Gym Leader,Anime
+Baseline
+High

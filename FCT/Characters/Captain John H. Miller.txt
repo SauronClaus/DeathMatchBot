@@ -1,3 +1,16 @@
 Captain John H. Miller
 Saving Private Ryan
-Captain
+John
+Miller
+Captain John H. Miller
+Tom Hanks
+
+Soldier
+Human
+Good
+Protagonist
+Male
+1|Private James Ryan
+Captain,Soldier
+Baseline
+Low

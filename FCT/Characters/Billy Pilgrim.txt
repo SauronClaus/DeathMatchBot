@@ -1,3 +1,16 @@
 Billy Pilgrim
 Slaughterhouse-Five
 Billy
+Pilgrim
+Billy Pilgrim
+Andrew Scott|Michael Sacks
+
+Time Traveler
+Human
+Neutral
+Protagonist
+Male
+
+Books,Time Traveler,Soldier,WWII
+Baseline
+Low

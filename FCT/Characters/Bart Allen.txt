@@ -1,3 +1,16 @@
 Bart Allen
 DC Comics
 Bart
+Allen
+Bart Allen,The Flash,Kid Flash,Impulse
+Jason Marsden|Kyle Gallner|Jordan Fisher
+
+Superhero
+Human
+Good
+Protagonist
+Male
+5|Wally West,Barry Allen,Max Mercury,Jesse Quick,Jay Garrick
+Superheroes,Speedsters,Justice League,Teen Titans,Young Justice,Superhero Comics,Legacy|Wally West,Future Child
+City
+Medium

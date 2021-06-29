@@ -1,3 +1,16 @@
 Beast
 Marvel Comics
-Beast
+Hank
+McCoy
+Beast|Hank McCoy|Dr. Henry Philip McCoy
+George Buza|Michael Kopsa|Fred Tatasciore|Kelsey Grammer|Nicholas Hoult
+
+Superhero
+Mutant
+Good
+Protagonist
+Male
+4|Cyclops,Iceman,Jean Gray,Angel
+X-Men,X-Men First Class,Superhero,Beast,Genius,Mutation,Superhero Comics
+Modified Human
+Medium

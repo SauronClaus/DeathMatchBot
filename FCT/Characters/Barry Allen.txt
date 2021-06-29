@@ -1,3 +1,16 @@
 Barry Allen
 DC Comics
 Barry
+Allen
+Barry Allen,The Flash
+Ezra Miller|Neil Patrick Harris|Justin Chambers|Christopher Gorham|Adam DeVine|Charlie Schlatter|Alan Tudyk|George Eads|James Arnold Tyler|John Wesley Shipp|Grant Gustin|Dwight Schultz
+28|2
+Superhero
+Human
+Good
+Protagonist
+Male
+5|Wally West,Bart Allen,Max Mercury,Jesse Quick,Jay Garrick
+Superheroes,Speedsters,Justice League,Superhero Comics,Police,Legacy|Jay Garrick,Love Interest|Iris West
+City
+High

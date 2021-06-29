@@ -1,3 +1,16 @@
 Bert
 Sesame Street
 Bert
+
+Bert
+Frank Oz|Eric Jacobson
+
+Civilian
+Muppet
+Good
+Protagonist
+Male
+1|Ernie
+Straight Man,TV Shows,Muppet,Sesame Street,Duo|Ernie
+Baseline
+Medium

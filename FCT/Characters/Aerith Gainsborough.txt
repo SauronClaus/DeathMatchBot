@@ -8,7 +8,7 @@ Maaya Sakamoto|Mandy Moore|Mena Suvari|Andrea Bowen|Briana White|Capri Oliver|Ch
 Wizard
 Human,Half-Cetra
 Good
-Protagonist
+Party Member
 Female
 7|Cloud Strife,Yuffie Kisaragi,Cid Highwind,Vincent Valentine,Tifa Lockhart,Barret Wallace
 Last of Kind,Video Games

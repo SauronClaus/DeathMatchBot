@@ -1,3 +1,16 @@
 Bilbo Baggins
 Lord of the Rings
 Bilbo
+Baggins
+Bilbo Baggins
+Sir Ian Holm|Martin Freeman|Oscar Strik
+51|5
+Adventurer
+Hobbit
+Good
+Protagonist
+Male
+2|Gandalf,Frodo Baggins
+Ring-Bearer,Hobbit,Reluctant Hero,Books,Movies,Thorin and Company
+Baseline
+High

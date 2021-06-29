@@ -10,7 +10,7 @@ Human
 Good
 Supporting Protagonist
 Female
-Korra,Mako,Bolin
+3|Korra,Mako,Bolin
 Heiress,Genius,TV Shows,LGBTQ+
 Baseline
 Low

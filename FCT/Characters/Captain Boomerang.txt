@@ -1,3 +1,16 @@
 Captain Boomerang
 Suicide Squad
-Captain
+Digger
+Harkness
+George "Digger" Harkness|Captain Boomerang
+Donal Gibson|Nick E. Tarabay|Jai Courtney|James Patrick Stuart|Liam MacIntyre
+
+Super Villain
+Human
+Evil
+Antagonist
+Male
+6|Deadshot,Harley Quinn,Col. Rick Flag,El Diablo,Killer Croc,Enchantress
+Suicide Squad,Boomerang,Boomerang Bros|Sokka,Superhero Comics,Movies,Australian
+Baseline
+Low

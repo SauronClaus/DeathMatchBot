@@ -8,7 +8,7 @@ Ally
 Fighter
 Human
 Good
-Supporting Protagonist
+Protagonist
 Female
 5|Rikk,Katherine,Will,Rumy,Shanna,Tim
 Married|Rikk,Married|Rumy,Polyamory,Overly Sexualized,Webcomics

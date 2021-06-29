@@ -1,3 +1,16 @@
 Byleth
 Fire Emblem: Three Houses
 Byleth
+
+Byleth
+Yusuke Kobayashi|Shizuka Ito|Christopher Niosi|Zach Aguilar|Jeannie Tirado
+20|2
+Chosen One
+Human
+Good
+Protagonist
+Depends
+
+Protagonist,Player Character,Chosen One,Crest,Video Games
+City
+High

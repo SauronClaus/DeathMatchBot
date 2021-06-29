@@ -1,3 +1,16 @@
 Black Lightning
 DC Comics
-Black
+Jefferson
+Pierce
+Black Lightning|Jefferson Pierce
+Bumper Robinson|Khary Payton|Cress Williams
+
+Superhero
+Human
+Good
+Protagonist
+Male
+
+Superhero Comics,TV Shows,African American,Lightning Manipulation,Outsiders,Justice League
+Modified Human
+Medium

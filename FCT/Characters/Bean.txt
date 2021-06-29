@@ -1,3 +1,16 @@
 Bean
 Ender's Game
-Bean
+Julian
+Delphiki
+Bean|Julian Delphiki II
+Aramis Knight
+6|0
+Strategist
+Humans
+Good
+Protagonist
+Male
+
+Books,Movies,Strategist
+Baseline
+Low

@@ -10,7 +10,7 @@ Mutant
 Good
 Protagonist
 Male
-4|Cyclops,Iceman,Jean Gray,Beast,
+4|Cyclops,Iceman,Jean Gray,Beast
 X-Men,X-Men First Class,Superhero,Flight,Bird Wings,Superhero Comics
 Modified Human
 Low

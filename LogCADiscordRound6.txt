@@ -1,5 +1,8 @@
-
+Chuck Norris|Otto von Bismarck|8-1|Chuck Norris
+Tom Holland|George Lucas|3-6|George Lucas
+Bill Gates|Alexander Hamilton|7-2|Bill Gates
 Al Gore|Barack Obama|5-4|Al Gore
 Malcolm X|Hayden Christensen|4-5|Hayden Christensen
-
-Malcolm X|Hayden Christensen|4-5|Hayden Christensen
+Daniel Radcliffe|Eddie Hall|5-4|Daniel Radcliffe
+Steve Jobs|Lin-Manuel Miranda|5-4|Steve Jobs
+Phil Swift|John Cena|5-3|Phil Swift

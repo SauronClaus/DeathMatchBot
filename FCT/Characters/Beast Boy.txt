@@ -1,3 +1,16 @@
 Beast Boy
 DC Comics
-Beast
+Garfield
+Logan
+Garfield Logan|Beast Boy|Changeling
+Ryan Potter|Greg Cipes|Logan Grove|Brandon Soo Hoo|Nolan North
+
+Superhero
+Human
+Good
+Protagonist
+Male
+3|Cyborg,Starfire,Raven
+Superhero Comics,TV Shows,Teen Titans,Shapeshifter,Prankster,Green
+City
+High

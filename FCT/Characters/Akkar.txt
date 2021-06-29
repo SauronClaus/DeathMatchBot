@@ -11,6 +11,6 @@ Good
 Protagonist
 Male
 Glynnric Manassnass,Kalathos Sunstrider,Kareem Par-Al,Arthail Consumer of Food,Ruby Rider,Byllemura Ruby-Eye,Nahara
-Blind,Archer,Elf,D&D
+Blind,Archer,Elf,D&D,Band of Fools
 Modified Human
 Low

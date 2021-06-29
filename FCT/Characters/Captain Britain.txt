@@ -1,3 +1,16 @@
 Captain Britain
 Marvel Comics
-Captain
+Brian
+Braddock
+Brian Braddock|Captain Britain
+Charlie Adler|JB Blanc|Travis Willingham
+
+Superhero
+Human
+Good
+Protagonist
+Male
+
+Superhero Comics,Siblings|Betsy Braddock,Country-Themed,Patriotism,Britain-Themed,Captain Britain
+Country
+Low

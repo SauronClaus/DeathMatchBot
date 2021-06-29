@@ -3,14 +3,14 @@ DC Comics
 Barbara
 Gordon
 Barbara Gordon|Oracle|Batgirl
-• Actor(s)- Actors are for all the renditions, separated by |. 
-• Age (in years|decades)- In universe. 
-• Type (bit arbitrary but like Wizard/Sorcerer/etc.)- Self explanatory. 
-• Race (Mainly human, but also like robots and stuff)- Self explanatory, again. 
-• Alignment (Good/Evil/Neutral/Depends)- Based on my opinion. 
-• Role (Protagonist/Supporting Character/Antagonist, etc.)- Again, a bit biased. 
-• Gender!
-• Friends! (size|friends with commas separating them)- Based upon the franchise. 
-• Tags
-• Power Level! (Baseline, Modified Human, City, Country, World, Cosmic, Interuniversal, Omnipotent)
-Popularity (Low, Medium, High)
+Yvonne Craig|Jane Webb|Melendy Britt|Melissa Gilbert|Tara Strong|Danielle Judovits|Mae Whitman|Briana Cuoco|Dina Meyer|Alicia Silverstone|Rosario Dawson
+
+Superhero
+Human
+Good
+Protagonist
+Female
+3|Dick Grayson,Batman,Jim Gordon
+Hacker,Genius,Weelchair,Parent Child Duo|Jim Gordon,Superhero,Bat-Family,Superhero Comics,Non-Powered,Birds of Prey
+Baseline
+High

@@ -8,7 +8,7 @@ Amos Kane|Chief Lector|Eye of Set
 Wizard
 Human
 Good
-Supporting Character
+Mentor
 Male
 2|Sadie Kane,Carter Kane
 Uncle,Mentor,Most Powerful,Book

@@ -1,3 +1,16 @@
 Bastion
 Overwatch
 Bastion
+
+SST Laboratories Siege Automaton E54|Bastion
+Chris Metzen
+30|3
+Sentry Robot
+Robot
+Neutral
+Protagonist
+Male
+
+Video Games,Robot,Against Programming,Turret,Machine Gun
+Modified Human
+Medium

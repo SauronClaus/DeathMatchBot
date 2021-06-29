@@ -1,3 +1,16 @@
 Captain Falcon
 F-Zero
-Captain
+Douglas
+Falcon
+Douglas Jay Falcon|Captain Falcon|Bart Lemming
+Eric Kelso|Ryō Horikawa|Hideyuki Tanaka
+
+Racer
+Human
+Good
+Protagonist
+Male
+
+Captain Falcon,Video Games,Super Smash Bros,Fire-Powers,Punching,Racer
+Modified Human
+Medium

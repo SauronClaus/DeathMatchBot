@@ -1,3 +1,16 @@
 Brick
 Borderlands
 Brick
+
+Brick
+Marcus Mauldin
+
+Berserker
+Human
+Neutral
+Protagonist
+Male
+3|Roland,Lilith,Mordecai
+Video Games,Vault Hunter,Strong Man
+Modified Human
+Low

@@ -1,3 +1,16 @@
 Captain America
 Marvel Comics
-Captain
+Steve
+Rogers
+Steve Rogers|Captain America
+Chris Evans|Matt Salinger|Justin Gross|Roger Craig Smith|Reb Brown|Brian Bloom|Jeff Schine|Trevor Devall
+
+Superhero
+Human
+Good
+Protagonist
+Male
+3|Bucky Barnes,Sam Wilson,Tony Stark
+Captain America,Superhero Comics,Movies,Paragon,Super-Soldier Serum,Patriotism,Leader,Avengers,World War II,Rival|Tony Stark,Shields,Country-Themed
+Modified Human
+High

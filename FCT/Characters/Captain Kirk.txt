@@ -1,3 +1,16 @@
 Captain Kirk
 Star Trek
-Captain
+James
+Kirk
+Captain James T. Kirk
+William Shatner|Chris Pine
+27|2
+Space Captain
+Human
+Good
+Protagonist
+Male
+2|Spock,Leonard McCoy
+Astral Captain,Space,Explorer,Captain,Star Trek,Star Trek: The Original Series,Star Trek Captains
+Baseline
+High

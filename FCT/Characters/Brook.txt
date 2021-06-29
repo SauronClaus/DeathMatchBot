@@ -1,3 +1,16 @@
 Brook
 One Piece
 Brook
+
+Brook|Soul King
+Ian Sinclair|Cho
+88|8
+Musician
+Skeleton
+Good
+Supporting Protagonist
+Male
+9|Monkey D. Luffy|Nami|Usopp|Vinsmoke Sanji|Roronoa Zoro|Tony Tony Chopper|Nico Robin|Franky|Jimbei
+Anime,Manga,Straw Hat Pirates,Musician,Swordsman,Skeleton,Undead,Fashionista,Devil Fruit
+Modified Human
+Medium

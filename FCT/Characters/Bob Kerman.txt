@@ -1,3 +1,16 @@
 Bob Kerman
 Kerbal Space Program
 Bob
+Kerman
+Bob Kerman|kerbonaut #0003
+
+
+Astronaut
+Kerbal
+Good
+Protagonist
+Male
+3|Jebediah Kerman,Bill Kerman,Valentina Kerman
+Video Games,Scientist,Original Four,Astronaut
+Modified Human
+Medium

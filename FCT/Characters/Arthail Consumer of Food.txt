@@ -11,6 +11,6 @@ Neutral
 Protagonist
 Male
 Glynnric Manassnass,Kalathos Sunstrider,Akkar,Kareem Par-Al,Ruby Rider,Byllemura Ruby-Eye,Nahara
-Original Three (Band of Fools),D&D,Barbarian
+Original Three (Band of Fools),D&D,Barbarian,Band of Fools,Band of Fools Redux
 Modified Human
 Low

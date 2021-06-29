@@ -1,3 +1,16 @@
 Bard the Bowman
 Lord of the Rings
 Bard
+
+Bard the Bowman|Bard the Dragonslayer
+Luke Evans
+43|4
+Town Guard
+Human
+Good
+Minor Side Character
+Male
+
+Dragonslayer|Smaug,Archer,Chosen One,Royalty,Nobility,Town Guard,Peasant,Books
+Baseline
+Low

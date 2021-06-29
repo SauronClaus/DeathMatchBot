@@ -1,3 +1,16 @@
 Big Bird
 Sesame Street
-Big
+
+
+Big Bird
+Caroll Spinney|Matt Vogel
+6|0
+Civilian
+Muppet
+Good
+Protagonist
+Male
+2|Mr. Snuffleupagus,Mr. Hooper
+Muppet,Child,Bird,Large Bird,TV Shows
+Baseline
+Medium

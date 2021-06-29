@@ -1,3 +1,16 @@
 Captain George Pollard Jr.
 In the Heart of the Sea
-Captain
+George
+Pollard
+Captain George Pollard Jr.
+Benjamin Walker
+29|2
+Naval Captain
+Human
+Neutral
+Protagonist
+Male
+2|Owen Chase,Thomas Nickerson
+Naval Captain,Inspiration|Captain Ahab
+Baseline
+Low

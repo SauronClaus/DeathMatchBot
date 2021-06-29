@@ -1,3 +1,16 @@
 Beaker
 The Muppets
 Beaker
+
+Beaker
+Richard Hunt|Steve Whitmire|David Rudman 
+
+Lab Assistant
+Muppet
+Good
+Supporting Protagonist
+Male
+1|Dr. Bunsen Honeydew
+Almost Invulnerable,Hapless Assistant,Duo|Dr. Bunsen Honeydew
+Baseline
+Medium

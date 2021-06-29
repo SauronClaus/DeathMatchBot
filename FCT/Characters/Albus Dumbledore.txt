@@ -8,7 +8,7 @@ Richard Harris|Michael Gambon|Toby Regbo|Jude Law
 Wizard
 Human
 Good
-Supporting Protagonist
+Mentor
 Male
 1|Minerva McGonagall
 Wizard,Old,Mentor,Order of the Pheonix I,Order of the Pheonix II,Most Powerful,Books,Movies,LGBTQ+

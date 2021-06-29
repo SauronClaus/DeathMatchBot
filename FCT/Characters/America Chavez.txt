@@ -10,7 +10,7 @@ Human
 Good
 Protagonist
 Female
-|Kate Bishop,Captain Marvel,Black Panther,Blue Marvel,Wiccan,Hulkling,Marvel Boy,Prodigy
+8|Kate Bishop,Captain Marvel,Black Panther,Blue Marvel,Wiccan,Hulkling,Marvel Boy,Prodigy
 Interdimensional,Reality Hopping,Multiversal Origin,Powerhouse,Ultimates (Team),Young Avengers,Superhero Comics,LGBTQ+
 Interuniversal
 Medium

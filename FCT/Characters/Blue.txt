@@ -1,3 +1,16 @@
 Blue
 Pokemon
 Blue
+Oak
+Blue Oak
+Lucien Dodge|Erik Kimerer|Billy Kametz|Takuya Eguchi|Jun Fukuyama|Ryota Osaka|Carter Cathcart|Yuko Kobayashi
+11|1
+Pokemon Trainer
+Human
+Good
+Rival
+Male
+1|Red
+Pokemon Trainer,Champion,Kanto,Duo|Red,Video Games,Gym Leader
+Baseline
+High

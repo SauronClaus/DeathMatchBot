@@ -182,7 +182,7 @@ async def on_message(message):
             roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
             channel = message.channel
             quantMessages = 0
-            numberOfMatches = 3
+            numberOfMatches = 1
             messageResults = []
             async for matchMessage in channel.history(limit=numberOfMatches+5):
                 if quantMessages < 5:
@@ -448,7 +448,7 @@ async def on_message(message):
                 await match.add_reaction(emoji=personEmojiList[emojiTicker + 1])
                 emojiTicker+=2
             print("Completed!")
-        #Ranked matches for the CA Discord. 
+        #Ranked matches for the CA Discord.             
         if message.content.startswith("*sendLastMatchInfo"):
             infoWrite = open("lastInfo.txt", "r")
             infoFull = infoWrite.read()

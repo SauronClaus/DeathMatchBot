@@ -1,3 +1,16 @@
 Bucky Barnes
 Marvel Comics
-Bucky
+James
+Barnes
+Bucky Barnes|Bucky|The Winter Soldier|James Buchanan "Bucky" Barnes Jr.
+James Arnold Taylor|Sebastian Stan|Carl Banas|Scott Menville|Scott Porter|Ray Chase
+
+Super Hero
+Human
+Good
+Protagonist
+Male
+2|Steve Rogers,Sam Wilson
+Captain America,Sidekick,Assassin,Brainwashed,Prosthetic Limb,Non-Powered,Super-Soldier Serum
+Modified Human
+High

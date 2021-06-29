@@ -1,3 +1,16 @@
 Captain Ahab
 Moby Dick
+Ahab
+
+Captain Ahab|Old Thunder
+William Hurt|Gregory Peck|Victor Jory|Patrick Stewart
+
 Captain
+Human
+Neutral
+Protagonist
+Male
+
+Captain,Books,Slightly Insane,Prosthetic,Peg-Leg,Sailor
+Baseline
+High

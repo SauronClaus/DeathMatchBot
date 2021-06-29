@@ -1,3 +1,16 @@
 Booster Gold
 DC Comics
-Booster
+Michael
+Carter
+Booster Gold|Michael Jon Carter
+Tom Everett Scott|Billy West|Diedrich Bader|Eric Martsolf|Bruce Timm|Travis Willingham
+
+Superhero
+Human
+Good
+Protagonist
+Male
+1|Ted Kord
+Superhero Comics,Time Traveler,Future Tech,Duo|Ted Kord,Justice League,Justice League International
+Modified Human
+Medium

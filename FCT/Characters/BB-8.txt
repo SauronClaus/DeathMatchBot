@@ -1,3 +1,16 @@
 BB-8
 Star Wars
 BB-8
+
+BB-8|BB
+Dave Chapman|Brian Herring|Bill Hader|Ben Schwartz
+5|0
+Astromech Droid
+Robot
+Good
+Supporting Protagonist
+Male
+3|Poe Dameron,Finn,Rey
+Movies,Droids,Astromech,Cute,Orange
+Baseline
+High

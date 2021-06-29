@@ -1,3 +1,16 @@
 Brian Robeson
 Hatchet
 Brian
+Robeson
+Brian Robeson
+Jared Rushton
+13|1
+Castaway
+Human
+Good
+Protagonist
+Male
+
+Books,Survivalist,Wilderness
+Baseline
+Medium

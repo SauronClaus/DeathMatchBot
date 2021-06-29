@@ -1,3 +1,16 @@
 Brom
 Eragon
 Brom
+
+Brom
+Jeremy Irons
+129|12
+Dragon Rider
+Human
+Good
+Mentor
+Male
+
+Mentor,Old,Father,Books,Dragon Rider
+Baseline
+Low

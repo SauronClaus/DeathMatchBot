@@ -1,3 +1,16 @@
 Black Canary
 DC Comics
-Black
+Dinah
+Lance
+Dinah Laurel Lance|Black Canary
+Rachel Skarsten|Katie Cassidy|Alaina Huffman|Morena Baccarin|Grey DeLisle|Vanessa Marshall|Jurnee Smollett-Bell
+
+Superhero
+Human
+Good
+Protagonist
+Female
+1|Green Arrow
+Superhero Comics,Superhero,Justice League,Romantic Subplot|Green Arrow,Birds of Prey
+Baseline
+Medium

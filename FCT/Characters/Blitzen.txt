@@ -1,3 +1,16 @@
 Blitzen
 Magnus Chase
 Blitzen
+
+Blitzen|Blitz
+
+20|2
+Adventurer
+Svartalf
+Good
+Supporting Protagonist
+Male
+7|Magnus Chase,Alex Fierro,Hearthstone,Samirah al-Abbas,Alex Fierro,Halfborn Gunderson,Mallory Keen,Thomas Jefferson Jr.
+Demigod,Norse,Dwarf,Books,Crafter,Tailor
+Modified Human
+Medium

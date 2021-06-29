@@ -1,3 +1,16 @@
 Beth Johanssen
 The Martian
 Beth
+Johanssen
+Beth Johanssen
+Kate Mara
+29|2
+Astronaut
+Human
+Good
+Side Character
+Female
+6|Mark Watney,Commander Melissa Lewis,Major Rick Martinez,Beth Johanssen,Dr. Chris Beck,Dr. Alex Vogel
+Youngest,Books,Movies,Astronaut,Love Interest|Dr. Chris Beck,Tech Genius
+Baseline
+Low

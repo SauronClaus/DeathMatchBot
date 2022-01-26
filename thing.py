@@ -182,7 +182,7 @@ async def on_message(message):
             roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
             channel = message.channel
             quantMessages = 0
-            numberOfMatches = 1
+            numberOfMatches = 5
             messageResults = []
             async for matchMessage in channel.history(limit=numberOfMatches+5):
                 if quantMessages < 5:
@@ -1272,8 +1272,6 @@ async def on_message(message):
                 await messageEmbed.add_reaction(emoji="🌐")
                 await messageEmbed.add_reaction(emoji="❌")
 
-
-    #The help command
     if message.content.startswith("*info"):
                 messageContent = message.content[6::]
                 

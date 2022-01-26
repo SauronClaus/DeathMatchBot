@@ -1,6 +1,6 @@
 CharacterFile = open("FCT\\CharactersInit\\CharacterList.txt", "r", encoding="utf8")
 CharacterList = []
-print("Help!")
+print("Begin!")
 for i in range(1348):
     CharacterListLine = CharacterFile.readline()
     CharacterList.append(CharacterListLine)

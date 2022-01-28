@@ -1,0 +1,35 @@
+Tom Scott
+Kevin Spacey
+Taylor Swift
+Scarlet Johanssen
+Jeff Bezos
+Robert Downey Jr.
+Chris Hemsworth
+Chris Bratt
+Kobe Bryant
+Peter I
+Frederick Barbarossa
+Edward Teach
+Blackbeard
+Khamala Harris
+Hannibal
+Alexandria Ocasio-Cortez
+Atilla the Hun
+Woodie Flowers
+Mehmed II
+Alexios Angelos
+Alexios Komnenos
+John Curtain
+John Curtin
+Athelstan
+Otto I
+Prince Wilhelm of Prussia
+Otto Stapf
+Basil I
+Matilde di Canossa
+Sabuktigin
+Seljuk
+Rurik
+Timur Timurid
+& C:/Users/Sebastian_Polge/AppData/Local/Programs/Python/Python39/python.exe "c:/Users/Sebastian_Polge/OneDrive - Cary Academy/Documents/GitHub/DeathMatchBot/thing.py"
+:D

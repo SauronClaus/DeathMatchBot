@@ -25,7 +25,6 @@ Alexander Hamilton
 Augustus
 Alex Trebeck
 Babe Ruth
-Barack Obama
 Ben Stiller
 Benedict Cumberbatch
 Benjamin Franklin
@@ -60,7 +59,6 @@ Chris Pratt
 Christian Goldbach
 Christina Aguilera
 Christopher Columbus
-Chuck Norris
 Cleopatra
 Clovis I
 C. S. Lewis
@@ -80,7 +78,6 @@ Edward Teller
 Edwin Hubble
 Elon Musk
 Elton John
-Elvis Presley
 Emily Dickinson
 Emperor Norton
 Enrico Fermi
@@ -95,7 +92,6 @@ Franklin D. Roosevelt
 Ferdinand Magellan
 Fidel Castro
 Florence Nightingale
-Fluffy (Gabriel Iglesias)
 Frank Sinatra
 Freddie Mercury
 Frederick Douglass
@@ -120,7 +116,6 @@ Hammurabi
 Hanibal (general)
 Harriet Tubman
 Harrison Ford
-Harry Styles
 Hayden Christensen
 Heinrich Hertz
 Henri Poincare
@@ -146,7 +141,6 @@ Jackson Pollock
 Jacob Sartorius
 James Earl Jones
 James Garfield
-John Rockefeller
 Justin Bieber
 John Cena
 John Napier
@@ -163,7 +157,6 @@ John Calvin
 Jimmy Carter
 Josef Mengele
 Jerry Seinfeld
-John Quincy Adams
 Johannes Kepler
 J. K. Rowling
 Jeff Kaplan
@@ -172,7 +165,6 @@ Jimmy Fallon
 Jesse Owens
 John Lennon
 John F. Kennedy
-Jim Henson
 John D. Rockefeller
 Jack Churchill
 Kublai Khan
@@ -293,7 +285,6 @@ Simo Hayha
 Suleiman the Magnificent
 Shaka Zulu
 Thales of Miletus
-Thomas Edison
 Tom Hanks
 Toby Fox
 Trajan
@@ -330,7 +321,6 @@ John Adams
 Thomas Jefferson
 James Madison
 James Monroe
-Martin Van Buren
 William Henry Harrison
 John Tyler
 James K. Polk
@@ -373,3 +363,28 @@ Carlos Menem
 Mario Draghi
 Rosalind Pitt-Rivers
 Hypatia
+Rurik
+Athelstan
+Otto I, Holy Roman Emperor
+Basil I
+Alexios Komnenos
+Matilda of Tuscany
+Woodie Flowers
+Otto Stapf
+Kobe Bryant
+Tom Scott
+Frederick Barbarossa
+Kevin Spacey
+Sabuktigin
+Hannah Montana
+Taylor Swift
+Scarlett Johansson
+Jeff Bezos
+Robert Downey Jr.
+Chris Hemsworth
+Peter I
+Blackbeard
+Kamala Harris
+Alexandria Ocasio-Cortez
+Mehmed II
+John Curtin

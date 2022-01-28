@@ -56,7 +56,7 @@ roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
-discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer"]
+discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer", "9EmojiServer"]
 #List of servers with the Discord Emojis. 
 
 tokenFile = open("token.txt", "r")
@@ -725,7 +725,8 @@ async def on_message(message):
         #sends all of the info for all people, weapons, and places. 
         if message.content.startswith("*checkEmoji"):
             for emoji in message.guild.emojis:
-                await message.channel.send(emoji.name + "; " + str(emoji.id))
+                await message.channel.send(emoji.name + "\n" + str(emoji.id))
+            print("Completed!")
         #Sends all the emojis with ids in the server. Useful for large emoji batches. 
         if (message.content.startswith("*customMatch") or message.content.startswith("*presidentialBracket")):
             peopleMatch3 = ["George Washington", "John Adams"]

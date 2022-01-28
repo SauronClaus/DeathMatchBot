@@ -226,7 +226,9 @@ def checkLinks(objectName):
         "a greataxe": "Battle axe",
         "a Yellow-Finned Tuna": "Yellow Finned Tuna Fish", 
         "their bear hands (severed)": "Grizzlie Bears", 
-        "Mr. RM's Glasses": "eyeglasses"
+        "Mr. RM's Glasses": "eyeglasses",
+        "Tom Scott": "Tom Scott (presenter)",
+        "Peter I": "Peter the Great"
     }
     correct = objectName
     if objectName in largeDictionary:

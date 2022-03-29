@@ -14,8 +14,10 @@ def generatePerson():
     personInfo = [person, "DEPRECATED", peerArray[indexOfID]]
     return personInfo
 #Returns a list with the person, emoji object, and the person's emoji id. 
-def generateWeapon():
+def generateWeapon(publicMatches=False):
     weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+    if publicMatches == True:
+        weaponTierFile = open("Armory\\Tiers\\weaponTiers TEACHERS.txt", "r")
     weaponTierFull = weaponTierFile.read()
     weaponTierArray = weaponTierFull.split('\n')
     weaponTier1Num = random.randint(0, len(weaponTierArray)-1)
@@ -26,8 +28,10 @@ def generateWeapon():
     weapon = weaponSet1[randomNum]
     return weapon
 #Returns a random weapon
-def generateWeaponPair():
+def generateWeaponPair(publicMatches=False):
     weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+    if publicMatches == True:
+        weaponTierFile = open("Armory\\Tiers\\weaponTiers TEACHERS.txt", "r")
     weaponTierFull = weaponTierFile.read()
     weaponTierArray = weaponTierFull.split('\n')
     weaponTier1Num = random.randint(0, len(weaponTierArray)-1)
@@ -90,8 +94,13 @@ def generatePlaceAdverb():
     place = placeArray[randomNum]
     return place
 #Returns a random place without the proposition thing ("in", "on", etc.)
-def generateWeaponPairTier(tier):
+def generateWeaponPairTier(tier,publicMatches=False):
     weaponFile1 = open("Armory\\Tiers\\" + tier + ".txt", "r")
+    if publicMatches == True:
+        try:
+            weaponFile1 = open("Armory\\Tiers\\" + tier + " TEACHERS.txt", "r")
+        except:
+            weaponFile1 = open("Armory\\Tiers\\" + tier + ".txt", "r")
     weaponSet1 = weaponFile1.read().split('\n')
     randomNum1 = random.randint(0, len(weaponSet1)-1)
     randomNum2 = random.randint(0, len(weaponSet1)-1)

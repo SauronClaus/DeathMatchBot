@@ -56,7 +56,7 @@ roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
-discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer", "9EmojiServer"]
+discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer", "9EmojiServer", "CA Teacher Emojis", "2CA Teacher Emojis"]
 #List of servers with the Discord Emojis. 
 
 tokenFile = open("token.txt", "r")
@@ -81,6 +81,7 @@ def findPeerIndex(personName):
     personIndex = peer.index(personName)
     return personIndex
 #Gets the peer file's index of the person's name
+
 def checkForEmoji(ID):
     print("ID: " + str(ID))
     for i in client.guilds:
@@ -90,16 +91,25 @@ def checkForEmoji(ID):
                     return emoji
     print("Failure: Emoji Object Not Found")
 #Returns an emoji object with the passed in ID. 
-def findEmojiID(personName):
-    peerFile = open("peer.txt", "r")
-    peerFull = peerFile.read()
-    peer = peerFull.split("\n")
-    peoplePeerIndex = []
-    if personName == "Abraham Lincoln": 
-        personName = "ï»¿Abraham Lincoln"
-    print("Person Name: " + personName)
-    personIndex = peer.index(personName)
-    emojiID = peer[personIndex + 1]
+def findEmojiID(personName, teacherBracket=False):
+    if teacherBracket == False:
+        peerFile = open("peer.txt", "r")
+        peerFull = peerFile.read()
+        peer = peerFull.split("\n")
+        peoplePeerIndex = []
+        if personName == "Abraham Lincoln": 
+            personName = "ï»¿Abraham Lincoln"
+        print("Person Name: " + personName)
+        personIndex = peer.index(personName)
+        emojiID = peer[personIndex + 1]
+    if teacherBracket == True:
+        peerFile = open("Faculty Death Match2.txt", "r")
+        peerFull = peerFile.read()
+        peer = peerFull.split("\n")
+        for line in peer:
+            if line.split("|")[0] == personName:
+                print("Person Name: " + personName)
+                emojiID = line.split("|")[1].strip()
     return emojiID
 #Return the emoji ID from the person's name
 def reverseEmojiID(ID):
@@ -121,25 +131,36 @@ def findEmojiServer(ID):
                     return smallListCombo
     print("Failure: Emoji Object Not Found")
 #Finds the emoji server from the id
-def getEmoji(personName):
-    emojiID = findEmojiID(personName)
+def getEmoji(personName, teacherBracket=False):
+    emojiID = findEmojiID(personName, teacherBracket)
     print(personName + " (" + str(emojiID) + ")")
     emoji = checkForEmoji(emojiID)
     return emoji
 #Combines checkForEmoji() and findEmojiID()
-def createPersonEmbed(person):
-    personEmoji = getEmoji(person)
+def createPersonEmbed(person, teacherBracket=False):
+    personEmoji = getEmoji(person, teacherBracket)
     personUnEdit = person
-    person = checkLinks(person)
-    article = wikipedia.page(person, auto_suggest=False)
-    summary = article.summary.split('\n')
-    summaryPersonal = summaryShort(str(summary[0]))
-    embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
+    if teacherBracket == False:
+        person = checkLinks(person)
+        article = wikipedia.page(person, auto_suggest=False)
+        summary = article.summary.split('\n')
+        summaryPersonal = summaryShort(str(summary[0]))
+        embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
+    if teacherBracket == True:
+        peerFile = open("Faculty Death Match2.txt", "r")
+        peerFull = peerFile.read()
+        peer = peerFull.split("\n")
+        for line in peer:
+            if line.split("|")[0] == person:
+                description = line.split("|")[2].strip()
+        peerFile.close()
+        embed = discord.Embed(title=person, description=description, color=0xFF9900)
     print("Emoji Name: " + personEmoji.name)
-    print(summary[0])
+    #print(summary[0])
     personURL = str(personEmoji.url)
     embed.set_image(url=personURL)
-    embed.add_field(name="Link",value=article.url)
+    if teacherBracket == False:
+        embed.add_field(name="Link",value=article.url)
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object created from the inputed person.
@@ -725,7 +746,7 @@ async def on_message(message):
         #sends all of the info for all people, weapons, and places. 
         if message.content.startswith("*checkEmoji"):
             for emoji in message.guild.emojis:
-                await message.channel.send(emoji.name + "\n" + str(emoji.id))
+                await message.channel.send(emoji.name + "|" + str(emoji.id))
             print("Completed!")
         #Sends all the emojis with ids in the server. Useful for large emoji batches. 
         if (message.content.startswith("*customMatch") or message.content.startswith("*presidentialBracket")):
@@ -809,10 +830,10 @@ async def on_message(message):
             
             print("Poll Channel: #" + pollChannel.name)
 
-            lastInfo = open("lastInfo.txt", "w")
-            stringsList = [people[0], people[1], people[2], people[3], people[4], people[5], people[6], people[7], people[8], people[9], weapons[0], weapons[1], weapons[2], weapons[3], weapons[4], weapons[5], weapons[6], weapons[7], weapons[8], weapons[9], places[0], places[1], places[2], places[3], places[4], adjectives[0], adjectives[1], adjectives[2], adjectives[3], adjectives[4], adjectives[5], adjectives[6], adjectives[7], adjectives[8], adjectives[9]]
-            for i in stringsList:
-                lastInfo.write(i + "\n")
+            #lastInfo = open("lastInfo.txt", "w")
+            #stringsList = [people[0], people[1], people[2], people[3], people[4], people[5], people[6], people[7], people[8], people[9], weapons[0], weapons[1], weapons[2], weapons[3], weapons[4], weapons[5], weapons[6], weapons[7], weapons[8], weapons[9], places[0], places[1], places[2], places[3], places[4], adjectives[0], adjectives[1], adjectives[2], adjectives[3], adjectives[4], adjectives[5], adjectives[6], adjectives[7], adjectives[8], adjectives[9]]
+            #for i in stringsList:
+            #    lastInfo.write(i + "\n")
             
             peopleInfoLinks = []
             weaponInfoLinks = []
@@ -1272,7 +1293,259 @@ async def on_message(message):
                 await messageEmbed.add_reaction(emoji="✅")
                 await messageEmbed.add_reaction(emoji="🌐")
                 await messageEmbed.add_reaction(emoji="❌")
+        if message.content.startswith("*teachersBracket"):
+            channel = message.channel
+            quantMessages = 0
+            messageResults = []
+                      
+            people = []
+            weapons = []
+            adjectives = []
+            places = []
+            contests = []
+            specialEmbeds = []
+            specialItems = []
 
+            match1 = {"Craig Lazarski": "","German Urioste": ""}
+            match2 = {"Karen McKenzie": "", "Samuel Abrams": ""}
+            match3 = {"Kristi McGauley": "","Heidi Maloy": ""}
+            #match4 = {"Karen McKenzie": "","Samuel Abrams": ""}
+            #match5 = {"Evelyn Sengelmann": "","Samuel Goeuriot": ""}
+            #matches = [match1, match2, match3, match4, match5]
+            matches = [match1, match2, match3]
+            numberOfRounds = 1
+            numberOfMatchesRound = 31
+            numberOfMatchesTotal = 31
+
+            matchesInfo = []
+            people = []
+
+            for match in matches:
+                for person in match.keys():
+                    people.append(person)
+
+           
+            guildID = message.guild.id
+        
+            matchesInfo = {}
+            for matchNum in range(len(matches)):
+                matchesInfo[matchNum] = []
+
+            
+            numberOfRounds = 1
+            numberOfMatches = 3
+
+            matchesInfo[0].append(match1)
+            matchesInfo[1].append(match2)
+            matchesInfo[2].append(match3)
+            #matchesInfo[3].append(match4)
+            #matchesInfo[4].append(match5)
+            #numberOfMatches = 5
+            numberOfMatches = 3
+
+            for channel in message.guild.text_channels:
+                if channel.name == "faculty-death-match-polls":
+                    print("found #" + channel.name)
+                    pollChannel = channel
+                if channel.name == "historical-people-info":
+                    print("found #" + channel.name)
+                    peopleInfo = channel
+                if channel.name == "historical-weapons-info":
+                    print("found #" + channel.name)
+                    weaponsInfo = channel
+                if channel.name == "historical-places-info":
+                    print("found #" + channel.name)
+                    placeInfo = channel
+                if channel.name == "historical-adjectives-info":
+                    print("found #" + channel.name)
+                    adjectivesInfo = channel
+                if channel.name == "historical-contests-info":
+                    print("found #" + channel.name)
+                    contestInfo = channel
+                if channel.name == "historical-contest-specific-info":
+                    print("found #" + channel.name)
+                    contestItemsInfo = channel
+            
+            
+            for matchNumber in range(numberOfMatches):
+                matcherInfo = generateContest(publicMatches=True)
+                #Returned (in order) adjectivePair, weaponPair, place, specialItems, contestInformation
+                adjectiveDict = {}
+                weaponDict = {}
+                placeDict = {}
+                variant = ""
+                contestDict = {}
+                if matcherInfo != None:
+                    for adjective in matcherInfo[0]:
+                        adjectives.append(adjective)
+                        adjectiveDict[adjective] = ""
+                matchesInfo[matchNumber].append(adjectiveDict)
+                if matcherInfo != None:
+                    for weapon in matcherInfo[1]:
+                        weapons.append(weapon)
+                        weaponDict[weapon] = ""
+                matchesInfo[matchNumber].append(weaponDict)
+                if matcherInfo != None and matcherInfo != "" and matcherInfo != " ":
+                    places.append(matcherInfo[2])
+                    placeDict[matcherInfo[2]] = ""
+                matchesInfo[matchNumber].append(placeDict)
+                if matcherInfo != None:
+                    for specialItem in matcherInfo[3]:
+                        specialEmbeds.append(specialItem[1])
+                        specialItems.append(specialItem)
+                matchesInfo[matchNumber].append(matcherInfo[3])
+                if matcherInfo != None:      
+                    contests.append(matcherInfo[4])
+                    contestDict[matcherInfo[4][0]] = ""
+                    variant = matcherInfo[4][1]
+                matchesInfo[matchNumber].append(contestDict)
+                matchesInfo[matchNumber].append(variant)
+
+            pollChannel = message.channel
+            peopleInfo = message.channel
+            placeInfo = message.channel
+            weaponsInfo = message.channel
+            adjectivesInfo = message.channel
+            contestInfo = message.channel
+            contestItemsInfo = message.channel
+
+            for channel in message.guild.text_channels:
+                if channel.name == "faculty-death-match-polls":
+                    print("found #" + channel.name)
+                    pollChannel = channel
+                if channel.name == "historical-people-info":
+                    print("found #" + channel.name)
+                    peopleInfo = channel
+                if channel.name == "historical-weapons-info":
+                    print("found #" + channel.name)
+                    weaponsInfo = channel
+                if channel.name == "historical-places-info":
+                    print("found #" + channel.name)
+                    placeInfo = channel
+                if channel.name == "historical-adjectives-info":
+                    print("found #" + channel.name)
+                    adjectivesInfo = channel
+                if channel.name == "historical-contests-info":
+                    print("found #" + channel.name)
+                    contestInfo = channel
+                if channel.name == "historical-contest-specific-info":
+                    print("found #" + channel.name)
+                    contestItemsInfo = channel
+            
+            print("Poll Channel: #" + pollChannel.name)
+
+            lastInfo = open("lastInfo.txt", "w")
+            stringsList = []
+            for person in people:
+                stringsList.append(person)
+            for weapon in weapons:
+                stringsList.append(weapon)
+            for adjective in adjectives:
+                stringsList.append(adjective)
+            for place in places:
+                stringsList.append(place)
+
+            for i in stringsList:
+                lastInfo.write(i + "\n")
+            
+            peopleInfoLinks = []
+            weaponInfoLinks = []
+            placeInfoLinks = []
+            adjectiveInfoLinks = []
+            specialItemInfoLinks = []
+            contestInfoLinks = []
+
+            linker = "https://discord.com/channels/" + str(guildID) + "/"
+            #match should be a list of dicts
+            for match in matchesInfo.values():
+                print("\nMatch: " + str(match))
+                for person in match[0]:
+                    print(str(match[0]))
+                    embed = createPersonEmbed(person, teacherBracket=True)
+                    embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                    embedInfo = await peopleInfo.send(embed=embed)
+                    peopleInfoLinks.append(embedInfo.id)
+                    match[0][person] = str(embedInfo.id)     
+                for weapon in match[2]:
+                    embed = createWeaponEmbed(weapon)
+                    embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                    embedInfo = await weaponsInfo.send(embed=embed)
+                    weaponInfoLinks.append(embedInfo.id)
+                    match[2][weapon] = str(embedInfo.id)
+                for adjective in match[1]:
+                    embed = createAdjectiveEmbed(adjective)
+                    embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                    embedInfo = await adjectivesInfo.send(embed=embed)
+                    adjectiveInfoLinks.append(embedInfo.id)
+                    match[1][adjective] = str(embedInfo.id)
+                for place in match[3]:
+                    print("Place (Checking for Null): ~" + place + "~")
+                    if place != "":
+                        embed = createPlaceLongEmbed(place)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        embedInfo = await placeInfo.send(embed=embed)
+                        placeInfoLinks.append(embedInfo.id)
+                        match[3][place] = str(embedInfo.id)
+                for specialItem in match[4]:
+                    embed = match[4][specialItem]
+                    embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                    embedInfo = await contestItemsInfo.send(embed=embed)
+                    specialItemInfoLinks.append(embedInfo.id)
+                    match[4][specialItem] = str(embedInfo.id)
+                for contest in match[5]:
+                    if contest != "Death Match Classic":
+                        embed = createContestEmbed(contest, match[6])
+                    else:
+                        embed = createHDMClassicEmbed()
+                    embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                    embedInfo = await contestInfo.send(embed=embed)
+                    contestInfoLinks.append(embedInfo.id)
+                    match[5][contest] = str(embedInfo.id)
+
+            peopleLinks = []
+            weaponLinks = []
+            adjectiveLinks = []
+            placeLinks = []
+            itemLinks = []
+            contestLinks = []
+            #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+            for match in matchesInfo.values():
+                print(str(matchesInfo))
+                print("Oof: " + str(match))
+                for person in match[0]:
+                    match[0][person] = linker + str(peopleInfo.id) + "/" + match[0][person]
+                for adjective in match[1]:
+                    match[1][adjective] = linker + str(adjectivesInfo.id) + "/" + match[1][adjective]
+                for weapon in match[2]:
+                    match[2][weapon] = linker + str(weaponsInfo.id) + "/" + match[2][weapon]
+                for place in match[3]:
+                    if place != "":
+                        match[3][place] = linker + str(placeInfo.id) + "/" + match[3][place]
+                for specialItem in match[4]:
+                    match[4][specialItem] = linker + str(contestItemsInfo.id) + "/" + match[4][specialItem]
+                for contest in match[5]:
+                    match[5][contest] = linker + str(contestInfo.id) + "/" + match[5][contest]
+            
+            matchMessages = []
+            matchNum = 0
+            for match in matchesInfo.values():
+                matchMessage = generateMatchMessage(match, True)
+                embed = discord.Embed(title="Round #" + str(numberOfRounds) + " Match #" + str(numberOfMatchesRound + matchNum) + " (Total Match #" + str(numberOfMatchesTotal + matchNum) + ")", description=matchMessage, color=0xFF9900)
+                matchMessage = await pollChannel.send(embed=embed)
+                matchMessages.append(matchMessage)
+                matchNum+=1
+
+
+            await pollChannel.send("<@&613144506757283974>")
+            
+            emojiTicker = 0
+            for match in matchMessages:
+                await match.add_reaction(emoji=getEmoji(people[emojiTicker], teacherBracket=True))
+                await match.add_reaction(emoji=getEmoji(people[emojiTicker+1], teacherBracket=True))
+                emojiTicker+=2
+            print("Completed!")
+
+        #Matches for Teacher's Bracket in March Madness 2022
     if message.content.startswith("*info"):
                 messageContent = message.content[6::]
                 

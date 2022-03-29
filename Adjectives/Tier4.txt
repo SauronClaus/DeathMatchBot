@@ -62,7 +62,6 @@ modern
 romantic 
 classical 
 perceptible 
-black 
 colorful 
 educated 
 systematic 
@@ -172,10 +171,6 @@ true
 extracurricular 
 extracellular 
 modular 
-omniracial 
-monoracial 
-interracial 
-biracial 
 partisan 
 parochial 
 blue 
@@ -219,7 +214,6 @@ sexually driven
 macroscopic 
 supercalifragilisticexpialidociousistic 
 paternalist 
-aroused 
 nordic 
 sensible 
 sorry 
@@ -229,7 +223,6 @@ reasonable
 succulent 
 prime 
 fuscia 
-thicc 
 corpulent 
 skinny 
 green 

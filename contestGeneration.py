@@ -30,8 +30,10 @@ from embeds import createSongEmbed
 from embeds import createSpaceShipEmbed
 from embeds import createJudgeThreeSet
 
-def generateContest():
+def generateContest(publicMatches=False):
     contestFile = open("Contests\\ContestList.txt", "r")
+    if publicMatches == True:
+        contestFile = open("Contests\\ContestList TEACHERS.txt", "r")
     contestFileFull = contestFile.read()
     contestFileArray = contestFileFull.split("\n")
 
@@ -70,8 +72,11 @@ def generateContest():
 
         placesFile = open("Contests\\" + contest + "\\locations.txt", "r")
         placesFull = placesFile.read()
-
-        weaponsFile = open("Contests\\" + contest + "\\" + variant+ "weapons.txt", "r")
+        if publicMatches == True:
+            try:
+                weaponsFile = open("Contests\\" + contest + "\\" + variant + "weapons TEACHERS.txt", "r")
+            except:
+                weaponsFile = open("Contests\\" + contest + "\\" + variant + "weapons.txt", "r")
         weaponsFull = weaponsFile.read()
 
         adjectivesFile = open("Contests\\" + contest + "\\" + variant + "adjectives.txt", "r")
@@ -97,14 +102,22 @@ def generateContest():
             else:
                 place = generatePlaceTier(placesFull)
     print("Places Generated!")
-
-    if weaponsFull == "None":
-        weaponsUsed = False
-    else:
-        if weaponsFull == "All":
-            weaponPair = generateWeaponPair()
+    if publicMatches == True:
+        if weaponsFull == "None":
+            weaponsUsed = False
         else:
-            weaponPair = generateWeaponPairTier(weaponsFull)
+            if weaponsFull == "All":
+                weaponPair = generateWeaponPair(publicMatches=True)
+            else:
+                weaponPair = generateWeaponPairTier(weaponsFull, publicMatches=True)
+    else:
+        if weaponsFull == "None":
+            weaponsUsed = False
+        else:
+            if weaponsFull == "All":
+                weaponPair = generateWeaponPair()
+            else:
+                weaponPair = generateWeaponPairTier(weaponsFull)
     
     print("Weapons Generated!")
     specialItems = {}
@@ -188,7 +201,7 @@ def generateContest():
     #Return: Adjectives, Weapons, Places, Contest Information [contest name, variant name]
 #Generates a contest!
 def generateRegular(competitionInfo, matchRanked):
-    #matchInfo = [people, adjectives, weapons, places, specialItems, contestInfo, variant]
+    #competitionInfo = [people, adjectives, weapons, places, specialItems, contestInfo, variant]
     people = []
     adjectives = []
     weapons = []
@@ -1159,6 +1172,7 @@ def generateHDMClassic(competitionInfo, matchRanked):
     return matchMessage
 #generates an HDM death match
 def generateMatchMessage(competitionInfo, matchRanked):
+    print(str(competitionInfo))
     print("Competition Info len: " + str(len(competitionInfo)))
 
     print("---Passed!---")

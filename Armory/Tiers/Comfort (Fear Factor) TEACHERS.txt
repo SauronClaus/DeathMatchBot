@@ -1,0 +1,5 @@
+a Teddy Bear
+a glock (loaded)
+Linus's Blanket
+a glock (unloaded)
+a dog

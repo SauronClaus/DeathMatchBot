@@ -2,7 +2,8 @@ I realized that my files are kind of a mess in here so I figured I should outlin
 So here we go, in no particular order:
 > People:
 - peer.txt: Contains all the people ever added to the bot, and their emoji ids one line under them. Used in non-ranked match ups and in locating emojis for ranked match ups.
-- reep VThe CA Discord.txt: The current ranked bracket on the bot. It's written with the formula of people's full names seperated by semicolons.
+- CABracket.txt: The current ranked bracket on the bot. It's written with the formula of people's full names seperated by line breaks.
+    - CABracketBackUp.txt: The ranked bracket from the day before, basically.
 > The Weapons
 - weaponTiers.txt: The file that actually holds the tiers for the weapons. It's used to determine the different weapon choices for the matches.
 - Tier1.txt: The bottom tier of the bot. All of these are as useless or less useless than just bare fists.

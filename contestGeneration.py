@@ -31,9 +31,17 @@ from embeds import createSpaceShipEmbed
 from embeds import createJudgeThreeSet
 
 def generateContest(publicMatches=False):
-    contestFile = open("Contests\\ContestList.txt", "r")
+    print(str(publicMatches))
     if publicMatches == True:
         contestFile = open("Contests\\ContestList TEACHERS.txt", "r")
+    contestFile = open("Contests\\ContestList.txt", "r")
+
+    rarityContestGen = random.randint(1,5)
+    if rarityContestGen == 4:
+        contestFile = open("Contests\\ContestListRare.txt", "r")
+    else:
+        contestFile = open("Contests\\ContestListCommon.txt", "r")
+
     contestFileFull = contestFile.read()
     contestFileArray = contestFileFull.split("\n")
 
@@ -45,8 +53,8 @@ def generateContest(publicMatches=False):
     weaponsFull = ""
     placesFull = ""
 
-    coinFlip = random.randint(1,4)
-    if coinFlip == 1:
+    coinFlip = random.randint(1,5)
+    if coinFlip == 1 or coinFlip == 2:
         print("Classic Death Match!")
         adjectivesFull = "All"
         weaponsFull = "All"
@@ -75,8 +83,13 @@ def generateContest(publicMatches=False):
         if publicMatches == True:
             try:
                 weaponsFile = open("Contests\\" + contest + "\\" + variant + "weapons TEACHERS.txt", "r")
+                print("Contests\\" + contest + "\\" + variant + "weapons TEACHERS.txt")
             except:
+                print("Contests\\" + contest + "\\" + variant + "weapons.txt")
                 weaponsFile = open("Contests\\" + contest + "\\" + variant + "weapons.txt", "r")
+        else:
+            print("Contests\\" + contest + "\\" + variant + "weapons.txt")
+            weaponsFile = open("Contests\\" + contest + "\\" + variant + "weapons.txt", "r")
         weaponsFull = weaponsFile.read()
 
         adjectivesFile = open("Contests\\" + contest + "\\" + variant + "adjectives.txt", "r")
@@ -245,7 +258,13 @@ def generateRegular(competitionInfo, matchRanked):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    placer = ""
+    if place != "":
+        placer = " [" + place + "](" + competitionInfo[3][place] + ")"
+    
+
+
+    matchMessage = "%s%s %s vs %s%s %s in a %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placer)
     return matchMessage
 #The regular syntax. Should be used for most contests.
 def generateCleaningCompetition(competitionInfo, matchRanked):
@@ -830,7 +849,11 @@ def generateMarioParty10(competitionInfo, matchRanked):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    
+    placer = ""
+    if place != "":
+        placer = " [" + place + "](" + competitionInfo[3][place] + ")"
+    matchMessage = "%s%s %s vs %s%s %s in a %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placer)
     return matchMessage
 #Used for generating the Mario Party 10 competition
 def generatePieEatingContest(competitionInfo, matchRanked):
@@ -878,7 +901,10 @@ def generatePieEatingContest(competitionInfo, matchRanked):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    placer = ""
+    if place != "":
+        placer = " [" + place + "](" + competitionInfo[3][place] + ")"
+    matchMessage = "%s%s %s vs %s%s %s in a %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placer)
     return matchMessage
 #Used for generating a pie eating contest
 def generateFirstTo(competitionInfo, matchRanked):
@@ -926,7 +952,11 @@ def generateFirstTo(competitionInfo, matchRanked):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s%s %s vs %s%s %s as the %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    placer = ""
+    if place != "":
+        placer = " [" + place + "](" + competitionInfo[3][place] + ")"
+
+    matchMessage = "%s%s %s vs %s%s %s as the %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placer)
     return matchMessage
 #Used for generating "First to" contests!
 def generateContestAddition(competitionInfo, matchRanked):

@@ -218,7 +218,6 @@ def checkLinks(objectName):
         "Elon Musk": "Elon Reeve Musk",
         "a pair of nunchucks": "Nunchaku",
         "the toy knife from Undertale": "knife",
-        "Sun Tzu": "Sun Wu",
         "John Cena": "John Felix Anthony Cena",
         "ï»¿Abraham Lincoln": "Abraham Lincoln",
         "Kaiser Wilhelm": "Kaiser Wilhelm II",
@@ -228,7 +227,8 @@ def checkLinks(objectName):
         "their bear hands (severed)": "Grizzlie Bears", 
         "Mr. RM's Glasses": "eyeglasses",
         "Tom Scott": "Tom Scott (presenter)",
-        "Peter I": "Peter the Great"
+        "Peter I": "Peter the Great",
+        "Otto Stapf": "Otto Stapf (botanist)"
     }
     correct = objectName
     if objectName in largeDictionary:

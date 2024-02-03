@@ -1,35 +1,81 @@
-Tom Scott
-Kevin Spacey
-Taylor Swift
-Scarlet Johanssen
-Jeff Bezos
-Robert Downey Jr.
-Chris Hemsworth
-Chris Bratt
-Kobe Bryant
-Peter I
-Frederick Barbarossa
-Edward Teach
-Blackbeard
-Khamala Harris
-Hannibal
-Alexandria Ocasio-Cortez
-Atilla the Hun
-Woodie Flowers
-Mehmed II
-Alexios Angelos
-Alexios Komnenos
-John Curtain
-John Curtin
-Athelstan
-Otto I
-Prince Wilhelm of Prussia
-Otto Stapf
-Basil I
-Matilde di Canossa
-Sabuktigin
-Seljuk
-Rurik
-Timur Timurid
-& C:/Users/Sebastian_Polge/AppData/Local/Programs/Python/Python39/python.exe "c:/Users/Sebastian_Polge/OneDrive - Cary Academy/Documents/GitHub/DeathMatchBot/thing.py"
-:D
+Simón Bolívar
+1170487040589176872
+Norman Rockwell
+1170486819587100812
+Logan Paul
+1170215623603789904
+J.K. Simmons
+1170402536176488530
+Emmanuel Macron
+1170182811001569393
+Boris Johnson
+1170204587416879225
+Vince McMahon
+1170481936364478574
+Sylvester Stallone
+1170404418471075931
+Mel Brooks
+1170402550751711314
+Mel Blanc
+1170215648941580288
+Jack Met
+1170215570583588965
+Ringo Starr
+1170481477448896563
+George Harrison
+1170204617825599538
+Brian May
+1170181901550637107
+Roger Taylor
+1170466510905557052
+Elijah Wood
+1170182634626875393
+Emma Watson
+1170182808401100891
+Rupert Grint
+1170466512981721128
+Maggie Smith
+1170215625877094490
+Robbie Coltrane
+1170404346240966717
+Cary Elwes
+1170204591862841395
+Mandy Patinkin
+Robin Wright
+1170404350741454878
+Chris Sarandon
+1170181915450544168
+Wallace Shawn
+1170481942580441178
+André the Giant
+1170204576062898268
+Christopher Guest
+1170214680585846814
+Sean Bean
+1170404373172588624
+Orlando Bloom
+1170404301458395259
+Sam Reich
+1170406318276882472
+Brennan Lee Mulligan
+1170181899034046494
+Matthew Mercer
+1170215644248166410
+Adam Conover
+1170204568848699422
+Sam Riegel
+1170404365211816066
+Herman Melville
+1170215554531983360
+Edgar Allan Poe
+1170181944873603083
+Sam Bankman-Fried
+1170404360010874961
+The Wizard of New Zealand
+1170404431636987956
+Lady Gaga
+1170215614598611038
+Frank Lloyd Wright
+1170204613408997476
+Wilbur Wright
+1170481947873656882

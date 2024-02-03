@@ -123,7 +123,7 @@ def checkLinks(objectName):
         "Dwight Eisenhower": "Dwight D. Eisenhower",
         "Erwin Schrodinger": "Erwin Schrödinger",
         "Fluffy (Gabriel Iglesias)": "Gabriel Iglesias",
-        "Hanibal (general)": "Hanibal",
+        "Hannibal (general)": "Hannibal",
         "Henri Poincare": "Henri Poincaré",
         "Homer (The Odyssey)": "Homer",
         "Bon Jovi": "Jon Bon Jovi",
@@ -220,6 +220,7 @@ def checkLinks(objectName):
         "the toy knife from Undertale": "knife",
         "John Cena": "John Felix Anthony Cena",
         "ï»¿Abraham Lincoln": "Abraham Lincoln",
+        
         "Kaiser Wilhelm": "Kaiser Wilhelm II",
         "Charles Long (1st Baron Farnborough)": "Charles Long, 1st Baron Farnborough",
         "a greataxe": "Battle axe",
@@ -228,7 +229,28 @@ def checkLinks(objectName):
         "Mr. RM's Glasses": "eyeglasses",
         "Tom Scott": "Tom Scott (presenter)",
         "Peter I": "Peter the Great",
-        "Otto Stapf": "Otto Stapf (botanist)"
+        "Otto Stapf": "Otto Stapf (botanist)",
+        "Saint Olga of Kiev": "Olga of Kiev",
+        "Jeffrey Dahmer": "Dahmer",
+        "Emperor Hirohito": "Hirohito",
+        "Czar Nicolas II": "Nicholas II of Russia",
+        "Nat Turner": "Nat Turner's slave rebellion",
+        "Akbar the Great": "Akbar",
+        "Ashoka the Great": "Ashoka",
+        "Joe Russo": "Russo brothers",
+        "Anthony Russo": "Russo brothers",
+        "Mr. Beast": "MrBeast",
+        "Tupac": "Tupac Shakur",
+        "Queen Elizabeth II": "Elizabeth II",
+        "King Leopold II": "Leopold II of Belgium",
+        "Bonnie Elizabeth Parker" : "Bonnie and Clyde",
+        "Clyde Chestnut Barrow" : "Bonnie and Clyde",
+        "MoistCr1TiKaL": "Cr1TiKaL",
+        "Emperor Nero": "Nero",
+        "J.K. Simmons": "J. K. Simmons",
+        "O.J. Simpson": "O. J. Simpson",
+        "Adam Met": "AJR (band)",
+        "Roger Taylor": "Roger Taylor (Queen drummer)"
     }
     correct = objectName
     if objectName in largeDictionary:

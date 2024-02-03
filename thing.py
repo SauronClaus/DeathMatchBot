@@ -27,6 +27,7 @@ from embeds import createPieEmbed
 from embeds import createDrinkEmbed
 from embeds import createContestEmbed
 from embeds import createHDMClassicEmbed
+from embeds import createFranchiseEmbed
 
 from generation import generatePerson
 from generation import generateWeapon
@@ -45,21 +46,31 @@ from tradingCards import generateStats
 
 from tradingCardPerson import TradingCard
 import time
-    
-presidentalNamesFile = open("Pictures\\Lincoln\\presidentLastNames.txt", "r")
+import urllib.request
+
+from PIL import Image
+import requests
+import json
+
+pityChart = {}
+pityCount = {}
+pityNum = 75
+currentStats = {}
+
+presidentalNamesFile = open("Pictures\\Lincoln\\presidentLastNames.txt", "r", encoding='utf-8-sig')
 presidentalNamesFull = presidentalNamesFile.read()
 presidentalNames = presidentalNamesFull.split("\n")
 
 numberOfLincolnPics = 0
-roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
+roundNumber = int(open("matchNum.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
-discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer", "9EmojiServer", "CA Teacher Emojis", "2CA Teacher Emojis"]
+discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer", "9EmojiServer", "10DiscordEmojis", "11DiscordEmojis", "12DiscordEmojis", "13DiscordEmojis", "CA Teacher Emojis", "2CA Teacher Emojis"]
 #List of servers with the Discord Emojis. 
 
-tokenFile = open("token.txt", "r")
+tokenFile = open("token.txt", "r", encoding='utf-8-sig')
 tokenString = tokenFile.read()
 tokens = tokenString.split('\n')
 botToken = tokens[0]
@@ -74,7 +85,7 @@ def findPersonPic(person):
             return discord.File("Pictures\\" + person + '.jpg')
 #Finds the picture of a person
 def findPeerIndex(personName):
-    peerFile = open("peer.txt", "r")
+    peerFile = open("peer.txt", "r", encoding='utf-8-sig')
     peerFull = peerFile.read()
     peer = peerFull.split("\n")
     peoplePeerIndex = []
@@ -93,7 +104,7 @@ def checkForEmoji(ID):
 #Returns an emoji object with the passed in ID. 
 def findEmojiID(personName, teacherBracket=False):
     if teacherBracket == False:
-        peerFile = open("peer.txt", "r")
+        peerFile = open("peer.txt", "r", encoding='utf-8-sig')
         peerFull = peerFile.read()
         peer = peerFull.split("\n")
         peoplePeerIndex = []
@@ -106,7 +117,7 @@ def findEmojiID(personName, teacherBracket=False):
         else:
             emojiID = "1170032763420819517"
     if teacherBracket == True:
-        peerFile = open("Faculty Death Match2.txt", "r")
+        peerFile = open("Faculty Death Match2.txt", "r", encoding='utf-8-sig')
         peerFull = peerFile.read()
         peer = peerFull.split("\n")
         for line in peer:
@@ -116,7 +127,7 @@ def findEmojiID(personName, teacherBracket=False):
     return emojiID
 #Return the emoji ID from the person's name
 def reverseEmojiID(ID):
-    peerFile = open("peer.txt", "r")
+    peerFile = open("peer.txt", "r", encoding='utf-8-sig')
     peerFull = peerFile.read()
     peer = peerFull.split("\n")
     peoplePeerIndex = []
@@ -142,28 +153,46 @@ def getEmoji(personName, teacherBracket=False):
 #Combines checkForEmoji() and findEmojiID()
 def createPersonEmbed(person, teacherBracket=False):
     personEmoji = getEmoji(person, teacherBracket)
-    personUnEdit = person
+    title = person
     if teacherBracket == False:
         person = checkLinks(person)
         article = wikipedia.page(person, auto_suggest=False)
         summary = article.summary.split('\n')
         summaryPersonal = summaryShort(str(summary[0]))
-        embed = discord.Embed(title=article.title, description=summaryPersonal, color=0xFF9900)
+        embed = discord.Embed(title=title, description=summaryPersonal, color=0xFF9900)
     if teacherBracket == True:
-        peerFile = open("Faculty Death Match2.txt", "r")
+        peerFile = open("Faculty Death Match2.txt", "r", encoding='utf-8-sig')
         peerFull = peerFile.read()
         peer = peerFull.split("\n")
         for line in peer:
             if line.split("|")[0] == person:
                 description = line.split("|")[2].strip()
         peerFile.close()
-        embed = discord.Embed(title=person, description=description, color=0xFF9900)
+        embed = discord.Embed(title=title, description=description, color=0xFF9900)
     print("Emoji Name: " + personEmoji.name)
     #print(summary[0])
     personURL = str(personEmoji.url)
     embed.set_image(url=personURL)
     if teacherBracket == False:
         embed.add_field(name="Link",value=article.url)
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    return embed
+#Returns an embed object created from the inputed person.
+
+def createMHAembed(person, teacherBracket=False):
+    personFile = open("MHA Characters\\" + person + ".txt", "r", encoding='utf-8-sig')
+    personArray = personFile.read().split("\n")
+    personFile.close()
+    title = personArray[0]
+
+    summary = personArray[2]
+    summaryPersonal = summaryShort(summary)
+    embed = discord.Embed(title=title, description=summaryPersonal, color=0xFF9900)
+   
+    personURL = str(personArray[1])
+    embed.set_image(url=personURL)
+    
+    embed.add_field(name="Link",value=personArray[3])
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object created from the inputed person.
@@ -189,13 +218,39 @@ def returnResult(matchMessage):
             print("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)) 
         
     return "%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)
-    
+
+def get_wiki_main_image(title):
+    url = 'https://en.wikipedia.org/w/api.php'
+    data = {
+        'action' :'query',
+        'format' : 'json',
+        'formatversion' : 2,
+        'prop' : 'pageimages|pageterms',
+        'piprop' : 'original',
+        'titles' : title
+    }
+    response = requests.get(url, data)
+    json_data = json.loads(response.text)
+    return json_data['query']['pages'][0]['original']['source'] if len(json_data['query']['pages']) >0 else 'Not found'
 
 @client.event
 async def on_ready(): 
     print('Logged in as {0.user}'.format(client))
     numberOfLincolnPics = 0
     print("Round Number: " + str(roundNumber))
+    pityFile = open("declaredGacha.txt", "r", encoding='utf-8-sig')
+    pityArray = pityFile.read().strip().split("\n")
+    for line in pityArray:
+        contents = line.split("|")
+        pityChart[int(contents[0])] = contents[1]
+    pityFile.close()
+    pityCountFile = open("pityCount.txt", "r", encoding='utf-8-sig')
+    pityArray = pityCountFile.read().strip().split("\n")
+    for line in pityArray:
+        contents = line.split("|")
+        pityCount[int(contents[0])] = int(contents[1])
+
+
 
 @client.event
 async def on_message(message):
@@ -203,16 +258,15 @@ async def on_message(message):
         return
     if message.author.id == userID: 
         if message.content.startswith("*ranked"):
-            
-            #validRankedServers = {523962430179770369: [], 889564564365127751: []}
-            validRankedServers = {620964009247768586: []}
-            #Other server: 558662351906275328: [],
+            validRankedServers = {889564564365127751: [], 523962430179770369: []}
+            #validRankedServers = {620964009247768586: [], 558662351906275328: []}
+            #Other server: 
             #Second one is the testing servers
 
-            roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
+            roundNumber = int(open("matchNum.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
             channel = message.channel
             quantMessages = 0
-            numberOfMatches = 20
+            numberOfMatches = 5
             messageResults = []
             async for matchMessage in channel.history(limit=numberOfMatches+5):
                 if quantMessages < 5:
@@ -231,14 +285,14 @@ async def on_message(message):
             #print("Completed!")
             
             guildID = message.guild.id
-            numberOfMatchesFile = open("matchNum.txt", "r")
+            numberOfMatchesFile = open("matchNum.txt", "r", encoding='utf-8-sig')
             numberOfMatchesFull = numberOfMatchesFile.read()
             numberOfMatchesInfos = numberOfMatchesFull.split("\n")
             numberOfMatchesTotal = int(numberOfMatchesInfos[0])
             numberOfRounds = int(numberOfMatchesInfos[2])
             numberOfMatchesRound = int(numberOfMatchesInfos[1])
 
-            peopleFile = open("CABracket.txt", "r")
+            peopleFile = open("CABracket.txt", "r", encoding='utf-8-sig')
 
             peopleFull = peopleFile.read()
             peopleArray = peopleFull.split("\n")
@@ -365,7 +419,7 @@ async def on_message(message):
             
             print("Poll Channel: #" + pollChannel.name)
 
-            lastInfo = open("lastInfo.txt", "w")
+            lastInfo = open("lastInfo.txt", "w", encoding='utf-8-sig')
             stringsList = []
             for person in people:
                 stringsList.append(person)
@@ -390,12 +444,16 @@ async def on_message(message):
             matchMessages = []
             matchSet = 0
 
+            specialItemsInfo = []
+            for i in range(numberOfMatches):
+                specialItemsInfo.append({})
+
             for serverID in validRankedServers:
                 matchMessages.append([])
 
             for serverID in validRankedServers:
                 linker = "https://discord.com/channels/" + str(serverID) + "/"
-                
+                ticker = 0
                 for match in matchesInfo[serverID]:
                     print("~~Match: ~~ " + str(match))
                     pollChannel = validRankedServers[serverID][0]
@@ -435,14 +493,95 @@ async def on_message(message):
                             placeInfoLinks.append(embedInfo.id)
                             match[3][place] = str(embedInfo.id)
                     for specialItem in match[4]:
-                        embed = match[4][specialItem]
-                        print("Special Item: " + str(match[4]))
-                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
-                        contestItemsInfo = validRankedServers[serverID][5]
-                        embedInfo = await contestItemsInfo.send(embed=embed)
-                        specialItemInfoLinks.append(embedInfo.id)
-                        match[4][specialItem] = str(embedInfo.id)
+                        contest = ""
+                        
                     for contest in match[5]:
+                        embedsArray = []
+                        #print("Server/" + pollChannel.guild.name + ": Special Item: " + str(match[4][specialItem]))
+                        if contest == "Cleaning Competition":
+                            file = open("Contests\\" + contest + "\\" + "judges.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+
+                            judgeSet = fileArray[int(match[6][1])]
+                            judges = judgeSet.split(", ")
+                            for judge in judges:
+                                embedsArray.append(createJudgeEmbedCleaning(judge, "Cleaning", judgeSet))
+                                
+                        if contest == "Cooking Contest":
+                            file = open("Contests\\" + contest + "\\" + "dishes.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            dish = fileArray[randomNum]
+                            specialItems[dish] = createFoodEmbed(dish)
+
+                            file = open("Contests\\" + contest + "\\" + "judges.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNumbers = []
+                            for i in range(4):
+                                randomNum = random.randint(0, len(fileArray)-1)
+                                randomNumbers.append(randomNum)
+                            file.close()
+                            for rng in randomNumbers:
+                                judge = fileArray[rng]
+                                embedsArray.append(createJudgeEmbedCooking(judge, "Cooking"))
+                                print("Judge: " + judge)
+                        if contest == "Drinking Contest":
+                            file = open("Contests\\" + contest + "\\" + "drinks.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            drink = fileArray[randomNum]
+                            embedsArray.append(createDrinkEmbed(drink))
+                        if contest == "Get Sued by Nintendo":
+                            file = open("Contests\\" + contest + "\\" + "franchise.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            franchise = fileArray[randomNum]
+                            embedsArray.append(createFranchiseEmbed(franchise))
+                        if contest == "Karaoke Contest":
+                            file = open("Contests\\" + contest + "\\" + "songs.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            song = fileArray[randomNum]
+                            embedsArray.append(createSongEmbed(song))
+                        if contest == "Mario Party 10":
+                            file = open("Contests\\" + contest + "\\" + "minigames.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            minigame = fileArray[randomNum]
+                            embedsArray.append(createMarioMinigameEmbed(minigame))
+                        if contest == "Pie Eating Contest":
+                            file = open("Contests\\" + contest + "\\" + "pies.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            pie = fileArray[randomNum]
+                            embedsArray.append(createPieEmbed(pie))
+                        if contest == "First to Blow Up the Death Star I":
+                            embedsArray.append(createSpaceShipEmbed("X-wing"))
+                        for embed in embedsArray:        
+                            embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                            embedInfo = await contestItemsInfo.send(embed=embed)
+                            print(str(specialItemsInfo) + "/" + str(ticker) + "/" + str(embed.title))
+                            specialItemsInfo[ticker][embed.title] = str(embedInfo.id)
+                            print("EmbedInfo.id: " + str(embedInfo.id))
+
+                        contestItemsInfo = validRankedServers[serverID][5]
+                        specialItemInfoLinks.append(embedInfo.id)
+                        #match[4][specialItem] = str(embedInfo.id)
+
                         if contest != "Death Match Classic":
                             embed = createContestEmbed(contest, match[6])
                         else:
@@ -452,8 +591,11 @@ async def on_message(message):
                         embedInfo = await contestInfo.send(embed=embed)
                         contestInfoLinks.append(embedInfo.id)
                         match[5][contest] = str(embedInfo.id)
+                        print("SpecialItemsInfoTest: " + str(specialItemsInfo))
+                    ticker+=1
 
-
+                print("SpecialItemsInfo: " + str(specialItemsInfo))
+                #Fix the special info (specifically for White Wine)
                 peopleLinks = []
                 weaponLinks = []
                 adjectiveLinks = []
@@ -461,7 +603,9 @@ async def on_message(message):
                 itemLinks = []
                 contestLinks = []
                 #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+                ticker = 0
                 for match in matchesInfo[serverID]:
+                    smallTicker = 0
                     for person in match[0]:
                         match[0][person] = linker + str(peopleInfo.id) + "/" + match[0][person]
                     for adjective in match[1]:
@@ -471,15 +615,20 @@ async def on_message(message):
                     for place in match[3]:
                         if place != "":
                             match[3][place] = linker + str(placeInfo.id) + "/" + match[3][place]
-                    for specialItem in match[4]:
-                        match[4][specialItem] = linker + str(contestItemsInfo.id) + "/" + match[4][specialItem]
+                    for specialItem in specialItemsInfo[ticker]:
+                        print(str(smallTicker) + ": Check Special Items Info: " + str(specialItem) + ": " + str(specialItemsInfo[ticker]))
+                        print("\tLinker: " + str(linker))
+                        specialItemsInfo[ticker][specialItem] = linker + str(contestItemsInfo.id) + "/" + specialItemsInfo[ticker][specialItem]
+                        smallTicker+=1
                     for contest in match[5]:
                         match[5][contest] = linker + str(contestInfo.id) + "/" + match[5][contest]
+                    ticker+=1
 
                 
-
                 matchNum = 0
                 for match in matchesInfo[serverID]:
+                    match[4] = specialItemsInfo[matchNum]
+                    print("match[4]: " + str(specialItemsInfo[matchNum]))
                     matchMessage = generateMatchMessage(match, True)
                     embed = discord.Embed(title="Round #" + str(numberOfRounds) + " Match #" + str(numberOfMatchesRound + matchNum) + " (Total Match #" + str(numberOfMatchesTotal + matchNum) + ")", description=matchMessage, color=0xFF9900)
                     pollChannel = validRankedServers[serverID][0]
@@ -489,7 +638,7 @@ async def on_message(message):
 
                 matchSet+=1
             numberOfMatchesFile.close()
-            numberOfMatchesFile = open("matchNum.txt", "w")
+            numberOfMatchesFile = open("matchNum.txt", "w", encoding='utf-8-sig')
             numberOfMatchesFile.write(str(numberOfMatchesTotal + numberOfMatches)+"\n")
             numberOfMatchesFile.write(str(numberOfMatchesRound + numberOfMatches)+"\n")
             numberOfMatchesFile.write(str(numberOfRounds))
@@ -516,7 +665,7 @@ async def on_message(message):
                 peopleArray.remove(person)
 
             peopleFile.close()
-            peopleFile = open("CABracket.txt", "w")
+            peopleFile = open("CABracket.txt", "w", encoding='utf-8-sig')
             peerString = ""
             for name in peopleArray:
                 peerString = peerString + "\n" + name
@@ -528,14 +677,840 @@ async def on_message(message):
             matchNumber = 0
             for match in matchMessages[0]:
                 for matchSet in matchMessages:
-                    await matchSet[matchNumber].add_reaction(emoji=personEmojiList[emojiTicker])
-                    await matchSet[matchNumber].add_reaction(emoji=personEmojiList[emojiTicker + 1])
+                    await matchSet[matchNumber].add_reaction(personEmojiList[emojiTicker])
+                    await matchSet[matchNumber].add_reaction(personEmojiList[emojiTicker + 1])
                 matchNumber+=1
                 emojiTicker+=2
             print("Completed!")
         #Ranked matches for the CA Discord.             
+        if message.content.startswith("*dailies"):
+            validRankedServers = {1173402242989166702: []}
+            #validRankedServers = {620964009247768586: []}
+            #Other server: 
+            #Second one is the testing servers
+
+            roundNumber = int(open("matchNumOASI.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
+            channel = message.channel
+            quantMessages = 0
+            numberOfMatches = 5
+            messageResults = []
+            async for matchMessage in channel.history(limit=numberOfMatches+5):
+                if quantMessages < 5:
+                    for embeds in matchMessage.embeds:
+                        if "Round #" + str(roundNumber) in matchMessage.embeds[0].title:
+                                #messageResults.append(returnResult(matchMessage))
+                                quantMessages+=1
+
+          
+            
+            guildID = message.guild.id
+            numberOfMatchesFile = open("matchNumOASI.txt", "r", encoding='utf-8-sig')
+            numberOfMatchesFull = numberOfMatchesFile.read()
+            numberOfMatchesInfos = numberOfMatchesFull.split("\n")
+            numberOfMatchesTotal = int(numberOfMatchesInfos[0])
+            numberOfRounds = int(numberOfMatchesInfos[2])
+            numberOfMatchesRound = int(numberOfMatchesInfos[1])
+
+            peopleFile = open("OASIBracket.txt", "r", encoding='utf-8-sig')
+
+            peopleFull = peopleFile.read()
+            peopleArray = peopleFull.split("\n")
+            peopleFile.close()
+            peopleList = []
+            fileNumber = len(peopleArray) - 1
+
+            while (len(peopleList) < 2*numberOfMatches):
+                peopleList = newGenerateNum(fileNumber, peopleList)
+            
+            people = []
+            for personIndex in peopleList:
+                people.append(peopleArray[personIndex])
+
+            print("People: ")
+            for person in people:
+                print(person)
+            
+            weapons = []
+            adjectives = []
+            places = []
+            contests = []
+            specialEmbeds = []
+            specialItems = []
+
+            matchesInfo = {}
+            for serverID in validRankedServers:
+                matchesInfo[serverID] = []
+            
+            ticker = 0
+            for matchNum in range(numberOfMatches):
+                matchInfo = []
+                condenser = {
+                    people[ticker]: "",
+                    people[ticker+1]: ""
+                }
+                matchInfo.append(condenser)
+                ticker+=2
+                for serverID in validRankedServers:
+                    matchesInfo[serverID].append(matchInfo)
+                    print("Added people to the dict!")
+            #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+            for matchNumber in range(numberOfMatches):
+                matcherInfo = generateContest()
+                #Returned (in order) adjectivePair, weaponPair, place, specialItems, contestInformation
+                adjectiveDict = {}
+                weaponDict = {}
+                placeDict = {}
+                variant = ""
+                contestDict = {}
+                if matcherInfo != None:
+                    for adjective in matcherInfo[0]:
+                        adjectives.append(adjective)
+                        adjectiveDict[adjective] = ""
+                matchesInfo[serverID][matchNumber].append(adjectiveDict)
+                print("Added adjectives to the final dict!")
+                if matcherInfo != None:
+                    for weapon in matcherInfo[1]:
+                        weapons.append(weapon)
+                        weaponDict[weapon] = ""
+                matchesInfo[serverID][matchNumber].append(weaponDict)
+                print("Added weapons to the final dict of match#" + str(matchNumber) + ": " + str(serverID))
+                if matcherInfo != None and matcherInfo != "" and matcherInfo != " ":
+                    places.append(matcherInfo[2])
+                    placeDict[matcherInfo[2]] = ""
+                matchesInfo[serverID][matchNumber].append(placeDict)
+                if matcherInfo != None:
+                    for specialItem in matcherInfo[3]:
+                        specialEmbeds.append(specialItem[1])
+                        specialItems.append(specialItem)
+                matchesInfo[serverID][matchNumber].append(matcherInfo[3])
+                if matcherInfo != None:      
+                    contests.append(matcherInfo[4])
+                    contestDict[matcherInfo[4][0]] = ""
+                    variant = matcherInfo[4][1]
+                matchesInfo[serverID][matchNumber].append(contestDict)
+                matchesInfo[serverID][matchNumber].append(variant)
+
+            print(str(matchesInfo))
+
+            for serverID in validRankedServers:
+                server = client.get_guild(serverID)
+
+                pollChannel = message.channel
+                peopleInfo = message.channel
+                placeInfo = message.channel
+                weaponsInfo = message.channel
+                adjectivesInfo = message.channel
+                contestInfo = message.channel
+                contestItemsInfo = message.channel
+
+                for channel in server.text_channels:
+                    if channel.name == "historical-death-match-polls":
+                        print("found #" + channel.name)
+                        pollChannel = channel
+                    if channel.name == "kiri-information":
+                        print("found #" + channel.name)
+                        peopleInfo = channel
+                    if channel.name == "kiri-information":
+                        print("found #" + channel.name)
+                        weaponsInfo = channel
+                    if channel.name == "kiri-information":
+                        print("found #" + channel.name)
+                        placeInfo = channel
+                    if channel.name == "kiri-information":
+                        print("found #" + channel.name)
+                        adjectivesInfo = channel
+                    if channel.name == "kiri-information":
+                        print("found #" + channel.name)
+                        contestInfo = channel
+                    if channel.name == "kiri-information":
+                        print("found #" + channel.name)
+                        contestItemsInfo = channel
+                
+                validRankedServers[serverID].append(pollChannel)
+                validRankedServers[serverID].append(peopleInfo)
+                validRankedServers[serverID].append(weaponsInfo)
+                validRankedServers[serverID].append(placeInfo)
+                validRankedServers[serverID].append(adjectivesInfo)
+                validRankedServers[serverID].append(contestInfo)
+                validRankedServers[serverID].append(contestItemsInfo)
+
+                
+            
+            print("Poll Channel: #" + pollChannel.name)
+
+            lastInfo = open("lastInfoOASI.txt", "w", encoding='utf-8-sig')
+            stringsList = []
+            for person in people:
+                stringsList.append(person)
+            for weapon in weapons:
+                stringsList.append(weapon)
+            for adjective in adjectives:
+                stringsList.append(adjective)
+            for place in places:
+                stringsList.append(place)
+
+            for i in stringsList:
+                lastInfo.write(i + "\n")
+            
+            peopleInfoLinks = []
+            weaponInfoLinks = []
+            placeInfoLinks = []
+            adjectiveInfoLinks = []
+            specialItemInfoLinks = []
+            contestInfoLinks = []
+
+
+            matchMessages = []
+            matchSet = 0
+
+            specialItemsInfo = []
+            for i in range(numberOfMatches):
+                specialItemsInfo.append({})
+
+            for serverID in validRankedServers:
+                matchMessages.append([])
+
+            for serverID in validRankedServers:
+                linker = "https://discord.com/channels/" + str(serverID) + "/"
+                ticker = 0
+                for match in matchesInfo[serverID]:
+                    print("~~Match: ~~ " + str(match))
+                    pollChannel = validRankedServers[serverID][0]
+                    for person in match[0]:
+                        embed = createPersonEmbed(person)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        peopleInfo = validRankedServers[serverID][1]
+                        print("Sent person to " + str(serverID) + "; channel " + str(validRankedServers[serverID][1]))
+                        embedInfo = await peopleInfo.send(embed=embed)
+                        peopleInfoLinks.append(embedInfo.id)
+                        match[0][person] = str(embedInfo.id)     
+                    for weapon in match[2]:
+                        embed = createWeaponEmbed(weapon)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        
+                        weaponsInfo = validRankedServers[serverID][2]
+                        print("Sent weapon to " + str(serverID) + ".")
+                        embedInfo = await weaponsInfo.send(embed=embed)
+                        weaponInfoLinks.append(embedInfo.id)
+                        match[2][weapon] = str(embedInfo.id)
+                    for adjective in match[1]:
+                        embed = createAdjectiveEmbed(adjective)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        adjectivesInfo = validRankedServers[serverID][4]
+                        print("Sent adjective to " + str(serverID) + ".")
+                        embedInfo = await adjectivesInfo.send(embed=embed)
+                        adjectiveInfoLinks.append(embedInfo.id)
+                        match[1][adjective] = str(embedInfo.id)
+                    for place in match[3]:
+                        print("Place (Checking for Null): ~" + place + "~")
+                        if place != "":
+                            embed = createPlaceLongEmbed(place)
+                            embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                            placeInfo = validRankedServers[serverID][3]
+                            print("Sent place to " + str(serverID) + "; channel " + str(validRankedServers[serverID][3]))
+                            embedInfo = await placeInfo.send(embed=embed)
+                            placeInfoLinks.append(embedInfo.id)
+                            match[3][place] = str(embedInfo.id)
+                    for specialItem in match[4]:
+                        contest = ""
+                        
+                    for contest in match[5]:
+                        embedsArray = []
+                        #print("Server/" + pollChannel.guild.name + ": Special Item: " + str(match[4][specialItem]))
+                        if contest == "Cleaning Competition":
+                            file = open("Contests\\" + contest + "\\" + "judges.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+
+                            judgeSet = fileArray[int(match[6][1])]
+                            judges = judgeSet.split(", ")
+                            for judge in judges:
+                                embedsArray.append(createJudgeEmbedCleaning(judge, "Cleaning", judgeSet))
+                                
+                        if contest == "Cooking Contest":
+                            file = open("Contests\\" + contest + "\\" + "dishes.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            dish = fileArray[randomNum]
+                            specialItems[dish] = createFoodEmbed(dish)
+
+                            file = open("Contests\\" + contest + "\\" + "judges.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNumbers = []
+                            for i in range(4):
+                                randomNum = random.randint(0, len(fileArray)-1)
+                                randomNumbers.append(randomNum)
+                            file.close()
+                            for rng in randomNumbers:
+                                judge = fileArray[rng]
+                                embedsArray.append(createJudgeEmbedCooking(judge, "Cooking"))
+                                print("Judge: " + judge)
+                        if contest == "Drinking Contest":
+                            file = open("Contests\\" + contest + "\\" + "drinks.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            drink = fileArray[randomNum]
+                            embedsArray.append(createDrinkEmbed(drink))
+                        if contest == "Get Sued by Nintendo":
+                            file = open("Contests\\" + contest + "\\" + "franchise.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            franchise = fileArray[randomNum]
+                            embedsArray.append(createFranchiseEmbed(franchise))
+                        if contest == "Karaoke Contest":
+                            file = open("Contests\\" + contest + "\\" + "songs.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            song = fileArray[randomNum]
+                            embedsArray.append(createSongEmbed(song))
+                        if contest == "Mario Party 10":
+                            file = open("Contests\\" + contest + "\\" + "minigames.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            minigame = fileArray[randomNum]
+                            embedsArray.append(createMarioMinigameEmbed(minigame))
+                        if contest == "Pie Eating Contest":
+                            file = open("Contests\\" + contest + "\\" + "pies.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            pie = fileArray[randomNum]
+                            embedsArray.append(createPieEmbed(pie))
+                        if contest == "First to Blow Up the Death Star I":
+                            embedsArray.append(createSpaceShipEmbed("X-wing"))
+                        for embed in embedsArray:        
+                            embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                            embedInfo = await contestItemsInfo.send(embed=embed)
+                            print(str(specialItemsInfo) + "/" + str(ticker) + "/" + str(embed.title))
+                            specialItemsInfo[ticker][embed.title] = str(embedInfo.id)
+                            print("EmbedInfo.id: " + str(embedInfo.id))
+
+                        contestItemsInfo = validRankedServers[serverID][5]
+                        specialItemInfoLinks.append(embedInfo.id)
+                        #match[4][specialItem] = str(embedInfo.id)
+
+                        if contest != "Death Match Classic":
+                            embed = createContestEmbed(contest, match[6])
+                        else:
+                            embed = createHDMClassicEmbed()
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        contestInfo = validRankedServers[serverID][6]
+                        embedInfo = await contestInfo.send(embed=embed)
+                        contestInfoLinks.append(embedInfo.id)
+                        match[5][contest] = str(embedInfo.id)
+                        print("SpecialItemsInfoTest: " + str(specialItemsInfo))
+                    ticker+=1
+
+                print("SpecialItemsInfo: " + str(specialItemsInfo))
+                #Fix the special info (specifically for White Wine)
+                peopleLinks = []
+                weaponLinks = []
+                adjectiveLinks = []
+                placeLinks = []
+                itemLinks = []
+                contestLinks = []
+                #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+                ticker = 0
+                for match in matchesInfo[serverID]:
+                    smallTicker = 0
+                    for person in match[0]:
+                        match[0][person] = linker + str(peopleInfo.id) + "/" + match[0][person]
+                    for adjective in match[1]:
+                        match[1][adjective] = linker + str(adjectivesInfo.id) + "/" + match[1][adjective]
+                    for weapon in match[2]:
+                        match[2][weapon] = linker + str(weaponsInfo.id) + "/" + match[2][weapon]
+                    for place in match[3]:
+                        if place != "":
+                            match[3][place] = linker + str(placeInfo.id) + "/" + match[3][place]
+                    for specialItem in specialItemsInfo[ticker]:
+                        print(str(smallTicker) + ": Check Special Items Info: " + str(specialItem) + ": " + str(specialItemsInfo[ticker]))
+                        print("\tLinker: " + str(linker))
+                        specialItemsInfo[ticker][specialItem] = linker + str(contestItemsInfo.id) + "/" + specialItemsInfo[ticker][specialItem]
+                        smallTicker+=1
+                    for contest in match[5]:
+                        match[5][contest] = linker + str(contestInfo.id) + "/" + match[5][contest]
+                    ticker+=1
+
+                
+                matchNum = 0
+                for match in matchesInfo[serverID]:
+                    match[4] = specialItemsInfo[matchNum]
+                    print("match[4]: " + str(specialItemsInfo[matchNum]))
+                    matchMessage = generateMatchMessage(match, True)
+                    embed = discord.Embed(title="Round #" + str(numberOfRounds) + " Match #" + str(numberOfMatchesRound + matchNum) + " (Total Match #" + str(numberOfMatchesTotal + matchNum) + ")", description=matchMessage, color=0xFF9900)
+                    pollChannel = validRankedServers[serverID][0]
+                    matchMessage = await pollChannel.send(embed=embed)
+                    matchMessages[matchSet].append(matchMessage)
+                    matchNum+=1
+
+                matchSet+=1
+            numberOfMatchesFile.close()
+            numberOfMatchesFile = open("matchNumOASI.txt", "w", encoding='utf-8-sig')
+            numberOfMatchesFile.write(str(numberOfMatchesTotal + numberOfMatches)+"\n")
+            numberOfMatchesFile.write(str(numberOfMatchesRound + numberOfMatches)+"\n")
+            numberOfMatchesFile.write(str(numberOfRounds))
+            numberOfMatchesFile.close()
+                        
+            personIDList = []
+            for i in people:
+                personID = findEmojiID(i)
+                personIDList.append(personID)       
+
+            personEmojiList = []
+            for personID in personIDList:
+                personEmoji = checkForEmoji(personID)
+                personEmojiList.append(personEmoji)
+
+            for person in people:
+                peopleArray.remove(person)
+
+            peopleFile.close()
+            peopleFile = open("OASIBracket.txt", "w", encoding='utf-8-sig')
+            peerString = ""
+            for name in peopleArray:
+                peerString = peerString + "\n" + name
+            stringPeer = peerString[1:len(peerString)]
+            peopleFile.write(stringPeer)
+            peopleFile.close()
+            
+            emojiTicker = 0
+            matchNumber = 0
+            for match in matchMessages[0]:
+                for matchSet in matchMessages:
+                    await matchSet[matchNumber].add_reaction(personEmojiList[emojiTicker])
+                    await matchSet[matchNumber].add_reaction(personEmojiList[emojiTicker + 1])
+                matchNumber+=1
+                emojiTicker+=2
+            print("Completed!")
+        if message.content.startswith("*mhaMatch"):
+            validRankedServers = {1173402242989166702: []}
+            #validRankedServers = {620964009247768586: []}
+            #Other server: 
+            #Second one is the testing servers
+
+            roundNumber = int(open("mhaMatchNumOASI.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
+            channel = message.channel
+            quantMessages = 0
+            numberOfMatches = 5
+            messageResults = []
+            async for matchMessage in channel.history(limit=numberOfMatches+5):
+                if quantMessages < 5:
+                    for embeds in matchMessage.embeds:
+                        if "Round #" + str(roundNumber) in matchMessage.embeds[0].title:
+                                #messageResults.append(returnResult(matchMessage))
+                                quantMessages+=1
+
+          
+            
+            guildID = message.guild.id
+            numberOfMatchesFile = open("mhaMatchNumOASI.txt", "r", encoding='utf-8-sig')
+
+            numberOfMatchesFull = numberOfMatchesFile.read()
+            numberOfMatchesInfos = numberOfMatchesFull.split("\n")
+            
+
+            numberOfMatchesTotal = int(numberOfMatchesInfos[0])
+            numberOfRounds = int(numberOfMatchesInfos[2])
+            numberOfMatchesRound = int(numberOfMatchesInfos[1])
+
+            peopleFile = open("mhaBracket.txt", "r", encoding='utf-8-sig')
+
+            peopleFull = peopleFile.read()
+            peopleArray = peopleFull.split("\n")
+            peopleFile.close()
+            peopleList = []
+            fileNumber = len(peopleArray) - 1
+
+            while (len(peopleList) < 2*numberOfMatches):
+                peopleList = newGenerateNum(fileNumber, peopleList)
+            
+            people = []
+            for personIndex in peopleList:
+                people.append(peopleArray[personIndex])
+
+            print("People: ")
+            for person in people:
+                print(person)
+            
+            weapons = []
+            adjectives = []
+            places = []
+            contests = []
+            specialEmbeds = []
+            specialItems = []
+
+            matchesInfo = {}
+            for serverID in validRankedServers:
+                matchesInfo[serverID] = []
+            
+            ticker = 0
+            for matchNum in range(numberOfMatches):
+                matchInfo = []
+                condenser = {
+                    people[ticker]: "",
+                    people[ticker+1]: ""
+                }
+                matchInfo.append(condenser)
+                ticker+=2
+                for serverID in validRankedServers:
+                    matchesInfo[serverID].append(matchInfo)
+                    print("Added people to the dict!")
+            #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+            for matchNumber in range(numberOfMatches):
+                matcherInfo = generateContest()
+                #Returned (in order) adjectivePair, weaponPair, place, specialItems, contestInformation
+                adjectiveDict = {}
+                weaponDict = {}
+                placeDict = {}
+                variant = ""
+                contestDict = {}
+                if matcherInfo != None:
+                    for adjective in matcherInfo[0]:
+                        adjectives.append(adjective)
+                        adjectiveDict[adjective] = ""
+                matchesInfo[serverID][matchNumber].append(adjectiveDict)
+                print("Added adjectives to the final dict!")
+                if matcherInfo != None:
+                    for weapon in matcherInfo[1]:
+                        weapons.append(weapon)
+                        weaponDict[weapon] = ""
+                matchesInfo[serverID][matchNumber].append(weaponDict)
+                print("Added weapons to the final dict of match#" + str(matchNumber) + ": " + str(serverID))
+                if matcherInfo != None and matcherInfo != "" and matcherInfo != " ":
+                    places.append(matcherInfo[2])
+                    placeDict[matcherInfo[2]] = ""
+                matchesInfo[serverID][matchNumber].append(placeDict)
+                if matcherInfo != None:
+                    for specialItem in matcherInfo[3]:
+                        specialEmbeds.append(specialItem[1])
+                        specialItems.append(specialItem)
+                matchesInfo[serverID][matchNumber].append(matcherInfo[3])
+                if matcherInfo != None:      
+                    contests.append(matcherInfo[4])
+                    contestDict[matcherInfo[4][0]] = ""
+                    variant = matcherInfo[4][1]
+                matchesInfo[serverID][matchNumber].append(contestDict)
+                matchesInfo[serverID][matchNumber].append(variant)
+
+            print(str(matchesInfo))
+
+            for serverID in validRankedServers:
+                server = client.get_guild(serverID)
+
+                pollChannel = message.channel
+                peopleInfo = message.channel
+                placeInfo = message.channel
+                weaponsInfo = message.channel
+                adjectivesInfo = message.channel
+                contestInfo = message.channel
+                contestItemsInfo = message.channel
+
+                for channel in server.text_channels:
+                    if channel.name == "mha-death-match":
+                        print("found #" + channel.name)
+                        pollChannel = channel
+                    if channel.name == "mha-info":
+                        print("found #" + channel.name)
+                        peopleInfo = channel
+                    if channel.name == "mha-info":
+                        print("found #" + channel.name)
+                        weaponsInfo = channel
+                    if channel.name == "mha-info":
+                        print("found #" + channel.name)
+                        placeInfo = channel
+                    if channel.name == "mha-info":
+                        print("found #" + channel.name)
+                        adjectivesInfo = channel
+                    if channel.name == "mha-info":
+                        print("found #" + channel.name)
+                        contestInfo = channel
+                    if channel.name == "mha-info":
+                        print("found #" + channel.name)
+                        contestItemsInfo = channel
+                
+                validRankedServers[serverID].append(pollChannel)
+                validRankedServers[serverID].append(peopleInfo)
+                validRankedServers[serverID].append(weaponsInfo)
+                validRankedServers[serverID].append(placeInfo)
+                validRankedServers[serverID].append(adjectivesInfo)
+                validRankedServers[serverID].append(contestInfo)
+                validRankedServers[serverID].append(contestItemsInfo)
+
+                
+            
+            print("Poll Channel: #" + pollChannel.name)
+
+            lastInfo = open("lastInfoMHA.txt", "w", encoding='utf-8-sig')
+            stringsList = []
+            for person in people:
+                stringsList.append(person)
+            for weapon in weapons:
+                stringsList.append(weapon)
+            for adjective in adjectives:
+                stringsList.append(adjective)
+            for place in places:
+                stringsList.append(place)
+
+            for i in stringsList:
+                lastInfo.write(i + "\n")
+            
+            peopleInfoLinks = []
+            weaponInfoLinks = []
+            placeInfoLinks = []
+            adjectiveInfoLinks = []
+            specialItemInfoLinks = []
+            contestInfoLinks = []
+
+
+            matchMessages = []
+            matchSet = 0
+
+            specialItemsInfo = []
+            for i in range(numberOfMatches):
+                specialItemsInfo.append({})
+
+            for serverID in validRankedServers:
+                matchMessages.append([])
+
+            for serverID in validRankedServers:
+                linker = "https://discord.com/channels/" + str(serverID) + "/"
+                ticker = 0
+                for match in matchesInfo[serverID]:
+                    print("~~Match: ~~ " + str(match))
+                    pollChannel = validRankedServers[serverID][0]
+                    for person in match[0]:
+                        embed = createMHAembed(person)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        peopleInfo = validRankedServers[serverID][1]
+                        print("Sent person to " + str(serverID) + "; channel " + str(validRankedServers[serverID][1]))
+                        embedInfo = await peopleInfo.send(embed=embed)
+                        peopleInfoLinks.append(embedInfo.id)
+                        match[0][person] = str(embedInfo.id)     
+                    for weapon in match[2]:
+                        embed = createWeaponEmbed(weapon)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        
+                        weaponsInfo = validRankedServers[serverID][2]
+                        print("Sent weapon to " + str(serverID) + ".")
+                        embedInfo = await weaponsInfo.send(embed=embed)
+                        weaponInfoLinks.append(embedInfo.id)
+                        match[2][weapon] = str(embedInfo.id)
+                    for adjective in match[1]:
+                        embed = createAdjectiveEmbed(adjective)
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        adjectivesInfo = validRankedServers[serverID][4]
+                        print("Sent adjective to " + str(serverID) + ".")
+                        embedInfo = await adjectivesInfo.send(embed=embed)
+                        adjectiveInfoLinks.append(embedInfo.id)
+                        match[1][adjective] = str(embedInfo.id)
+                    for place in match[3]:
+                        print("Place (Checking for Null): ~" + place + "~")
+                        if place != "":
+                            embed = createPlaceLongEmbed(place)
+                            embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                            placeInfo = validRankedServers[serverID][3]
+                            print("Sent place to " + str(serverID) + "; channel " + str(validRankedServers[serverID][3]))
+                            embedInfo = await placeInfo.send(embed=embed)
+                            placeInfoLinks.append(embedInfo.id)
+                            match[3][place] = str(embedInfo.id)
+                    for specialItem in match[4]:
+                        contest = ""
+                        
+                    for contest in match[5]:
+                        embedsArray = []
+                        #print("Server/" + pollChannel.guild.name + ": Special Item: " + str(match[4][specialItem]))
+                        if contest == "Cleaning Competition":
+                            file = open("Contests\\" + contest + "\\" + "judges.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+
+                            judgeSet = fileArray[int(match[6][1])]
+                            judges = judgeSet.split(", ")
+                            for judge in judges:
+                                embedsArray.append(createJudgeEmbedCleaning(judge, "Cleaning", judgeSet))
+                                
+                        if contest == "Cooking Contest":
+                            file = open("Contests\\" + contest + "\\" + "dishes.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            dish = fileArray[randomNum]
+                            specialItems[dish] = createFoodEmbed(dish)
+
+                            file = open("Contests\\" + contest + "\\" + "judges.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNumbers = []
+                            for i in range(4):
+                                randomNum = random.randint(0, len(fileArray)-1)
+                                randomNumbers.append(randomNum)
+                            file.close()
+                            for rng in randomNumbers:
+                                judge = fileArray[rng]
+                                embedsArray.append(createJudgeEmbedCooking(judge, "Cooking"))
+                                print("Judge: " + judge)
+                        if contest == "Drinking Contest":
+                            file = open("Contests\\" + contest + "\\" + "drinks.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            drink = fileArray[randomNum]
+                            embedsArray.append(createDrinkEmbed(drink))
+                        if contest == "Get Sued by Nintendo":
+                            file = open("Contests\\" + contest + "\\" + "franchise.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            franchise = fileArray[randomNum]
+                            embedsArray.append(createFranchiseEmbed(franchise))
+                        if contest == "Karaoke Contest":
+                            file = open("Contests\\" + contest + "\\" + "songs.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            song = fileArray[randomNum]
+                            embedsArray.append(createSongEmbed(song))
+                        if contest == "Mario Party 10":
+                            file = open("Contests\\" + contest + "\\" + "minigames.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            minigame = fileArray[randomNum]
+                            embedsArray.append(createMarioMinigameEmbed(minigame))
+                        if contest == "Pie Eating Contest":
+                            file = open("Contests\\" + contest + "\\" + "pies.txt", "r")
+                            fileFull = file.read()
+                            fileArray = fileFull.split("\n")
+                            randomNum = random.randint(0, len(fileArray)-1)
+                            file.close()
+                            pie = fileArray[randomNum]
+                            embedsArray.append(createPieEmbed(pie))
+                        if contest == "First to Blow Up the Death Star I":
+                            embedsArray.append(createSpaceShipEmbed("X-wing"))
+                        for embed in embedsArray:        
+                            embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                            embedInfo = await contestItemsInfo.send(embed=embed)
+                            print(str(specialItemsInfo) + "/" + str(ticker) + "/" + str(embed.title))
+                            specialItemsInfo[ticker][embed.title] = str(embedInfo.id)
+                            print("EmbedInfo.id: " + str(embedInfo.id))
+
+                        contestItemsInfo = validRankedServers[serverID][5]
+                        specialItemInfoLinks.append(embedInfo.id)
+                        #match[4][specialItem] = str(embedInfo.id)
+
+                        if contest != "Death Match Classic":
+                            embed = createContestEmbed(contest, match[6])
+                        else:
+                            embed = createHDMClassicEmbed()
+                        embed.add_field(name="Return to Poll",value="[Here](%s)" % (str(linker)+str(pollChannel.id)), inline=False)
+                        contestInfo = validRankedServers[serverID][6]
+                        embedInfo = await contestInfo.send(embed=embed)
+                        contestInfoLinks.append(embedInfo.id)
+                        match[5][contest] = str(embedInfo.id)
+                        print("SpecialItemsInfoTest: " + str(specialItemsInfo))
+                    ticker+=1
+
+                print("SpecialItemsInfo: " + str(specialItemsInfo))
+                #Fix the special info (specifically for White Wine)
+                peopleLinks = []
+                weaponLinks = []
+                adjectiveLinks = []
+                placeLinks = []
+                itemLinks = []
+                contestLinks = []
+                #matchInfo = [people, adjectives, weapons, places, specialItems, contest, variant]
+                ticker = 0
+                for match in matchesInfo[serverID]:
+                    smallTicker = 0
+                    for person in match[0]:
+                        match[0][person] = linker + str(peopleInfo.id) + "/" + match[0][person]
+                    for adjective in match[1]:
+                        match[1][adjective] = linker + str(adjectivesInfo.id) + "/" + match[1][adjective]
+                    for weapon in match[2]:
+                        match[2][weapon] = linker + str(weaponsInfo.id) + "/" + match[2][weapon]
+                    for place in match[3]:
+                        if place != "":
+                            match[3][place] = linker + str(placeInfo.id) + "/" + match[3][place]
+                    for specialItem in specialItemsInfo[ticker]:
+                        print(str(smallTicker) + ": Check Special Items Info: " + str(specialItem) + ": " + str(specialItemsInfo[ticker]))
+                        print("\tLinker: " + str(linker))
+                        specialItemsInfo[ticker][specialItem] = linker + str(contestItemsInfo.id) + "/" + specialItemsInfo[ticker][specialItem]
+                        smallTicker+=1
+                    for contest in match[5]:
+                        match[5][contest] = linker + str(contestInfo.id) + "/" + match[5][contest]
+                    ticker+=1
+
+                
+                matchNum = 0
+                for match in matchesInfo[serverID]:
+                    match[4] = specialItemsInfo[matchNum]
+                    print("match[4]: " + str(specialItemsInfo[matchNum]))
+                    matchMessage = generateMatchMessage(match, True, True)
+                    embed = discord.Embed(title="Round #" + str(numberOfRounds) + " Match #" + str(numberOfMatchesRound + matchNum) + " (Total Match #" + str(numberOfMatchesTotal + matchNum) + ")", description=matchMessage, color=0xFF9900)
+                    pollChannel = validRankedServers[serverID][0]
+                    matchMessage = await pollChannel.send(embed=embed)
+                    matchMessages[matchSet].append(matchMessage)
+                    matchNum+=1
+
+                matchSet+=1
+            numberOfMatchesFile.close()
+            numberOfMatchesFile = open("mhaMatchNumOASI.txt", "w", encoding='utf-8-sig')
+            numberOfMatchesFile.write(str(numberOfMatchesTotal + numberOfMatches)+"\n")
+            numberOfMatchesFile.write(str(numberOfMatchesRound + numberOfMatches)+"\n")
+            numberOfMatchesFile.write(str(numberOfRounds))
+            numberOfMatchesFile.close()
+                        
+           #personIDList = []
+            #for i in people:
+             #   personID = findEmojiID(i)
+              #  personIDList.append(personID)       
+
+            #personEmojiList = []
+            #for personID in personIDList:
+             #   personEmoji = checkForEmoji(personID)
+              #  personEmojiList.append(personEmoji)
+
+            for person in people:
+                peopleArray.remove(person)
+
+            peopleFile.close()
+            peopleFile = open("mhaBracket.txt", "w", encoding='utf-8-sig')
+            peerString = ""
+            for name in peopleArray:
+                peerString = peerString + "\n" + name
+            stringPeer = peerString[1:len(peerString)]
+            peopleFile.write(stringPeer)
+            peopleFile.close()
+            
+            emojiTicker = 0
+            matchNumber = 0
+            for match in matchMessages[0]:
+                for matchSet in matchMessages:
+                    await matchSet[matchNumber].add_reaction("🅰️")
+                    await matchSet[matchNumber].add_reaction("🅱️")
+                matchNumber+=1
+                emojiTicker+=2
+            print("Completed!")
+        
         if message.content.startswith("*sendLastMatchInfo"):
-            infoWrite = open("lastInfo.txt", "r")
+            infoWrite = open("lastInfo.txt", "r", encoding='utf-8-sig')
             infoFull = infoWrite.read()
             info = infoFull.split("\n")
             pollChannel = message.channel
@@ -677,8 +1652,8 @@ async def on_message(message):
             await peopleInfo.send(embed=embed)
             crowdMoji = checkForEmoji(str(670378517585723443))
             SuleimanMoji = checkForEmoji(str(670368394180296744))
-            await sentMessage.add_reaction(emoji=SuleimanMoji)
-            await sentMessage.add_reaction(emoji=crowdMoji)
+            await sentMessage.add_reaction(SuleimanMoji)
+            await sentMessage.add_reaction(crowdMoji)
         #Suleiman Special!
         if message.content.startswith("*SuperBowlSpecial"):
             sentMessage = await message.channel.send("The Kansas City Chiefs with bows vs the San Francisco 49ers with MAT-49s in a pottery contest!")
@@ -691,12 +1666,12 @@ async def on_message(message):
             #await peopleInfo.send(embed=embed)
             crowdMoji = checkForEmoji(str(673616029485891612))
             SuleimanMoji = checkForEmoji(str(673616029850664991))
-            await sentMessage.add_reaction(emoji=crowdMoji)
-            await sentMessage.add_reaction(emoji=SuleimanMoji)
+            await sentMessage.add_reaction(crowdMoji)
+            await sentMessage.add_reaction(SuleimanMoji)
         #Super Bowl Special!
         if message.content.startswith("*resetBracket"):
-            roundNumber = int(open("matchNum.txt", "r").read().split("\n")[2])
-            logFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "r")
+            roundNumber = int(open("matchNum.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
+            logFile = open("LogCADiscordRound" + str(roundNumber) + ".txt", "r", encoding='utf-8-sig')
             logFull = logFile.read()
             log = logFull.split("\n")
             logFile.close()
@@ -715,22 +1690,22 @@ async def on_message(message):
                         print("--Error!--")
                     else:
                         reepFull = reepFull + "\n" + match[3]              
-            reepFile = open("CABracket.txt", "w")
+            reepFile = open("CABracket.txt", "w", encoding='utf-8-sig')
             reepFile.write(reepFull)
             reepFile.close()
             print("Completed!")
-            matchNumFile = open("matchNum.txt", "r")
+            matchNumFile = open("matchNum.txt", "r", encoding='utf-8-sig')
             matchNumFull = matchNumFile.read().split("\n")
             matchNumber = matchNumFull[0]
             roundInMatch = 1
             roundNumber+=1
             matchNumFile.close()
-            matchNumFile = open("matchNum.txt", "w")
+            matchNumFile = open("matchNum.txt", "w", encoding='utf-8-sig')
             matchNumFile.write(str(matchNumber) + "\n" + str(roundInMatch) + "\n" + str(roundNumber))
             matchNumFile.close()
         #Resets the bracket with the matches in "LogCADiscordRoundn.txt", where n is roundNumber        
         if message.content.startswith("*peoplePics"):
-            peopleFile = open("people.txt", "r")
+            peopleFile = open("people.txt", "r", encoding='utf-8-sig')
             peopleFull = peopleFile.read()
             peopleArray = peopleFull.split("\n")
             for person in peopleArray:
@@ -743,13 +1718,13 @@ async def on_message(message):
                         await message.channel.send("<@366709133195476992> : " + person + " does not exist.")
         #Sends all the pictures of the people in the match. 
         if message.content.startswith("*resetRankedBrackets"):
-            peopleFile = open("peer.txt", "r")
+            peopleFile = open("peer.txt", "r", encoding='utf-8-sig')
             peopleFull = peopleFile.read()
             people = peopleFull.split("\n")
 
-            CABracketFile = open("CABracket.txt", "r")
+            CABracketFile = open("CABracket.txt", "r", encoding='utf-8-sig')
             CABracketFull = CABracketFile.read()
-            BackUp = open("CABracketBackUp.txt", "w")
+            BackUp = open("CABracketBackUp.txt", "w", encoding='utf-8-sig')
             BackUp.write(CABracketFull)
             CABracketFile.close()
             BackUp.close()
@@ -759,7 +1734,7 @@ async def on_message(message):
                 if i % 2 == 0 and (people[i] != "A" and people[i] != "B"):
                     CABracket.append(people[i])
                     print(str(people[i]) + " added.")
-            CABracketFile = open("CABracket.txt", "w")
+            CABracketFile = open("CABracket.txt", "w", encoding='utf-8-sig')
             for person in CABracket:
                 CABracketFile.write("\n" + person)
             CABracketFile.close()
@@ -778,7 +1753,7 @@ async def on_message(message):
                     print("found #" + channel.name)
                     placeInfo = channel
 
-            #peopleFile = open("peer.txt", "r")
+            #peopleFile = open("peer.txt", "r", encoding='utf-8-sig')
             #peopleFull = peopleFile.read()
             #people = peopleFull.split("\n")
             #peopleFile.close()
@@ -788,12 +1763,12 @@ async def on_message(message):
                     #await peopleInfo.send(embed=embed)
 
 
-            weaponTiersFiles = open("weaponTiers.txt", "r")
+            weaponTiersFiles = open("weaponTiers.txt", "r", encoding='utf-8-sig')
             adjectiveTiersFull = weaponTiersFiles.read()
             weaponTiers = adjectiveTiersFull.split("\n")
             weaponTiersFiles.close()
             for weaponTier in weaponTiers:
-                weaponFile = open(weaponTier + ".txt", "r")
+                weaponFile = open(weaponTier + ".txt", "r", encoding='utf-8-sig')
                 weaponFull = weaponFile.read()
                 weapons = weaponFull.split("\n")
                 weaponFile.close()
@@ -801,7 +1776,7 @@ async def on_message(message):
                     embed = createWeaponEmbed(weapon)
                     await weaponsInfo.send(embed=embed)
 
-            placesFile = open("places.txt", "r")
+            placesFile = open("places.txt", "r", encoding='utf-8-sig')
             placesFull = placesFile.read()
             places = placesFull.split("\n")
             for place in places:
@@ -810,7 +1785,7 @@ async def on_message(message):
         #sends all of the info for all people, weapons, and places. 
         if message.content.startswith("*checkEmoji"):
             for emoji in message.guild.emojis:
-                await message.channel.send(emoji.name + "|" + str(emoji.id))
+                await message.channel.send(emoji.name + "\n" + str(emoji.id))
             print("Completed!")
         #Sends all the emojis with ids in the server. Useful for large emoji batches. 
         if (message.content.startswith("*customMatch") or message.content.startswith("*presidentialBracket")):
@@ -824,8 +1799,8 @@ async def on_message(message):
 
             numofMatches = 0
 
-            weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
-            placesFile = open("Atlas\\places.txt", "r")
+            weaponTierFile = open("Armory\\Tiers\\weaponTiers.txt", "r", encoding='utf-8-sig')
+            placesFile = open("Atlas\\places.txt", "r", encoding='utf-8-sig')
             adjectiveTierFile = open("Adjectives\\adjectiveTiers.txt")
             
             people = []
@@ -894,7 +1869,7 @@ async def on_message(message):
             
             print("Poll Channel: #" + pollChannel.name)
 
-            #lastInfo = open("lastInfo.txt", "w")
+            #lastInfo = open("lastInfo.txt", "w", encoding='utf-8-sig')
             #stringsList = [people[0], people[1], people[2], people[3], people[4], people[5], people[6], people[7], people[8], people[9], weapons[0], weapons[1], weapons[2], weapons[3], weapons[4], weapons[5], weapons[6], weapons[7], weapons[8], weapons[9], places[0], places[1], places[2], places[3], places[4], adjectives[0], adjectives[1], adjectives[2], adjectives[3], adjectives[4], adjectives[5], adjectives[6], adjectives[7], adjectives[8], adjectives[9]]
             #for i in stringsList:
             #    lastInfo.write(i + "\n")
@@ -967,19 +1942,64 @@ async def on_message(message):
             
             emojiTicker = 0
             for match in matchMessages:
-                await match.add_reaction(emoji=personEmojiList[emojiTicker])
-                await match.add_reaction(emoji=personEmojiList[emojiTicker + 1])
+                await match.add_reaction(personEmojiList[emojiTicker])
+                await match.add_reaction(personEmojiList[emojiTicker + 1])
                 emojiTicker+=2
             print("Completed!")
         #Quick set up for custom matches and brackets- in this case, the presidential bracket. Just throw the people into the code manually and you're good to go!
+        if message.content.startswith("*verifySuggestions"):
+            await message.delete()
+            suggestionFile = open("suggestions.txt", "r", encoding='utf-8-sig')
+            suggestionsFull = suggestionFile.read()
+            suggestions = suggestionsFull.split("\n")
+            suggestionFile.close()
+
+            peopleFile = open("people.txt", "r", encoding='utf-8-sig')
+            peopleFull = peopleFile.read()
+            people = peopleFull.split("\n")
+            peopleFile.close()
+
+            newList = []
+            for suggestion in suggestions:
+                if suggestion in people:
+                    print(str(suggestion) + " invalid!")
+                else:
+                    newList.append(suggestion)
+            
+            newString = ""
+
+            for person in newList:
+                newString = newString + "\n" + person
+
+            newFile = open("sanitizedSuggestions.txt", "w", encoding='utf-8-sig')
+            newFile.write(newString)
+            newFile.close() 
+
+        if message.content.startswith("*downloadEmojis"):
+            suggestionsFile = open("sanitizedSuggestions.txt", "r", encoding='utf-8-sig')
+            suggestionsFull = suggestionsFile.read()
+            suggestions = suggestionsFull.split("\n")
+
+            #suggestions = ["Taylor Swift"]
+            
+            for suggestion in suggestions:
+                counter = 1
+                article = wikipedia.page(suggestion, auto_suggest=False)
+                
+                mainPhoto = get_wiki_main_image(suggestion)
+                urllib.request.urlretrieve(mainPhoto, "Pictures\\AutoDownload\\" + suggestion + ".png") 
+                #img = Image.open("George Washington Photos\\" + suggestion + str("NEW") + ".png") 
+                #img.show()
+                print("\n")
+
         if message.content.startswith("*WIT"):
             print("WeaponInfoTesting!")
-            adjectiveTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r")
+            adjectiveTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r", encoding='utf-8-sig')
             adjectiveTiersFull = adjectiveTiersFile.read()
             adjectiveTiersArray = adjectiveTiersFull.split("\n")
             for tier in adjectiveTiersArray:
                 print("Tier: " + tier)
-                tierFile = open("Armory\\Tiers\\" + tier + ".txt", "r")
+                tierFile = open("Armory\\Tiers\\" + tier + ".txt", "r", encoding='utf-8-sig')
                 tierFull = tierFile.read()
                 tierArray = tierFull.split("\n")
                 for weapon in tierArray:
@@ -992,7 +2012,7 @@ async def on_message(message):
             adjectivesQuant = 16
             for numTier in range(adjectivesQuant):
                 print("Tier: Tier" + str(numTier+1))
-                tierFile = open("Adjectives\\Tier" + str(numTier+1) + ".txt", "r")
+                tierFile = open("Adjectives\\Tier" + str(numTier+1) + ".txt", "r", encoding='utf-8-sig')
                 tierFull = tierFile.read()
                 tierArray = tierFull.split("\n")
                 for adjective in tierArray:
@@ -1002,7 +2022,7 @@ async def on_message(message):
         #Sends all the info for each and every adjective.
         if message.content.startswith("*ATLAS"):
             print("Places Info Testing!")
-            placeFile = open("Atlas\\placesName.txt", "r")
+            placeFile = open("Atlas\\placesName.txt", "r", encoding='utf-8-sig')
             placeFull = placeFile.read()
             placeArray = placeFull.split("\n")
             for place in placeArray:
@@ -1102,7 +2122,7 @@ async def on_message(message):
                 await message.channel.send(file=discord.File("file.png"))
         #Test message for creating Trading Cards!
         if message.content.startswith("*allSongs"):        
-                songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r")
+                songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r", encoding='utf-8-sig')
                 songsFull = songsFile.read()
                 songs = songsFull.split("\n")
                 songsFile.close()
@@ -1112,7 +2132,7 @@ async def on_message(message):
                     await message.channel.send(embed=embed)
         #Test message that sends all songs!
         if message.content.startswith("*allMinigames"):
-                minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r")
+                minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r", encoding='utf-8-sig')
                 minigamesFull = minigamesFile.read()
                 minigames = minigamesFull.split("\n")
                 for minigame in minigames:
@@ -1120,7 +2140,7 @@ async def on_message(message):
                     await message.channel.send(embed=embed)
         #Test message to send all Mario Party Minigames
         if message.content.startswith("*allJudges"):
-                judgesFile = open("Competition Exclusive Info\\Judges\\Cleaning Competition\\judges.txt", "r")
+                judgesFile = open("Competition Exclusive Info\\Judges\\Cleaning Competition\\judges.txt", "r", encoding='utf-8-sig')
                 judgesFull = judgesFile.read()
                 judges = judgesFull.split("\n")
                 judgesFile.close()
@@ -1129,7 +2149,7 @@ async def on_message(message):
                     for judge in judgesIndiv:
                         embed = createJudgeEmbedCleaning(judge, "Cleaning", judgeTrio)
                         await message.channel.send(embed=embed)
-                judgesFile = open("Competition Exclusive Info\\Judges\\Cooking Contest\\judges.txt", "r")
+                judgesFile = open("Competition Exclusive Info\\Judges\\Cooking Contest\\judges.txt", "r", encoding='utf-8-sig')
                 judgesFull = judgesFile.read()
                 judges = judgesFull.split("\n")
                 judgesFile.close()
@@ -1138,7 +2158,7 @@ async def on_message(message):
                     await message.channel.send(embed=embed)
         #Test message to send all judges for both Cooking and Cleaning
         if message.content.startswith("*allFood"):        
-                foodsFile = open("Competition Exclusive Info\\Food\\Food\\dishes.txt", "r")
+                foodsFile = open("Competition Exclusive Info\\Food\\Food\\dishes.txt", "r", encoding='utf-8-sig')
                 foodsFull = foodsFile.read()
                 foods = foodsFull.split("\n")
                 foodsFile.close()
@@ -1147,7 +2167,7 @@ async def on_message(message):
                     await message.channel.send(embed=embed)
         #Test message to send all food dishes.
         if message.content.startswith("*allPies"):
-                piesFile = open("Competition Exclusive Info\\Food\\Pies\\pies.txt", "r")
+                piesFile = open("Competition Exclusive Info\\Food\\Pies\\pies.txt", "r", encoding='utf-8-sig')
                 piesFull = piesFile.read()
                 pies = piesFull.split("\n")
                 piesFile.close()
@@ -1156,7 +2176,7 @@ async def on_message(message):
                     await message.channel.send(embed=embed)
         #Test message to send all pies.
         if message.content.startswith("*drunkardsUnite"):
-                drinksFile = open("Competition Exclusive Info\\Drinks\\drinks.txt", "r")
+                drinksFile = open("Competition Exclusive Info\\Drinks\\drinks.txt", "r", encoding='utf-8-sig')
                 drinksFull = drinksFile.read()
                 drinks = drinksFull.split("\n")
 
@@ -1164,41 +2184,50 @@ async def on_message(message):
                     embed = createDrinkEmbed(drink)
                     await message.channel.send(embed=embed)
         #Test message to send all drinks.
+        if message.content.startswith("*mhaCharacters"):
+            characterFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+            characters = characterFile.read().split("\n")
+
+            for character in characters:
+                print(character)
+                embed = createMHAembed(character)
+                await message.channel.send(embed=embed)
+
         if message.content.startswith("*stats"):
                 channel = client.get_channel(773719674927972424)
                 print("Channel: " + channel.name)
 
-                peopleFile = open("people.txt", "r")
+                peopleFile = open("people.txt", "r", encoding='utf-8-sig')
                 peopleFull = peopleFile.read()
                 peopleArray = peopleFull.split("\n")
 
-                weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r")
+                weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r", encoding='utf-8-sig')
                 weaponTierFull = weaponTierFile.read()
                 weaponTierArray = weaponTierFull.split("\n")
                 weaponArray = []
                 weaponMinusFirstWord = []
                 for weaponTier in weaponTierArray:
-                    weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r")
+                    weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r", encoding='utf-8-sig')
                     weaponFull = weaponFile.read()
                     weaponArrayTemp = weaponFull.split("\n")
                     for weapon in weaponArrayTemp:
                         weaponArray.append(weapon)
                         
-                placesFile = open("Atlas\\placesName.txt", "r")
+                placesFile = open("Atlas\\placesName.txt", "r", encoding='utf-8-sig')
                 placesFull = placesFile.read()
                 placesArray = placesFull.split("\n")
 
-                placesNoPropFile = open("Atlas\\places.txt", "r")
+                placesNoPropFile = open("Atlas\\places.txt", "r", encoding='utf-8-sig')
                 placesNoPropFull = placesNoPropFile.read()
                 placesNoProps = placesNoPropFull.split("\n")
 
-                adjectiveTierFile = open("Adjectives\\TierList.txt", "r")
+                adjectiveTierFile = open("Adjectives\\TierList.txt", "r", encoding='utf-8-sig')
                 adjectiveTierFull = adjectiveTierFile.read()
                 adjectiveTierArray = adjectiveTierFull.split("\n")
 
                 adjectiveArray = []
                 for adjectiveTier in adjectiveTierArray:
-                    adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r")
+                    adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r", encoding='utf-8-sig')
                     adjectiveFull = adjectiveFile.read()
                     adjectiveArrayTemp = adjectiveFull.split("\n")
                     for adjective in adjectiveArrayTemp:
@@ -1354,9 +2383,9 @@ async def on_message(message):
                 embed = discord.Embed(title="Lord of the Rings, but...", description="-Albus Dumbledore as Gandalf\n-She-Ra as Frodo Baggins\n-Catra as Samwise Gamgee\n-Zelda as Aragorn\n-Green Arrow as Legolas\n-Leo Valdez as Gimli\n-Fred Weasley as Pippin\n-George Weasley as Merry\n-Mitch Henderson as Boromir", color=0xFF9900)
                 embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
                 messageEmbed = await message.channel.send(embed=embed)
-                await messageEmbed.add_reaction(emoji="✅")
-                await messageEmbed.add_reaction(emoji="🌐")
-                await messageEmbed.add_reaction(emoji="❌")
+                await messageEmbed.add_reaction("✅")
+                await messageEmbed.add_reaction("🌐")
+                await messageEmbed.add_reaction("❌")
         if message.content.startswith("*teachersBracket"):
             channel = message.channel
             quantMessages = 0
@@ -1498,7 +2527,7 @@ async def on_message(message):
             
             print("Poll Channel: #" + pollChannel.name)
 
-            lastInfo = open("lastInfo.txt", "w")
+            lastInfo = open("lastInfo.txt", "w", encoding='utf-8-sig')
             stringsList = []
             for person in people:
                 stringsList.append(person)
@@ -1604,52 +2633,52 @@ async def on_message(message):
             
             emojiTicker = 0
             for match in matchMessages:
-                await match.add_reaction(emoji=getEmoji(people[emojiTicker], teacherBracket=True))
-                await match.add_reaction(emoji=getEmoji(people[emojiTicker+1], teacherBracket=True))
+                await match.add_reaction(getEmoji(people[emojiTicker], teacherBracket=True))
+                await match.add_reaction(getEmoji(people[emojiTicker+1], teacherBracket=True))
                 emojiTicker+=2
             print("Completed!")
         #Matches for Teacher's Bracket in March Madness 2022
     if message.content.startswith("*info"):
                 messageContent = message.content[6::]
                 
-                peopleFile = open("people.txt", "r")
+                peopleFile = open("people.txt", "r", encoding='utf-8-sig')
                 peopleFull = peopleFile.read()
                 peopleArray = peopleFull.split("\n")
 
-                weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r")
+                weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r", encoding='utf-8-sig')
                 weaponTierFull = weaponTierFile.read()
                 weaponTierArray = weaponTierFull.split("\n")
                 weaponArray = []
                 weaponMinusFirstWord = []
                 for weaponTier in weaponTierArray:
-                    weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r")
+                    weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r", encoding='utf-8-sig')
                     weaponFull = weaponFile.read()
                     weaponArrayTemp = weaponFull.split("\n")
                     for weapon in weaponArrayTemp:
                         weaponArray.append(weapon)
                         
-                placesFile = open("Atlas\\placesName.txt", "r")
+                placesFile = open("Atlas\\placesName.txt", "r", encoding='utf-8-sig')
                 placesFull = placesFile.read()
                 placesArray = placesFull.split("\n")
 
-                adjectiveTierFile = open("Adjectives\\TierList.txt", "r")
+                adjectiveTierFile = open("Adjectives\\TierList.txt", "r", encoding='utf-8-sig')
                 adjectiveTierFull = adjectiveTierFile.read()
                 adjectiveTierArray = adjectiveTierFull.split("\n")
 
                 adjectiveArray = []
                 for adjectiveTier in adjectiveTierArray:
-                    adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r")
+                    adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r", encoding='utf-8-sig')
                     adjectiveFull = adjectiveFile.read()
                     adjectiveArrayTemp = adjectiveFull.split("\n")
                     for adjective in adjectiveArrayTemp:
                         adjectiveArray.append(adjective)
                 
                 
-                songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r")
+                songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r", encoding='utf-8-sig')
                 songsFull = songsFile.read()
                 songsArray = songsFull.split("\n")
 
-                minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r")
+                minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r", encoding='utf-8-sig')
                 minigamesFull = minigamesFile.read()
                 minigamesArray = minigamesFull.split("\n")
 
@@ -1692,7 +2721,7 @@ async def on_message(message):
                                         await message.channel.send(messageContent + " was not found.")
     #Grab info on a person, weapon, adjective, or place!
     if message.content.startswith("*newPeopleInfo"):
-                weaponTierFile = open("newPeople.txt", "r")
+                weaponTierFile = open("newPeople.txt", "r", encoding='utf-8-sig')
                 weaponTierFull = weaponTierFile.read()
                 weaponTierArray = weaponTierFull.split('\n')
                 weaponsInfo = message.channel
@@ -1735,6 +2764,163 @@ async def on_message(message):
     if message.content.startswith("*personMe"):
                 person = generatePerson()
                 await message.channel.send(person[0] + "!")
+    if message.content.startswith("*mhaMe"):
+        peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+        peopleFile.close()
+        RNG = random.randint(0, len(peopleArray)-1)
+        await message.channel.send(peopleArray[RNG] + "!")
+
+    if message.content.startswith("*declare"):
+        declaredPerson = message.content[9::].strip()
+        peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+        peopleFile.close()
+
+        
+        if declaredPerson in peopleArray:
+            pityChart[message.author.id] = declaredPerson
+            declaredFile = open("declaredGacha.txt", "w", encoding='utf-8-sig')
+            #print(str(pityChart))
+            for personID in pityChart.keys():
+                declaredFile.write(str(personID) + "|" + pityChart[personID] + "\n")
+            declaredFile.close()
+            await message.channel.send("<@" + str(message.author.id) + "> has declared " + declaredPerson + "!")
+        else:
+            #print("|" + declaredPerson + "|")
+            #print(str(peopleArray))
+            await message.channel.send(declaredPerson + " doesn't exist!")
+    if message.content.startswith("*roll"):
+        peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+        peopleFile.close()
+
+        RNG = random.randint(0, len(peopleArray))
+
+        chosen = peopleArray[RNG]
+
+        pityFile = open("pityCount.txt", "w", encoding='utf-8-sig')
+        pityCurrent = 0
+        try:
+            pityCurrent = pityCount[message.author.id]
+            for personID in pityCount.keys():
+                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+        except:
+            pityCount[message.author.id] = 0
+            for personID in pityCount.keys():
+                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+
+        immutablePity = pityCurrent
+        if pityCurrent >= pityNum:
+            pityCurrent = pityNum
+        pityCheck = random.randint(pityCurrent, 100)
+
+        test = ""
+        try:
+            test = pityChart[message.author.id]
+        except:
+            pityChart[message.author.id] = "[Error]"
+        if pityCheck == 100 or chosen == pityChart[message.author.id]:
+            chosen = pityChart[message.author.id]
+            pityCount[message.author.id] = 0
+            for personID in pityCount.keys():
+                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+            try:
+                currentStats[message.author.id][chosen]+=1
+            except:
+                try: 
+                    currentStats[message.author.id][chosen] = 1
+                except:
+                    currentStats[message.author.id] = {chosen: 1}
+            #print(str(currentStats))
+            await message.channel.send("<@" + str(message.author.id) + ">, you got " + chosen + "! (pity count: " + str(immutablePity) + ")")
+        else:
+            pityCount[message.author.id] += 1
+            for personID in pityCount.keys():
+                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+            try:
+                currentStats[message.author.id][chosen]+=1
+            except:
+                try: 
+                    currentStats[message.author.id][chosen] = 1
+                except:
+                    currentStats[message.author.id] = {chosen: 1}
+            #print(str(currentStats))
+            await message.channel.send(chosen + "!")
+        pityFile.close()
+        
+    if message.content.startswith("*currentStats"):
+        print(str(currentStats))
+
+        finder = message.content[16:len(message.content)-1:]
+        if finder == "":
+            finder = message.author.id
+        test = []
+        try:
+            test = currentStats[int(finder)]
+        except:
+            currentStats[int(finder)] = {}
+        print(currentStats[int(finder)])
+        statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
+        newMessage = "__<@" + str(finder) + "> stats:__"
+        totalNum = 0
+        statsList = dict(statsArray)
+        for person in statsList.keys():
+            newMessage = newMessage + "\n" + person + ": " + str(statsList[person])
+            totalNum+=statsList[person]
+        newMessage = newMessage + "\n" + "**Total:** " + str(totalNum)
+        await message.channel.send(newMessage)
+            
+
+            
+
+    if message.content.startswith("*pity"):
+        pityCurrent = 0
+        try:
+            pityCurrent = pityCount[message.author.id]
+        except:
+            pityCount[message.author.id] = 0
+        await message.channel.send("<@" + str(message.author.id) + "> has a current pity count of " + str(pityCurrent))
+    
+    if message.content.startswith("*contestant"):
+        coin = random.randint(0,1)
+        human = "[Error]"
+        if coin == 0:
+            person = generatePerson()
+            human = person[0]
+        else:
+            peopleFile = open("mhaBracket.txt", "r", encoding='utf-8-sig')
+
+            peopleFull = peopleFile.read()
+            peopleArray = peopleFull.split("\n")
+            peopleFile.close()
+            RNG = random.randint(0, len(peopleArray))
+            human = peopleArray[RNG]
+        adjective = generateAdjective().capitalize()
+        weapon = generateWeapon()
+
+        await message.channel.send(adjective + human + " with " + weapon)
+
+    if message.content.startswith("*powerUp"):
+        newMessage = message.content[9::]
+        if newMessage == "":
+            adjective = generateAdjective().strip()
+            weapon = generateWeapon().strip()
+            await message.channel.send("You are " + adjective + " and you have " + weapon)
+        else:
+            adjective = generateAdjective().capitalize()
+            weapon = generateWeapon()
+            await message.channel.send(adjective + message.content[9::] + " with " + weapon)
+
+        
+
+
     #Generate a person. 
     if message.content.startswith("*help"):
                 me = message.guild.get_member(int(557273350414794772))
@@ -1799,10 +2985,10 @@ async def on_message(message):
                 await message.delete()
     #Purges all death match commands.      
     if message.content.startswith("*register") or message.content.startswith("*suggest"):
-                peopleFile = open("peer.txt", "r")
+                peopleFile = open("peer.txt", "r", encoding='utf-8-sig')
                 peopleFull = peopleFile.read()
                 peopleID = peopleFull.split("\n")
-                suggestionFile = open("suggestions.txt", "r")
+                suggestionFile = open("suggestions.txt", "r", encoding='utf-8-sig')
                 suggestions = suggestionFile.read()
                 suggestionFile.close()
                 suggestionsArray = suggestions.split("\n")
@@ -1811,25 +2997,28 @@ async def on_message(message):
                     if index % 2 == 0 and (peopleID[index] != "A" and peopleID[index] != "B"):
                         people.append(peopleID[index])
 
-                person = message.content[10:len(message.content)]
+                person = message.content[9:len(message.content)]
                 print("Person: " + person)
                 if person in people:
-                    await message.channel.send(person + " is already in Historical Death Match! (ID " + peopleID[peopleID.index(person) + 1] + ")")
+                    response = await message.channel.send(person + " is already in Historical Death Match! (ID " + peopleID[peopleID.index(person) + 1] + ")")
                 else:
                     if person in suggestionsArray:
-                        await message.channel.send(person + " has already been suggested (but not yet added!).")
+                        response = await message.channel.send(person + " has already been suggested (but not yet added!).")
                     else:
-                        suggestionFile = open("suggestions.txt", "w")
+                        suggestionFile = open("suggestions.txt", "w", encoding='utf-8-sig')
                         suggestionFile.write(suggestions)
                         suggestionFile.write("\n" + person)
                         suggestionFile.close()
-                        await message.channel.send("Added " + person + " to suggestions.")
+                        response = await message.channel.send("Added " + person + " to suggestions.")
                 await message.delete()
+                time.sleep(2)
+                await response.delete()
+                
     #Command to suggest new people!  
     if message.content.startswith("*about"):
                 embed = discord.Embed(title="About HDM!", description='"though I would' + "'ve bribed people to get stephen hawking to win that one match" + '"\n-Harrison Truscott\nHistorical Death Match (found here https://github.com/fixmeseb/DeathMatchBot) is a Discord bot that started out when I thought, "Hey, you know what' + "'s funny?" + ' Historical figures fighting each other. I could do something with this!" And then I did. Abbreviated to HDM a lot, HDM is currently running it' + "'s third iteration of the bot (with adjectives!) on the CA Discord Server, and otherwise is soon ready to be added to other server- just reach out to me at the below Discord address or at sauronclaus@gmail.com to see if we can work something out!", color=0xFF9900)
-                embed.add_field(name="Lines of Code in Main File", value=1056)
-                embed.add_field(name="People", value=372)
+                embed.add_field(name="Lines of Code in Main File", value=2000)
+                embed.add_field(name="People", value=574)
                 embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
                 await message.channel.send(embed=embed)
     #Gives some info about the bot!

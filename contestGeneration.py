@@ -54,6 +54,7 @@ def generateContest(publicMatches=False):
     placesFull = ""
 
     coinFlip = random.randint(1,5)
+    #coinFlip = 3
     if coinFlip == 1 or coinFlip == 2:
         print("Classic Death Match!")
         adjectivesFull = "All"
@@ -63,9 +64,10 @@ def generateContest(publicMatches=False):
         variant = "Classic"
     else:
         randomNum = random.randint(0,len(contestFileArray)-1)
-        print(contestFileArray[randomNum] + "!")
+        print("CompetitionChosen: " + contestFileArray[randomNum] + "!")
         contest = contestFileArray[randomNum]
-
+        #contest = "Karaoke Contest"
+        
         variantFile = open("Contests\\" + contest + "\\variants.txt", "r")
         variantFull = variantFile.read()
         variantArray = variantFull.split("\n")
@@ -209,7 +211,7 @@ def generateContest(publicMatches=False):
         specialItems["X-wing"] = createSpaceShipEmbed("X-wing")        
     print("Prep for return")
     contestInformation = [contest, variant]
-    returnVariables = [adjectivePair, weaponPair, place, specialItems, contestInformation]
+    returnVariables = [adjectivePair, weaponPair, place, specialItems, contestInformation, placic]
     return returnVariables
     #Return: Adjectives, Weapons, Places, Contest Information [contest name, variant name]
 #Generates a contest!
@@ -513,7 +515,10 @@ def generateJeopardy(competitionInfo, matchRanked):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s%s %s vs %s%s %s in a %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    placer = ""
+    if place != "":
+        placer = " [" + place + "](" + competitionInfo[3][place] + ")"
+    matchMessage = "%s%s %s vs %s%s %s in a %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placer)
     return matchMessage
 #Used to generate the Jeopardy competition
 def generateKaraoke(competitionInfo, matchRanked):
@@ -1093,6 +1098,10 @@ def generateContestGameOf(competitionInfo, matchRanked):
     weapon1 = ""
     weapon2 = ""
 
+    placen = ""
+    if place != "":
+        placen = " [%s](%s)" % (place, competitionInfo[3][place])
+
     if len(adjectives) >= 2:
         adjective1 = "[%s](%s)" % (adjectives[0], competitionInfo[1][adjectives[0]])
         adjective2 = "[%s](%s)" % (adjectives[1], competitionInfo[1][adjectives[1]])
@@ -1100,7 +1109,7 @@ def generateContestGameOf(competitionInfo, matchRanked):
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
     
-    matchMessage = "%s%s %s vs %s%s %s in a game of %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in a game of %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placen)
     return matchMessage
 #Used for generating a classic contest, but with a "game of" in the contest name
 def generateContestElections(competitionInfo, matchRanked):
@@ -1147,8 +1156,12 @@ def generateContestElections(competitionInfo, matchRanked):
     if len(weapons) >= 2:
         weapon1 = "with [%s](%s)" % (weapons[0], competitionInfo[2][weapons[0]])
         weapon2 = "with [%s](%s)" % (weapons[1], competitionInfo[2][weapons[1]])
+
+    placer = ""
+    if place != "":
+        placer = " [%s](%s)" % (place, competitionInfo[3][place])
     
-    matchMessage = "%s%s %s vs %s%s %s in %s [%s](%s)" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, place, competitionInfo[3][place])
+    matchMessage = "%s%s %s vs %s%s %s in %s%s" % (adjective1, person1, weapon1, adjective2, person2, weapon2, competition, placer)
     return matchMessage
 #Used for generating a classic contest, but with for elections
 def generateHDMClassic(competitionInfo, matchRanked):
@@ -1201,10 +1214,24 @@ def generateHDMClassic(competitionInfo, matchRanked):
     print("Match Length: " + str(len(matchMessage)))
     return matchMessage
 #generates an HDM death match
-def generateMatchMessage(competitionInfo, matchRanked):
+def generateMatchMessage(competitionInfo, matchRanked, mhaMatch=False):
     print(str(competitionInfo))
     print("Competition Info len: " + str(len(competitionInfo)))
 
+    
+    if mhaMatch == True:
+        title = []
+        for person in competitionInfo[0]:
+            fileSearch = open("MHA Characters\\" + person + ".txt", "r", encoding='utf-8-sig')
+            fileFull = fileSearch.read().split("\n")
+            fileSearch.close()
+            personName = fileFull[0]
+            title.append(personName)
+        i = 0
+        for correction in title:
+            competitionInfo[0][i] = title[i]
+            i+=1
+            
     print("---Passed!---")
     print(str(competitionInfo[5].keys()))
     competitionType = list(competitionInfo[5].keys())[0]
@@ -1271,7 +1298,7 @@ def generateMatchMessage(competitionInfo, matchRanked):
                                                                 print("Generating " + competitionType)
                                                                 matchMessage = generateFirstTo(competitionInfo, matchRanked)
                                                             else:
-                                                                if competitionType == "Deadlift" or competitionType == "Pole Vault" or competitionType == "Mini Golf" or competitionType == "Discus" or competitionType == "Chainsaw Juggling" or competitionType == "Dance Dance Revolution" or competitionType == "Losing a Chess Game" or competitionType == "Racewalking" or competitionType == "Holding Breath Underwater":
+                                                                if competitionType == "Deadlift" or competitionType == "Pole Vault" or competitionType == "Mini Golf" or competitionType == "Discus" or competitionType == "Chainsaw Juggling" or competitionType == "Dance Dance Revolution" or competitionType == "Losing Chess Game" or competitionType == "Racewalking" or competitionType == "Holding Breath Underwater":
                                                                     print("Generating " + competitionType)
                                                                     matchMessage = generateContestAddition(competitionInfo, matchRanked)
                                                                 else:

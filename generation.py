@@ -4,8 +4,9 @@ from discord.utils import get
 import random
 
 def generatePerson():
-    peerFile = open("peer.txt", "r")
-    peerArray = peerFile.read().split("\n")
+    peerFile = open("peer.txt", "r", encoding='utf-8')
+    peerArray = peerFile.read()
+    peerFinal = peerArray.split("\n")
     personFile = open("people.txt", "r")
     personArray = personFile.read().split("\n")
     randomNum = random.randint(0, len(personArray)-1)

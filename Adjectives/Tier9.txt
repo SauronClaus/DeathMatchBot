@@ -8,6 +8,5 @@ smelted
 peeled 
 crafted 
 hewn 
-stoneforged 
 rebuilt 
 rolled 

@@ -1,4 +1,4 @@
-﻿Gunhead|2
+﻿Gunhead|3
 Hekiji Tengai|2
 Kudo|2
 Giran|1
@@ -9,11 +9,11 @@ Gentle Criminal|1
 Pony Tsunotori|1
 Ms. Joke|1
 Itejiro Toteki|2
-Kojiro Bondo|5
+Kojiro Bondo|6
 SI!Himiko Toga|1
 Tatami Nakagame|2
 SI!Kyoka Jiro|1
-David Shield|2
+David Shield|3
 Mitsuki Bakugo|1
 Geten|1
 Midnight|1
@@ -21,12 +21,12 @@ Beros|1
 Kendo Rappa|1
 SI!Eijiro Kirishima|1
 Muscular|1
-Vlad King|2
+Vlad King|3
 SI!Hitoshi Shinso|1
-Crust|1
-Mummy|1
+Crust|2
+Mummy|2
 Rody Soul|1
-Nine|1
+Nine|2
 Yo Shindo|1
 SI!Rikido Sato|1
 Masaru Bakugo|1
@@ -34,21 +34,21 @@ Yuga Aoyama|1
 Samuel Abraham|1
 SI!Tamaki Amajiki|1
 Naomasa Tsukauchi|2
-Sludge Villain|1
+Sludge Villain|3
 Mei Hatsume|2
 Denki Kaminari|2
-SI!Momo Yaoyorozu|1
+SI!Momo Yaoyorozu|3
 Cementoss|1
 Selkie|1
 Itsuka Kendo|1
 Rock Lock|1
-Slice|1
+Slice|2
 Nagamasa Mora|1
-Twice|1
+Twice|2
 Nana Shimura|1
 Curious|1
 Deidoro Sakaki|2
-Mustard|2
+Mustard|3
 Mirio Togata|1
 Winged Nomu|1
 Shota Aizawa|1
@@ -58,7 +58,7 @@ Centipeder|1
 Shoto Todoroki|3
 SI!Mina Ashido|1
 Gigantomachia|1
-Lady Nagant|1
+Lady Nagant|2
 Yokumiru Mera|1
 Katsuki Bakugo|2
 Manga Fukidashi|1
@@ -70,29 +70,29 @@ Snipe|2
 Burnin'|1
 Pop Step|1
 Jurota Shishida|1
-Chronostasis|1
+Chronostasis|3
 Rikido Sato|1
-Backdraft|1
+Backdraft|2
 Izuku Midoriya|1
-Togaru Kamakiri|1
+Togaru Kamakiri|2
 Yosetsu Awase|2
-Kyoka Jiro|1
+Kyoka Jiro|2
 Momo Yaoyorozu|1
-Skeptic|2
+Skeptic|4
 Shin Nemoto|2
 Rapt Tokage|1
 Bruce|1
 Mirko|1
-Seiji Shishikura|1
-IRL!FalseSeraph|2
-SI!Shota Aizawa|1
+Seiji Shishikura|3
+IRL!FalseSeraph|3
+SI!Shota Aizawa|2
 Sansa Tamakawa|1
-Tiger|1
-Magne|3
+Tiger|2
+Magne|4
 Wolfram|1
 Bubble Girl|1
 Nedzu|2
-SI!Mashirao Ojiro|1
+SI!Mashirao Ojiro|2
 Hitoshi Shinso|1
 Soga Kugisaki|1
 Tamaki Amajiki|1
@@ -109,3 +109,34 @@ Ochako Uraraka|1
 Kido|1
 Nejire Hado|1
 Spinner|1
+Mahoro Shimano|1
+Juzo Honenuki|1
+Mezo Shoji|1
+Fumikage Tokoyami|2
+SI!Natsuo Todoroki|1
+Sidero|1
+Tooru Hagakure|2
+Eijiro Kirishima|1
+Tomura Shigaraki|1
+Nomu (U.S.J.)|1
+Sen Kaibara|1
+Star and Stripe|1
+Nirengeki Shoda|1
+Kyudai Garaki|1
+Yui Kodai|1
+Tetsutetsu Tetsutetsu|1
+Rikiya Katsukame|1
+Ectoplasm|1
+4-Eyes Nomu|1
+Koji Koda|1
+Kamui Woods|1
+Yoichi Shigaraki|1
+Rogone|1
+Mina Ashido|1
+SI!Tsuyu Asui|2
+Re-Destro|1
+Gang Orca|1
+Recovery Girl|1
+Nomu (Chainsaw)|1
+En|1
+The Crawler|1

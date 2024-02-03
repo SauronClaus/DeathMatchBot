@@ -72,7 +72,6 @@ Franklin D. Roosevelt
 Ferdinand Magellan
 Fidel Castro
 Florence Nightingale
-Frank Sinatra
 Frederick Douglass
 Frida Kahlo
 Gabe Newell
@@ -85,7 +84,6 @@ George Washington
 Gordon Ramsay
 Gottfried Wilhelm Leibniz
 Grant Gustin
-Grant Kirkhope
 George Swinnerton Parker
 George R. R. Martin
 Grigori Rasputin
@@ -119,7 +117,6 @@ John Rockefeller
 Justin Bieber
 Jim Webb
 John Cena
-Jeb Bush
 Julius Caesar
 Jens Bergensten
 John Hancock
@@ -180,9 +177,7 @@ Michael Malloy
 Michael Bay
 Matt Parker
 Miyamoto Musashi
-Napoleon III
 Nelson Mandela
-Neil deGrasse Tyson
 Nicolaus Copernicus
 Napoleon Bonaparte
 Ninja (streamer)
@@ -193,9 +188,7 @@ Oda Nobunaga
 Otto von Bismarck
 Orville Wright
 Oscar Wilde
-Owen Wilson
 Oprah Winfrey
-Paul McCartney
 Pablo Picasso
 Paul Dirac
 Peter Higgs
@@ -282,7 +275,6 @@ Bill Clinton
 George W. Bush
 Eddie Hall
 Bruce Lee
-Michael Jordan
 Muhammad Ali
 Sigmund Freud
 Mike Tyson
@@ -352,7 +344,6 @@ Christian Bale
 Meryl Streep
 William Wallace
 Frank Welker
-David Attenborough
 Akbar the Great
 Jeff Goldblum
 Ashoka the Great
@@ -434,7 +425,6 @@ Sylvester Stallone
 Mel Brooks
 Mel Blanc
 Ringo Starr
-George Harrison
 Brian May
 Emma Watson
 Rupert Grint

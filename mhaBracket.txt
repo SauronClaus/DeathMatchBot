@@ -15,8 +15,6 @@ Shoto Todoroki
 Tooru Hagakure
 Katsuki Bakugo
 Izuku Midoriya
-Momo Yaoyorozu
-Yosetsu Awase
 Sen Kaibara
 Togaru Kamakiri
 Shihai Kuroiro
@@ -40,7 +38,6 @@ Lunch Rush
 Thirteen
 Hound Dog
 Shota Aizawa
-Present Mic
 Cementoss
 Midnight
 Snipe
@@ -52,7 +49,6 @@ Nejire Hado
 Tamaki Amajiki
 Endeavor
 Hawks
-Best Jeanist
 Mirko
 Kamui Woods
 Wash
@@ -67,7 +63,6 @@ Ragdoll
 Backdraft
 Centipeder
 Fourth Kind
-Gran Torino
 Gunhead
 Selkie
 Rock Lock
@@ -90,7 +85,6 @@ Rei Todoroki
 Natsuo Todoroki
 Inko Midoriya
 Mitsuki Bakugo
-Masaru Bakugo
 Mahoro Shimano
 Katsuma Shimano
 Yokumiru Mera
@@ -112,7 +106,6 @@ Seiji Shishikura
 Camie Utsushimi
 Yo Shindo
 Tatami Nakagame
-Shikkui Makabe
 Itejiro Toteki
 All for One
 Tomura Shigaraki
@@ -148,7 +141,6 @@ Stain
 Gentle Criminal
 La Brava
 Wolfram
-Slice
 Chimera
 Mummy
 Nine
@@ -165,10 +157,8 @@ SI!Tenya Iida
 SI!Ochako Uraraka
 SI!Mashirao Ojiro
 SI!Denki Kaminari
-SI!Eijiro Kirishima
 SI!Koji Koda
 SI!Rikido Sato
-SI!Mezo Shoji
 SI!Hitoshi Shinso
 SI!Tooru Hagakure
 SI!Katsuki Bakugo

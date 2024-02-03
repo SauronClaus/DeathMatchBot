@@ -9,9 +9,7 @@ Barack Obama
 Benjamin Franklin
 Carl Gauss
 Christian Goldbach
-Chuck Norris
 Clovis I
-C. S. Lewis
 David Hilbert
 Diego Rivera
 Douglas MacArthur
@@ -29,7 +27,6 @@ Grant Kirkhope
 Jack Nicholson
 Jackie Chan
 Jackie Robinson
-Jacob Sartorius
 John Rockefeller
 John Napier
 Jens Bergensten
@@ -39,7 +36,6 @@ John Calvin
 Jerry Seinfeld
 Jimmy Fallon
 John Lennon
-John D. Rockefeller
 Kublai Khan
 Lin-Manuel Miranda
 Leonardo da Vinci
@@ -52,10 +48,8 @@ Mother Teresa
 Michael Bay
 Miyamoto Musashi
 Neil deGrasse Tyson
-Neil Armstrong
 Nicki Minaj
 Otto von Bismarck
-Owen Wilson
 Paul McCartney
 Pablo Picasso
 Paul Dirac
@@ -69,7 +63,6 @@ Richard the Lionheart
 Shalom H. Schwartz
 Sir Isaac Newton
 Sir Walter Raleigh
-Sir Robert Wadlow
 Stephanie Kwolek
 Stephen Curry
 Socrates
@@ -88,12 +81,10 @@ Yuri Gagarin
 Joe Biden
 James Madison
 Millard Fillmore
-Rutherford B. Hayes
 Lyndon B. Johnson
 Eddie Hall
 Bruce Lee
 Mike Tyson
-Bill Cosby
 Pablo Escobar
 Otto I, Holy Roman Emperor
 Basil I
@@ -150,5 +141,4 @@ Christopher Guest
 Orlando Bloom
 Sam Reich
 Lady Gaga
-Frank Lloyd Wright
 Wilbur Wright

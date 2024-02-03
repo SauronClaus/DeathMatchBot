@@ -4,7 +4,7 @@ Fuyumi Todoroki|1
 Power Loader|1
 Mustard|2
 Nirengeki Shoda|1
-Gunhead|1
+Gunhead|2
 Star and Stripe|1
 Soramitsu Tabe|1
 Gran Torino|1
@@ -44,8 +44,8 @@ Edgeshot|1
 Tensei Iida|1
 Selkie|2
 SI!Koji Koda|1
-Centipeder|1
-Fumikage Tokoyami|1
+Centipeder|2
+Fumikage Tokoyami|2
 SI!Eri|1
 La Brava|1
 Pop Step|1
@@ -72,7 +72,7 @@ Ms. Joke|1
 Nine|1
 SI!Natsuo Todoroki|1
 En|1
-Tooru Hagakure|1
+Tooru Hagakure|2
 Tsuyu Asui|1
 Kamui Woods|2
 4-Eyes Nomu|1
@@ -83,18 +83,29 @@ SI!Hitoshi Shinso|2
 Tetsutetsu Tetsutetsu|1
 Minoru Mineta|1
 Koji Koda|1
-Wolfram|1
+Wolfram|2
 Hawks|1
 Tomura Shigaraki|1
 Rock Lock|1
 Pony Tsunotori|1
-Ragdoll|1
+Ragdoll|2
 Innsmouth|1
 Sidero|1
 Yui Kodai|1
 Wash|1
 Kyoka Jiro|1
-Kurogiri|1
+Kurogiri|2
 Slice|1
 SI!Tsuyu Asui|1
 Onima|1
+Nedzu|1
+Shihai Kuroiro|1
+Winged Nomu|1
+Melissa Shield|1
+Mezo Shoji|1
+Samuel Abraham|1
+Manga Fukidashi|1
+Tamaki Amajiki|1
+Kendo Rappa|1
+Chronostasis|1
+SI!Izuku Midoriya|1

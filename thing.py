@@ -2851,29 +2851,44 @@ async def on_message(message):
         test = ""
         try:
             test = pityChart[message.author.id]
-        except:
-            hello = "yes"
-            #print("Nothing listed for declare")
-            #pityChart[message.author.id] = "[Error]"
-        if pityCheck == 100 or chosen == pityChart[message.author.id]:
-            chosen = pityChart[message.author.id]
-            pityCount[message.author.id] = 0
-            for personID in pityCount.keys():
-                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
-            try:
-                currentStats[message.author.id][chosen]+=1
-            except:
-                try: 
-                    currentStats[message.author.id][chosen] = 1
+        
+            if pityCheck == 100 or chosen == pityChart[message.author.id]:
+                chosen = pityChart[message.author.id]
+                pityCount[message.author.id] = 0
+                for personID in pityCount.keys():
+                    pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+                try:
+                    currentStats[message.author.id][chosen]+=1
                 except:
-                    currentStats[message.author.id] = {chosen: 1}
-            writeFile = open("Gacha Storage Characters\\" + str(message.author.id) + ".txt", "w", encoding='utf-8-sig')
-            for person in currentStats[message.author.id].keys():
-                writeFile.write(person + "|" + str(currentStats[message.author.id][person]) + "\n")
-            writeFile.close()
-            #print(str(currentStats))
-            await message.channel.send("<@" + str(message.author.id) + ">, you got " + chosen + "! (pity count: " + str(immutablePity) + ")")
-        else:
+                    try: 
+                        currentStats[message.author.id][chosen] = 1
+                    except:
+                        currentStats[message.author.id] = {chosen: 1}
+                writeFile = open("Gacha Storage Characters\\" + str(message.author.id) + ".txt", "w", encoding='utf-8-sig')
+                for person in currentStats[message.author.id].keys():
+                    writeFile.write(person + "|" + str(currentStats[message.author.id][person]) + "\n")
+                writeFile.close()
+                #print(str(currentStats))
+                await message.channel.send("<@" + str(message.author.id) + ">, you got " + chosen + "! (pity count: " + str(immutablePity) + ")")
+            else:
+                pityCount[message.author.id] += 1
+                for personID in pityCount.keys():
+                    pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+                try:
+                    currentStats[message.author.id][chosen]+=1
+                except:
+                    try: 
+                        currentStats[message.author.id][chosen] = 1
+                    except:
+                        currentStats[message.author.id] = {chosen: 1}
+                #print(str(currentStats))
+                writeFile = open("Gacha Storage Characters\\" + str(message.author.id) + ".txt", "w", encoding='utf-8-sig')
+                for person in currentStats[message.author.id].keys():
+                    writeFile.write(person + "|" + str(currentStats[message.author.id][person]) + "\n")
+                writeFile.close()
+                await message.channel.send(chosen + "!")
+            pityFile.close()
+        except:
             pityCount[message.author.id] += 1
             for personID in pityCount.keys():
                 pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
@@ -2951,10 +2966,10 @@ async def on_message(message):
             print(currentStats[int(finder)])
             statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
             newMessage = "__<@" + str(finder) + "> Characters:__"
+            await message.channel.send(newMessage)
             statsList = dict(statsArray)
             for person in statsList.keys():
-                newMessage = newMessage + "\n" + person + ": " + str(statsList[person])
-            await message.channel.send(newMessage)
+                await message.channel.send(person + ": " + str(statsList[person]))
         else:
             try:
                 
@@ -2968,6 +2983,31 @@ async def on_message(message):
                 else:
                     await message.channel.send(characterName + " doesn't exist!")
     #Checks the quantity of a character owned.
+    if message.content.startswith("*missingMHA"):
+        finder = message.author.id
+        try:
+            test = currentStats[int(finder)]
+        except:
+            currentStats[int(finder)] = {}
+        print(currentStats[int(finder)])
+        statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
+        newMessage = "<@" + str(finder) + "> **Missing Characters: **"
+        statsList = dict(statsArray)
+        mhaFile = open("mhaCharacters.txt", "r", encoding="utf-8-sig")
+        mhaArray = mhaFile.read().split("\n")
+        mhaFile.close()
+        for character in mhaArray:
+            if not character in statsList.keys():
+                newMessage = newMessage + character + ", "
+        
+        
+        if len(newMessage) <= 1990:
+            await message.channel.send(newMessage[0:len(newMessage)-2:])
+        else:
+            chunks = [newMessage[i:i+1990] for i in range(0, len(newMessage), 1990)]
+            for i, chunk in enumerate(chunks, 1):
+                await message.channel.send(chunk)
+    #Prints a list of the user's missing characters
     if message.content.startswith("*contestant"):
         coin = random.randint(0,1)
         human = "[Error]"

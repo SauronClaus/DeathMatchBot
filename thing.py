@@ -40,11 +40,11 @@ from generation import generateAdjectivePair
 from contestGeneration import generateContest
 from contestGeneration import generateMatchMessage
 
-from tradingCards import createCard
-from tradingCards import grantCard
-from tradingCards import generateStats
+#from tradingCards import createCard
+#from tradingCards import grantCard
+#from tradingCards import generateStats
 
-from tradingCardPerson import TradingCard
+#from tradingCardPerson import TradingCard
 import time
 import urllib.request
 
@@ -249,6 +249,22 @@ async def on_ready():
     for line in pityArray:
         contents = line.split("|")
         pityCount[int(contents[0])] = int(contents[1])
+    
+    for filename in os.listdir(os.getcwd() + "\\Gacha Storage Characters\\"):
+        with open(os.path.join(os.getcwd() + "\\Gacha Storage Characters\\", filename), 'r') as f:
+            
+            storageFile = open("Gacha Storage Characters\\" + filename, "r", encoding='utf-8-sig')
+            fileArray = storageFile.read().strip().split("\n")
+            for i in fileArray:
+                print("Initalizing " + str(i))
+                personInfo = i.split("|")
+                try:
+                    currentStats[int(filename[0:len(filename)-4])][personInfo[0]] = int(personInfo[1])
+                except:
+                    currentStats[int(filename[0:len(filename)-4])] = {personInfo[0]: int(personInfo[1])}
+    
+
+    
 
 
 
@@ -1974,7 +1990,7 @@ async def on_message(message):
             newFile = open("sanitizedSuggestions.txt", "w", encoding='utf-8-sig')
             newFile.write(newString)
             newFile.close() 
-
+        #Checks if the suggestions are in the bot or not.
         if message.content.startswith("*downloadEmojis"):
             suggestionsFile = open("sanitizedSuggestions.txt", "r", encoding='utf-8-sig')
             suggestionsFull = suggestionsFile.read()
@@ -1991,7 +2007,7 @@ async def on_message(message):
                 #img = Image.open("George Washington Photos\\" + suggestion + str("NEW") + ".png") 
                 #img.show()
                 print("\n")
-
+        #Downloads all emojis.
         if message.content.startswith("*WIT"):
             print("WeaponInfoTesting!")
             adjectiveTiersFile = open("Armory\\Tiers\\weaponTiers.txt", "r", encoding='utf-8-sig')
@@ -2192,7 +2208,7 @@ async def on_message(message):
                 print(character)
                 embed = createMHAembed(character)
                 await message.channel.send(embed=embed)
-
+        #prints all the MHA characters
         if message.content.startswith("*stats"):
                 channel = client.get_channel(773719674927972424)
                 print("Channel: " + channel.name)
@@ -2764,6 +2780,7 @@ async def on_message(message):
     if message.content.startswith("*personMe"):
                 person = generatePerson()
                 await message.channel.send(person[0] + "!")
+    #Generate a random historical figure.
     if message.content.startswith("*mhaMe"):
         peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
 
@@ -2772,7 +2789,7 @@ async def on_message(message):
         peopleFile.close()
         RNG = random.randint(0, len(peopleArray)-1)
         await message.channel.send(peopleArray[RNG] + "!")
-
+    #Generate a random MHA character.
     if message.content.startswith("*declare"):
         declaredPerson = message.content[9::].strip()
         peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
@@ -2791,9 +2808,19 @@ async def on_message(message):
             declaredFile.close()
             await message.channel.send("<@" + str(message.author.id) + "> has declared " + declaredPerson + "!")
         else:
+            if declaredPerson == "":
+                test = ""
+                try:
+                    test = pityChart[message.author.id]
+                    await message.channel.send("<@" + str(message.author.id) + "> has " + pityChart[message.author.id] + " declared!")
+                except:
+                    await message.channel.send("<@" + str(message.author.id) + "> has nobody declared!")
+
             #print("|" + declaredPerson + "|")
             #print(str(peopleArray))
-            await message.channel.send(declaredPerson + " doesn't exist!")
+            else:
+                await message.channel.send(declaredPerson + " doesn't exist!")
+    #Declare a MHA character for the gacha system.
     if message.content.startswith("*roll"):
         peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
 
@@ -2825,7 +2852,9 @@ async def on_message(message):
         try:
             test = pityChart[message.author.id]
         except:
-            pityChart[message.author.id] = "[Error]"
+            hello = "yes"
+            #print("Nothing listed for declare")
+            #pityChart[message.author.id] = "[Error]"
         if pityCheck == 100 or chosen == pityChart[message.author.id]:
             chosen = pityChart[message.author.id]
             pityCount[message.author.id] = 0
@@ -2838,6 +2867,10 @@ async def on_message(message):
                     currentStats[message.author.id][chosen] = 1
                 except:
                     currentStats[message.author.id] = {chosen: 1}
+            writeFile = open("Gacha Storage Characters\\" + str(message.author.id) + ".txt", "w", encoding='utf-8-sig')
+            for person in currentStats[message.author.id].keys():
+                writeFile.write(person + "|" + str(currentStats[message.author.id][person]) + "\n")
+            writeFile.close()
             #print(str(currentStats))
             await message.channel.send("<@" + str(message.author.id) + ">, you got " + chosen + "! (pity count: " + str(immutablePity) + ")")
         else:
@@ -2852,9 +2885,13 @@ async def on_message(message):
                 except:
                     currentStats[message.author.id] = {chosen: 1}
             #print(str(currentStats))
+            writeFile = open("Gacha Storage Characters\\" + str(message.author.id) + ".txt", "w", encoding='utf-8-sig')
+            for person in currentStats[message.author.id].keys():
+                writeFile.write(person + "|" + str(currentStats[message.author.id][person]) + "\n")
+            writeFile.close()
             await message.channel.send(chosen + "!")
         pityFile.close()
-        
+    #Roll on the gacha wheel.
     if message.content.startswith("*currentStats"):
         print(str(currentStats))
 
@@ -2869,25 +2906,68 @@ async def on_message(message):
         print(currentStats[int(finder)])
         statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
         newMessage = "__<@" + str(finder) + "> stats:__"
-        totalNum = 0
         statsList = dict(statsArray)
+
+        totalNum = 0
         for person in statsList.keys():
-            newMessage = newMessage + "\n" + person + ": " + str(statsList[person])
             totalNum+=statsList[person]
-        newMessage = newMessage + "\n" + "**Total:** " + str(totalNum)
+        for person in statsList.keys():
+            if statsList[person] > totalNum * 0.02:
+                newMessage = newMessage + "\n" + person + ": " + str(statsList[person])
+        newMessage = newMessage + "\n" + "**Total Rolls: ** " + str(totalNum)
+        newMessage = newMessage + "\n" + "**Characters Obtained: **" + str(len(statsList.keys())) + "/220"
+        
+        mhaFile = open("mhaCharacters.txt", "r", encoding="utf-8-sig")
+        mhaArray = mhaFile.read().split("\n")
+        if len(statsList.keys()) >= 200 and len(statsList.keys()) < 220:
+            newMessage = newMessage + "\n" + "**Characters Remaining: **"
+            for character in mhaArray:
+                if not character in statsList.keys():
+                    newMessage = newMessage + character + ", "
+            newMessage = newMessage[0:len(newMessage)-2:]
         await message.channel.send(newMessage)
-            
-
-            
-
+    #Check your current stats with the gacha.      
     if message.content.startswith("*pity"):
         pityCurrent = 0
+        finder = message.content[8:len(message.content)-1:]
+        if finder == "":
+            finder = message.author.id
+
         try:
-            pityCurrent = pityCount[message.author.id]
+            pityCurrent = pityCount[int(finder)]
         except:
-            pityCount[message.author.id] = 0
-        await message.channel.send("<@" + str(message.author.id) + "> has a current pity count of " + str(pityCurrent))
-    
+            pityCount[int(finder)] = 0
+        await message.channel.send("<@" + str(finder) + "> has a current pity count of " + str(pityCurrent))
+    #Checks your current pity.  
+    if message.content.startswith("*checkCharacter"):
+        characterName = message.content[16::]
+        finder = message.author.id
+        print(str(len(message.content)))
+        if characterName == "" or len(message.content) == 15:
+            try:
+                test = currentStats[int(finder)]
+            except:
+                currentStats[int(finder)] = {}
+            print(currentStats[int(finder)])
+            statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
+            newMessage = "__<@" + str(finder) + "> Characters:__"
+            statsList = dict(statsArray)
+            for person in statsList.keys():
+                newMessage = newMessage + "\n" + person + ": " + str(statsList[person])
+            await message.channel.send(newMessage)
+        else:
+            try:
+                
+                await message.channel.send("<@" + str(finder) + "> has " + str(currentStats[finder][characterName]) + " of " + characterName)
+            except:
+                mhaCharacterFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+                mhaCharacters = mhaCharacterFile.read().split("\n")
+                mhaCharacterFile.close()
+                if characterName in mhaCharacters:
+                    await message.channel.send("<@" + str(finder) + "> has 0 of " + characterName)
+                else:
+                    await message.channel.send(characterName + " doesn't exist!")
+    #Checks the quantity of a character owned.
     if message.content.startswith("*contestant"):
         coin = random.randint(0,1)
         human = "[Error]"
@@ -2906,7 +2986,7 @@ async def on_message(message):
         weapon = generateWeapon()
 
         await message.channel.send(adjective + human + " with " + weapon)
-
+    #Generates an adjective, person, and weapon.
     if message.content.startswith("*powerUp"):
         newMessage = message.content[9::]
         if newMessage == "":
@@ -2917,11 +2997,7 @@ async def on_message(message):
             adjective = generateAdjective().capitalize()
             weapon = generateWeapon()
             await message.channel.send(adjective + message.content[9::] + " with " + weapon)
-
-        
-
-
-    #Generate a person. 
+    #Gives a weapon and an adjective to someone.
     if message.content.startswith("*help"):
                 me = message.guild.get_member(int(557273350414794772))
                 color = me.color

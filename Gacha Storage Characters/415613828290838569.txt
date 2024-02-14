@@ -1,80 +1,182 @@
 ﻿Inko Midoriya|1
-All Might|2
-Hanta Sero|1
-Rikido Sato|2
-Juzo Honenuki|1
+All Might|3
+Hanta Sero|2
+Rikido Sato|3
+Juzo Honenuki|3
 Deidoro Sakaki|1
-Bubble Girl|2
+Bubble Girl|3
 Endeavor|1
-Sen Kaibara|1
+Sen Kaibara|3
 All for One|1
 Tenya Iida|2
-Melissa Shield|4
-Best Jeanist|1
-SI!Eri|1
-Kudo|2
-Lunch Rush|2
-Crust|2
-SI!Momo Yaoyorozu|1
+Melissa Shield|6
+Best Jeanist|4
+SI!Eri|2
+Kudo|4
+Lunch Rush|3
+Crust|3
+SI!Momo Yaoyorozu|3
 Hood|2
 Naomasa Tsukauchi|1
 Gang Orca|1
-Mirko|1
+Mirko|4
 SI!Sen Kaibara|1
-Sludge Villain|1
-Katsuma Shimano|1
-Lady Nagant|1
+Sludge Villain|4
+Katsuma Shimano|3
+Lady Nagant|2
 Natsuo Todoroki|1
-Mashirao Ojiro|1
+Mashirao Ojiro|3
 Kinoko Komori|1
-Tsuyu Asui|1
+Tsuyu Asui|3
 Yo Shindo|3
-Hekiji Tengai|1
-Sidero|1
-Mei Hatsume|1
+Hekiji Tengai|5
+Sidero|2
+Mei Hatsume|2
 SI!Neito Monoma|1
 Hiryu Rin|1
 Itejiro Toteki|1
-Tiger|1
-Denki Kaminari|1
-Tetsutetsu Tetsutetsu|1
-Samuel Abraham|1
-Wash|1
-Pop Step|2
-SI!Mezo Shoji|1
+Tiger|2
+Denki Kaminari|2
+Tetsutetsu Tetsutetsu|2
+Samuel Abraham|2
+Wash|3
+Pop Step|3
+SI!Mezo Shoji|5
 SI!Mashirao Ojiro|1
-Nomu (U.S.J.)|1
-Togaru Kamakiri|1
-SI!Izuku Midoriya|1
+Nomu (U.S.J.)|2
+Togaru Kamakiri|3
+SI!Izuku Midoriya|4
 Dabi|2
-Midnight|1
-Power Loader|1
-Daigoro Banjo|1
-Manual|1
+Midnight|2
+Power Loader|2
+Daigoro Banjo|2
+Manual|2
 Geten|1
 SI!Ochako Uraraka|1
-Ectoplasm|1
-Ragdoll|1
+Ectoplasm|2
+Ragdoll|2
 4-Eyes Nomu|1
 Overhaul|1
-SI!Tamaki Amajiki|1
+SI!Tamaki Amajiki|3
 SI!Eijiro Kirishima|1
 Tooru Hagakure|1
-Nine|1
-Hitoshi Shinso|1
-Yoichi Shigaraki|2
+Nine|2
+Hitoshi Shinso|3
+Yoichi Shigaraki|3
 Yu Hojo|1
-Shoto Todoroki|1
-Gentle Criminal|1
+Shoto Todoroki|3
+Gentle Criminal|3
 Recovery Girl|1
 Pony Tsunotori|1
-Swordkil|1
-Soramitsu Tabe|1
+Swordkil|3
+Soramitsu Tabe|3
 Tomura Shigaraki|1
-Nana Shimura|1
-SI!Manga Fukidashi|1
-Mandalay|1
+Nana Shimura|4
+SI!Manga Fukidashi|2
+Mandalay|2
 Tensei Iida|1
-Yuga Aoyama|1
-Mina Ashido|1
-Hawks|1
+Yuga Aoyama|3
+Mina Ashido|3
+Hawks|2
+Kojiro Bondo|3
+Winged Nomu|1
+Eijiro Kirishima|3
+Camie Utsushimi|2
+Soga Kugisaki|6
+Trumpet|2
+Rikiya Katsukame|3
+SI!Geten|4
+Star and Stripe|3
+SI!Pony Tsunotori|4
+Katsuki Bakugo|2
+Kyoka Jiro|3
+Yui Kodai|1
+Toya Setsuno|3
+Thirteen|3
+Vlad King|4
+Mummy|1
+SI!Rikido Sato|3
+Izuku Midoriya|4
+Uwabami|4
+Neito Monoma|3
+Mahoro Shimano|1
+SI!Denki Kaminari|2
+Twice|1
+Giran|1
+Burnin'|1
+Bruce|2
+SI!Natsuo Todoroki|1
+Nirengeki Shoda|1
+Rei Todoroki|3
+SI!Katsuki Bakugo|1
+Fat Gum|2
+Slice|2
+Beros|3
+Deatharms|2
+Fourth Kind|5
+Kosei Tsuburaba|2
+Mr. Compress|3
+Mika Jiro|2
+Sir Nighteye|3
+Kamui Woods|2
+SI!Fumikage Tokoyami|4
+Fuyumi Todoroki|3
+Himiko Toga|1
+Snipe|2
+Itsuka Kendo|1
+Mezo Shoji|1
+Number 6|1
+Jurota Shishida|2
+En|3
+SI!Koji Koda|1
+Gunhead|2
+Ryukyu|2
+SI!Shota Aizawa|3
+Masaru Bakugo|4
+IRL!FalseSeraph|1
+SI!Himiko Toga|5
+SI!Tenya Iida|1
+Rogone|1
+Hikage Shinomori|2
+Tamaki Amajiki|2
+Knuckleduster|1
+Shikkui Makabe|1
+Rody Soul|4
+Magne|1
+Nejire Hado|2
+Chimera|1
+Mirio Togata|2
+Spinner|3
+Moonfish|1
+Re-Destro|1
+Cementoss|1
+Wolfram|1
+SI!Ibara Shiozaki|2
+Yokumiru Mera|2
+Selkie|1
+The Crawler|2
+SI!Kyoka Jiro|1
+Hound Dog|2
+Centipeder|2
+Kido|1
+Rapt Tokage|2
+SI!Hitoshi Shinso|2
+Inasa Yoarashi|2
+Innsmouth|4
+Ochako Uraraka|1
+Nedzu|1
+Edgeshot|1
+SI!Tsuyu Asui|1
+Flect Turn|2
+Fumikage Tokoyami|1
+Koji Koda|1
+Ms. Joke|1
+David Shield|1
+Tatami Nakagame|1
+Stain|2
+Onima|1
+Eri|1
+Nagamasa Mora|1
+Seiji Shishikura|1
+Momo Yaoyorozu|1
+Kyotoku Jiro|1

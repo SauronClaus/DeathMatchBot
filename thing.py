@@ -108,8 +108,8 @@ def findEmojiID(personName, teacherBracket=False):
         peerFull = peerFile.read()
         peer = peerFull.split("\n")
         peoplePeerIndex = []
-        if personName == "Abraham Lincoln": 
-            personName = "ï»¿Abraham Lincoln"
+        #if personName == "Abraham Lincoln": 
+            #personName = "ï»¿Abraham Lincoln"
         print("Person Name: " + personName)
         if personName != "WildWildWestWoodrowWilson" and personName != "Wild Wild West Woodrow Wilson":
             personIndex = peer.index(personName)
@@ -282,7 +282,7 @@ async def on_message(message):
             roundNumber = int(open("matchNum.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
             channel = message.channel
             quantMessages = 0
-            numberOfMatches = 5
+            numberOfMatches = 2
             messageResults = []
             async for matchMessage in channel.history(limit=numberOfMatches+5):
                 if quantMessages < 5:

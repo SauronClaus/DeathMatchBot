@@ -18,7 +18,7 @@ Catherine the Great|Drake|4-1|Catherine the Great
 
 John Quincy Adams|Ryan Reynolds|2-3|Ryan Reynolds
 Saladin|Eiichiro Oda|5-0|Saladin
-Martin van Buren|Calvin Coolidge|2-2|Tie
+Martin Van Buren|Calvin Coolidge|2-2|Tie
 Gaston Julia|Benjamin Netanyahu|0-4|Benjamin Netanyahu
 Lance Armstrong|Emperor Nero|4-0|Lance Armstrong
 
@@ -39,3 +39,306 @@ Markiplier|Leiv Eiriksson|0-6|Leiv Eiriksson
 Joseph Stalin|Stephen King|1-4|Stephen King
 HG Wells|Hugo Chavez|2-4|Hugo Chavez
 Henri Poincare|Sun Tzu|2-3|Sun Tzu
+
+Toby Fox|Leonardo DiCaprio|5-1|Toby Fox
+Mary Magdalene|Robin Williams|5-1|Mary Magdalene
+Mr. Beast|Napoleon III|6-0|Mr. Beast
+Stan Lee|Charlie Chaplin|1-5|Charlie Chaplin
+Pat Sajak|Blackbeard|0-6|Blackbeard
+
+King Leopold II|J. Edgar Hoover|2-4|J. Edgar Hoover
+Heinrich Hertz|Harry S. Truman|0-6|Harry S. Truman
+Babe Ruth|Nikola Tesla|4-1|Babe Ruth
+Rosa Parks|Jane Goodall|4-0|Rosa Parks
+Alexios Komnenos|Eminem|1-3|Eminem
+
+Chris Sanderson|Ewan McGreggor|0-5|Ewan McGreggor
+Mark Zuckerberg|James Buchanan|4-1|Mark Zuckerberg
+Colonel Sanders|Ludwig van Beethoven|0-3|Ludwig van Beethoven
+Bob Ross|Ringo Starr|3-1|Bob Ross
+Mark Twain|Plato|0-4|Plato
+
+Avicii|Samuel L. Jackson|0-4|Samuel L. Jackson
+Mehmed II|Gottfried Wilhelm Leibniz|4-0|Mehmed II
+Keanu Reeves|Rick Astley|3-1|Keanu Reeves
+Jeff Bezos|Hypatia|3-1|Jeff Bezos
+Cristiano Ronaldo|Sigmund Freud|2-2|Tie
+
+Brad Pitt|J.K. Simmons|1-3|J.K. Simmons
+Herbert Hoover|Jim Henson|2-2|Tie
+Stanislaw Ulam|Chris Hemsworth|4-0|Stanislaw Ulam
+Ronald Reagan|Vince McMahon|3-1|Ronald Reagan
+Winston Duke|Liu Hui|0-4|Liu Hui
+
+Queen Elizabeth II|Jaleel White|4-1|Queen Elizabeth II
+Hillary Clinton|George Clooney|0-5|George Clooney
+Emperor Norton|Srinivasa Ramanujan|4-1|Emperor Norton
+Jack Kirby|Voltaire|1-4|Voltaire
+Butch Cassidy|Benito Mussolini|1-4|Benito Mussolini
+
+Timothy Dexter|O.J. Simpson|2-2|Tie
+Charles Babbage|Akbar the Great|0-4|Akbar the Great
+Kurt Cobain|Ferdinand Magellan|4-0|Kurt Cobain
+Friedrich Nietzsche|Hugh Jackman|1-3|Hugh Jackman
+Christian Bale|Florence Nightingale|4-0|Christian Bale
+
+Alex Trebeck|Michael Jackson|0-4|Michael Jackson
+Horatio Gates|Julius Caesar|1-3|Julius Caesar
+Matthew Mercer|Evel Knievel|0-5|Evel Knievel
+Sean Bean|Charlemagne|3-1|Sean Bean
+Christopher Columbus|John Tyler|3-1|Christopher Columbus
+
+Christina Aguilera|John Adams|0-3|John Adams
+Rebecca Sugar|Michael Jordan|0-3|Michael Jordan
+Al Capone|Al Gore|1-2|Al Gore
+Elton John|John Hancock|0-3|John Hancock
+George Lucas|Jackson Pollock|1-2|Jackson Pollock
+
+Mario Draghi|Brady Haran|0-3|Brady Haran
+Rosalind Pitt-Rivers|Marie Curie|1-2|Marie Curie
+Martin Luther King Jr.|Yuri Kondratyuk|0-4|Yuri Kondratyuk
+Athelstan|Zach Callison|3-0|Athelstan
+The Undertaker|Wallace Shawn|3-0|The Undertaker
+
+Terry Crews|Satyendra Nath Bose|4-0|Terry Crews
+Mark Hamill|Leonidas I|3-1|Mark Hamill
+Quentin Tarantino|Meryl Streep|3-1|Quentin Tarantino
+Yang Hui|Cary Elwes|3-1|Yang Hui
+Ben Stiller|Adam Conover|0-4|Adam Conover
+
+Gabe Newell|Carlos Menem|3-1|Gabe Newell
+Saint Olga of Kiev|Nat Turner|2-2|Tie
+Sam Bankman-Fried|Gary Gygax|4-0|Sam Bankman-Fried
+Suleiman the Magnificent|Enrico Fermi|3-1|Suleiman the Magnificent
+Theodore Roosevelt|David Copperfield|0-4|David Copperfield
+
+Bill Clinton|Rupert Grint|2-2|Tie
+Robert Frost|Benjamin Harrison|0-4|Benjamin Harrison
+Niels Bohr|Yu the Great|1-3|Yu the Great
+Jesse Owens|George Foreman|3-1|Jesse Owens
+Bill Nye|Malala Yousafzai|4-0|Bill Nye
+
+Simo Hayha|Orville Wright|4-0|Simo Hayha
+Mashirao Sakurai|Volodymyr Zelenskyy|0-4|Volodymyr Zelenskyy
+Joe Russo|Bill Gates|4-0|Joe Russo
+Frank Welker|Dwight Eisenhower|4-0|Frank Welker
+Grigori Rasputin|Hayden Christensen|1-2|Hayden Christensen
+
+Pancho Villa|Osama bin Laden|4-0|Pancho Villa
+Elon Musk|Raman Bishnoi|2-2|Tie
+George Washington|Amelia Earhart|0-4|Amelia Earhart
+Bill Watterson|Matthew McConaughey|2-1|Bill Watterson
+Justin Bieber|Harry Houdini|0-4|Harry Houdini
+
+Marilyn Monroe|MoistCr1TiKaL|1-4|MoistCr1TiKaL
+Kim Kardashian|Tom Holland|0-5|Tom Holland
+Ivan the Terrible|Manfred von Richthofen|0-4|Manfred von Richthofen
+Prince Charles|Oscar Wilde|0-5|Oscar Wilde
+Marie Antoinette|Charles de Gaulle|0-5|Charles de Gaulle
+
+Megan Fox|Nelson Mandela|0-5|Nelson Mandela
+Marcus Licinius Crassus|Karl Marx|5-0|Marcus Licinius Crassus
+Rurik|Meg White|0-5|Meg White
+Will Ferrell|Pol Pot|5-0|Will Ferrell
+Thom Tillis|George Harrison|4-1|Thom Tillis
+
+Confucius|George Swinnerton Parker|2-2|Tie
+William Henry Harrison|Adolf Hitler|1-3|Adolf Hitler
+Steve Mould|Alexander Graham Bell|4-0|Steve Mould
+Ernest Rutherford|Tony Hawk|0-4|Tony Hawk
+Alexander Hamilton|Oprah Winfrey|4-0|Alexander Hamilton
+
+Jeff Kaplan|Harriet Tubman|1-3|Harriet Tubman
+Nicolas Cage|Chris Evans|3-1|Nicolas Cage
+Christopher Lee|Czar Nicolas II|4-0|Christopher Lee
+Mansa Musa|Sacagawea|1-3|Sacagawea
+Archduke Franz Ferdinand|Buffalo Bill|0-4|Buffalo Bill
+
+Donnie Yen|Jack White|3-1|Donnie Yen
+Logan Paul|Louis XIII of France|1-3|Louis XIII of France
+William Howard Taft|Jungkook|0-4|Jungkook
+Morgan Freeman|Warren G. Harding|4-0|Morgan Freeman
+Stephen Hawking|Zachary Taylor|0-4|Zachary Taylor
+
+Josef Mengele|Franklin Pierce|2-1|Josef Mengele
+Ninja (streamer)|Edward Teller|4-0|Ninja (streamer)
+Evariste Galois|Pocahontas|0-3|Pocahontas
+Jeff Goldblum|Bob Woodward|3-0|Jeff Goldblum
+Joan of Arc|Jules Verne|2-1|Joan of Arc
+
+Anne Frank|The Wizard of New Zealand|0-4|The Wizard of New Zealand
+Ellen DeGeneres|Ariel Hyatt|1-3|Ariel Hyatt
+Herman Melville|Jack Churchill|3-2|Herman Melville
+Emmanuel Macron|Bernhard Riemann|4-0|Emmanuel Macron
+John Wayne Gacy|Wayne Gretzky|0-4|Wayne Gretzky
+
+James K. Polk|Laozi|1-3|Laozi
+Benedict Cumberbatch|Mikhail Gorbachev|0-4|Mikhail Gorbachev
+Ramesses II|Johannes Kepler|0-4|Johannes Kepler
+Charles Cornwallis|Mahatma Gandhi|2-2|Tie
+Grant Gustin|Matt Parker|0-4|Matt Parker
+
+James Monroe|Bon Scott|0-4|Bon Scott
+August Ferdinand Mobius|Winston Churchill|0-4|Winston Churchill
+Alec Guinness|J. K. Rowling|4-0|Alec Guinness
+Chris Pratt|Alan Turing|0-4|Alan Turing
+Peter I|Bernie Sanders|4-0|Peter I
+
+King Louis XVI of France|Brian May|0-4|Brian May
+Muhammad Ali|Robert Downey Jr.|0-4|Robert Downey Jr.
+Robin Wright|Mel Blanc|4-0|Robin Wright
+Daniel Bernoulli|Jeb Bush|1-3|Jeb Bush
+Chester A. Arthur|Warren Buffett|4-0|Chester A. Arthur
+
+Usain Bolt|Henrietta Lacks|3-1|Usain Bolt
+Randall Munroe|Jimmy Carter|4-0|Randall Munroe
+Fidel Castro|James Garfield|4-0|Fidel Castro
+Donald Trump|Buster Keaton|3-1|Donald Trump
+Sam Riegel|John Jay|2-2|Tie
+
+George R. R. Martin|Freddie Mercury|2-1|George R. R. Martin
+Steve Jobs|Matt Berry|4-0|Steve Jobs
+Thomas Jefferson|Alfred Hitchcock|1-3|Alfred Hitchcock
+Gordon Ramsay|Harrison Ford|0-4|Harrison Ford
+Nicolas Maduro|Michael Malloy|2-2|Tie
+
+Kobe Bryant|William Shakespeare|4-0|Kobe Bryant
+Woodrow Wilson|Edward the Black Prince|3-1|Woodrow Wilson
+Andrew Johnson|Homer (The Odyssey)|2-2|Tie
+Leon Trotsky|Kim Jong Un|1-3|Kim Jong Un
+Charles Dickens|Peter Higgs|1-3|Peter Higgs
+
+John Paul Jones|Pythagoras|3-1|John Paul Jones
+Mao Zedong|PewDiePie|0-4|PewDiePie
+John F. Kennedy|MatPat|1-3|MatPat
+Chris Wallace|Mandy Patinkin|3-1|Chris Wallace
+Cal Cunningham|Arnold Schwarzenegger|0-4|Arnold Schwarzenegger
+
+Grover Cleveland|Jacques Cousteau|0-3|Jacques Cousteau
+Sylvester Stallone|Joseph Fourier|3-0|Sylvester Stallone
+Julia Child|Edwin Hubble|1-2|Edwin Hubble
+Franklin D. Roosevelt|Edgar Allan Poe|0-4|Edgar Allan Poe
+Raphael|Charles Manson|0-3|Charles Manson
+
+Stephen Douglas|Hannibal (general)|0-4|Hannibal (general)
+H. P. Lovecraft|Noam Chomsky|0-4|Noam Chomsky
+King Tutankhamun|Fred Rogers|2-2|Tie
+Napoleon Bonaparte|Vincent Van Gogh|4-0|Napoleon Bonaparte
+Adam Sandler|Nicolaus Copernicus|1-3|Nicolaus Copernicus
+
+Alan Moore|George H. W. Bush|0-4|George H. W. Bush
+Qin Shi Huang|xQc|4-0|Qin Shi Huang
+Dwayne Johnson|J. Robert Oppenheimer|2-2|Tie
+Kamala Harris|Daniel Radcliffe|1-3|Daniel Radcliffe
+Clyde Chestnut Barrow|Jim Webb|4-0|Clyde Chestnut Barrow
+
+Hammurabi|George W. Bush|3-1|Hammurabi
+Bonnie Elizabeth Parker|Brennan Lee Mulligan|0-4|Brennan Lee Mulligan
+Jon Bon Jovi|Frederick Barbarossa|0-4|Frederick Barbarossa
+Jack Met|Charles Darwin|2-2|Tie
+William McKinley|William Clark|2-2|Tie
+
+Leonhard Euler|Carl Sagan|4-0|Leonhard Euler
+Trajan|James Earl Jones|2-2|Tie
+Jabir ibn Hayyan|Albert Einstein|1-3|Albert Einstein
+Sitting Bull|Max Planck|4-0|Sitting Bull
+Markus Persson|James A. Garfield|0-4|James A. Garfield
+
+Kaiser Wilhelm|John Curtin|1-3|John Curtin
+Gerald Ford|Sir Francis Drake|1-3|Sir Francis Drake
+Stonewall Jackson|Steven Spielberg|3-1|Stonewall Jackson
+Thomas Edison|Oda Nobunaga|1-3|Oda Nobunaga
+Lyn Evans|Ted Bundy|0-4|Ted Bundy
+
+Chuck Norris|Jacob Sartorius|3-0|Chuck Norris
+John D. Rockefeller|Frank Lloyd Wright|2-0|John D. Rockefeller
+C. S. Lewis|Neil Armstrong|0-2|Neil Armstrong
+Owen Wilson|Bill Cosby|2-0|Owen Wilson
+Rutherford B. Hayes|Sir Robert Wadlow|0-2|Sir Robert Wadlow
+
+Richard Faynman|Paul Revere|1-3|Paul Revere
+Erwin Schrodinger|Michael Phelps|3-1|Erwin Schrodinger
+Ray Kroc|Jack Nicholson|0-4|Jack Nicholson
+Barack Obama|Steve Irwin|0-4|Steve Irwin
+David Hilbert|Millard Fillmore|4-0|David Hilbert
+
+Yuri Gagarin|Wilbur Wright|4-0|Yuri Gagarin
+Ashoka the Great|Frederick Douglass|3-1|Ashoka the Great
+Tom Cruise|Jerry Seinfeld|4-1|Tom Cruise
+Matilda of Tuscany|Tobey Maguire|0-5|Tobey Maguire
+Stephen King|Ptolemy|5-0|Stephen King
+
+Martin Luther|Stephen Curry|1-3|Stephen Curry
+John Snow|Billy the Kid|3-1|John Snow
+Sir Walter Raleigh|Christopher Guest|1-3|Christopher Guest
+Michelangelo|Clovis I|4-0|Michelangelo
+Shalom H. Schwartz|Norman Rockwell|0-4|Norman Rockwell
+
+Dr. Seuss|Kublai Khan|0-3|Kublai Khan
+Sundar Pichai|Tom Hanks|0-3|Tom Hanks
+Stone Cold Steve Austin|George Orwell|1-3|George Orwell
+John Napier|Frank Sinatra|0-3|Frank Sinatra
+Roger Taylor|John Rockefeller|3-0|Roger Taylor
+
+Elvis Presley|Edward Norton|1-3|Edward Norton
+Euclid|Robbie Coltrane|4-0|Euclid
+Maggie Smith|Jim Jones|4-0|Maggie Smith
+Lyndon B. Johnson|John Calvin|4-0|Lyndon B. Johnson
+Otto von Bismarck|Orson Welles|1-3|Orson Welles
+
+Neil deGrasse Tyson|Richard the Lionheart|1-3|Richard the Lionheart
+Peyton Manning|Basil I|4-0|Peyton Manning
+Charles Ponzi|Sam Reich|2-2|Tie
+Leonardo da Vinci|Jens Bergensten|4-0|Leonardo da Vinci
+Joaquín "El Chapo" Guzmán|Mother Teresa|4-0|Joaquín "El Chapo" Guzmán
+
+Bass Reeves|Kevin Spacey|0-4|Kevin Spacey
+Shiro Ishii|Mark Antony|2-2|Tie
+Miyamoto Musashi|Benjamin Franklin|4-0|Miyamoto Musashi
+Prince (musician)|Jackie Robinson|1-3|Jackie Robinson
+Pablo Escobar|Antonio Stradivari|1-3|Antonio Stradivari
+
+Diego Rivera|Josh Brolin|1-3|Josh Brolin
+Paul Dirac|Walt Disney|0-4|Walt Disney
+Frida Kahlo|Robert E. Lee|0-4|Robert E. Lee
+Grant Kirkhope|Alexandria Ocasio-Cortez|2-2|Tie
+Vasco da Gama|Joe Biden|2-2|Tie
+
+Douglas MacArthur|Shaka Zulu|0-4|Shaka Zulu
+Eric Prydz|Mick Jagger|2-2|Tie
+Archimedes|Randy Savage|3-1|Archimedes
+Junji Ito|Jimmy Fallon|4-0|Junji Ito
+Valentin Glushko|Alan Rickman|1-3|Alan Rickman
+
+Pierre de Fermat|Augustin-Louis Cauchy|4-0|Pierre de Fermat
+James Madison|Carl Gauss|4-0|James Madison
+Joseph-Louis Lagrange|Lin-Manuel Miranda|0-4|Lin-Manuel Miranda
+Mark Ruffalo|Emperor Hirohito|1-3|Emperor Hirohito
+Christian Goldbach|Pablo Picasso|0-4|Pablo Picasso
+
+Bruce Lee|Marco Polo|4-0|Bruce Lee
+Augustus|Hannah Montana|0-4|Hannah Montana
+Eddie Hall|Boris Johnson|4-0|Eddie Hall
+Otto I, Holy Roman Emperor|Michael Bay|2-2|Tie
+Vladimir Lenin|Otto Stapf|0-4|Otto Stapf
+
+Socrates|Johann Sebastian Bach|4-0|Socrates
+Sabuktigin|Mel Brooks|0-4|Mel Brooks
+Wolfgang Amadeus Mozart|Tom Brady|0-4|Tom Brady
+Scarlett Johansson|Galileo Galilei|4-0|Scarlett Johansson
+Vlad the Impaler|Stefan Karl Stefansson|3-1|Vlad the Impaler
+
+Hulk Hogan|Orlando Bloom|1-3|Orlando Bloom
+Elijah Wood|Stephanie Kwolek|4-0|Elijah Wood
+Mike Tyson|Sir Isaac Newton|3-1|Mike Tyson
+Lady Gaga|Avicenna|4-0|Lady Gaga
+Jackie Chan|Vladimir Putin|4-0|Jackie Chan
+
+André the Giant|Magnus Carlson|3-1|André the Giant
+Nicki Minaj|Taylor Swift|4-0|Nicki Minaj
+Tupac|Attila the Hun|0-4|Attila the Hun
+Toussaint Louverture|David Attenborough|1-3|David Attenborough
+Gregor Mendel|Clint Eastwood|1-3|Clint Eastwood
+
+Abraham Lincoln|Paul McCartney|3-1|Abraham Lincoln
+Margaret Atwood|John Lennon|0-4|John Lennon

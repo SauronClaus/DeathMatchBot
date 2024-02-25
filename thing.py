@@ -282,7 +282,7 @@ async def on_message(message):
             roundNumber = int(open("matchNum.txt", "r", encoding='utf-8-sig').read().split("\n")[2])
             channel = message.channel
             quantMessages = 0
-            numberOfMatches = 2
+            numberOfMatches = 5
             messageResults = []
             async for matchMessage in channel.history(limit=numberOfMatches+5):
                 if quantMessages < 5:

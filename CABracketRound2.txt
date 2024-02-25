@@ -1,5 +1,7 @@
-﻿Harry Styles
+
+Harry Styles
 J. R. R. Tolkien
+Stevie Wonder
 Brutus
 Ibn Battuta
 Malcolm X
@@ -17,10 +19,12 @@ Ryan Reynolds
 Saladin
 Martin Van Buren
 Calvin Coolidge
+Benjamin Netanyahu
 Lance Armstrong
 Carrie Fisher
 Simón Bolívar
 John Cena
+William Wallace
 Cleopatra
 Paula Deen
 Lionel Messi
@@ -30,7 +34,9 @@ Davy Crockett
 Genghis Khan
 George S. Patton
 Leiv Eiriksson
+Stephen King
 Hugo Chavez
+Sun Tzu
 Toby Fox
 Mary Magdalene
 Mr. Beast
@@ -42,8 +48,10 @@ Babe Ruth
 Rosa Parks
 Eminem
 Ewan McGreggor
+Mark Zuckerberg
 Ludwig van Beethoven
 Bob Ross
+Plato
 Samuel L. Jackson
 Mehmed II
 Keanu Reeves
@@ -55,20 +63,25 @@ Herbert Hoover
 Jim Henson
 Stanislaw Ulam
 Ronald Reagan
+Liu Hui
 Queen Elizabeth II
 George Clooney
 Emperor Norton
 Voltaire
 Benito Mussolini
+Timothy Dexter
 O.J. Simpson
+Akbar the Great
 Kurt Cobain
 Hugh Jackman
 Christian Bale
 Michael Jackson
 Julius Caesar
+Evel Knievel
 Sean Bean
 Christopher Columbus
 John Adams
+Michael Jordan
 Al Gore
 John Hancock
 Jackson Pollock
@@ -76,13 +89,16 @@ Brady Haran
 Marie Curie
 Yuri Kondratyuk
 Athelstan
+The Undertaker
 Terry Crews
+Mark Hamill
 Quentin Tarantino
 Yang Hui
 Adam Conover
 Gabe Newell
 Saint Olga of Kiev
 Nat Turner
+Sam Bankman-Fried
 Suleiman the Magnificent
 David Copperfield
 Bill Clinton
@@ -94,23 +110,30 @@ Bill Nye
 Simo Hayha
 Volodymyr Zelenskyy
 Joe Russo
+Frank Welker
 Hayden Christensen
 Pancho Villa
 Elon Musk
 Raman Bishnoi
 Amelia Earhart
 Bill Watterson
+Harry Houdini
 MoistCr1TiKaL
 Tom Holland
 Manfred von Richthofen
+Oscar Wilde
 Charles de Gaulle
 Nelson Mandela
 Marcus Licinius Crassus
 Meg White
+Will Ferrell
 Thom Tillis
 Confucius
+George Swinnerton Parker
+Adolf Hitler
 Steve Mould
 Tony Hawk
+Alexander Hamilton
 Harriet Tubman
 Nicolas Cage
 Christopher Lee
@@ -124,14 +147,18 @@ Zachary Taylor
 Josef Mengele
 Ninja (streamer)
 Pocahontas
+Jeff Goldblum
 Joan of Arc
 The Wizard of New Zealand
 Ariel Hyatt
+Herman Melville
 Emmanuel Macron
 Wayne Gretzky
+Laozi
 Mikhail Gorbachev
 Johannes Kepler
 Charles Cornwallis
+Mahatma Gandhi
 Matt Parker
 Bon Scott
 Winston Churchill
@@ -143,38 +170,51 @@ Robert Downey Jr.
 Robin Wright
 Jeb Bush
 Chester A. Arthur
+Usain Bolt
+Randall Munroe
 Fidel Castro
 Donald Trump
 Sam Riegel
 John Jay
 George R. R. Martin
+Steve Jobs
 Alfred Hitchcock
 Harrison Ford
 Nicolas Maduro
 Michael Malloy
 Kobe Bryant
+Woodrow Wilson
 Andrew Johnson
 Homer (The Odyssey)
 Kim Jong Un
 Peter Higgs
 John Paul Jones
+PewDiePie
 MatPat
+Chris Wallace
 Arnold Schwarzenegger
 Jacques Cousteau
 Sylvester Stallone
+Edwin Hubble
 Edgar Allan Poe
 Charles Manson
+Hannibal (general)
 Noam Chomsky
 King Tutankhamun
 Fred Rogers
 Napoleon Bonaparte
 Nicolaus Copernicus
+George H. W. Bush
+Qin Shi Huang
 Dwayne Johnson
 J. Robert Oppenheimer
 Daniel Radcliffe
+Clyde Chestnut Barrow
 Hammurabi
+Brennan Lee Mulligan
 Frederick Barbarossa
 Jack Met
+Charles Darwin
 William McKinley
 William Clark
 Leonhard Euler
@@ -185,6 +225,7 @@ Sitting Bull
 James A. Garfield
 John Curtin
 Sir Francis Drake
+Stonewall Jackson
 Oda Nobunaga
 Ted Bundy
 Chuck Norris
@@ -199,6 +240,7 @@ Steve Irwin
 David Hilbert
 Yuri Gagarin
 Ashoka the Great
+Tom Cruise
 Tobey Maguire
 Stephen King
 Stephen Curry
@@ -213,9 +255,11 @@ Frank Sinatra
 Roger Taylor
 Edward Norton
 Euclid
+Maggie Smith
 Lyndon B. Johnson
 Orson Welles
 Richard the Lionheart
+Peyton Manning
 Charles Ponzi
 Sam Reich
 Leonardo da Vinci
@@ -234,15 +278,21 @@ Alexandria Ocasio-Cortez
 Vasco da Gama
 Joe Biden
 Shaka Zulu
+Eric Prydz
 Mick Jagger
+Archimedes
 Junji Ito
 Alan Rickman
 Pierre de Fermat
+James Madison
 Lin-Manuel Miranda
 Emperor Hirohito
 Pablo Picasso
 Bruce Lee
+Hannah Montana
 Eddie Hall
+Otto I, Holy Roman Emperor
+Michael Bay
 Otto Stapf
 Socrates
 Mel Brooks
@@ -254,6 +304,7 @@ Elijah Wood
 Mike Tyson
 Lady Gaga
 Jackie Chan
+André the Giant
 Nicki Minaj
 Attila the Hun
 David Attenborough

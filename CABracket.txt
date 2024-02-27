@@ -1,5 +1,4 @@
 ﻿Harry Styles
-J. R. R. Tolkien
 Brutus
 Ibn Battuta
 Malcolm X
@@ -8,7 +7,6 @@ Montezuma
 Buzz Aldrin
 Georg Cantor
 Hideki Tojo
-Aristotle
 Ulysses S. Grant
 Andrew Jackson
 Meriwether Lewis
@@ -24,7 +22,6 @@ John Cena
 Cleopatra
 Paula Deen
 Lionel Messi
-Pete Davidson
 Alexander the Great
 Davy Crockett
 Genghis Khan
@@ -33,7 +30,6 @@ Leiv Eiriksson
 Hugo Chavez
 Toby Fox
 Mary Magdalene
-Mr. Beast
 Charlie Chaplin
 Blackbeard
 J. Edgar Hoover
@@ -115,7 +111,6 @@ Harriet Tubman
 Nicolas Cage
 Christopher Lee
 Sacagawea
-Buffalo Bill
 Donnie Yen
 Louis XIII of France
 Jungkook
@@ -146,7 +141,6 @@ Chester A. Arthur
 Fidel Castro
 Donald Trump
 Sam Riegel
-John Jay
 George R. R. Martin
 Alfred Hitchcock
 Harrison Ford
@@ -207,7 +201,6 @@ Christopher Guest
 Michelangelo
 Norman Rockwell
 Kublai Khan
-Tom Hanks
 George Orwell
 Frank Sinatra
 Roger Taylor
@@ -233,7 +226,6 @@ Grant Kirkhope
 Alexandria Ocasio-Cortez
 Vasco da Gama
 Joe Biden
-Shaka Zulu
 Mick Jagger
 Junji Ito
 Alan Rickman
@@ -246,9 +238,7 @@ Eddie Hall
 Otto Stapf
 Socrates
 Mel Brooks
-Tom Brady
 Scarlett Johansson
-Vlad the Impaler
 Orlando Bloom
 Elijah Wood
 Mike Tyson

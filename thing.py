@@ -256,7 +256,7 @@ async def on_ready():
             storageFile = open("Gacha Storage Characters\\" + filename, "r", encoding='utf-8-sig')
             fileArray = storageFile.read().strip().split("\n")
             for i in fileArray:
-                print("Initalizing " + str(i))
+                #print("Initalizing " + str(i))
                 personInfo = i.split("|")
                 try:
                     currentStats[int(filename[0:len(filename)-4])][personInfo[0]] = int(personInfo[1])

@@ -1,5 +1,5 @@
-bracketFile = open("LogMHAMatch.txt", "r", encoding='utf-8')
-newBracket = open("OASISBracketRound2.txt", "w", encoding='utf-8')
+bracketFile = open("LogMHAMatch2.txt", "r", encoding='utf-8')
+newBracket = open("OASISBracketRound3.txt", "w", encoding='utf-8')
 bracket = bracketFile.read().split("\n")
 
 personFile = open("mhaCharacters.txt", "r", encoding='utf-8')

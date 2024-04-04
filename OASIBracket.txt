@@ -8,7 +8,6 @@ Attila the Hun
 Avicii
 Alexander Hamilton
 Benedict Cumberbatch
-Bernhard Riemann
 Bill Murray
 Bill Watterson
 Bob Ross
@@ -28,7 +27,6 @@ David Hilbert
 Donald Trump
 Drake
 Dwayne Johnson
-Dwight Eisenhower
 Emily Dickinson
 Emperor Norton
 Ernest Rutherford
@@ -48,7 +46,6 @@ Gottfried Wilhelm Leibniz
 Grigori Rasputin
 Hammurabi
 Harriet Tubman
-Harry Styles
 Hayden Christensen
 Henri Poincare
 Henrietta Lacks
@@ -72,22 +69,16 @@ Joseph-Louis Lagrange
 John Calvin
 Jimmy Carter
 Josef Mengele
-John Quincy Adams
 J. K. Rowling
 Joseph Fourier
 Jesse Owens
 John F. Kennedy
-Kublai Khan
 King Tutankhamun
 Lin-Manuel Miranda
 Leonardo da Vinci
 Lance Armstrong
 Leiv Eiriksson
 Malcolm X
-Mao Zedong
-Marcus Licinius Crassus
-Marie Antoinette
-Markiplier
 Marie Curie
 Mark Hamill
 Mark Twain
@@ -115,9 +106,7 @@ PewDiePie
 Pat Sajak
 Quentin Tarantino
 Ryan Reynolds
-Robert E. Lee
 Richard Feynman
-Rosa Parks
 Randall Munroe
 Sir Francis Drake
 Srinivasa Ramanujan
@@ -126,11 +115,8 @@ Sun Tzu
 Stephen Douglas
 Stephen Hawking
 Steve Jobs
-Stephen Curry
 Stanislaw Ulam
-Steven Spielberg
 Simo Hayha
-Shaka Zulu
 Trajan
 Tom Cruise
 Tom Holland
@@ -143,13 +129,11 @@ Vladimir Lenin
 Will Ferrell
 Woodrow Wilson
 Yuri Kondratyuk
-Yang Hui
 Cal Cunningham
 Thomas Jefferson
 James Madison
 Martin Van Buren
 John Tyler
-Franklin Pierce
 Chester A. Arthur
 Warren G. Harding
 Calvin Coolidge
@@ -163,13 +147,10 @@ Sigmund Freud
 Mike Tyson
 Steve Mould
 George Foreman
-Bill Cosby
 Nicolas Maduro
-Pablo Escobar
 Raman Bishnoi
 Carlos Menem
 Rosalind Pitt-Rivers
-Athelstan
 Basil I
 Tom Scott
 Frederick Barbarossa
@@ -184,9 +165,7 @@ Simón Bolívar
 Sitting Bull
 Che Guevara
 John Paul Jones
-John Wayne Gacy
 Stevie Wonder
-Emperor Hirohito
 Will Smith
 Shiro Ishii
 Stephen King
@@ -195,7 +174,6 @@ Orson Welles
 Toussaint Louverture
 Ozzy Osbourne
 O.J. Simpson
-Pol Pot
 Mick Jagger
 Christian Bale
 Meryl Streep
@@ -204,7 +182,6 @@ Frank Welker
 Jeff Goldblum
 Ashoka the Great
 Jaleel White
-Donnie Yen
 Samuel L. Jackson
 Sundar Pichai
 Joe Russo
@@ -212,12 +189,10 @@ Alan Moore
 Cristiano Ronaldo
 Magnus Carlson
 Toni Morrison
-Tupac
 Jim Jones
 Margaret Atwood
 Ibn Battuta
 Tony Hawk
-Evel Knievel
 Queen Elizabeth II
 Laozi
 Steve Irwin
@@ -226,9 +201,7 @@ Paula Deen
 Harry Houdini
 William Clark
 Pocahontas
-John Snow
 Gregor Mendel
-Bonnie Elizabeth Parker
 Wolfgang Amadeus Mozart
 Johann Sebastian Bach
 Randy Savage
@@ -249,8 +222,6 @@ Davy Crockett
 Pancho Villa
 Robin Williams
 Emperor Nero
-Norman Rockwell
-Emmanuel Macron
 Boris Johnson
 Mel Brooks
 Brian May
@@ -260,4 +231,3 @@ André the Giant
 Sam Riegel
 Edgar Allan Poe
 Sam Bankman-Fried
-Lady Gaga

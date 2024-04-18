@@ -1,5 +1,7 @@
 import discord
 from discord.utils import get
+from discord import app_commands
+from typing import Optional
 
 import random
 import wikipedia
@@ -40,15 +42,9 @@ from generation import generateAdjectivePair
 from contestGeneration import generateContest
 from contestGeneration import generateMatchMessage
 
-#from tradingCards import createCard
-#from tradingCards import grantCard
-#from tradingCards import generateStats
-
-#from tradingCardPerson import TradingCard
 import time
 import urllib.request
 
-from PIL import Image
 import requests
 import json
 
@@ -66,6 +62,7 @@ roundNumber = int(open("matchNum.txt", "r", encoding='utf-8-sig').read().split("
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+tree = app_commands.CommandTree(client)
 
 discordEmojiList = ["test server", "1DiscordEmoji", "2DiscordEmojis", "3DiscordEmojis", "4DiscordEmojis", "5DiscordEmojis", "6EmojiServer", "7EmojiServer", "8EmojiServer", "9EmojiServer", "10DiscordEmojis", "11DiscordEmojis", "12DiscordEmojis", "13DiscordEmojis", "CA Teacher Emojis", "2CA Teacher Emojis"]
 #List of servers with the Discord Emojis. 
@@ -76,6 +73,12 @@ tokens = tokenString.split('\n')
 botToken = tokens[0]
 testToken = tokens[1]
 userID = int(tokens[2])
+
+#guildIDGlobal = 620964009247768586
+#guildIDGlobal = 558662351906275328
+guildIDGlobal = 1173402242989166702
+#guildIDGlobal = 889564564365127751
+#First two are test server; then OASIS then BGG
 
 def findPersonPic(person):
     if os.path.exists("Pictures\\" + person.strip() + ".png"):
@@ -92,7 +95,6 @@ def findPeerIndex(personName):
     personIndex = peer.index(personName)
     return personIndex
 #Gets the peer file's index of the person's name
-
 def checkForEmoji(ID):
     print("ID: " + str(ID))
     for i in client.guilds:
@@ -178,7 +180,6 @@ def createPersonEmbed(person, teacherBracket=False):
     embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
     return embed
 #Returns an embed object created from the inputed person.
-
 def createMHAembed(person, teacherBracket=False):
     personFile = open("MHA Characters\\" + person + ".txt", "r", encoding='utf-8-sig')
     personArray = personFile.read().split("\n")
@@ -218,7 +219,7 @@ def returnResult(matchMessage):
             print("%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)) 
         
     return "%s|%s|%s-%s|%s" % (reverseEmojiID(matchMessage.reactions[0].emoji.id), reverseEmojiID(matchMessage.reactions[1].emoji.id), reactions[matchMessage.reactions[0].emoji.id], reactions[matchMessage.reactions[1].emoji.id], winnerName)
-
+#Returns the result of a match, based on the match passed into it.
 def get_wiki_main_image(title):
     url = 'https://en.wikipedia.org/w/api.php'
     data = {
@@ -232,6 +233,630 @@ def get_wiki_main_image(title):
     response = requests.get(url, data)
     json_data = json.loads(response.text)
     return json_data['query']['pages'][0]['original']['source'] if len(json_data['query']['pages']) >0 else 'Not found'
+
+@tree.command(
+    name="help",
+    description="The help command for HDM.",
+    guild=discord.Object(guildIDGlobal)
+)
+async def help(interaction, page: Optional[int] = None):
+    embed = discord.Embed(title="Help", description=f"Welcome to page {page}! The commands on this page are accessible with the * prefix or accessible through the slash menu.", color=0xFF9900)
+    
+    if page == None:
+        embed.description = "Heya! Welcome to the Rollo Kiri/Invisible Bot help menu! This bot's split up with a ton of functionality, so here's a quick guide to the extra menus. Use `/help [Page Number]` to access them!"
+        embed.add_field(name="Misc. HDM Commands (Page 1)", value="The miscellaneous commands for HDM.", inline=False)
+        embed.add_field(name="Generation (Page 2)", value="All the random generation commands!", inline=False)
+        embed.add_field(name="MHA Gacha (Page 3)", value="All the commands for the MHA Gacha.", inline=False)
+
+    if page == 1:
+        embed.add_field(name="info", value="Get some info on a specific person in the bot.\n*Syntax: `/info [The person who you want info on, as entered into the bot.]`*", inline=False)
+        embed.add_field(name="react", value="React to a message with one of the bot's emojis!\n*Syntax: `/react [The name of the person who's emoji you want to use.]`*", inline=False)
+        embed.add_field(name="lincoln", value="Gives you a photo of Abraham Lincoln.", inline=False)
+        embed.add_field(name="washington", value="Gives you a photo of Abraham Lincoln.", inline=False)
+        embed.add_field(name="adams", value="Gives you a photo of Abraham Lincoln.", inline=False)
+        embed.add_field(name="trump", value="Gives you a photo of Abraham Lincoln.", inline=False)
+        embed.add_field(name="biden", value="Gives you a photo of Abraham Lincoln.", inline=False)
+
+    if page == 2:
+        embed.add_field(name="weapon", value="Get a randomly generated weapon.", inline=False)
+        embed.add_field(name="place", value="Get a randomly generated place.", inline=False)
+        embed.add_field(name="adjective", value="Get a randomly generated adjective.", inline=False)
+        embed.add_field(name="person", value="Randomly generates a person for you!", inline=False)
+        embed.add_field(name="mhaMe", value="Get a randomly generated MHA Character.", inline=False)
+        embed.add_field(name="contestant", value="Generates a random person or MHA character, arms them, and gives them a power!", inline=False)
+        embed.add_field(name="powerUp", value="Gives yourself a weapon and an adjective.", inline=False)
+    
+    if page == 3:
+        embed.add_field(name="declare", value="Declare the gacha character you're rolling for.\n*Syntax for character name: [FirstName LastName].*", inline=False)
+        embed.add_field(name="roll", value="Roll for a character.", inline=False)
+        embed.add_field(name="currentStats", value="Gives you abbreviated stats on your gacha experience.", inline=False)
+        embed.add_field(name="pity", value="Checks your current pity level.", inline=False)
+        embed.add_field(name="checkcharacter", value="Checks the info on what you have of a specific character.", inline=False)
+        embed.add_field(name="missingcharacters", value="Checks what characters are missing.", inline=False)
+
+   
+    
+    embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
+    await interaction.response.send_message(embed=embed)
+
+@tree.command(
+    name="info",
+    description="Get information on a specific person!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def info(interaction: discord.Interaction, query: str):
+    if query != None:
+        messageContent = query
+        
+        peopleFile = open("people.txt", "r", encoding='utf-8-sig')
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+
+        weaponTierFile = open("Armory\\Tiers\\weaponTierList.txt", "r", encoding='utf-8-sig')
+        weaponTierFull = weaponTierFile.read()
+        weaponTierArray = weaponTierFull.split("\n")
+        weaponArray = []
+        weaponMinusFirstWord = []
+        for weaponTier in weaponTierArray:
+            weaponFile = open("Armory\\Tiers\\" + weaponTier + ".txt", "r", encoding='utf-8-sig')
+            weaponFull = weaponFile.read()
+            weaponArrayTemp = weaponFull.split("\n")
+            for weapon in weaponArrayTemp:
+                weaponArray.append(weapon)
+                            
+        placesFile = open("Atlas\\placesName.txt", "r", encoding='utf-8-sig')
+        placesFull = placesFile.read()
+        placesArray = placesFull.split("\n")
+
+        adjectiveTierFile = open("Adjectives\\TierList.txt", "r", encoding='utf-8-sig')
+        adjectiveTierFull = adjectiveTierFile.read()
+        adjectiveTierArray = adjectiveTierFull.split("\n")
+
+        adjectiveArray = []
+        for adjectiveTier in adjectiveTierArray:
+            adjectiveFile = open("Adjectives\\" + adjectiveTier + ".txt", "r", encoding='utf-8-sig')
+            adjectiveFull = adjectiveFile.read()
+            adjectiveArrayTemp = adjectiveFull.split("\n")
+            for adjective in adjectiveArrayTemp:
+                adjectiveArray.append(adjective)
+                    
+                    
+        songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r", encoding='utf-8-sig')
+        songsFull = songsFile.read()
+        songsArray = songsFull.split("\n")
+
+        minigamesFile = open("Competition Exclusive Info\\Mario Party 10 Minigames\\minigames.txt", "r", encoding='utf-8-sig')
+        minigamesFull = minigamesFile.read()
+        minigamesArray = minigamesFull.split("\n")
+
+        print("Query: |" + messageContent + "|")
+
+        if messageContent in peopleArray or messageContent == "Abraham Lincoln":
+            print("Query is Person")
+            embed = createPersonEmbed(messageContent)
+            await interaction.response.send_message(embed=embed)
+        else:
+            if messageContent in weaponArray or "a " + messageContent in weaponArray or "an " + messageContent in weaponArray:
+                print("Query is Weapon")
+                if "a " + messageContent in weaponArray:
+                    messageContent = "a " + messageContent
+                if "an " + messageContent in weaponArray:
+                    messageContent = "an " + messageContent
+                embed = createWeaponEmbed(messageContent)
+                await interaction.response.send_message(embed=embed)
+            else:
+                if messageContent in placesArray or messageContent + " " in placesArray:
+                    print("Query is Place")
+                    embed = createPlaceEmbed(messageContent + " ")
+                    await interaction.response.send_message(embed=embed)
+                else:
+                    if messageContent + " " in adjectiveArray:
+                        print("Query is Adjective")
+                        embed = createAdjectiveEmbed(messageContent + " ")
+                        await interaction.response.send_message(embed=embed)
+                    else:
+                        if messageContent in songsArray:
+                            print("Query is Song")
+                            embed = createSongEmbed(messageContent)
+                            await interaction.response.send_message(embed=embed)
+                        else:
+                            if messageContent in minigamesArray:
+                                print("Query is Mario Party 10 Minigame")
+                                embed = createMarioMinigameEmbed(messageContent)
+                                await interaction.response.send_message(embed=embed)
+                            else:
+                                await interaction.response.send_message(messageContent + " was not found.")
+    else:
+        await interaction.response.send_message("No query found.")
+
+
+@tree.command(
+    name="react",
+    description="React to a message!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def react(interaction: discord.Interaction, message: str, emoji: Optional[str] = None):
+    message = interaction.message
+    messageArray = message.content.split(" ")
+    if reactName == None:
+        reactName = generatePerson()
+    #https://discord.com/channels/1173402242989166702/1186071495781400728/1230567344737226842
+    if message == None:
+        await interaction.response.send_message("Please provide a message link!")
+    else:
+        if len(messageArray) >= 2:
+            messageArray.pop(0)
+            mixedMessageChannel = "[Error]"
+            if "/" in messageArray[0]:
+                mixedMessageChannel = messageArray[0]
+            else:
+                if "/" in messageArray[1]:
+                    mixedMessageChannel = messageArray[1]
+            idArray = mixedMessageChannel.split("/")
+            print("Message ID: " + str(idArray[5]))
+            print("Channel ID: " + str(idArray[4]))
+            channelID = message.guild.get_channel(int(idArray[0]))
+            msg = await channelID.fetch_message(idArray[1])
+            messageArray.pop(0)
+            name = ""
+            for item in messageArray:
+                name = name + item + " "
+            name = name.strip()
+            emoji = getEmoji(name)
+            print("Person: " + name)
+            await message.delete()
+            await msg.add_reaction(emoji)
+
+@tree.command(
+    name="weapon",
+    description="Get a random weapon!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def weaponMe(interaction: discord.Interaction):
+    weapon = generateWeapon()
+    await interaction.response.send_message(weapon.strip().capitalize() + "!")
+
+@tree.command(
+    name="place",
+    description="Get a random place!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def placeMe(interaction: discord.Interaction):
+    place = generatePlaceAdverb()
+    await interaction.response.send_message(place.strip().capitalize() + "!")
+
+@tree.command(
+    name="adjective",
+    description="Get a random adjective!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def adjectiveMe(interaction: discord.Interaction):
+    adjective = generateAdjective()
+    await interaction.response.send_message(adjective.strip().capitalize() + "!")
+
+@tree.command(
+    name="person",
+    description="Get a random person!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def peopleMe(interaction: discord.Interaction):
+    person = generatePerson()
+    await interaction.response.send_message(person[0] + "!")
+
+@tree.command(
+    name="randommha",
+    description="Get a random My Hero Academia character!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def mhaMe(interaction: discord.Interaction):
+    peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+    peopleFull = peopleFile.read()
+    peopleArray = peopleFull.split("\n")
+    peopleFile.close()
+    RNG = random.randint(0, len(peopleArray)-1)
+    await interaction.response.send_message(peopleArray[RNG] + "!")
+
+@tree.command(
+    name="contestant",
+    description="Gets a random person or MHA character, arms them, and gives them a power!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def contestant(interaction: discord.Interaction, myherocharactersallowed: Optional[bool] = False):
+    coin = random.randint(0,1)
+    human = "[Error]"
+    if myherocharactersallowed == False:
+        coin = 0
+    if coin == 0:
+        person = generatePerson()
+        human = person[0]
+    else:
+        peopleFile = open("mhaBracket.txt", "r", encoding='utf-8-sig')
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+        peopleFile.close()
+        
+        RNG = random.randint(0, len(peopleArray))
+        human = peopleArray[RNG]
+    adjective = generateAdjective().capitalize()
+    weapon = generateWeapon()
+
+    await interaction.response.send_message(adjective + human + " with " + weapon)
+
+@tree.command(
+    name="powerup",
+    description="Get a random My Hero Academia character!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def powerUp(interaction: discord.Interaction, recipient: Optional[str] = None):
+    
+    if recipient == None:
+        adjective = generateAdjective().strip()
+        weapon = generateWeapon().strip()
+        await interaction.response.send_message("You are " + adjective + " and you have " + weapon)
+    else:
+        adjective = generateAdjective().capitalize()
+        weapon = generateWeapon()
+        await interaction.response.send_message(adjective + recipient + " with " + weapon)
+
+@tree.command(
+    name="lincoln",
+    description="Get a photo of Abraham Lincoln!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def lincoln(interaction: discord.Interaction):
+    global numberOfLincolnPics
+    randomNum = random.randint(1,15)
+    picturePath = "lincoln" + str(randomNum)
+                
+    numberOfLincolnPics+=1
+    if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".png"):
+        await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".png"))
+    else:
+        if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".jpg"):
+            await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".jpg"))
+
+@tree.command(
+    name="washington",
+    description="Get a photo of Abraham Lincoln!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def washington(interaction: discord.Interaction):
+    global numberOfLincolnPics
+    randomNum = random.randint(1,15)
+    picturePath = "lincoln" + str(randomNum)
+                
+    numberOfLincolnPics+=1
+    if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".png"):
+        await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".png"))
+    else:
+        if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".jpg"):
+            await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".jpg"))
+
+@tree.command(
+    name="adams",
+    description="Get a photo of Abraham Lincoln!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def adams(interaction: discord.Interaction):
+    global numberOfLincolnPics
+    randomNum = random.randint(1,15)
+    picturePath = "lincoln" + str(randomNum)
+                
+    numberOfLincolnPics+=1
+    if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".png"):
+        await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".png"))
+    else:
+        if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".jpg"):
+            await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".jpg"))
+
+@tree.command(
+    name="obama",
+    description="Get a photo of Abraham Lincoln!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def obama(interaction: discord.Interaction):
+    global numberOfLincolnPics
+    randomNum = random.randint(1,15)
+    picturePath = "lincoln" + str(randomNum)
+                
+    numberOfLincolnPics+=1
+    if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".png"):
+        await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".png"))
+    else:
+        if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".jpg"):
+            await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".jpg"))
+
+@tree.command(
+    name="trump",
+    description="Get a photo of Abraham Lincoln!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def trump(interaction: discord.Interaction):
+    global numberOfLincolnPics
+    randomNum = random.randint(1,15)
+    picturePath = "lincoln" + str(randomNum)
+                
+    numberOfLincolnPics+=1
+    if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".png"):
+        await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".png"))
+    else:
+        if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".jpg"):
+            await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".jpg"))
+
+@tree.command(
+    name="biden",
+    description="Get a photo of Abraham Lincoln!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def biden(interaction: discord.Interaction):
+    global numberOfLincolnPics
+    randomNum = random.randint(1,15)
+    picturePath = "lincoln" + str(randomNum)
+                
+    numberOfLincolnPics+=1
+    if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".png"):
+        await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".png"))
+    else:
+        if os.path.exists("Pictures\\Lincoln\\" + picturePath + ".jpg"):
+            await interaction.response.send_message(file=discord.File("Pictures\\Lincoln\\" + picturePath + ".jpg"))
+
+@tree.command(
+    name="roll",
+    description="Roll for a MHA character on the MHA gacha!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def roll(interaction: discord.Interaction):
+    peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+
+    peopleFull = peopleFile.read()
+    peopleArray = peopleFull.split("\n")
+    peopleFile.close()
+
+    RNG = random.randint(0, len(peopleArray))
+
+    chosen = peopleArray[RNG]
+
+    pityFile = open("pityCount.txt", "w", encoding='utf-8-sig')
+    pityCurrent = 0
+    try:
+        pityCurrent = pityCount[interaction.user.id]
+        for personID in pityCount.keys():
+            pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+    except:
+        pityCount[interaction.user.id] = 0
+        for personID in pityCount.keys():
+            pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+
+    immutablePity = pityCurrent
+    if pityCurrent >= pityNum:
+        pityCurrent = pityNum
+    pityCheck = random.randint(pityCurrent, 100)
+
+    test = ""
+    try:
+        test = pityChart[interaction.user.id]
+        
+        if pityCheck == 100 or chosen == pityChart[interaction.user.id]:
+            chosen = pityChart[interaction.user.id]
+            pityCount[interaction.user.id] = 0
+            for personID in pityCount.keys():
+                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+            try:
+                currentStats[interaction.user.id][chosen]+=1
+            except:
+                try: 
+                    currentStats[interaction.user.id][chosen] = 1
+                except:
+                    currentStats[interaction.user.id] = {chosen: 1}
+            writeFile = open("Gacha Storage Characters\\" + str(interaction.user.id) + ".txt", "w", encoding='utf-8-sig')
+            for person in currentStats[interaction.user.id].keys():
+                writeFile.write(person + "|" + str(currentStats[interaction.user.id][person]) + "\n")
+            writeFile.close()
+            #print(str(currentStats))
+            await interaction.response.send_message("<@" + str(interaction.user.id) + ">, you got " + chosen + "! (pity count: " + str(immutablePity) + ")")
+        else:
+            pityCount[interaction.user.id] += 1
+            for personID in pityCount.keys():
+                pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+            try:
+                currentStats[interaction.user.id][chosen]+=1
+            except:
+                try: 
+                    currentStats[interaction.user.id][chosen] = 1
+                except:
+                    currentStats[interaction.user.id] = {chosen: 1}
+            #print(str(currentStats))
+            writeFile = open("Gacha Storage Characters\\" + str(interaction.user.id) + ".txt", "w", encoding='utf-8-sig')
+            for person in currentStats[interaction.user.id].keys():
+                writeFile.write(person + "|" + str(currentStats[interaction.user.id][person]) + "\n")
+            writeFile.close()
+            await interaction.response.send_message(chosen + "!")
+        pityFile.close()
+    except:
+        pityCount[interaction.user.id] += 1
+        for personID in pityCount.keys():
+            pityFile.write(str(personID) + "|" + str(pityCount[personID]) + "\n")
+        try:
+            currentStats[interaction.user.id][chosen]+=1
+        except:
+            try: 
+                currentStats[interaction.user.id][chosen] = 1
+            except:
+                currentStats[interaction.user.id] = {chosen: 1}
+        #print(str(currentStats))
+        writeFile = open("Gacha Storage Characters\\" + str(interaction.user.id) + ".txt", "w", encoding='utf-8-sig')
+        for person in currentStats[interaction.user.id].keys():
+            writeFile.write(person + "|" + str(currentStats[interaction.user.id][person]) + "\n")
+        writeFile.close()
+        await interaction.response.send_message(chosen + "!")
+    pityFile.close()
+
+@tree.command(
+    name="declare",
+    description="Declare your target character!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def declare(interaction: discord.Interaction, target: str):
+    if target != None:
+        declaredPerson = target
+        peopleFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+
+        peopleFull = peopleFile.read()
+        peopleArray = peopleFull.split("\n")
+        peopleFile.close()
+
+            
+        if declaredPerson in peopleArray:
+            pityChart[interaction.user.id] = declaredPerson
+            declaredFile = open("declaredGacha.txt", "w", encoding='utf-8-sig')
+            #print(str(pityChart))
+            for personID in pityChart.keys():
+                declaredFile.write(str(personID) + "|" + pityChart[personID] + "\n")
+            declaredFile.close()
+            await interaction.response.send_message("<@" + str(interaction.user.id) + "> has declared " + declaredPerson + "!")
+        else:
+            if declaredPerson == "":
+                test = ""
+                try:
+                    test = pityChart[interaction.user.id]
+                    await interaction.response.send_message("<@" + str(interaction.user.id) + "> has " + pityChart[interaction.user.id] + " declared!")
+                except:
+                    await interaction.response.send_message("<@" + str(interaction.user.id) + "> has nobody declared!")
+
+            #print("|" + declaredPerson + "|")
+            #print(str(peopleArray))
+            else:
+                await interaction.response.send_message(f"{declaredPerson} doesn't exist. Please try again!")
+    else:
+        await interaction.response.send_message("Input a valid person!")
+
+@tree.command(
+    name="currentstats",
+    description="Check on your current stats within the MHA gacha.",
+    guild=discord.Object(guildIDGlobal)
+)
+async def currentStatsCommand(interaction: discord.Interaction, user: Optional[discord.Member] = None):
+    #print(str(currentStats))
+    finder = user.id
+    if finder == "":
+        finder = interaction.user.id
+    test = []
+    try:
+        test = currentStats[int(finder)]
+    except:
+        currentStats[int(finder)] = {}
+    print(currentStats[int(finder)])
+    statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
+    newMessage = "__<@" + str(finder) + "> stats:__"
+    statsList = dict(statsArray)
+
+    totalNum = 0
+    for person in statsList.keys():
+        totalNum+=statsList[person]
+    for person in statsList.keys():
+        if statsList[person] > totalNum * 0.02:
+            newMessage = newMessage + "\n" + person + ": " + str(statsList[person])
+    newMessage = newMessage + "\n" + "**Total Rolls: ** " + str(totalNum)
+    newMessage = newMessage + "\n" + "**Characters Obtained: **" + str(len(statsList.keys())) + "/220"
+        
+    mhaFile = open("mhaCharacters.txt", "r", encoding="utf-8-sig")
+    mhaArray = mhaFile.read().split("\n")
+    if len(statsList.keys()) >= 200 and len(statsList.keys()) < 220:
+        newMessage = newMessage + "\n" + "**Characters Remaining: **"
+        for character in mhaArray:
+            if not character in statsList.keys():
+                newMessage = newMessage + character + ", "
+        newMessage = newMessage[0:len(newMessage)-2:]
+    await interaction.response.send_message(newMessage)
+
+@tree.command(
+    name="pity",
+    description="Check the pity of someone- either yourself or someone else!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def pity(interaction: discord.Interaction, user: Optional[discord.Member] = None):
+    pityCurrent = 0
+    finder = interaction.user.id
+    if user != None:
+        finder = user.id
+
+    try:
+        pityCurrent = pityCount[int(finder)]
+    except:
+        pityCount[int(finder)] = 0
+    await interaction.response.send_message("<@" + str(finder) + "> has a current pity count of " + str(pityCurrent))
+
+@tree.command(
+    name="checkcharacter",
+    description="Check the quantity of items in the MHA Gacha!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def checkCharacter(interaction: discord.Interaction, character: Optional[str] = None, user: Optional[discord.Member] = None):
+    if character != None:
+        characterName = character
+        finder = interaction.user.id
+        if user != None:
+            finder = user.id
+
+        if characterName == "":
+            try:
+                test = currentStats[int(finder)]
+            except:
+                currentStats[int(finder)] = {}
+            print(currentStats[int(finder)])
+            statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
+            newMessage = "__<@" + str(finder) + "> Characters:__"
+            await interaction.response.send_message(newMessage)
+            statsList = dict(statsArray)
+            for person in statsList.keys():
+                await interaction.response.send_message(person + ": " + str(statsList[person]))
+        else:
+            try:
+                await interaction.response.send_message("<@" + str(finder) + "> has " + str(currentStats[finder][characterName]) + " of " + characterName)
+            except:
+                mhaCharacterFile = open("mhaCharacters.txt", "r", encoding='utf-8-sig')
+                mhaCharacters = mhaCharacterFile.read().split("\n")
+                mhaCharacterFile.close()
+                if characterName in mhaCharacters:
+                    await interaction.response.send_message("<@" + str(finder) + "> has 0 of " + characterName)
+                else:
+                    await interaction.response.send_message(characterName + " doesn't exist!")
+    else:
+        await interaction.response.send_message("Pick a character!")
+
+@tree.command(
+    name="missingmha",
+    description="Find what characters are missing!",
+    guild=discord.Object(guildIDGlobal)
+)
+async def missingMHA(interaction: discord.Interaction):
+    finder = interaction.user.id
+    try:
+        test = currentStats[int(finder)]
+    except:
+        currentStats[int(finder)] = {}
+    print(currentStats[int(finder)])
+    statsArray = sorted(currentStats[int(finder)].items(), key=lambda x:x[1], reverse=True)
+    newMessage = "<@" + str(finder) + "> **Missing Characters: **"
+    statsList = dict(statsArray)
+    mhaFile = open("mhaCharacters.txt", "r", encoding="utf-8-sig")
+    mhaArray = mhaFile.read().split("\n")
+    mhaFile.close()
+    noAdd = True
+    for character in mhaArray:
+        if not character in statsList.keys():
+            newMessage = newMessage + character + ", "
+            noAdd = False
+        
+    if noAdd == True:
+       await interaction.response.send_message(f"**Missing Characters:**\nNone!") 
+    else:
+        if len(newMessage) <= 1990:
+            await interaction.response.send_message(newMessage[0:len(newMessage)-2:])
+        else:
+            chunks = [newMessage[i:i+1990] for i in range(0, len(newMessage), 1990)]
+            for i, chunk in enumerate(chunks, 1):
+                await interaction.response.send_message(chunk)
 
 @client.event
 async def on_ready(): 
@@ -264,15 +889,14 @@ async def on_ready():
                     currentStats[int(filename[0:len(filename)-4])] = {personInfo[0]: int(personInfo[1])}
     
 
-    
-
-
-
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
     if message.author.id == userID: 
+        if message.content.startswith("*syncCommands"):
+            await tree.sync(guild=discord.Object(id=guildIDGlobal))
+            await message.reply("Synced!")
         if message.content.startswith("*ranked"):
             validRankedServers = {889564564365127751: [], 523962430179770369: []}
             #validRankedServers = {620964009247768586: [], 558662351906275328: []}
@@ -1110,6 +1734,7 @@ async def on_message(message):
                 matchNumber+=1
                 emojiTicker+=2
             print("Completed!")
+        #Ranked matches for OASIS.
         if message.content.startswith("*mhaMatch"):
             validRankedServers = {1173402242989166702: []}
             #validRankedServers = {620964009247768586: []}
@@ -1524,7 +2149,7 @@ async def on_message(message):
                 matchNumber+=1
                 emojiTicker+=2
             print("Completed!")
-        
+        #Ranked matches for MHA on the OASIS server.
         if message.content.startswith("*sendLastMatchInfo"):
             infoWrite = open("lastInfo.txt", "r", encoding='utf-8-sig')
             infoFull = infoWrite.read()
@@ -2112,31 +2737,6 @@ async def on_message(message):
                 await matchMessage.add_reaction(emoji1)
                 await matchMessage.add_reaction(emoji2)
         #Tests for the new embed messages!
-        if message.content.startswith("*testTradingCards"):
-            rarityList = ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
-            for number in range(5):
-                personName = generatePerson()[0]
-                personEmoji = getEmoji(personName)
-                personURL = str(personEmoji.url)
-
-                personName = checkLinks(personName)
-                article = wikipedia.page(personName, auto_suggest=False)
-                infoLink = article.url
-
-                summary = article.summary.split('\n')
-                summaryPersonal = summaryShortest(str(summary[0]))
-                print("--break--")
-                rarityNum = random.randint(0, len(rarityList)-1)
-                rarity = rarityList[rarityNum]
-
-                stats = generateStats(rarity)
-                
-                person1 = TradingCard(personName, personURL, infoLink, stats, "Dreamer", rarity, summaryPersonal)
-                embed = person1.sendCard()
-                await message.channel.send(embed=embed)
-                person1.sendGraph()
-                await message.channel.send(file=discord.File("file.png"))
-        #Test message for creating Trading Cards!
         if message.content.startswith("*allSongs"):        
                 songsFile = open("Competition Exclusive Info\\Songs\\songs.txt", "r", encoding='utf-8-sig')
                 songsFull = songsFile.read()
@@ -2654,6 +3254,15 @@ async def on_message(message):
                 emojiTicker+=2
             print("Completed!")
         #Matches for Teacher's Bracket in March Madness 2022
+        if message.content.startswith("*purgeDeathMatch"):
+                async for message in message.channel.history(limit=100):
+                    messageArray = message.content.split(" ")
+                    commandPossible = messageArray[0]
+                    commandList = ["*ranked", "*sendLastMatchInfo", "*weapons", "*places", "*newPeopleInfo", "*SuleimanSpecial", "*SuperBowlSpecial", "*resetBracket", "*resetBracket", "*peoplePics", "*lincoln", "*placeMe", "*weaponMe", "*personMe", "*help", "*react"]
+                    if commandPossible in commandList:
+                        await message.delete()
+                await message.delete()
+        #Purges all death match commands.  
     if message.content.startswith("*info"):
                 messageContent = message.content[6::]
                 
@@ -2954,7 +3563,7 @@ async def on_message(message):
             pityCount[int(finder)] = 0
         await message.channel.send("<@" + str(finder) + "> has a current pity count of " + str(pityCurrent))
     #Checks your current pity.  
-    if message.content.startswith("*checkCharacter") and False:
+    if message.content.startswith("*checkCharacter"):
         characterName = message.content[16::]
         finder = message.author.id
         print(str(len(message.content)))
@@ -3054,7 +3663,6 @@ async def on_message(message):
                 embed.add_field(name="*react", value="React with people emojis! The syntax is '*react MESSAGEID CHANNELID EMOJIFIRSTNAME EMOJILASTNAME`.", inline=False)
                 embed.add_field(name="*register/suggest", value="Suggest new people for the bot!", inline=False)
                 embed.add_field(name="*info", value="Get an info card about a person, weapon, place, or adjective.", inline=False)
-                embed.add_field(name="*about", value="Get some info on the bot.", inline=False)
                 embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
                 await message.channel.send(embed=embed)
     #The help command
@@ -3091,15 +3699,6 @@ async def on_message(message):
                     await message.delete()
                     await msg.add_reaction(emoji)
     #React with an emoji; uses the syntax `*react [channelID]-[messageID] [Emoji Name]`
-    if message.content.startswith("*purgeDeathMatch"):
-                async for message in message.channel.history(limit=100):
-                    messageArray = message.content.split(" ")
-                    commandPossible = messageArray[0]
-                    commandList = ["*ranked", "*sendLastMatchInfo", "*weapons", "*places", "*newPeopleInfo", "*SuleimanSpecial", "*SuperBowlSpecial", "*resetBracket", "*resetBracket", "*peoplePics", "*lincoln", "*placeMe", "*weaponMe", "*personMe", "*help", "*react"]
-                    if commandPossible in commandList:
-                        await message.delete()
-                await message.delete()
-    #Purges all death match commands.      
     if message.content.startswith("*register") or message.content.startswith("*suggest"):
                 peopleFile = open("peer.txt", "r", encoding='utf-8-sig')
                 peopleFull = peopleFile.read()
@@ -3129,14 +3728,6 @@ async def on_message(message):
                 await message.delete()
                 time.sleep(2)
                 await response.delete()
-                
     #Command to suggest new people!  
-    if message.content.startswith("*about"):
-                embed = discord.Embed(title="About HDM!", description='"though I would' + "'ve bribed people to get stephen hawking to win that one match" + '"\n-Harrison Truscott\nHistorical Death Match (found here https://github.com/fixmeseb/DeathMatchBot) is a Discord bot that started out when I thought, "Hey, you know what' + "'s funny?" + ' Historical figures fighting each other. I could do something with this!" And then I did. Abbreviated to HDM a lot, HDM is currently running it' + "'s third iteration of the bot (with adjectives!) on the CA Discord Server, and otherwise is soon ready to be added to other server- just reach out to me at the below Discord address or at sauronclaus@gmail.com to see if we can work something out!", color=0xFF9900)
-                embed.add_field(name="Lines of Code in Main File", value=2000)
-                embed.add_field(name="People", value=574)
-                embed.set_footer(text="Created by The Invisible Man", icon_url="https://i.imgur.com/tce0LOa.jpg")
-                await message.channel.send(embed=embed)
-    #Gives some info about the bot!
 
 client.run(botToken)

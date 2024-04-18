@@ -69,7 +69,7 @@ La Brava|3
 Snipe|8
 Burnin'|4
 Pop Step|3
-Jurota Shishida|4
+Jurota Shishida|5
 Chronostasis|5
 Rikido Sato|3
 Backdraft|7
@@ -113,7 +113,7 @@ Mahoro Shimano|1
 Juzo Honenuki|6
 Mezo Shoji|2
 Fumikage Tokoyami|2
-SI!Natsuo Todoroki|7
+SI!Natsuo Todoroki|8
 Sidero|4
 Tooru Hagakure|4
 Eijiro Kirishima|4
@@ -207,7 +207,7 @@ Mandalay|1
 Soramitsu Tabe|3
 Tsuyu Asui|3
 SI!Dabi|2
-Onima|2
+Onima|3
 Yu Hojo|2
 Flect Turn|1
 Ragdoll|2

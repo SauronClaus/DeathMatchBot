@@ -6,7 +6,7 @@ SI!Sen Kaibara|1
 Moyuru Tochi|1
 Daigoro Banjo|1
 Mei Hatsume|1
-SI!Neito Monoma|2
+SI!Neito Monoma|3
 Wolfram|2
 4-Eyes Nomu|1
 Lady Nagant|1
@@ -46,3 +46,4 @@ Tomura Shigaraki|1
 Eyeless Nomu|1
 Ms. Joke|1
 Chronostasis|1
+Bruce|1

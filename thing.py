@@ -2954,7 +2954,7 @@ async def on_message(message):
             pityCount[int(finder)] = 0
         await message.channel.send("<@" + str(finder) + "> has a current pity count of " + str(pityCurrent))
     #Checks your current pity.  
-    if message.content.startswith("*checkCharacter"):
+    if message.content.startswith("*checkCharacter") and False:
         characterName = message.content[16::]
         finder = message.author.id
         print(str(len(message.content)))

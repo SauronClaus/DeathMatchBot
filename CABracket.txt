@@ -11,11 +11,9 @@ Carrie Fisher
 Simón Bolívar
 Paula Deen
 Davy Crockett
-George S. Patton
 Toby Fox
 Blackbeard
 J. Edgar Hoover
-Babe Ruth
 Rosa Parks
 Eminem
 Ewan McGreggor
@@ -24,7 +22,6 @@ Samuel L. Jackson
 Mehmed II
 Keanu Reeves
 Sigmund Freud
-Jim Henson
 Queen Elizabeth II
 George Clooney
 Voltaire
@@ -45,7 +42,6 @@ Nat Turner
 Suleiman the Magnificent
 Benjamin Harrison
 Volodymyr Zelenskyy
-Hayden Christensen
 Elon Musk
 Amelia Earhart
 MoistCr1TiKaL
@@ -79,9 +75,7 @@ Harrison Ford
 Nicolas Maduro
 Andrew Johnson
 John Paul Jones
-Sylvester Stallone
 Charles Manson
-Napoleon Bonaparte
 Dwayne Johnson
 Daniel Radcliffe
 Frederick Barbarossa
@@ -95,13 +89,10 @@ John Curtin
 Oda Nobunaga
 Ted Bundy
 Neil Armstrong
-Sir Robert Wadlow
 Erwin Schrodinger
 Yuri Gagarin
-Tobey Maguire
 Stephen Curry
 John Snow
-Christopher Guest
 Michelangelo
 Frank Sinatra
 Roger Taylor
@@ -123,7 +114,6 @@ Pablo Picasso
 Bruce Lee
 Eddie Hall
 Socrates
-Orlando Bloom
 Mike Tyson
 Lady Gaga
 Jackie Chan

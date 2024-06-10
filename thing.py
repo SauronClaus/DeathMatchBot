@@ -2966,7 +2966,7 @@ async def on_message(message):
             print("Renaming Emoji: " + message.guild.name)
             for emoji in message.guild.emojis:
                 personName = reverseEmojiID(emoji.id)
-                print(personName + " success!")
+                print(personName + " success!")     
                 if personName == "ï»¿Abraham Lincoln":
                     personName = "Abraham Lincoln"
                 personCharSplit = list(personName)
@@ -3729,5 +3729,26 @@ async def on_message(message):
                 time.sleep(2)
                 await response.delete()
     #Command to suggest new people!  
-
+    if message.content == "*setup":
+        RNG = random.randint(100,200)
+        print(f"The secret number is {RNG}")
+        resetNum = 0
+        for i in range(RNG):
+            if i == RNG:
+                await message.guild.create_text_channel(name="check kiri a words")
+                print("Created the secret channel!")
+            else:
+                if resetNum == 0:
+                    await message.guild.create_text_channel(name="Knock Knock?")
+                    resetNum+=1
+                elif resetNum == 1:
+                    await message.guild.create_text_channel(name="Who's there?")
+                    resetNum+=1
+                elif resetNum == 2:
+                    await message.guild.create_text_channel(name="Bannana!")
+                    resetNum+=1
+                elif resetNum == 3: 
+                    await message.guild.create_text_channel(name="Bannana who?")
+                    resetNum = 0
+        print("Completed!")
 client.run(botToken)
